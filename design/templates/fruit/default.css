@@ -1,0 +1,86 @@
+.background {
+	COLOR: #ffffff
+}
+A:link {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #ffffff; cursor:hand; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #ffffff; cursor:hand; TEXT-DECORATION: underline
+}
+
+.content {
+	COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt
+}
+A.content:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.content:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.content:active {
+	COLOR: #000000; TEXT-DECORATION: none; cursor:hand
+}
+A.content:hover {
+	COLOR: #000000; TEXT-DECORATION: underline; cursor:hand; 
+}
+
+.sidebar {
+	BACKGROUND-COLOR: #80ff00; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt; TEXT-ALIGN: center
+}
+A.sidebar:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.sidebar:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.sidebar:active {
+	COLOR: #000000; TEXT-DECORATION: none; cursor:hand
+}
+A.sidebar:hover {
+	COLOR: #000000; TEXT-DECORATION: underline; cursor:hand; 
+}
+
+.pagetitle {
+	COLOR:#80ff00; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 14pt; FONT-WEIGHT=bold
+}
+.sectiontitle {
+	COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 12pt; FONT-WEIGHT=bold; TEXT-ALIGN: center
+}
+.welcome {
+	COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt
+}
+
+.contentpane {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 8pt
+}
+.infopane {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt
+}
+
+A.tableitem:link {
+	COLOR: #003399; TEXT-DECORATION: none
+}
+A.tableitem:visited {
+	COLOR: #003399; TEXT-DECORATION: none
+}
+A.tableitem:active {
+	COLOR: #003399; TEXT-DECORATION: none; cursor:hand
+}
+A.tableitem:hover {
+	COLOR: #003399; TEXT-DECORATION: underline; cursor:hand; 
+}
+.tableitem {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt;
+}
+.tableheader {
+	BACKGROUND-COLOR: #808080; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 11pt; BORDER-BOTTOM: #c0c0c0 2px solid; 
+}
+.tablepane {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt; BORDER-BOTTOM: #c0c0c0 2px solid; BORDER-LEFT: #c0c0c0 2px solid; BORDER-RIGHT: #c0c0c0 2px solid; BORDER-TOP: #c0c0c0 2px solid;&nbsp;
+}

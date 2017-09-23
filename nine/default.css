@@ -1,0 +1,265 @@
+img {
+	border: none;
+}
+
+body {
+     color: #000000;
+		 background-color: #AEAEAE;
+}
+
+#main {
+				 position: absolute;
+				 top: 20px;
+				 left: 20px;				 
+}
+
+#content {
+				 position: absolute;
+				 top: 10px;
+				 left: 10px;				 
+}
+
+#content-text {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 1.0em; 
+				 font-family: Verdana, Geneva, Arial, sans-serif; 
+				 position: absolute;
+				 left: 20px;
+				 top: 190px;
+				 width: 660px;
+}
+
+.ImageList
+{
+				 position: relative;
+				 width: 515px;
+				 height: 70px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.ImageListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 70px;
+				 height: 70px;
+}	
+
+.ImageListText
+{
+				 position: relative;
+				 float: left;
+				 width: 394px;
+				 height:70px;
+				 padding: 0 0 0 8px;
+}
+
+
+.ImageListTitle
+{
+				 position: relative;
+				 padding: 0 0 11px 0;
+}
+
+.ImageListBlurb
+{
+				 position: relative;
+				 font-size: 0.95em;
+				 line-height: 15px;
+}
+
+.LargeImageList
+{
+				 position: relative;
+				 width: 350px;
+				 height: 120px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.LargeImageListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 120px;
+/*				 height: 180px;*/
+				 text-align: center;
+}	
+
+.LargeImageListText
+{
+				 position: relative;
+				 float: left;
+				 left: 0px;
+				 width: 220px;
+/*				 height:200px;*/
+				 padding: 0 0 0 8px;
+}
+
+#description {
+				 color: #000000;
+				 background-color: #ffffff;  
+				 font-size: 0.8em; 
+				 font-family: Verdana, Geneva, Arial, sans-serif; 
+				 position: absolute;
+				 left: 300px;
+				 top: 20px;
+				 width: 350px;					 
+}
+
+#description-title {
+				 color: #000000; 
+				 background-color: #ffffff; 
+				 font-size: 14px; 
+				 font-family: Verdana, Geneva, Arial, sans-serif; 	 
+}
+
+#navigation {
+				 color: #000000;
+				 background-color: #ffffff;  
+				 font-size: 12px; 
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+				 position: absolute;
+				 left: 20px;
+				 top: 300px; 					
+}
+
+h1 {
+				 color: #ffffff; 
+				 font-size: 1.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+				 margin-left:5px;
+				 margin-top:0px;
+				 margin-bottom:0px;
+}
+
+#header {
+ 				 position: absolute;
+				 color: #000000;
+				 top: 0px;
+				 left: 0px;
+				 width: 700px;
+				 height: 50px;
+				 background:  #849CE7 url(images/glassitem.jpg) right top;
+}
+
+.header-sphere {
+				 position: absolute;
+				 top: 0px; 
+				 left: 650px;
+}
+
+#gallery {
+				 position: absolute;
+				 top: 20px;
+				 left: 20px;	
+				 width : 200px;
+				 height: 200px;
+				 padding: 0px;
+}
+
+#gallery img {
+				 display: inline;
+				 /*
+				 margin: 5px;
+				 border: 1px solid #5A7EDC;
+				 */
+}
+
+#subnav {
+				 position: absolute;
+				 top: 255px;
+				 left: 20px;	
+				 width : 200px;
+				 height: 70px;
+				 padding: 0px;
+}
+
+#subnav img {
+				 display: inline;
+}
+
+#titlebar {
+				 position: absolute;
+				 top: 50px;
+				 left: 0px;
+  			 height:22px;
+				 width: 700px;
+				 background-color: #5A7EDC;
+				 padding: 4px 0px 0px 0px;
+}
+
+#content {
+				 color: #000000;
+				 background-color: #ffffff;
+				 position: absolute;
+				 top: 76px;
+				 left: 0px;
+				 width: 700px;
+				 height: 340px;				 
+}
+
+#graphic-one {
+				 position: absolute;
+				 top: 20px;
+				 left: 20px;				 
+}
+
+#graphic-two {
+				 position: absolute;
+				 top: 20px;
+				 left: 190px;				 
+}
+
+#graphic-three {
+				 position: absolute;
+				 top: 20px;
+				 left: 360px;				 
+}
+
+#graphic-four {
+				 position: absolute;
+				 top: 20px;
+				 left: 530px;				 
+}
+
+#widgetbar {
+				 position: absolute;
+				 top: 416px;
+  			 height:18px;
+				 background-color: #5A7EDC;
+				 padding: 4px 4px 2px 4px;
+				 width: 692px;
+}
+
+#footer {
+				 color: #000000;
+				 background-color: #5A7EDC;
+				 position: absolute;
+				 top: 440px;
+				 left: 0px;
+				 width: 700px;
+				 height: 50px;
+				 background: url(images/glassitemi.jpg) right bottom;		
+}
+
+#footer-button-designedby {
+				 position: absolute;
+				 top: 12px;
+				 left: 562px;						 
+}
+
+#footer-button-xhtml {
+				 position: absolute;
+				 top: 18px;
+				 left: 27px;						 
+}
+
+#footer-button-css {
+				 position: absolute;
+				 top: 18px;
+				 left: 127px;						 
+}

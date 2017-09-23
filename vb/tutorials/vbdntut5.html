@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Simple Text Editor</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-item {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+							line-height: 75%;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Simple Text Editor</h1>
+<p>Text editing is one of the most common tasks performed on a computer, so here is a simple Text Editor that 
+will introduce you to the TextBox, Open/SaveFileDialog and StreamReader/Writer!</p>
+<p>
+<a href="http://www.cespage.com/vb/vbdntut5.html">www.cespage.com/vb/vbdntut5.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Studio.NET then select Visual Basic Projects, 
+Windows Application, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgnewproject.gif" width="531" height="371" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgform1.gif" width="314" height="314" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Windows Forms components tab select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="imgtextbox.gif" width="200" height="300" alt="TextBox Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a TextBox on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgform1txt1.gif" width="300" height="300" alt="Form1 with Textbox" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then go to the Properties box and change ScrollBars to Vertical and MultiLine to True, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgtxt1prop.gif" width="204" height="433" alt="TextBox Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Windows Forms components tab select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="imgbutton.gif" width="200" height="300" alt="Button Component" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw three Buttons on the Form as shown below:
+</p>
+<div class="tutorial-image">
+<img src="imgform1btns.gif" width="314" height="314" alt="Form1 with three Buttons" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Click on Button1 and then go to the Properties box and change the Text Property to Open, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgbtn1prop.gif" width="204" height="433" alt="Button1 Property" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on Button2, change its Text Property to Save, click on Button3 and change its Text Property to Exit until the buttons appear as below:
+</p>
+<div class="tutorial-image">
+<img src="imgform1btnose.gif" width="314" height="314" alt="Form1 with Open, Save and Exit Buttons" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Double Click on the Button Labeled Open (Button1) and type in the Button1_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Open <span class="tut-rsvd">As New</span> OpenFileDialog()
+<span class="tut-rsvd">Dim</span> myStreamReader <span class="tut-rsvd">As</span> System.IO.StreamReader
+
+Open.Filter = "Plain Text Files (*.txt)|*.txt|All files (*.*)|*.*"
+Open.CheckFileExists = <span class="tut-rsvd">True</span>
+Open.Title = "Open"
+Open.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  Open.OpenFile()
+  myStreamReader = System.IO.File.OpenText(Open.FileName)
+  TextBox1.Text = myStreamReader.ReadToEnd()
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">Finally</span>
+  <span class="tut-rsvd">If Not</span> myStreamReader <span class="tut-rsvd">Is Nothing Then</span>
+    myStreamReader.Close()
+  <span class="tut-rsvd">End If</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="imgbtn1click.gif" width="580" height="360" alt="Button1_Click Sub" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Double Click on the Button Labeled Save (Button2) and type in the Button2_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Save <span class="tut-rsvd">As New</span> SaveFileDialog()
+<span class="tut-rsvd">Dim</span> myStreamWriter <span class="tut-rsvd">As</span> System.IO.StreamWriter
+
+Save.Filter = "Plain Text Files (*.txt)|*.txt|All files (*.*)|*.*"
+Save.CheckPathExists = <span class="tut-rsvd">True</span>
+Save.Title = "Save"
+Save.ShowDialog(<span class="tut-rsvd">Me</span>
+<span class="tut-rsvd">Try</span>
+  myStreamWriter = System.IO.File.AppendText(Save.FileName)
+  myStreamWriter.Write(TextBox1.Text)
+  myStreamWriter.Flush()
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">Finally</span>
+  <span class="tut-rsvd">If Not</span> myStreamReader <span class="tut-rsvd">Is Nothing Then</span>
+    myStreamWriter.Close()
+  <span class="tut-rsvd">End If</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="imgbtn2click.gif" width="580" height="360" alt="Button2_Click Sub" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Double Click on the Button Labeled Exit (Button3) and type in the Button3_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">End</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="imgbtn3click.gif" width="580" height="70" alt="Button3_Click Sub" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Save the Project as you have now finished the application, select Release and Click on Start:
+</p>
+<div class="tutorial-image">
+<img src="imgstart.gif" width="124" height="22" alt="Start (Release)" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="imgtexteditorrun.gif" width="300" height="300" alt="Application Running"/>
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click on Open, select a text file on your computer and open it with the open button, your file should appear in the textbox, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgtexteditor.gif" width="300" height="300" alt="Text Editor Application" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+You can save this as a new filename or clear the Textbox and enter your own text and Save it too - just click on the Save button and Save on the dialog!
+</p>
+<p>
+Click on the Close button <img src="imgclose.gif" width="21" height="21" alt="Close"/> on the top right of Form1 to end the application.
+</p>
+<p>
+That was simple wasn't it? It can Load and Save Text Files! Try changing other parts of the code and extend it, you can learn a lot from this simple text editor. 
+</p>
+</body>
+</html>

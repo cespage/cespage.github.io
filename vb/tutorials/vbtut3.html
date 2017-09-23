@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Task Tray</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Task Tray</h1>
+<p>This will show you how to put an Icon in the Task Tray and make a Popup Menu appear when you Right Click on the Icon within the Task Tray.</p>
+<p>
+<a href="http://www.cespage.com/vb/vbtut3.html">www.cespage.com/vb/vbtut3.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Basic, then select Standard EXE Project if VB5/6, click on the option then click Open, see below:
+</p>
+<div class="tutorial-image">
+<img src="fignewproject.gif" width="446" height="426" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="figform1.gif" width="320" height="240" alt="Form 1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Visual Basic Components Menu Select the Picture Box Control:
+</p>
+<div class="tutorial-image">
+<img src="figpicbox.gif" width="136" height="218" alt="Picture Box Control" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a Picture Box on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="figformpic.gif" width="320" height="240" alt="Form1 with Picture Box" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then goto the Properties Box and change the Name Property to picHook, see below:
+</p>
+<div class="tutorial-image">
+<img src="figpicprop.gif" width="202" height="132" alt="Picture Box Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Click on the Form (Form1) then got the Properties Box and change the Visible Property to False and the ShowInTaskBar Property to False, see below:
+</p>
+<div class="tutorial-image">
+<img src="figform1prop.gif" width="202" height="295" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Create a Menu set on the Form by clicking on the Menu Editor Button on the toolbar 
+<img src="figmenubut.gif" width="23" height="22" alt="Menu Editor" />. In the Menu Editor Dialog type in Popup in the Caption box 
+and mnuPopup in the Name box, Click Next then Click on the Arrow pointing Right and type in the Caption box 
+Exit then in the Name box mnuPopupExit, see below:
+</p>
+<div class="tutorial-image">
+<img src="figmenueditor.gif" width="365" height="250" alt="Menu Editor Window" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Once the Menu is complete you must now do the coding. Double Click on Form1 then select the 
+General Declarations from the Left Combo Box then type in the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Option Explicit</span>
+<span class="tut-rsvd">Private Type</span> NOTIFYICONDATA
+  cbSize <span class="tut-rsvd">As Long</span>
+  hWnd <span class="tut-rsvd">As Long</span>
+  uId <span class="tut-rsvd">As Long</span>
+  uFlags <span class="tut-rsvd">As Long</span>
+  ucallbackMessage <span class="tut-rsvd">As Long</span>
+  hIcon <span class="tut-rsvd">As Long</span>
+  szTip <span class="tut-rsvd">As String</span> * 64
+<span class="tut-rsvd">End Type</span>
+
+<span class="tut-rsvd">Private Const</span> NIM_ADD = &amp;H0
+<span class="tut-rsvd">Private Const</span> NIM_MODIFY = &amp;H1
+<span class="tut-rsvd">Private Const</span> NIM_DELETE = &amp;H2
+<span class="tut-rsvd">Private Const</span> WM_MOUSEMOVE = &amp;H200
+<span class="tut-rsvd">Private Const</span> NIF_MESSAGE = &amp;H1
+<span class="tut-rsvd">Private Const</span> NIF_ICON = &amp;H2
+<span class="tut-rsvd">Private Const</span> NIF_TIP = &amp;H4
+
+<span class="tut-rsvd">Private Const</span> WM_LBUTTONDBLCLK = &amp;H203
+<span class="tut-rsvd">Private Const</span> WM_LBUTTONDOWN = &amp;H201
+<span class="tut-rsvd">Private Const</span> WM_LBUTTONUP = &amp;H202
+<span class="tut-rsvd">Private Const</span> WM_RBUTTONDBLCLK = &amp;H206
+<span class="tut-rsvd">Private Const</span> WM_RBUTTONDOWN = &amp;H204
+<span class="tut-rsvd">Private Const</span> WM_RBUTTONUP = &amp;H205
+
+<span class="tut-rsvd">Private Declare Function</span> Shell_NotifyIcon <span class="tut-rsvd">Lib</span> "shell32" <span class="tut-rsvd">Alias</span> "Shell_NotifyIconA" (<span class="tut-rsvd">ByVal</span> dwMessage <span class="tut-rsvd">As Long</span>, pnid <span class="tut-rsvd">As</span> NOTIFYICONDATA) <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Dim</span> t <span class="tut-rsvd">As</span> NOTIFYICONDATA 
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 9</p>
+<p>
+Double Click on the Form (Form1) and type in the Form_Load() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+t.cbSize = Len(t)
+t.hWnd = Me.picHook.hWnd
+t.uId = 1&amp;
+t.uFlags = NIF_ICON <span class="tut-rsvd">Or</span> NIF_TIP <span class="tut-rsvd">Or</span> NIF_MESSAGE
+t.ucallbackMessage = WM_MOUSEMOVE
+t.hIcon = Me.Icon
+t.szTip = "TaskTray" &amp; Chr$(0)
+Shell_NotifyIcon NIM_ADD, t
+Me.Hide
+App.TaskVisible = <span class="tut-rsvd">False</span> 
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 10</p>
+<p>
+Double Click on the PictureBox (picHook) and type in the picHook_MouseMove() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Static</span> rec <span class="tut-rsvd">As Boolean</span>, msg <span class="tut-rsvd">As Long</span>
+msg = X / Screen.TwipsPerPixelX
+<span class="tut-rsvd">If</span> rec = <span class="tut-rsvd">False Then</span>
+  rec = <span class="tut-rsvd">True</span>
+  <span class="tut-rsvd">Select Case</span> msg
+    <span class="tut-rsvd">Case</span> WM_LBUTTONDBLCLK:
+    <span class="tut-rsvd">Case</span> WM_LBUTTONDOWN:
+    <span class="tut-rsvd">Case</span> WM_LBUTTONUP:
+    <span class="tut-rsvd">Case</span> WM_RBUTTONDBLCLK:
+    <span class="tut-rsvd">Case</span> WM_RBUTTONDOWN:
+    <span class="tut-rsvd">Case</span> WM_RBUTTONUP:
+      Me.PopupMenu mnuPopup 
+  <span class="tut-rsvd">End Select</span>
+  rec = <span class="tut-rsvd">False
+End If</span>
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 11</p>
+<p>
+Select Popup from the Form (Form1) and select Exit from the Menu, and type in the mnuPopupExit_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+t.cbSize = Len(t)
+t.hWnd = picHook.hWnd
+t.uId = 1&amp;
+Shell_NotifyIcon NIM_DELETE, t
+<span class="tut-rsvd">End</span>
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 12</p>
+<p>
+Save the Project (for example prjTaskTray) into a vacant folder as you have finished the application. Click on Start / Run 
+<img src="figstart.gif" width="23" height="22" alt="Start / Run" /> or Press F5 and the below will appear:
+</p>
+<div class="tutorial-image">
+<img src="figtasktray.gif" width="105" height="27" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Now Right Click with the Mouse on the Icon Nearest the Clock (the Icon will be the same Icon that was the Top Left Corner of the Form) and this will appear:
+</p>
+<div class="tutorial-image">
+<img src="figtaskrun.gif" width="120" height="26" alt="Icon Right Clicked" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click on Exit to End the Program. Try Changing the Icon or add other Sub Menus and Menus to the Popup Menu and see what happens!
+</p>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Hello ....</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Hello ....</h1>
+<p>This continues the Hello World example, please follow all the Steps of Hello World
+before starting this Tutorial or use the Source Code provided and adapt as needed.</p>
+<p>
+<a href="http://www.cespage.com/vb/vbdntut2.html">www.cespage.com/vb/vbdntut2.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Studio.NET, click on File | Open Solution, select the Solution file for the first tutorial (e.g HelloWorld.sln) and the following will appear: 
+</p>
+<div class="tutorial-image">
+<img src="imgform1btnch.gif" width="314" height="314" alt="Hello World" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+Then from the Windows Forms components tab select the Textbox control:
+</p>
+<div class="tutorial-image">
+<img src="imgtextbox.gif" width="200" height="300" alt="Text Component" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Draw a Textbox on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgform1txt.gif" width="300" height="300" alt="Form1 with Button and Textbox" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then goto the Properties box and change the Text property from Textbox1 to Hello World!, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgtxtprop.gif" width="204" height="433" alt="Textbox Properties" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Double Click on the Button Control and change the contents of the Button1_Click Sub to:
+</p>
+<blockquote>
+<pre class="tut-code">
+MsgBox(Textbox1.Text, MsgBoxStyle.Information, "Test")
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="imgbtntxtclick.gif" width="512" height="166" alt="Button Click Event with Text" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Save the Project as you have now finished the application, select Release and Click on Start:
+</p>
+<div class="tutorial-image">
+<img src="imgstart.gif" width="124" height="22" alt="Start (Release)" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="imghellorun.gif" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Now click where it says "Click Here" and a Message Box will appear looking something like this:
+</p>
+<div class="tutorial-image">
+<img src="imghello.gif" width="129" height="126" alt="Hello World" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Click on OK, then enter something different in the textbox at the top of the form and click on the Button again! 
+The message box will now show the text you have entered. Try changing some of the variables, such as seeing if 
+you can get it to display input from two Text Boxes (Clue:Use something like: MsgBox Text1.Text &amp; Text2.Text, 
+vbInformation, "Two Text Boxes") 
+</p>
+<p>
+Click on the Close button <img src="imgclose.gif" width="21" height="21" alt="Close" /> on the top right of Form1 to end the application.
+</p>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Task List</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Task List</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Create a Task List application with this Tutorial for Listbox-based To Do lists with Open/Save support using LINQ to XML plus Add/Remove Items.  
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/sl4tut5.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/sl4tut5.zip">Download Tutorial</a> (290KB)</em>
+<em class="icon-dload"><a href="tutorials/sl4tut5code.zip">Download Source Code</a> (6.76KB)</em>
+<em class="icon-odemo"><a href="tutorials/sl4tut5demo.html">Online Demonstration</a></em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Select Project then Add Reference... The "Add Reference" window should appear, select "System.XML.Linq" from the ".NET" List, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4xmllinq.png" width="466" height="370" alt="Add System.XML.Linq Reference" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the Reference to "System.XML.Linq" by Clicking on OK<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Draw a Canvas on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "Canvas1" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="65" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskcvs.png" width="423" height="315" alt="MainPage with Toolbar Canvas" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Draw Five Buttons on the Canvas (Toolbar) by dragging the Buttons from the Toolbox onto the Canvas or in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button1" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button2" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button3" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button4" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button5" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskcvsbtns.png" width="423" height="315" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on the first Button (Button1), then goto the Properties box and change the Name to "New" and the Content property from Button to "New" (both without the quotes), see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4btnnewprop.png" width="217" height="393" alt="Button Properties" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Click on the second Button (Button2), then goto the Properties box and change the Name to "Open" and the Content property from Button to "Open...".<br/>
+Then click on the third Button (Button3) and goto the Properties box and change then Name to "Save" and the Content property from Button to "Save...".<br/>
+Click on the fourth button (Button4) and then change the Name to "Remove" in the Properties box and the Content property to "Remove".<br/> 
+Then click on the fifth button (Button5) and in the Properties box change the name to "Add" and the Content property to "Add" (all without the quotes),
+the page should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskbtngrp.png" width="423" height="315" alt="MainPage with Canvas and New, Open, Save, Remove and Add Buttons" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Draw a TextBox on the Canvas (Toolbar) with the Buttons, and in the XAML Pane below the "&lt;Button&gt;" tag and above the "&lt;/Canvas&gt;" change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="36" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="237" <span class="tut-attr">Name</span>="Subject"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tsktxt.png" width="415" height="314" alt="MainPage with Toolbar Buttons and Subject TextBox" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the ListBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4listbox.png" width="180" height="428" alt="ListBox Control" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Draw a ListBox on the Page, below the Canvas with the Buttons, and in the XAML Pane above the "&lt;/Grid&gt;" and below the "&lt;/Canvas&gt;" change "ListBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ListBox</span> <span class="tut-attr">Height</span>="235" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,65,0,0" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Tasks"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tsklst.png" width="422" height="321" alt="MainPage with Toolbar Buttons, TextBox and ListBox" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above the "Partial Public Class MainPage" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Xml.Linq
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskref.png" width="216" height="117" alt="MainPage.xaml Imports" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "New" Button Control and type in the New_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Start a New Task List?"</span>, <span class="tut-valu">"Task List"</span>, _
+  <span class="tut-symb">MessageBoxButton</span>.OKCancel) = <span class="tut-symb">MessageBoxResult</span>.OK <span class="tut-rsvd">Then</span>
+  Subject.Text = <span class="tut-valu">""</span>
+  Tasks.Items.Clear()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tsknewclick.png" width="504" height="150" alt="New Button Click Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Open..." Button and type in the Open_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> OpenDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">OpenFileDialog</span>
+<span class="tut-rsvd">Dim</span> _xml <span class="tut-rsvd">As</span> <span class="tut-symb">XElement</span>
+OpenDialog.Filter = <span class="tut-valu">"Task List Files (*.tsk)|*.tsk"</span>
+<span class="tut-rsvd">If</span> OpenDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    If</span> OpenDialog.File.Exists <span class="tut-rsvd">Then</span>
+      _xml = <span class="tut-symb">XElement</span>.Parse(OpenDialog.File.OpenText.ReadToEnd)
+      <span class="tut-rsvd">If</span> _xml.Name.LocalName = <span class="tut-valu">"tasklist"</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Root</span>
+        Tasks.Items.Clear()
+        <span class="tut-rsvd">For</span> Each _Task <span class="tut-rsvd">As</span> <span class="tut-symb">XElement</span> <span class="tut-rsvd">In</span> _xml.Descendants(<span class="tut-valu">"task"</span>)
+          <span class="tut-rsvd">Dim</span> _item <span class="tut-rsvd">As New</span> <span class="tut-symb">CheckBox</span>
+          _item.IsChecked = _Task.FirstAttribute.Value.ToLower = <span class="tut-valu">"checked"</span>
+          _item.Content = _Task.Value
+          Tasks.Items.Add(_item)
+      <span class="tut-rsvd">Next
+    End If
+  End If
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskopenclick.png" width="656" height="422" alt="Open Button Click Event" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Return to the Designer View again, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Save..." Button and type in the Save_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> SaveDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">SaveFileDialog</span>
+<span class="tut-rsvd">Dim</span> _doc <span class="tut-rsvd">As</span> <span class="tut-symb">XDocument</span>
+SaveDialog.Filter = <span class="tut-valu">"Task List Files (*.tsk)|*.tsk"</span>
+<span class="tut-rsvd">If</span> SaveDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    Dim</span> _items <span class="tut-rsvd">As New</span> <span class="tut-symb">XElement</span>(<span class="tut-valu">"tasklist"</span>)
+    <span class="tut-rsvd">For Each</span> _Task <span class="tut-rsvd">As</span> <span class="tut-symb">CheckBox</span> <span class="tut-rsvd">In</span> Tasks.Items
+      _items.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">XElement</span>(<span class="tut-valu">"task"</span>, _Task.Content, _
+      <span class="tut-rsvd">New</span> <span class="tut-symb">XAttribute</span>(<span class="tut-valu">"value"</span>, IIf(_Task.IsChecked, _
+      <span class="tut-valu">"checked"</span>, <span class="tut-valu">"unchecked"</span>))))
+    <span class="tut-rsvd">Next</span>
+    _doc = <span class="tut-rsvd">New</span> <span class="tut-symb">XDocument</span>(<span class="tut-rsvd">New</span> <span class="tut-symb">XDeclaration</span>(<span class="tut-valu">"1.0"</span>, <span class="tut-valu">"utf-8"</span>, <span class="tut-valu">"yes"</span>), _items)
+  <span class="tut-rsvd">Using</span> FileStream <span class="tut-rsvd">As</span> IO.<span class="tut-symb">StreamWriter</span> = <span class="tut-rsvd">New</span> IO.<span class="tut-symb">StreamWriter</span>(SaveDialog.OpenFile)
+    _doc.Save(FileStream)
+  <span class="tut-rsvd">End Using
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tsksaveclick.png" width="712" height="388" alt="Save Button Click Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Remove" Button Control and type in the Remove_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Tasks.SelectedIndex > -<span class="tut-valu">1</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Item Selected</span>
+  Tasks.Items.RemoveAt(Tasks.SelectedIndex) <span class="tut-cmnt">' Remove Selected</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskremoveclick.png" width="526" height="116" alt="Remove Button Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Add" Button Control and type in the Add_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Subject.Text &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Has Subject</span>
+  <span class="tut-rsvd">Dim</span> _item <span class="tut-rsvd">As New</span> <span class="tut-symb">CheckBox</span>
+  _item.Content = Subject.Text
+  <span class="tut-rsvd">If</span> Tasks.SelectedIndex > -<span class="tut-valu">1</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Item Selected</span>
+    Tasks.Items.Insert(Tasks.SelectedIndex, _item) <span class="tut-cmnt">' Insert before Selected</span>
+  <span class="tut-rsvd">Else</span>
+    Tasks.Items.Add(_item) <span class="tut-cmnt">' Add to List End</span>
+  <span class="tut-rsvd">End If
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskaddclick.png" width="622" height="218" alt="Add Button Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Now type into the TextBox the Subject of a Task, then Click on the Add button to add some Tasks to, you can then "Save" this list to "Open" later, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskapp.png" width="400" height="300" alt="Text Editor with Open Document" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="tutorials/sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This is a Simple Task List application with the ability to Open and Save Task Lists files as XML including the items checked and the order they appear.
+Try adding new features like being able to move items Up and Down the list and being able to Edit previously entered Tasks or use this as a basis 
+for more complex XML-based applications!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

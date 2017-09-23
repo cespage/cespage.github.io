@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Drawing Package</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Drawing Package</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>Another common task is Drawing, and what better way to do this than with a Drawing Package using PictureBox, Open/Save/Colour Dialogs,
+plus Draw Width selection!</p>
+<p>
+<em class="icon-print"><a href="tutorials/vb08tut6.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vb08tut6.zip">Download Tutorial</a> (307KB)</em>
+<em class="icon-dload"><a href="tutorials/vb08tut6code.zip">Download Source Code</a> (13KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Windows Forms Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08newapp.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08form1.png" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Form1 selected goto the Properties box and change the Name from Form1 to frmMain
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08form1prop.png" width="203" height="431" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the Common Controls tab on the Toolbox select the PictureBox component:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08picturebox.png" width="240" height="400" alt="PictureBox Component" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a PictureBox on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainpicbox.png" width="300" height="300" alt="frmMain with PictureBox" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then goto the Properties box and change the Name to picDraw, BackColor to White and Dock to Fill, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08picdrawprop.png" width="203" height="399" alt="PictureBox Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Then from the Menus &amp; Toolbars tab on the Toolbox select the MenuStrip Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08menustrip.png" width="240" height="400" alt="MenuStrip Component" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Either double-click on the MenuStrip Control entry in the Menu &amp; Toolbars tab on the Toolbox or keep the MenuStrip Component Clicked and then move it over the Form then let go. 
+Change the Name of the MenuStrip in the properties to mnuDraw The Form will then look as below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainmnudraw.png" width="300" height="300" alt="frmMain with MenuStrip" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click or select where the MenuStrip says "Type Here", an editable Textbox will appear type in "File" without the quotes in this Box, then in the Box below
+that type in "New", below that "Open...", then "Save..." and finally "Exit". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudraw.png" width="300" height="300" alt="mnuDraw with File Menu" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Click or select next to "File" where the MenuStrip says "Type Here", and type in "Edit" without the quotes in this Box, then in the Box below
+that type in "Cut", below that "Copy", then "Paste" and finally "Delete". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawedit.png" width="300" height="300" alt="mnuList with Edit Menu" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Click or select next to "Edit" where the MenuStrip says "Type Here", and type in "Draw" without the quotes in this Box, then in the Box below
+that type in "Width" and below that "Colour". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawdraw.png" width="300" height="300" alt="mnuList with Draw Menu" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Right Click on the Form or the entry of the Form in Solution Explorer and choose the "View Code" option then below the "Public Class frmMain"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> DrawBitmap <span class="tut-rsvd">As</span> Bitmap
+<span class="tut-rsvd">Private</span> DrawGraphics <span class="tut-rsvd">As</span> Graphics
+<span class="tut-rsvd">Private</span> DrawColour <span class="tut-rsvd">As</span> Color = Color.Blue
+<span class="tut-rsvd">Private </span>DrawWidth <span class="tut-rsvd">As Integer</span> = 5
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08drawdecs.png" width="366" height="102" alt="Drawing Package Declarations" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Return to the Design view by selecting the [Design] tab or Right Click on the "View Designer" option in Solution Explorer for frmMain.<br/>
+Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "New" (NewToolStripMenuItem) and 
+type the following in the NewToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+Response = MsgBox(<span class="tut-valu">"Are you sure you want to start a New Drawing?"</span>, _
+                  MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                  <span class="tut-valu">"Drawing Package"</span>)
+<span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+  picDraw.Image = <span class="tut-rsvd">Nothing</span>
+  <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Drawing Package - Untitled"</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawnew.png" width="632" height="200" alt="File Menu New Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Open..." (OpenToolStripMenuItem) and 
+type the following in the OpenToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Open <span class="tut-rsvd">As New</span> OpenFileDialog()
+Open.Filter = <span class="tut-valu">"Bitmap Image (*.bmp)|*.bmp|All files (*.*)|*.*"</span>
+Open.CheckFileExists = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">If</span> Open.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then
+  Try</span>
+    Open.OpenFile()
+    picDraw.Image = Image.FromFile(Open.FileName)
+    <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Drawing Package - "</span> &amp; Open.FileName
+  <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-cmnt">' Do nothing on Exception</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawopen.png" width="648" height="270" alt="File Menu Open Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Save..." (SaveToolStripMenuItem) and 
+type the following in the SaveToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Save <span class="tut-rsvd">As New</span> SaveFileDialog()
+Save.Filter = <span class="tut-valu">"Bitmap Image (*.bmp)|*.bmp|All files (*.*)|*.*"</span>
+Save.CheckPathExists = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">If</span> Save.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then
+  Try</span>
+    picDraw.Image.Save(Save.FileName)
+    <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Drawing Package - "</span> &amp; Save.FileName
+  <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-cmnt">' Do nothing on Exception</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawsave.png" width="648" height="252" alt="File Menu Save Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Exit" (ExitToolStripMenuItem) and 
+type the following in the ExitToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+Response = MsgBox(<span class="tut-valu">"Are you sure you want to Exit Drawing Package?"</span>, _
+                  MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                  <span class="tut-valu">"Drawing Package"</span>)
+<span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+   <span class="tut-rsvd">End</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawexit.png" width="648" height="184" alt="File Menu Exit Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Cut" (CutToolStripMenuItem) and type the following in the CutToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+Clipboard.SetImage(picDraw.Image) <span class="tut-cmnt">' Copy</span>
+<span class="tut-cmnt">' Delete</span>
+DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(picDraw.Width, picDraw.Height)
+DrawGraphics = Graphics.FromImage(DrawBitmap)
+picDraw.Image = DrawBitmap
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawcut.png" width="632" height="148" alt="Edit Menu Cut Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Copy" (CopyToolStripMenuItem) and type the following in the CopyToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+Clipboard.SetImage(picDraw.Image) <span class="tut-cmnt">' Copy</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawcopy.png" width="648" height="82" alt="Edit Menu Copy Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Paste" (PasteToolStripMenuItem) and type the following in the PasteToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+picDraw.Image = Clipboard.GetImage <span class="tut-cmnt">' Paste</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawpaste.png" width="664" height="84" alt="Edit Menu Paste Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Delete" (DeleteToolStripMenuItem) and type the following in the DeleteToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Delete</span>
+DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(picDraw.Width, picDraw.Height)
+DrawGraphics = Graphics.FromImage(DrawBitmap)
+picDraw.Image = DrawBitmap
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawdelete.png" width="680" height="132" alt="Edit Menu Delete Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Draw" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Width" (WidthToolStripMenuItem) and type the following in the WidthToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Value <span class="tut-rsvd">As String</span>
+Value = InputBox(<span class="tut-valu">"Enter a Width (between 1-200)"</span>, _
+                 <span class="tut-valu">"Drawing Package"</span>, DrawWidth)
+<span class="tut-rsvd">If</span> IsNumeric(Value) <span class="tut-rsvd">Then
+  If CInt</span>(Value) &gt; 0 <span class="tut-rsvd">And CInt</span>(Value) &lt;= 200 <span class="tut-rsvd">Then</span>
+    DrawWidth = <span class="tut-rsvd">CInt</span>(Value)
+  <span class="tut-rsvd">End If
+End If</span>
+Value = <span class="tut-rsvd">Nothing</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawwidth.png" width="664" height="220" alt="Draw Menu Width Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Draw" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Colour..." (ColourToolStripMenuItem) and type the following in the ColourToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Colour <span class="tut-rsvd">As New</span> ColorDialog
+Colour.Color = DrawColour
+<span class="tut-rsvd">If</span> Colour.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then</span>
+  <span class="tut-rsvd">Try</span>
+    DrawColour = Colour.Color
+  <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-cmnt">' Do nothing on Exception</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawcolour.png" width="680" height="218" alt="Draw Menu Colour Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the [Design] Tab to view the form again, then Double Click on the Form (frmMain) and 
+type the following in the frmMain_Load() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(picDraw.Width, picDraw.Height)
+DrawGraphics = Graphics.FromImage(DrawBitmap)
+DrawGraphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+picDraw.Image = DrawBitmap
+<span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Drawing Package - Untitled"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmaindrawload.png" width="592" height="150" alt="frmMain Load Event" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+While Still in the Code View, if not double click on the Form, the Window Area of the Form will work, this will
+show the frmMain_Load Sub from the previous step, on this screen at the top are two Drop-down boxes one labeled (frmMain Events)
+and the other is Load. Click on the drop-down box with "Load" in it to show the list of events for frmMain click on Resize, and type the following in the
+frmMain_Resize() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> picDraw.Width &gt; picDraw.Image.Width <span class="tut-rsvd">Or</span> _
+picDraw.Height &gt; picDraw.Image.Height <span class="tut-rsvd">Then</span>
+  DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(picDraw.Width, picDraw.Height)
+  DrawGraphics = Graphics.FromImage(DrawBitmap)
+  DrawGraphics.DrawImage(picDraw.Image, 0, 0)
+  picDraw.Image = DrawBitmap
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmaindrawresize.png" width="540" height="186" alt="frmMain Resize Event" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+With the Code View shown, click on the Drop-down labelled (frmMain Events), or the Left large Drop-down with (General) at the top,
+then look down this list and click on "picDraw", then from the Drop-Down list next to this select "MouseMove", and type the following in the
+picDraw_MouseMove() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> e.Button = Windows.Forms.MouseButtons.Left <span class="tut-rsvd">Then</span>
+  DrawGraphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+  DrawGraphics.FillEllipse(<span class="tut-rsvd">New</span> SolidBrush(DrawColour), _
+                           e.X, e.Y, DrawWidth, DrawWidth)
+  picDraw.Image = DrawBitmap
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08picdrawmousemove.png" width="680" height="168" alt="picDraw MouseMove Event" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Steps 26-30 are optional and just add Keyboard Shortcuts to the MenuItems, you don't have to do these if you don't want to!<br/>
+Return to the Design view of the Form by selecting the [Design] tab for the Form, or double click on the Form's name in Solution Explorer.<br/>
+Click on "File" on the Menu Strip to select the Menu Strip and show the File Menu then mouse over the "Type Here" box.<br/> 
+Click on the Drop Down arrow inside the "Type Here" box to show the following options: MenuItem, ComboBox, Separator and TextBox, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawfile.png" width="300" height="300" alt="File Menu with Type Here options displayed at bottom of menu" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Click on the "Separator" option to place a Menu Separator in this menu, then click on it an move it so it goes above the "Exit" option in the file menu,
+do this by clicking on the separator (the horizontal line which has appeared) then whilst keeping clicked move it up, it should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawfilediv.png" width="300" height="300" alt="File Menu with Divider above Exit MenuItem" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+With the "File" Menu still being displayed click on "New" then in the Properties box look for the "Shortcut Key" option and click on the Drop Down arrow
+where "None" appears. Check the "Ctrl" Checkbox in "Modifiers" and then in the "Key" dropdown list select "N", see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnutextnewprop.png" width="240" height="399" alt="File Menu New Menu Item Shortcut Key" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+Set the rest of the "File" MenuItem "Shortcut Key" Properties except the "Exit" Menu Item, "Open" should be set to "Ctrl" and "O", "Save" to "Ctrl" and "S", the
+File Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudrawfilekeys.png" width="300" height="300" alt="File Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 30</p>
+<p>
+Click on or select the "Edit" Menu and set the "Shortcut Keys" Properties, "Cut" should be set to "Ctrl" and "X", "Copy" to "Ctrl" and "C", 
+"Paste" to "Ctrl" and "V" finally "Delete" should be just "Del" in the Keys drop-down list, The Edit Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnudraweditkeys.png" width="300" height="300" alt="Edit Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 31</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08drawrun.png" width="300" height="300" alt="Drawing Package Running" />
+</div>
+<p class="tutorial-step">Step 32</p>
+<p>
+You can draw on the PictureBox, by holding down the left-mouse button and moving the cursor to draw use the Draw menu to change the Width and Colour plus 
+you can then Save your image to Open later if you want, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08drawing.png" width="300" height="300" alt="Drawing" />
+</div>
+<p class="tutorial-step">Step 33</p>
+<p>
+Click File then Exit or click on the Close button <img src="tutorials/vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right of the window to end the application.
+</p>
+<p>
+This Drawing package uses a PictureBox plus the capabilities of GDI+ to draw the dot that allows you to create the drawing, try changing the code
+to add more features such as alternative shapes and more!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Simple Text Editor</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Simple Text Editor</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>Text editing is on of the most common tasks performed on a computer, so here is a simple Text Editor 
+that will introduce you to the TextBox, Open/SaveFileDialog and StreamReader/Writer!</p>
+<p>
+<em class="icon-print"><a href="tutorials/vbdntut5.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vbdntut5.zip">Download Tutorial</a> (182KB)</em>
+<em class="icon-dload"><a href="tutorials/vbdntut5code.zip">Download Source Code</a> (14.1KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Studio.NET then select Visual Basic Projects, 
+Windows Application, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgnewproject.gif" width="531" height="371" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1.gif" width="314" height="314" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Windows Forms components tab select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgtextbox.gif" width="200" height="300" alt="TextBox Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a TextBox on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1txt1.gif" width="300" height="300" alt="Form1 with Textbox" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then go to the Properties box and change ScrollBars to Vertical and MultiLine to True, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgtxt1prop.gif" width="204" height="433" alt="TextBox Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Windows Forms components tab select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgbutton.gif" width="200" height="300" alt="Button Component" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw three Buttons on the Form as shown below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1btns.gif" width="314" height="314" alt="Form1 with three Buttons" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Click on Button1 and then go to the Properties box and change the Text Property to Open, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgbtn1prop.gif" width="204" height="433" alt="Button1 Property" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on Button2, change its Text Property to Save, click on Button3 and change its Text Property to Exit until the buttons appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1btnose.gif" width="314" height="314" alt="Form1 with Open, Save and Exit Buttons" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Double Click on the Button Labeled Open (Button1) and type in the Button1_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Open <span class="tut-rsvd">As New</span> OpenFileDialog()
+<span class="tut-rsvd">Dim</span> myStreamReader <span class="tut-rsvd">As</span> System.IO.StreamReader
+
+Open.Filter = "Plain Text Files (*.txt)|*.txt|All files (*.*)|*.*"
+Open.CheckFileExists = <span class="tut-rsvd">True</span>
+Open.Title = "Open"
+Open.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  Open.OpenFile()
+  myStreamReader = System.IO.File.OpenText(Open.FileName)
+  TextBox1.Text = myStreamReader.ReadToEnd()
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">Finally</span>
+  <span class="tut-rsvd">If Not</span> myStreamReader <span class="tut-rsvd">Is Nothing Then</span>
+    myStreamReader.Close()
+  <span class="tut-rsvd">End If</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgbtn1click.gif" width="580" height="360" alt="Button1_Click Sub" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Double Click on the Button Labeled Save (Button2) and type in the Button2_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Save <span class="tut-rsvd">As New</span> SaveFileDialog()
+<span class="tut-rsvd">Dim</span> myStreamWriter <span class="tut-rsvd">As</span> System.IO.StreamWriter
+
+Save.Filter = "Plain Text Files (*.txt)|*.txt|All files (*.*)|*.*"
+Save.CheckPathExists = <span class="tut-rsvd">True</span>
+Save.Title = "Save"
+Save.ShowDialog(<span class="tut-rsvd">Me</span>
+<span class="tut-rsvd">Try</span>
+  myStreamWriter = System.IO.File.AppendText(Save.FileName)
+  myStreamWriter.Write(TextBox1.Text)
+  myStreamWriter.Flush()
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">Finally</span>
+  <span class="tut-rsvd">If Not</span> myStreamReader <span class="tut-rsvd">Is Nothing Then</span>
+    myStreamWriter.Close()
+  <span class="tut-rsvd">End If</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgbtn2click.gif" width="580" height="360" alt="Button2_Click Sub" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Double Click on the Button Labeled Exit (Button3) and type in the Button3_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">End</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgbtn3click.gif" width="580" height="70" alt="Button3_Click Sub" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Save the Project as you have now finished the application, select Release and Click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgstart.gif" width="124" height="22" alt="Start (Release)" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgtexteditorrun.gif" width="300" height="300" alt="Application Running"/>
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click on Open, select a text file on your computer and open it with the open button, your file should appear in the textbox, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgtexteditor.gif" width="300" height="300" alt="Text Editor Application" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+You can save this as a new filename or clear the Textbox and enter your own text and Save it too - just click on the Save button and Save on the dialog!
+</p>
+<p>
+Click on the Close button <img src="tutorials/imgclose.gif" width="21" height="21" alt="Close"/> on the top right of Form1 to end the application.
+</p>
+<p>
+That was simple wasn't it? It can Load and Save Text Files! Try changing other parts of the code and extend it, you can learn a lot from this simple text editor. 
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

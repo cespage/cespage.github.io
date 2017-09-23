@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Lucky Lotto</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Lucky Lotto</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>This is another simple game allowing you to choose your Lotto Numbers using Random Number generation, 
+features correctly coloured balls for UK Lotto and Drawing using Windows Presentation Foundation (WPF).</p>
+<p>
+<em class="icon-print"><a href="tutorials/vb08tut8.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vb08tut8.zip">Download Tutorial</a> (165KB)</em>
+<em class="icon-dload"><a href="tutorials/vb08tut8code.zip">Download Source Code</a> (11KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose WPF Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08newwpf.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Window named Window1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08window1.png" width="310" height="310" alt="Window1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Controls tab on the Toolbox select the StackPanel component:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08wpfstackpanel.png" width="240" height="400" alt="StackPanel Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a StackPanel on the Window or in the XAML Pane below the "&lt;Grid&gt;" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Margin</span>="10,10,10,0" <span class="tut-attr">Name</span>="StackPanel1" <span class="tut-attr">Height</span>="52" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Orientation</span>="Horizontal"&gt;&lt;/<span class="tut-valu">StackPanel</span>&gt;</span>
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08window1stkpnl.png" width="311" height="310" alt="Window1 with StackPanel" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Select or click on the StackPanel then goto the Properties box, change the Name to "LottoLayout" without the quotes, see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08lottoprop.png" width="203" height="461" alt="StackPanel Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Controls tab on the Toolbox select the Button component:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08wpfbtn.png" width="240" height="400" alt="Button Component" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a Button on the Window, by dragging the Button from the Toolbox onto the Window, or in the XAML Pane above the "&lt;/Grid&gt;" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="102,0,100,12" <span class="tut-attr">Name</span>="Button1" <span class="tut-attr">Height</span>="23" <span class="tut-attr">VerticalAlignment</span>="Bottom"&gt;<span class="tut-valu">Button</span>&lt;/<span class="tut-valu">Button</span>&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08window1stkpnlbtn.png" width="311" height="310" alt="Window1 with StackPanel and Button" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Select or click on the Button (Button1), then goto the Properties box and change the Name to btnChoose and the Content property from Button to Choose, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08btnchooseprop.png" width="203" height="461" alt="btnChoose Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Right Click on the Window or the entry for "Window1" in the Solution Explorer and choose the "View Code" option then below "Class Window1" 
+type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Draw(<span class="tut-rsvd">ByRef</span> StackPanel <span class="tut-rsvd">As</span> StackPanel, <span class="tut-rsvd">ByRef</span> Values <span class="tut-rsvd">As</span> ArrayList)
+  StackPanel.Children.Clear() <span class="tut-cmnt">' Clear the Stack Panel</span>
+  <span class="tut-rsvd">For Each</span> Value <span class="tut-rsvd">As Integer In</span> Values
+    <span class="tut-rsvd">Dim</span> Ball <span class="tut-rsvd">As New</span> Ellipse
+    <span class="tut-rsvd">Dim</span> Brush <span class="tut-rsvd">As New</span> VisualBrush
+    <span class="tut-rsvd">Dim</span> Colour <span class="tut-rsvd">As New</span> SolidColorBrush
+    <span class="tut-rsvd">Dim</span> Detail <span class="tut-rsvd">As New</span> StackPanel
+    <span class="tut-rsvd">Dim</span> Text <span class="tut-rsvd">As New</span> TextBlock
+    <span class="tut-rsvd">Dim</span> FontSize <span class="tut-rsvd">As New</span> FontSizeConverter
+    <span class="tut-rsvd">If</span> Value &gt; 0 <span class="tut-rsvd">And</span> Value &lt; 10 <span class="tut-rsvd">Then</span>
+      Colour = Brushes.White
+    <span class="tut-rsvd">ElseIf</span> Value &gt;= 10 <span class="tut-rsvd">And</span> Value &lt; 20 <span class="tut-rsvd">Then</span>
+      Colour = Brushes.SkyBlue
+    <span class="tut-rsvd">ElseIf</span> Value &gt;= 20 <span class="tut-rsvd">And</span> Value &lt; 30 <span class="tut-rsvd">Then</span>
+      Colour = Brushes.Magenta
+    <span class="tut-rsvd">ElseIf</span> Value &gt;= 30 <span class="tut-rsvd">And</span> Value &lt; 40 <span class="tut-rsvd">Then</span>
+      Colour = Brushes.LawnGreen
+    <span class="tut-rsvd">ElseIf</span> Value &gt;= 40 <span class="tut-rsvd">Then</span>
+      Colour = Brushes.Yellow
+    <span class="tut-rsvd">End If</span>
+    Detail.Background = Colour <span class="tut-cmnt">' Ball Colour</span>
+    Text.Text = Value <span class="tut-cmnt">' Ball Value</span>
+    Text.FontSize = <span class="tut-rsvd">CDbl</span>(FontSize.ConvertFromString(<span class="tut-valu">"12pt"</span>))
+    Text.Margin = <span class="tut-rsvd">New</span> Thickness(10)
+    Detail.Children.Add(Text)
+    Brush.Visual = Detail
+    Ball.Height = 40
+    Ball.Width = 40
+    Ball.Fill = Brush
+    Ball.BitmapEffect = _
+    <span class="tut-rsvd">New</span> Windows.Media.Effects.DropShadowBitmapEffect
+    Ball.Margin = <span class="tut-rsvd">New</span> Thickness(2)
+    StackPanel.Children.Add(Ball)
+  <span class="tut-rsvd">Next
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08lottodraw.png" width="644" height="594" alt="Window1 Draw Subroutine" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View for Window1, below the "End Sub" for "Private Sub Draw(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Choose()
+  <span class="tut-rsvd">Dim</span> Numbers <span class="tut-rsvd">As New</span> ArrayList
+  <span class="tut-rsvd">Dim</span> Number <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">While</span> Numbers.Count &lt; 6 <span class="tut-cmnt">' Select 6 Numbers</span>
+    Randomize()
+    Number = Int((49 * Rnd()) + 1) <span class="tut-cmnt">'  Random Number 1 - 49</span>
+    <span class="tut-rsvd">If Not</span> Numbers.Contains(Number) _
+    <span class="tut-rsvd">Or</span> Numbers.Count &lt; 1 <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' If chosen or none</span>
+      Numbers.Add(Number) <span class="tut-cmnt">' Add Number</span>
+    <span class="tut-rsvd">End If
+  End While</span>
+  Draw(LottoLayout, Numbers)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08lottochoose.png" width="542" height="220" alt="Window1 Choose Subroutine" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Return to the Design view by selecting the [Design] tab or Right Click on the "View Designer" option in Solution Explorer for Window1.
+Double Click on the "Choose" Button (btnChoose) and type the following in the btnChoose_Click() Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Choose()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08btnchoose.png" width="624" height="82" alt="Window1 Choose Click Event" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08lottorun.png" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Click the Choose button to select your Lotto Numbers, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08lottorunchoose.png" width="300" height="300" alt="Lotto Numbers Chosen" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click on the Close button <img src="tutorials/vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right of Window1 to end the application.
+</p>
+<p>
+This is a simple Lotto Number selector using a random number generator and WPF-based graphics! You can customise the ball colours for your own colours
+to match your Lotto, instead of the UK ones used here. Try making changes such as showing the numbers in ascending order and more!
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

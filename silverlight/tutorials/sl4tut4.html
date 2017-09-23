@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Text Editor (Part Two)</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+
+.tut-valu {
+							color: maroon;
+}
+
+.tut-attr {
+							color: red;
+}
+
+.tut-rsvd {
+							color: blue;
+}
+
+.tut-prop {
+					 		color: gray;
+}
+
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>Text Editor (Part Two)</h1>
+<p>
+This Tutorial adds Cut, Copy and Paste support to Text Editor (Part One), please follow all the Steps of <a href="http://www.cespage.com/silverlight/sl4tut3.html">Text Editor (Part One)</a> and
+then start this Tutorial or use the Source Code from Part One, you may need to go to Project, then Properties... and change the Target Silverlight Version to
+Silverlight 4.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut4.html">www.cespage.com/silverlight/sl4tut4.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then Open Project... Select the Solution File for Text Editor (Part One)
+e.g. TextEditorPartOne.<br/>Alternatively follow and complete the Tutorial for Text Editor (Part One), see below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4editorone.png" width="432" height="319" alt="Text Editor (Part One)" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+Click on the TextBox, then goto the Properties box and change the Height to "235" and change the Margin to "0,65,0,0" (both without the quotes), see below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4editortxtprop.png" width="217" height="393" alt="TextBox Properties" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Click on the Canvas (Toolbar) above the TextBox, then goto the Properties box and change the height to 65, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4editorcvsprop.png" width="217" height="393" alt="Canvas Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+The MainPage when the TextBox and Canvas Properties have been changed, should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="sl4editorbtntxt.png" width="423" height="315" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Draw Three Buttons on the Page by dragging the Buttons from the Toolbox onto the Page, 
+so they appear below the "New", "Open..." and "Save..." buttons, or in the XAML Pane below the last "&lt;Button&gt;" tag and above the "&lt;/Canvas&gt;" tag type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button1" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button2" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button3" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4editorbtns.png" width="423" height="315" alt="MainPage with Canvas and Additional Buttons" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Click on the first new Button (Button1), then goto the Properties box and change the Name to "Cut" and the Content property from Button to "Cut" (both without the quotes), see below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4btncutprop.png" width="217" height="393" alt="Button Properties" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Click on the second Button (Button2), then goto the Properties box and change the Name to "Copy" and the Content property from Button to "Copy".
+Then click on the third Button (Button3) and goto the Properties box and change then Name to "Paste" and the Content property from Button to "Paste" (all without the quotes),
+the page should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="sl4editorbtngrp.png" width="423" height="315" alt="MainPage with Canvas and Cut, Copy and Paste Buttons" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Double Click on the "Cut" Button Control and type in the Cut_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-symb">Clipboard</span>.SetText(Editor.SelectedText)
+Editor.SelectedText = <span class="tut-valu">""</span>
+Editor.Focus()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4editorcutclick.png" width="504" height="116" alt="Cut Button Click Event" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Copy" Button and type in the Copy_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-symb">Clipboard</span>.SetText(Editor.SelectedText)
+Editor.Focus()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4editorcopyclick.png" width="510" height="99" alt="Copy Button Click Event" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Return to the Designer View again, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Paste" Button and type in the Paste_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> <span class="tut-symb">Clipboard</span>.ContainsText <span class="tut-rsvd">Then</span>
+  Editor.SelectedText = <span class="tut-symb">Clipboard</span>.GetText
+<span class="tut-rsvd">End If</span>
+Editor.Focus()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4editorpasteclick.png" width="518" height="133" alt="Paste Button Click Event" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4editortworun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Now click where it says "Open...", a File Open Dialog - then select a Plain Text File or ".txt" file on your Computer and select Open and the contents will appear in the TextBox
+then Select some Text and click "Copy", then click "Yes" to allow the application to access the Clipboard, then click "Paste" to Paste the Text, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4editortwoapp.png" width="400" height="300" alt="Text Editor with Open Document and Copy / Pasted Text" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This tutorial extended the Text Editor to add Clipboard support. You could also add other functionality to this Text Editor or use it for the basis
+of your own applications.
+</p>
+</body>
+</html>

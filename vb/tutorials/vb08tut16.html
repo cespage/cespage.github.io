@@ -1,0 +1,672 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Slide Show</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-prop {
+					 		color: gray;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Slide Show</h1>
+<p>This tutorial will show you how to create your own Slide Show application, which will allow you to view your Photos like a Slideshow,
+features Play/Pause Slideshow, Speed and more!</p>
+<p>
+<a href="http://www.cespage.com/vb/vb08tut16.html">www.cespage.com/vb/vb08tut16.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Windows Forms Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08newapp.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08form1.png" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Form1 selected goto the Properties box and change the Name from Form1 to frmMain
+</p>
+<div class="tutorial-image">
+<img src="vb08form1prop.png" width="203" height="431" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then select Project then Add Class... and choose the "Class" Template if it is not already selected and give it the Name "Slides.vb" without the quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slides.png" width="804" height="482" alt="Slides Class" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+With the empty Slides Class displayed, if not double click on the "Slides.vb" item in Solution Explorer, then enter the following Private Members 
+below the Public Class Slides line: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Private Members</span>
+
+<span class="tut-rsvd">Private WithEvents</span> sDisplay <span class="tut-rsvd">As New</span> Timer
+<span class="tut-rsvd">Private</span> sImages <span class="tut-rsvd">As New</span> ArrayList
+<span class="tut-rsvd">Private</span> sBrowseSuccess <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Private</span> sInterval <span class="tut-rsvd">As Integer</span> = 1500
+<span class="tut-rsvd">Private</span> sTotalImages <span class="tut-rsvd">As Integer</span> = 0
+<span class="tut-rsvd">Private</span> sCurrent <span class="tut-rsvd">As Integer</span> = 0
+<span class="tut-rsvd">Private</span> sPlaying <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Private</span> sPaused <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Private</span> sRepeat <span class="tut-rsvd">As Boolean</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slidesdecs.png" width="368" height="252" alt="Slides Private Members" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Again, with the Slides Class still displayed, enter the following Private Method above "End Class" and below the "Private Members" section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Private Methods</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Get Files as ArrayList<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Path"&gt;</span>Path to Look through<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Filter"&gt;</span>Files to Look for<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> Files(<span class="tut-rsvd">ByRef</span> Path <span class="tut-rsvd">As String</span>, _
+                     <span class="tut-rsvd">ByRef</span> Filter <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As</span> ArrayList
+  <span class="tut-rsvd">Dim</span> alFiles <span class="tut-rsvd">As New</span> ArrayList
+  <span class="tut-rsvd">Dim</span> dirInfo <span class="tut-rsvd">As New</span> IO.DirectoryInfo(Path)
+  <span class="tut-rsvd">If</span> dirInfo.Exists <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Check Path Exists</span>
+    <span class="tut-rsvd">Dim</span> dirFiles <span class="tut-rsvd">As</span> IO.FileInfo() = dirInfo.GetFiles(<span class="tut-valu">"*.*"</span>)
+    <span class="tut-cmnt">' Loop through the Path for Files by Filter</span>
+    <span class="tut-rsvd">For Each</span> fileinfo <span class="tut-rsvd">As</span> IO.FileInfo <span class="tut-rsvd">In</span> dirFiles
+      <span class="tut-rsvd">If</span> InStr(Filter, fileinfo.Extension, CompareMethod.Text) &gt; 0 <span class="tut-rsvd">Then</span>
+        alFiles.Add(fileinfo.FullName) <span class="tut-cmnt">' Add to ArrayList</span>
+      <span class="tut-rsvd">End If
+    Next
+  End If
+  Return</span> alFiles
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slidesprimet.png" width="664" height="338" alt="Slides Private Methods" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Again, with the mPlayerControl Class still displayed, enter the Constructor and Public Methods above the "End Class" of the Slides Class and below the "Private Methods" section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Constructor</span>
+
+<span class="tut-rsvd">Public Sub New</span>()
+  sDisplay.Enabled = <span class="tut-rsvd">False</span>
+  sDisplay.Interval = sInterval
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-cmnt">' Public Methods</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Browse Folder for Photos<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Path"&gt;</span>The Path of the Folder<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Photos Present, False if None<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> [Browse](<span class="tut-rsvd">ByVal</span> Path <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Boolean</span>
+  sImages.Clear() <span class="tut-cmnt">' Clear Images List</span>
+  sImages = Files(Path, <span class="tut-valu">".jpg.png.gif.bmp.jpeg"</span>)
+  sTotalImages = sImages.Count - 1 <span class="tut-cmnt">' Get Total Images</span>
+  <span class="tut-rsvd">If</span> sTotalImages &gt; 0 <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Photos Found</span>
+    sBrowseSuccess = <span class="tut-rsvd">True
+    Return True
+  Else
+    Return False</span> <span class="tut-cmnt">' No Photos Found</span>
+  <span class="tut-rsvd">End If
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Play Slideshow<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> [Play]() <span class="tut-rsvd">As Boolean
+  If</span> sBrowseSuccess <span class="tut-rsvd">Then</span>
+    sPlaying = <span class="tut-rsvd">True</span>
+    sDisplay.Enabled = <span class="tut-rsvd">True
+    If</span> sPaused <span class="tut-rsvd">Then
+      Me</span>.Pause()
+    <span class="tut-rsvd">Else</span>
+      sPaused = <span class="tut-rsvd">False
+    End If
+  End If
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Stop Slideshow<span class="tut-prop">&lt;/summary&gt;</span></span> 
+<span class="tut-rsvd">Public Function</span> [Stop]() <span class="tut-rsvd">As Boolean
+  If</span> sBrowseSuccess <span class="tut-rsvd">Then</span>
+    sDisplay.Enabled = <span class="tut-rsvd">False</span>
+    sCurrent = 0
+    sPlaying = <span class="tut-rsvd">False</span>
+    sPaused = <span class="tut-rsvd">False
+  End If
+  Return False
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Pause Slideshow<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> [Pause]() <span class="tut-rsvd">As Boolean
+  If</span> sBrowseSuccess <span class="tut-rsvd">Then</span>
+    sDisplay.Enabled = <span class="tut-rsvd">False</span>
+    sPaused = <span class="tut-rsvd">Not</span> sDisplay.Enabled
+    <span class="tut-rsvd">Return</span> sPaused
+  <span class="tut-rsvd">End If
+  Return False
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Resume Slideshow<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> [Resume]() <span class="tut-rsvd">As Boolean
+  If</span> sBrowseSuccess <span class="tut-rsvd">And</span> sPaused <span class="tut-rsvd">Then</span>
+      sDisplay.Enabled = <span class="tut-rsvd">True</span>
+      sPaused = <span class="tut-rsvd">Not</span> sDisplay.Enabled
+      <span class="tut-rsvd">Return</span> sPaused
+  <span class="tut-rsvd">End If
+  Return False
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Move to Index<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Index"&gt;</span>Index to Move to<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> [Move](<span class="tut-rsvd">ByVal</span> Index <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Boolean
+  If</span> sBrowseSuccess <span class="tut-rsvd">Then
+    If</span> Index &lt; sImages.Count <span class="tut-rsvd">Then</span>
+      sCurrent = Index
+      <span class="tut-rsvd">If</span> sPlaying <span class="tut-rsvd">Then
+        Me</span>.Play()
+      <span class="tut-rsvd">End If
+    End If
+  End If
+End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slidespubmet.png" width="528" height="1364" alt="Slides Constructor &amp; Public Methods" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+With the Slides Class still displayed, enter the following Public Properties above "End Class" and below the "Public Methods" Section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Public Properties</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Repeat Slideshow<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Repeat() <span class="tut-rsvd">As Boolean
+  Get
+      Return</span> sRepeat
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Boolean</span>)
+    <span class="tut-rsvd">If</span> sRepeat &lt;&gt; Value <span class="tut-rsvd">Then</span>
+      sRepeat = Value
+    <span class="tut-rsvd">End If
+  End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Playback Speed in Milliseconds, 500-3000 where 1500 is normal<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Speed() <span class="tut-rsvd">As Integer
+  Get
+    Return</span> sInterval
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Integer</span>)
+    <span class="tut-rsvd">If</span> Value &gt;= 500 <span class="tut-rsvd">And</span> Value &lt; 3000 <span class="tut-rsvd">And</span> Value &lt;&gt; sInterval <span class="tut-rsvd">Then</span>
+      sInterval = Value
+      sDisplay.Interval = sInterval
+    <span class="tut-rsvd">End If
+  End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Total Images in Slideshow<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public ReadOnly Property</span> TotalImages() <span class="tut-rsvd">As Integer
+  Get
+    Return</span> sTotalImages
+  <span class="tut-rsvd">End Get
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Current Image in Slideshow<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public ReadOnly Property</span> CurrentImage() <span class="tut-rsvd">As Integer
+  Get
+    Return</span> sCurrent
+  <span class="tut-rsvd">End Get
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Is Slideshow Playing?<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public ReadOnly Property</span> Playing() <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> sPlaying
+  <span class="tut-rsvd">End Get
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Is Slideshow Paused?<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public ReadOnly Property</span> Paused() <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> sPaused
+  <span class="tut-rsvd">End Get
+End Property</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slidespubpro.png" width="718" height="916" alt="Slides Public Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Finally in the Slides Class enter the following Timer and Event methods above "End Class" and below the "Public Properties" Section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Timer</span>
+
+<span class="tut-rsvd">Private Sub</span> sDisplay_Tick(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, _
+                          <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.EventArgs) _
+                          <span class="tut-rsvd">Handles</span> sDisplay.Tick
+  <span class="tut-rsvd">If</span> sBrowseSuccess <span class="tut-rsvd">And</span> sPlaying <span class="tut-rsvd">Then
+    If</span> sCurrent &lt; sImages.Count <span class="tut-rsvd">Then
+      RaiseEvent</span> Slide(<span class="tut-rsvd">CStr</span>(sImages.Item(sCurrent)))
+      sCurrent += 1
+    <span class="tut-rsvd">Else
+      If</span> sRepeat <span class="tut-rsvd">Then</span>
+        sCurrent = 0 <span class="tut-cmnt">' Reset if Repeat</span>
+      <span class="tut-rsvd">End If
+    End If
+  End If
+End Sub</span>
+
+<span class="tut-cmnt">' Event</span>
+
+<span class="tut-rsvd">Public Event</span> Slide(<span class="tut-rsvd">ByVal</span> Filename <span class="tut-rsvd">As String</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slidesevents.png" width="510" height="338" alt="Slides Event Handlers" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Select frmMain, by double-clicking on the entry for "frmMain in Solution Explorer or click on the "frmMain [Design]" Tab if Present.<br/>
+Then from the Common Controls tab on the Toolbox select the PictureBox component:
+</p>
+<div class="tutorial-image">
+<img src="vb08picturebox.png" width="240" height="400" alt="PictureBox Component" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Draw a PictureBox on the Form, make sure to position and size the PictureBox so it appears as below: 
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainpicviewer.png" width="300" height="300" alt="frmMain with PictureBox" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Then goto the Properties box and change the Name to "Viewer" and the Anchor property to "Top, Bottom, Left, Right", both without quotes, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08viewerprop.png" width="203" height="399" alt="mPlayerControl Properties" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Then from the All Windows Forms tab on the Toolbox select the Trackbar Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08trackbar.png" width="240" height="400" alt="Trackbar Component" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Draw a Trackbar Component on the Form, see below: 
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainpictrack.png" width="300" height="300" alt="frmMain with Trackbar" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Then goto the Properties box and change the Name to "Trackbar" and the Dock property to "Bottom", both without quotes, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08trackbarprop.png" width="203" height="399" alt="Trackbar Properties" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Then from the Menus &amp; Toolbars tab on the Toolbox select the MenuStrip Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08menustrip.png" width="240" height="400" alt="MenuStrip Component" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Either double-click on the MenuStrip Control entry in the Menu &amp; Toolbars tab on the Toolbox or keep the MenuStrip
+Component Clicked and then move it over the Form then let go. Change the Name of the MenuStrip in the properties to mnuSlides. The Form will then look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainmnuslides.png" width="300" height="300" alt="frmMain with MenuStrip" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Click or select where the MenuStrip says "Type Here", an editable Textbox will appear type in "File" without the quotes in this Box, then in the Box below
+that type in "Browse...", then "-" which is minus or the hyphen key which will appear as a Seperator, and then finally "Exit". 
+The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuslides.png" width="300" height="300" alt="mnuSlides with SubMenus" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Click or select where the MenuStrip says "Type Here" next to "File", and in this type in "Slides" without the quotes in this Box, then in the Box below
+that type "Play/Pause", then below that "Stop", then type in "-" which is minus or the hyphen key for a Seperator, then below that "Slower", then
+"Medium", then "Fast" then another "-" for a seperator and finally "Repeat". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuslidesslides.png" width="300" height="300" alt="mnuSlides with Slides Sub Menu Items" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Select the Repeat menu item in the Slides menu by clicking on it and then goto the Properties box for RepeatToolStripMenuItem and change the CheckOnClick Property to True, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuplayerrepeatprop.png" width="203" height="399" alt="Repeat Menu Item Properties" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Right Click on the Form or the entry of the Form in Solution Explorer and choose the "View Code" option then below the "Public Class frmMain"
+type the following Private Declaration:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private WithEvents</span> Slides <span class="tut-rsvd">As New</span> Slides
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slideshowdecs.png" width="358" height="84" alt="Slide Show Slides Declaration" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Browse..." (BrowserToolStripMenuItem) and 
+type the following in the BrowseToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Browse <span class="tut-rsvd">As New</span> FolderBrowserDialog
+Browse.Description = <span class="tut-valu">"Select Photo Folder"</span>
+<span class="tut-rsvd">If</span> Browse.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then
+  Try</span>
+    Slides.Browse(Browse.SelectedPath)
+    <span class="tut-rsvd">If</span> Slides.TotalImages &gt;= 0 <span class="tut-rsvd">Then</span>
+      TrackBar.Value = 0
+      TrackBar.Minimum = 0
+      TrackBar.Maximum = <span class="tut-rsvd">CInt</span>(Slides.TotalImages)
+    <span class="tut-rsvd">End If</span>
+    Slides.Play() <span class="tut-cmnt">' Play Slideshow</span>
+    <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Slide Show - "</span> &amp; Browse.SelectedPath
+  <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-cmnt">' Do nothing on Exception</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuslidesbrowse.png" width="680" height="336" alt="File Menu Browse Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Exit" (ExitToolStripMenuItem) and 
+type the following in the ExitToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+Response = MsgBox(<span class="tut-valu">"Are you sure you want to Exit Slide Show?"</span>, _
+                  MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                  <span class="tut-valu">"Slide Show"</span>)
+<span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+  <span class="tut-rsvd">End</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuslidesexit.png" width="648" height="182" alt="File Menu Exit Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Slides" on the MenuStrip, 
+then Double Click on the Menu Item Labeled "Play/Pause" (PlayPauseToolStripMenuItem) and type the following in the PlayPauseToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Slides.Playing <span class="tut-rsvd">Then
+  If</span> Slides.Paused <span class="tut-rsvd">Then</span>
+    Slides.Resume()
+  <span class="tut-rsvd">Else</span>
+    Slides.Pause()
+  <span class="tut-rsvd">End If
+Else</span>
+  Slides.Play()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Slides",
+then Double Click on the Menu Item Labeled "Stop" (StopToolStripMenuItem) and type the following in the StopToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Slides.Stop()
+</pre>
+</blockquote>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Slides" on the MenuStrip, 
+then Double Click on the Menu Item Labeled "Slow" (SlowToolStripMenuItem) and type the following in the SlowToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Slides.Speed = 3000
+</pre>
+</blockquote>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Slides" on the MenuStrip, 
+then Double Click on the Menu Item Labeled "Medium" (MediumToolStripMenuItem) and type the following in the MediumToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Slides.Speed = 1500
+</pre>
+</blockquote>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Slides" on the MenuStrip, 
+then Double Click on the Menu Item Labeled "Fast" (FastToolStripMenuItem) and type the following in the FastToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Slides.Speed = 500
+</pre>
+</blockquote>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Slides" on the MenuStrip, 
+then Double Click on the Menu Item Labeled "Repeat" (RepeatToolStripMenuItem) and type the following in the RepeatToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Slides.Repeat = RepeatToolStripMenuItem.Checked
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuslidesplaystop.png" width="728" height="728" alt="Slides Menu Events" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the frmMain entry in Solution Explorer, then Double-click on the Trackbar,
+and type the following in the TrackBar_Scroll(...) Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Slides.Move(TrackBar.Value)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slidesscroll.png" width="686" height="64" alt="Trackbar Scroll Event" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Click on the [Design] Tab to view the form again, then Double Click on the Form (frmMain) and 
+type the following in the frmMain_Load() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Slide Show"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slidesload.png" width="632" height="64" alt="frmMain Load Event" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Return to the Code View, by double-clicking on the Form, this will show the frmMain_Load Sub from the previous step, 
+in Code view are two drop-down boxes, select "Slides" from the first drop-down with "(frmMain Events)", 
+and then from the other "(Declarations)" select "Slide" and type the following in the Slides_Slide(...) Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Viewer.ImageLocation = Filename
+TrackBar.Value = Slides.CurrentImage
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slidesslide.png" width="616" height="64" alt="Slides Slide Event" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+Steps 28-30 are optional and just add Keyboard Shortcuts to the MenuItems, you don't have to do these if you don't want to!<br/>
+Click on the [Design] Tab to view the form again, click on "Browse" on the MenuStrip then in the Properties box look for the "ShortcutKeys" option and 
+click on the Drop Down arrow where "None" appears. Check the "Ctrl" Checkbox in "Modifiers" and then in the "Key" dropdown list select "B", 
+see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuslidebrowseprop.png" width="240" height="399" alt="File Menu Browse Menu Item Shortcut Key" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+The File Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuslidesfilekeys.png" width="300" height="300" alt="File Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 30</p>
+<p>
+Click on or select the "Slides" Menu and set the "ShortcutKeys" Properties for the following Menu Items, "Play/Pause" should be set to "Ctrl+P", "Stop" to "Ctrl+S".
+"Slow" should be "Ctrl+Shift+S", "Medium" to "Ctrl+Shift+M" and "Fast" to "Ctrl+Shift+F". Repeat should be set to "Ctrl+T". 
+The Slides Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuslidesslideskeys.png" width="300" height="300" alt="Slides Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 31</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vb08slideshowrun.png" width="300" height="300" alt="Slide Show Running" />
+</div>
+<p class="tutorial-step">Step 32</p>
+<p>
+You can use the Browse feature to search for a folder then Display the Images in the PictureBox, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08slideshowview.png" width="300" height="300" alt="Slide Show" />
+</div>
+<p class="tutorial-step">Step 33</p>
+<p>
+Click File then Exit or click on the Close button <img src="vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right to end the application.
+</p>
+<p>
+This is a very simple Slide Show application you can try adding your own features such as transitions and timings for the displaying of each Photo
+or add other functions you need to make it your own!
+</p>
+</body>
+</html>

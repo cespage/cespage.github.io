@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymlinks
+RewriteEngine on
+RewriteRule ([^/]+)/([^/]+) http://www.cespage.com/lnkr/lnkr.asp?code=$1&option=$2 [NC]
+</IfModule>

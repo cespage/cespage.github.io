@@ -1,0 +1,362 @@
+img {
+  border: none;
+}
+
+body {
+  color: #000000;
+  background-color: #ffffff;	
+}
+
+#main {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  width:100%;			 
+}
+
+#header {
+  color: #000000;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  background: #849CE7 url(images/glassitem.gif) right top;
+  clear:both;
+}
+
+#titlebar {
+  height:22px;
+  width: 100%;
+  background-color: #5A7EDC;
+  padding: 4px 0px 0px 0px;
+}
+
+h1 {
+  color: #ffffff; 
+  font-size: 1.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+  margin-left:5px;
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+#container {
+  margin: 0px;
+  padding: 0px;
+  background-color: #D2E4F2;
+  width:100%;
+}
+
+.navbar {
+  margin: 0px;
+  padding: 0px;
+  background-color:#D2E4F2;
+  width: 180px;
+  float:left;
+}
+
+.navbar-element {
+  color: #000000; 
+  font-size: 0.8em;  
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  background-color:#D2E4F2;
+  width:162px;
+  padding: 5px 5px 5px 5px;
+  margin: 3px 3px 3px 3px;
+}
+
+.navbar-selected {
+  color: #000000; 
+  font-size: 0.8em;
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  background-color:#ffffff;
+  width:164px;
+  padding: 5px 5px 5px 5px;
+  margin: 3px 3px 3px 3px;
+  background: #ffffff url(images/navsel.jpg) right top;
+}
+
+.navbar-section {
+  color: #ffffff; 
+  font-size: 0.8em;
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  background-color:#c0c0c0;
+  width:164px;
+  padding: 5px 5px 5px 5px;
+  margin: 3px 3px 3px 3px;
+  background: #c0c0c0 url(images/navsec.jpg) right top;
+}
+
+.navbar-seperator {
+  color: #000000; 
+  font-size: 0.8em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  color: #ffffff; 
+  background-color:#5A7EDC;
+  width:174px;
+  padding: 5px 5px 5px 5px;
+  margin: 3px 3px 3px 3px;
+}
+
+A.navbar-link:link {
+  color: #000000; 
+  text-decoration: none;
+}
+A.navbar-link:visited {
+  color: #000000; 
+  text-decoration: none;
+}
+A.navbar-link:active {
+  color: #000000; 
+  text-decoration: none; 
+  cursor: pointer;
+}
+A.navbar-link:hover {
+  color: #000000; 
+  text-decoration: underline; 
+  cursor: pointer; 
+}
+
+#content {
+  padding: 0px;
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+  margin-left: 180px;
+  padding-top: 2px;
+  padding-bottom: 15%;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+dl.genitem { 
+  margin : .5em;
+  padding : 1em;
+  border : 1px solid #5A7EDC;
+  line-height: 140%;
+}
+
+dl.newsitem { 
+  margin : .5em;
+  padding : 1em;
+  border : 1px solid #5A7EDC;
+  line-height: 140%;
+}
+
+dd {
+  margin : 0px;
+  padding : 0px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  overflow: hidden;
+}
+
+dt {
+  color: #5A7EDC;
+  margin : 0px;
+  padding : 0px;
+  text-align: left;
+}
+
+dd p  {
+  padding : 0px;
+}
+
+dd p.date  {
+  margin : 0px;
+  padding-top : .25em;
+  font-size : 92%;
+}
+
+.LargeImageList {
+  position: relative;
+  width: 540px;
+  height: 120px;
+  padding: 0 0 0 0px;	
+  margin: 0 0 20px 0;
+}
+
+.LargeImageListImage {
+  position: relative;
+  float: left;
+  width: 120px;
+  text-align: center;
+}	
+
+.LargeImageListText {
+  position: relative;
+  float: left;
+  left: 0px;
+  width: 400px;
+  padding: 0 0 0 8px;
+}
+
+.ImageList {
+  position: relative;
+  width: 515px;
+  height: 70px;
+  padding: 0 0 0 0px;	
+  margin: 0 0 20px 0;
+}
+
+.ImageListImage {
+  position: relative;
+  float: left;
+  width: 70px;
+  height: 70px;
+}	
+
+.ImageListText {
+  position: relative;
+  float: left;
+  width: 394px;
+  height:70px;
+  padding: 0 0 0 8px;
+}
+
+.ImageListTitle {
+  position: relative;
+  padding: 0 0 11px 0;
+}
+
+.ImageListBlurb {
+  position: relative;
+  font-size: 0.95em;
+  line-height: 15px;
+}
+
+.DVDList {
+  position: relative;
+  width: 605px;
+  height: 100px;
+  padding: 0 0 0 0px;	
+  margin: 0 0 20px 0;
+}
+
+.DVDListImage {
+  position: relative;
+  float: left;
+  width: 64px;
+  height: 100px;
+}	
+
+.DVDListText {
+  position: relative;
+  float: left;
+  width: 320px;
+  height:100px;
+  padding: 0 0 0 8px;
+}
+
+.DVDShowcaseImageList {
+  position: relative;
+  width: 600px;
+  height: 220px;
+  padding: 0 0 0 0px;	
+  margin: 0 0 20px 0;
+}
+
+.DVDShowcaseImageListImage {
+  position: relative;
+  float: left;
+  width: 150px;
+  height: 220px;
+  text-align: center;
+}	
+
+.DVDShowcaseImageListText {
+  position: relative;
+  float: left;
+  width: 330px;
+  height:220px;
+  padding: 0 0 0 8px;
+}
+
+div.container {
+  width : 600px;
+  padding-bottom: 10px;			 
+}
+
+div.showcase {
+  width: 800px;
+  padding-bottom: 5px;
+}
+
+div.floatshowcase {
+  width: 200px;
+  height: 180px;
+  padding: 5px;
+  float: left;
+  text-align: center;
+}
+
+div.floatfeature {
+  width: 120px;
+  height: 140px;
+  padding: 10px;
+  float: left;
+  text-align: center;
+}
+
+div.floatfeature img {
+  border : 1px solid #5A7EDC;
+}
+
+div.floatfeature a {
+  text-align: center;
+}
+
+div.spacer {
+  clear: both;
+}
+
+.image {
+  float: right;
+  margin: 4px 4px 4px 4px;
+  display: block; 	 
+}
+
+#networkbar {
+  color: #000000;
+  font-size: 0.7em; 
+  font-family: Verdana, Geneva, Arial, sans-serif;
+  text-align: center;
+  padding: 1px 4px 1px 4px;
+  background-color: #D2E4F2;
+  vertical-align: middle;
+  height: 25px;
+  line-height: 25px;
+  clear:both;
+}
+
+#bottombar {
+  color: #000000;
+  font-size: 0.7em; 
+  font-family: Verdana, Geneva, Arial, sans-serif;
+  background-color: #ffffff;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  clear:both;
+}
+
+#widgetbar {
+  height:18px;
+  background-color: #5A7EDC;
+  padding: 4px 4px 1px 4px;
+  clear:both;	
+}
+
+#footer {
+  color: #ffffff;
+  width: 100%;
+  height: 50px;
+  background: #5A7EDC url(images/glassitemi.gif) right bottom;
+  clear:both;		
+}

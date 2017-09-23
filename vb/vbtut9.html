@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Weblink ActiveX</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Weblink ActiveX</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>This is a simple program, which will introduce you to ActiveX Controls, Functions, Properties, Methods and the Win32 API.</p>
+<p>
+<em class="icon-print"><a href="tutorials/vbtut9.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vbtut9.zip">Download Tutorial</a> (103KB)</em>
+<em class="icon-dload"><a href="tutorials/vbtut9code.zip">Download Source Code</a> (7KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Basic, then select ActiveX Control Project (must be VB5 or later), click on the option then click Open, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/fignewactivex.gif" width="446" height="426" alt="New ActiveX Control Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank UserControl named UserControl1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figusrctrl1.gif" width="320" height="240" alt="UserControl1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Visual Basic Components Menu Select the Label Control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figlbl.gif" width="136" height="250" alt="Label Control" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a Label on the UserControl as shown below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figusrlbl.gif" width="320" height="240" alt="UserControl with Label" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Change the name of Label1 to lblWeblink and the Caption to Weblink Control see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figusrlblprop.gif" width="213" height="255" alt="Label Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+On the Visual Basic Menu Bar select Add-Ins | Add-in Manager..., select the VB ActiveX Control Interface Wizard, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figaddinman.gif" width="384" height="285" alt="Add-In Manager"/>
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Click on Ok then Select Add-Ins | ActiveX Control Interface Wizard... from the Visual Basic menu and a Wizard Dialog should appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figaxctrlwiz.gif" width="479" height="367" alt="ActiveX Control Interface Wizard" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Click on Next and the Select Interface Members stage should appear, in the Available Names Listbox add using the &gt; 
+Button the Alignment and Caption Property to the Selected Names Listbox, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figaxwizintmem.gif" width="479" height="367" alt="Select Interface Members" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on Next and the Create Custom Interface Members stage should appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figaxwizcusmem.gif" width="479" height="367" alt="Create Custom Interface Members" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Click on New... for the Add Custom Member Dialog, then type in the Name Text Box: Location and select the 
+Property Option from the Type Radio Buttons and Click on Ok, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figaxwizaddcm.gif" width="337" height="196" alt="Add Custom Member" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Click on Next for the Set Mapping Stage and change the Maps To Control Combobox selection to 
+lblWeblink for all Properties/Events/Methods except the Location Property, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figaxwizsetmap.gif" width="479" height="367" alt="Set Mapping" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Click on Next for the Set Attributes Stage and Select the Location Property from the Public Name 
+Listbox and change the Attribute Information for Data Type to String and type in a meaningful 
+Description, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figaxwizsetatt.gif" width="479" height="367" alt="Set Attributes" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Click on Next and then Finish to create the items selected in the Wizard a Summary Report will 
+also be created, it is recommended that you read this for extra ActiveX information.
+</p>
+<p class="tutorial-step">Step 14</p>
+<p>
+Double Click on the UserControl and at the bottom of the General Declarations Section type in:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Declare Function</span> ShellExecute <span class="tut-rsvd">Lib</span> "shell32.dll" <span class="tut-rsvd">Alias</span>
+"ShellExecuteA" (<span class="tut-rsvd">ByVal</span> hWnd <span class="tut-rsvd">As Long</span>, <span class="tut-rsvd">ByVal</span> lpOperation <span class="tut-rsvd">As String</span>, <span class="tut-rsvd">ByVal</span> 
+lpFile <span class="tut-rsvd">As String</span>, <span class="tut-rsvd">ByVal</span> lpParameters <span class="tut-rsvd">As String</span>, <span class="tut-rsvd">ByVal</span> lpDirectory <span class="tut-rsvd">As String</span>, 
+<span class="tut-rsvd">ByVal</span> nShowCmd <span class="tut-rsvd">As Long</span>) <span class="tut-rsvd">As Long</span>
+
+<span class="tut-rsvd">Public Function</span> HyperJump(<span class="tut-rsvd">ByVal</span> URL <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Long</span>
+  <span class="tut-rsvd">On Error Resume Next</span>
+  HyperJump = ShellExecute(0&amp;, vbNullString, URL, vbNullString, vbNullString, vbNormalFocus)
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 15</p>
+<p>
+Double Click on the UserControl and type in the UserControl_Resize() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Move to 0,0 and resize lblWeblink to control size</span>
+lblWeblink.Top = 0
+lblWeblink.Left = 0
+lblWeblink.Width = UserControl.Width
+lblWeblink.Height = UserControl.Height
+lblWeblink.FontUnderline = <span class="tut-rsvd">True</span> 
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 16</p>
+<p>
+Double Click on the Label "Weblink Control" (lblWeblink) and type in the cmdWeblink_Click() Sub (remove the <span class="tut-rsvd">RaiseEvent</span> Click line):
+</p>
+<blockquote>
+<pre class="tut-code">
+HyperJump (m_Location)
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 17</p>
+<p>
+Close the UserControl Window (click on the X in the Top Right Corner), then select File | Add Project... 
+from the Visual Basic menu then add a Standard EXE Project, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figaddproj.gif" width="446" height="330" alt="Add Standard EXE Project" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figform1.gif" width="320" height="240" alt="Form 1" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Then from the Visual Basic Components Menu Select the Weblink Control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figctrlwl.gif" width="150" height="380" alt="Weblink Control" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Draw a Weblink on the Form as shown below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figfrmwl.gif" width="320" height="240" alt="Form with Weblink Control" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Double Click on the Form (Form1) and type in the Form_Load Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Weblink1.Caption = "Windows Folder"
+Weblink1.ForeColor = vbBlue
+Weblink1.Location = "file://c:\windows"
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 22</p>
+<p>
+Save the Project (for example prjWeblink [ActiveX], prjWebLinkTest [Test Project] and grpWeblinkControl [Project Group]) into a vacant folder as you have finished the application. 
+Click on Start / Run <img src="tutorials/figstart.gif" width="23" height="22" alt="Start / Run" /> or Press F5 and the below will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figwlrun.gif" width="320" height="240" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the Blue Hyperlink style Text to Open the Windows Folder or whatever the Location property is set to. 
+To Quit click the X Button on the Top Right of the Form.
+</p>
+<p>
+You have just created a simple ActiveX control using the Interface Wizard and Win32 API. 
+Try adding extra properties such as FontUnderline and see what else you can achieve with this program. 
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

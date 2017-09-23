@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Dial Control</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Dial Control</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Dial Control is a simple dial control which allows a "dial" to be rotated to set a value, with support for a minimum and maximum value
+using Silverlight for Windows Phone 7. 
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut26.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut26.zip">Download Tutorial</a> (679KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut26code.zip">Download Source Code</a> (20KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select from the Main Menu "File" then "Add", then "New Project...", and select the "Windows Phone Class Library" Template, then change the "Name" to Dial see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialclslib.png" width="939" height="624" alt="Add Dial Class Library Project" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the New Class Library Project by Clicking on Add, then in the Solution Explorer for "Dial", 
+click on the "Class1.cs" entry, then goto Properties and change the File Name property to "Dial.cs" (without the quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialprop.png" width="217" height="393" alt="Dial Class Properties" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+In the "You are renaming a file. Would you also like to perform a rename in this project of all references to the code element 'Class1'?" choose Yes.<br/>
+Right Click on the Entry for the "Dial" Project (not Dial.cs) in Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "Themes" (again without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialsolthemes.png" width="217" height="527" alt="Dial Project Themes Folder" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Right Click on the Entry for the "Themes" Folder for the Dial Project, and choose "Add", then "New Item...", 
+select the "Text File" Template and change the name to "Generic.xaml", (without the quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7generic.png" width="939" height="624" alt="Generic.xaml Resource Dictionary Text File" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Add the Text File for the ResourceDictionary by Clicking on Add.<br/>
+In the XAML Pane for the Generic.xaml type the following Resource Dictionary XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ResourceDictionary</span>
+<span class="tut-attr">xmlns</span>="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<span class="tut-attr">xmlns</span>:<span class="tut-attr">x</span>="http://schemas.microsoft.com/winfx/2006/xaml"
+<span class="tut-attr">xmlns</span>:<span class="tut-attr">local</span>="clr-namespace:Dial"&gt;
+  &lt;<span class="tut-valu">Style</span> <span class="tut-attr">TargetType</span>="local:Dial"&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Template"&gt;
+      &lt;<span class="tut-valu">Setter.Value</span>&gt;
+        &lt;<span class="tut-valu">ControlTemplate</span> <span class="tut-attr">TargetType</span>="local:Dial"&gt;
+          &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Knob"&gt;
+            &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="DialFace" <span class="tut-attr">Content</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Face</span>}"/&gt;
+            &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="DialKnob" <span class="tut-attr">Content</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Knob</span>}" <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5"&gt;
+              &lt;<span class="tut-valu">ContentPresenter.RenderTransform</span>&gt;
+                &lt;<span class="tut-valu">TransformGroup</span>&gt;
+                  &lt;<span class="tut-valu">RotateTransform</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="DialValue" <span class="tut-attr">Angle</span>="0"/&gt;
+                &lt;/<span class="tut-valu">TransformGroup</span>&gt;
+              &lt;/<span class="tut-valu">ContentPresenter.RenderTransform</span>&gt;
+            &lt;/<span class="tut-valu">ContentPresenter</span>&gt;
+          &lt;/<span class="tut-valu">Grid</span>&gt;
+        &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+      &lt;/<span class="tut-valu">Setter.Value</span>&gt;
+    &lt;/<span class="tut-valu">Setter</span>&gt;
+  &lt;/<span class="tut-valu">Style</span>&gt;
+&lt;/<span class="tut-valu">ResourceDictionary</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialres.png" width="886" height="365" alt="Dial Resource Dictionary" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Right Click on the Entry for the "Dial.cs" Class in Solution Explorer in the "Dial Project" and choose
+"View Code" or Double click on "Dial.cs".<br/>
+In the Code View for Dial at the end of the line "public class Dial" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+ : <span class="tut-symb">Control</span>
+</pre>
+</blockquote>
+<p>
+Also in the CodeView below the "{" of the line "public class Dial : Control" type the following Declarations and Dependancy Properties:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-symb">Grid</span> _knob;
+<span class="tut-symb">RotateTransform</span> _value;
+<span class="tut-rsvd">bool</span> _hasCapture = <span class="tut-rsvd">false</span>;
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> ValueProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"Value"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">double</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Dial</span>), <span class="tut-rsvd">null</span>);
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> MinimumProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"Minimum"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">double</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Dial</span>), <span class="tut-rsvd">null</span>);
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> MaximumProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"Maximum"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">double</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Dial</span>), <span class="tut-rsvd">null</span>);
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> KnobProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"Knob"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-symb">UIElement</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Dial</span>), <span class="tut-rsvd">null</span>);
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> FaceProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"Face"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-symb">UIElement</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Dial</span>), <span class="tut-rsvd">null</span>);
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialclsref.png" width="482" height="653" alt="Dial.cs Imports, Declarations and Dependancy Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the Code View below the "FaceProperty" declaration type the following Properties and Methods:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public double</span> Value
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-rsvd">double</span>)GetValue(ValueProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(ValueProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public double</span> Minimum
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-rsvd">double</span>)GetValue(MinimumProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(MinimumProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public double</span> Maximum
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-rsvd">double</span>)GetValue(MaximumProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(MaximumProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">UIElement</span> Knob
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-symb">UIElement</span>)GetValue(KnobProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(KnobProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">UIElement</span> Face
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-symb">UIElement</span>)GetValue(FaceProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(FaceProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">double</span> AngleQuadrant(<span class="tut-rsvd">double</span> width, <span class="tut-rsvd">double</span> height, <span class="tut-symb">Point</span> point)
+{
+  <span class="tut-rsvd">double</span> radius = width / 2;
+  <span class="tut-symb">Point</span> centre = <span class="tut-rsvd">new</span> <span class="tut-symb">Point</span>(radius, height / 2);
+  <span class="tut-symb">Point</span> start = <span class="tut-rsvd">new</span> <span class="tut-symb">Point</span>(0, height / 2);
+  <span class="tut-rsvd">double</span> triangleTop = <span class="tut-symb">Math</span>.Sqrt(<span class="tut-symb">Math</span>.Pow((point.X - centre.X), 2)
+    + <span class="tut-symb">Math</span>.Pow((centre.Y - point.Y), 2));
+  <span class="tut-rsvd">double</span> triangleHeight = (point.Y > centre.Y) ?
+    point.Y - centre.Y : centre.Y - point.Y;
+  <span class="tut-rsvd">return</span> ((triangleHeight * <span class="tut-symb">Math</span>.Sin(90)) / triangleTop) * 100;
+}
+
+<span class="tut-rsvd">double</span> GetAngle(<span class="tut-synb">Point</span> point)
+{
+  <span class="tut-rsvd">double</span> diameter = _knob.ActualWidth;
+  <span class="tut-rsvd">double</span> height = _knob.ActualHeight;
+  <span class="tut-rsvd">double</span> radius = diameter / 2;
+  <span class="tut-rsvd">double</span> rotation = AngleQuadrant(diameter, height, point);
+  <span class="tut-rsvd">if</span> ((point.X &gt; radius) &amp;&amp; (point.Y &lt;= radius))
+  {
+    rotation = 90.0 + (90.0 - rotation);
+  }
+  <span class="tut-rsvd">else if</span> ((point.X &gt; radius) &amp;&amp; (point.Y &gt; radius))
+  {
+    rotation = 180.0 + rotation;
+  }
+  <span class="tut-rsvd">else if</span> ((point.X &lt; radius) &amp;&amp; (point.Y &gt; radius))
+  {
+    rotation = 270.0 + (90.0 - rotation);
+  }
+  <span class="tut-rsvd">return</span> rotation;
+}
+
+<span class="tut-rsvd">private void</span> SetPosition(<span class="tut-rsvd">double</span> rotation)
+{
+  <span class="tut-rsvd">if</span> (Minimum &gt; 0 &amp;&amp; Maximum &gt; 0 &amp;&amp; Minimum &lt; 360 &amp;&amp; Maximum &lt;= 360)
+  {
+    <span class="tut-rsvd">if</span> (rotation &lt; Minimum) { rotation = Minimum; }
+    <span class="tut-rsvd">if</span> (rotation &gt; Maximum) { rotation = Maximum; }
+  }
+  _value.Angle = rotation;
+  Value = rotation;
+}
+
+<span class="tut-rsvd">public</span> Dial()
+{
+  <span class="tut-rsvd">this</span>.DefaultStyleKey = <span class="tut-rsvd">typeof</span>(<span class="tut-symb">Dial</span>);
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialclsmets.png" width="558" height="1245" alt="Dial Properties and Methods" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View below the "}" of the "Dial" Constructor Method type the following Event Handler:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public override void</span> OnApplyTemplate()
+{
+  <span class="tut-rsvd">base</span>.OnApplyTemplate();
+  _knob = ((<span class="tut-symb">Grid</span>)GetTemplateChild(<span class="tut-valu">"Knob"</span>));
+  _value = ((<span class="tut-symb">RotateTransform</span>)GetTemplateChild(<span class="tut-valu">"DialValue"</span>));
+  <span class="tut-rsvd">if</span> (Minimum &gt; 0 &amp;&amp; Minimum &lt; 360) { SetPosition(Minimum); }
+  _knob.MouseLeftButtonUp += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">MouseButtonEventArgs</span> e) =&gt;
+  {
+    _hasCapture = <span class="tut-rsvd">false</span>;
+  };
+  _knob.MouseLeftButtonDown += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">MouseButtonEventArgs</span> e) =&gt;
+  {
+  _hasCapture = <span class="tut-rsvd">true</span>;
+  SetPosition(GetAngle(e.GetPosition(_knob)));
+  };
+  _knob.MouseMove += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">MouseEventArgs</span> e) =&gt;
+  {
+    <span class="tut-rsvd">if</span> (_hasCapture)
+    {
+      SetPosition(GetAngle(e.GetPosition(_knob)));
+    }
+  };
+  _knob.MouseLeave += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">MouseEventArgs</span> e) =&gt;
+  {
+    _hasCapture = <span class="tut-rsvd">false</span>;
+  };
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialclscode.png" width="592" height="429" alt="Dial Event Handlers" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Select "Build Solution" from the Debug menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7build.png" width="233" height="24" alt="Build Solution" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+When the Build completes, return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then from the Dial Controls section in the Toolbox select the Dial control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dial.png" width="180" height="428" alt="Dial User Control" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Draw a Dial onto the Page by dragging a Dial from the Toolbox onto the Page, then in the XAML Pane between the 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines, change "dial1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Dial</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Dial" <span class="tut-attr">Height</span>="400" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Minimum</span>="90.0" <span class="tut-attr">Maximum</span>="270.0"&gt;
+  &lt;<span class="tut-valu">my</span>:<span class="tut-valu">Dial.Knob</span>&gt;
+    &lt;<span class="tut-valu">Grid</span>&gt;
+      &lt;<span class="tut-valu">Ellipse</span> <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+      &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Height</span>="50" <span class="tut-attr">Width</span>="200" <span class="tut-attr">Margin</span>="0,0,200,0" 
+      <span class="tut-attr">RadiusX</span>="25" <span class="tut-attr">RadiusY</span>="25" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneForegroundBrush</span>}"/&gt;
+    &lt;/<span class="tut-valu">Grid</span>&gt;
+  &lt;/<span class="tut-valu">my</span>:<span class="tut-valu">Dial.Knob</span>&gt;
+&lt;/<span class="tut-valu">my</span>:<span class="tut-valu">Dial</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialxaml.png" width="712" height="173" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialdesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+While still in the XAML Pane replace the Page Title <span class="tut-rsvd">&lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="PageTitle" <span class="tut-attr">Text</span>="page name" <span class="tut-attr">Margin</span>="-3,-8,0,0" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneTextTitle1Style</span>}"/&gt;</span> XAML in the TitlePanel with the following XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="PageTitle" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">ElementName</span>=Dial, <span class="tut-attr">Path</span>=Value}" <span class="tut-attr">Margin</span>="-3,-8,0,0" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneTextTitle1Style</span>}"/&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialtitlegrid.png" width="1090" height="61" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialtitlegriddesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Tap-and-hold the "knob" then move in a circular clockwise motion to turn the dial, the value will be shown in the "Page Title" and will show values between the Maximum and Minimum set, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7dialapp.png" width="359" height="660" alt="Dial Control" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple Dial Control it can be made any size, plus the Knob and Face properties can be set to get the dial to look the way
+you want in your application - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

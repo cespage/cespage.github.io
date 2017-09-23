@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Noughts and Crosses</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+
+.tut-valu {
+							color: maroon;
+}
+
+.tut-attr {
+							color: red;
+}
+
+.tut-rsvd {
+							color: blue;
+}
+
+.tut-prop {
+					 		color: gray;
+}
+
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>Noughts and Crosses</h1>
+<p>
+Noughts and Crosses or Tic-Tac-Toe is a very simple game to play and to create with this Tutorial using Silverlight.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut9.html">www.cespage.com/silverlight/sl4tut9.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Canvas that fill the whole Page or in the XAML Pane between the "&lt;Grid&gt;" and "&lt;/Grid&gt;" lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="300" <span class="tut-attr">Width</span>="400" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Page"&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4cvspage.png" width="423" height="322" alt="MainPage with Canvas" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Grid control:
+</p>
+<div class="tutorial-image">
+<img src="sl4grid.png" width="180" height="428" alt="Grid Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a Grid on the Canvas by dragging a Grid from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Grid&gt; line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Canvas.Left</span>="75" <span class="tut-attr">Canvas.Top</span>="0" <span class="tut-attr">Height</span>="250" <span class="tut-attr">Width</span>="250" <span class="tut-attr">Name</span>="Display"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4oxogrid.png" width="415" height="315" alt="MainPage with Canvas and Grid" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw a Button on the Canvas by dragging the Button from the Toolbox onto the Canvas, then in the XAML Pane below the "&lt;StackPanel&gt;" tag change the "&lt;Button&gt;" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="163" <span class="tut-attr">Canvas.Top</span>="263" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="New" <span class="tut-attr">Content</span>="New"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4oxogridbtn.png" width="415" height="314" alt="MainPage with Canvas, Grid and Button" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> _hasWon <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">False</span>
+<span class="tut-rsvd">Private</span> _piece <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+<span class="tut-rsvd">Private</span> _nought <span class="tut-rsvd">As String</span> = <span class="tut-valu">"O"</span>
+<span class="tut-rsvd">Private</span> _cross <span class="tut-rsvd">As String</span> = <span class="tut-valu">"X"</span>
+<span class="tut-rsvd">Private</span> _board(<span class="tut-valu">3</span>, <span class="tut-valu">3</span>) <span class="tut-rsvd">As String</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4oxodecs.png" width="278" height="201" alt="MainPage.xaml Declarations" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Public Sub New()" Constructor type the following Functions: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Winner() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Return</span> (_board(<span class="tut-valu">0</span>, <span class="tut-valu">0</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">0</span>, <span class="tut-valu">1</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">0</span>, <span class="tut-valu">2</span>) = _piece) <span class="tut-rsvd">Or</span> _
+  (_board(<span class="tut-valu">1</span>, <span class="tut-valu">0</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">1</span>, <span class="tut-valu">1</span>) = _piece And _board(<span class="tut-valu">1</span>, <span class="tut-valu">2</span>) = _piece) <span class="tut-rsvd">Or</span> _
+  (_board(<span class="tut-valu">2</span>, <span class="tut-valu">0</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">2</span>, <span class="tut-valu">1</span>) = _piece And _board(<span class="tut-valu">2</span>, <span class="tut-valu">2</span>) = _piece) <span class="tut-rsvd">Or</span> _
+  (_board(<span class="tut-valu">0</span>, <span class="tut-valu">0</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">1</span>, <span class="tut-valu">0</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">2</span>, <span class="tut-valu">0</span>) = _piece) <span class="tut-rsvd">Or</span> _
+  (_board(<span class="tut-valu">0</span>, <span class="tut-valu">1</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">1</span>, <span class="tut-valu">1</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">2</span>, <span class="tut-valu">1</span>) = _piece) <span class="tut-rsvd">Or</span> _
+  (_board(<span class="tut-valu">0</span>, <span class="tut-valu">2</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">1</span>, <span class="tut-valu">2</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">2</span>, <span class="tut-valu">2</span>) = _piece) <span class="tut-rsvd">Or</span> _
+  (_board(<span class="tut-valu">0</span>, <span class="tut-valu">0</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">1</span>, <span class="tut-valu">1</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">2</span>, <span class="tut-valu">2</span>) = _piece) <span class="tut-rsvd">Or</span> _
+  (_board(<span class="tut-valu">0</span>, <span class="tut-valu">2</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">1</span>, <span class="tut-valu">1</span>) = _piece <span class="tut-rsvd">And</span> _board(<span class="tut-valu">2</span>, <span class="tut-valu">0</span>) = _piece)
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-rsvd">Private Function</span> Drawn() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Return</span> _board(<span class="tut-valu">0</span>, <span class="tut-valu">0</span>) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> _board(<span class="tut-valu">0</span>, <span class="tut-valu">1</span>) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> _board(<span class="tut-valu">0</span>, <span class="tut-valu">2</span>) &lt;&gt; <span class="tut-valu">""</span> _
+  <span class="tut-rsvd">And</span> _board(<span class="tut-valu">1</span>, <span class="tut-valu">0</span>) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> _board(<span class="tut-valu">1</span>, <span class="tut-valu">1</span>) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> _board(<span class="tut-valu">1</span>, <span class="tut-valu">2</span>) &lt;&gt; <span class="tut-valu">""</span> _
+  <span class="tut-rsvd">And</span> _board(<span class="tut-valu">2</span>, <span class="tut-valu">0</span>) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> _board(<span class="tut-valu">2</span>, <span class="tut-valu">1</span>) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> _board(<span class="tut-valu">2</span>, <span class="tut-valu">2</span>) &lt;&gt; <span class="tut-valu">""</span>
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4oxocheck.png" width="678" height="269" alt="MainPage Winner and Drawn Functions" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for MainPage.xaml, below "End Function" for "Private Function Drawn()" Function, type the following Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> GetPiece() <span class="tut-rsvd">As</span> <span class="tut-symb">Path</span>
+  <span class="tut-rsvd">If</span> _piece = _cross <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Draw X</span>
+    <span class="tut-rsvd">Dim</span> _lines <span class="tut-rsvd">As New</span> <span class="tut-symb">Path</span>
+    <span class="tut-rsvd">Dim</span> _line1, _line2 <span class="tut-rsvd">As New</span> <span class="tut-symb">LineGeometry</span>
+    <span class="tut-rsvd">Dim</span> _linegroup <span class="tut-rsvd">As New</span> <span class="tut-symb">GeometryGroup</span>
+    _line1.StartPoint = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">0</span>, <span class="tut-valu">0</span>)
+    _line1.EndPoint = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">50</span>, <span class="tut-valu">50</span>)
+    _line2.StartPoint = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">50</span>, <span class="tut-valu">0</span>)
+    _line2.EndPoint = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">0</span>, <span class="tut-valu">50</span>)
+    _linegroup.Children.Add(_line1)
+    _linegroup.Children.Add(_line2)
+    _lines.Data = _linegroup
+    _lines.Stroke = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.Red)
+    _lines.StrokeThickness = <span class="tut-valu">4.0</span>
+    _lines.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>)
+    <span class="tut-rsvd">Return</span> _lines
+  <span class="tut-rsvd">Else</span> <span class="tut-cmnt">' Draw O</span>
+    <span class="tut-rsvd">Dim</span> _ellipse <span class="tut-rsvd">As New</span> <span class="tut-symb">EllipseGeometry</span>
+    <span class="tut-rsvd">Dim</span> _circle <span class="tut-rsvd">As New</span> <span class="tut-symb">Path</span>
+    _ellipse.Center = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">25</span>, <span class="tut-valu">25</span>)
+    _ellipse.RadiusX = <span class="tut-valu">25</span>
+    _ellipse.RadiusY = <span class="tut-valu">25</span>
+    _circle.Data = _ellipse
+    _circle.Stroke = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.Blue)
+    _circle.StrokeThickness = <span class="tut-valu">4.0</span>
+    _circle.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>)
+    <span class="tut-rsvd">Return</span> _circle
+  <span class="tut-rsvd">End If
+End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4oxogetpiece.png" width="438" height="490" alt="MainPage GetPiece Function" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Function" for "Private Function GetPiece()" type the following Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Button_Click(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As</span> System.<span class="tut-symb">Object</span>, _
+  <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.Windows.<span class="tut-symb">RoutedEventArgs</span>)
+  <span class="tut-rsvd">If Not</span> _hasWon <span class="tut-rsvd">Then
+    Dim</span> _btn <span class="tut-rsvd">As New</span> <span class="tut-symb">Button</span>
+    _btn = <span class="tut-rsvd">CType</span>(sender, <span class="tut-symb">Button</span>)
+    <span class="tut-rsvd">If</span> _btn.Content <span class="tut-rsvd">Is Nothing Then</span>
+      _btn.Content = GetPiece()
+      _board(_btn.GetValue(<span class="tut-symb">Grid</span>.RowProperty), _ 
+        _btn.GetValue(<span class="tut-symb">Grid</span>.ColumnProperty)) = _piece
+    <span class="tut-rsvd">End If</span>
+    <span class="tut-rsvd">If</span> Winner() <span class="tut-rsvd">Then</span>
+      _hasWon = <span class="tut-rsvd">True</span>
+      <span class="tut-symb">MessageBox</span>.Show(_piece &amp; <span class="tut-valu">" wins!"</span>, <span class="tut-valu">"Noughts and Crosses"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+    <span class="tut-rsvd">ElseIf</span> Drawn() <span class="tut-rsvd">Then</span>
+      <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Draw!"</span>, <span class="tut-valu">"Noughts and Crosses"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+    <span class="tut-rsvd">Else</span>
+      _piece = IIf(_piece = _cross, _nought, _cross) <span class="tut-cmnt">' Swap Players</span>
+    <span class="tut-rsvd">End If
+  Else</span>
+    <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Game Over!"</span>, <span class="tut-valu">"Noughts and Crosses"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4oxobtnclick.png" width="670" height="371" alt="MainPage Button Click Sub" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Private Sub Button_Click(...)" type the following Subs: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Add(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> <span class="tut-symb">Grid</span>, <span class="tut-rsvd">ByRef</span> Row <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByRef</span> Column <span class="tut-rsvd">As Integer</span>)
+  <span class="tut-rsvd">Dim</span> _btn <span class="tut-rsvd">As New</span> <span class="tut-symb">Button</span>
+  <span class="tut-rsvd">AddHandler</span> _btn.Click, <span class="tut-rsvd">AddressOf</span> Button_Click
+  _btn.Content = <span class="tut-rsvd">Nothing</span>
+  _btn.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>)
+  _btn.SetValue(Grid.ColumnProperty, Column)
+  _btn.SetValue(Grid.RowProperty, Row)
+  Grid.Children.Add(_btn)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> Layout(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> <span class="tut-symb">Grid</span>)
+  Grid.Children.Clear()
+  Grid.ColumnDefinitions.Clear()
+  Grid.RowDefinitions.Clear()
+  <span class="tut-rsvd">For</span> Index <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span> <span class="tut-rsvd">To</span> <span class="tut-valu">2</span> <span class="tut-cmnt">' Setup 3x3 Grid</span>
+    Grid.RowDefinitions.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">RowDefinition</span>)
+    Grid.ColumnDefinitions.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">ColumnDefinition</span>)
+  <span class="tut-rsvd">Next</span>
+  Add(Grid, <span class="tut-valu">0</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Top Left</span>
+  Add(Grid, <span class="tut-valu">0</span>, <span class="tut-valu">1</span>) <span class="tut-cmnt">' Top Middle</span>
+  Add(Grid, <span class="tut-valu">0</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Top Right</span>
+  Add(Grid, <span class="tut-valu">1</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Middle Left</span>
+  Add(Grid, <span class="tut-valu">1</span>, <span class="tut-valu">1</span>) <span class="tut-cmnt">' Centre</span>
+  Add(Grid, <span class="tut-valu">1</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Middle Right</span>
+  Add(Grid, <span class="tut-valu">2</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Bottom Left</span>
+  Add(Grid, <span class="tut-valu">2</span>, <span class="tut-valu">1</span>) <span class="tut-cmnt">' Bottom Middle</span>
+  Add(Grid, <span class="tut-valu">2</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Bottom Right</span>
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4oxoaddlayout.png" width="612" height="472" alt="MainPage Add and Layout Subs" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "New" Button Control and type in the New_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Layout(Display)
+_board(<span class="tut-valu">0</span>, <span class="tut-valu">0</span>) = <span class="tut-valu">""</span> <span class="tut-cmnt">' Top Left</span>
+_board(<span class="tut-valu">0</span>, <span class="tut-valu">1</span>) = <span class="tut-valu">""</span> <span class="tut-cmnt">' Top Middle</span>
+_board(<span class="tut-valu">0</span>, <span class="tut-valu">2</span>) = <span class="tut-valu">""</span> <span class="tut-cmnt">' Top Right</span>
+_board(<span class="tut-valu">1</span>, <span class="tut-valu">0</span>) = <span class="tut-valu">""</span> <span class="tut-cmnt">' Middle Left</span>
+_board(<span class="tut-valu">1</span>, <span class="tut-valu">1</span>) = <span class="tut-valu">""</span> <span class="tut-cmnt">' Centre</span>
+_board(<span class="tut-valu">1</span>, <span class="tut-valu">2</span>) = <span class="tut-valu">""</span> <span class="tut-cmnt">' Middle Right</span>
+_board(<span class="tut-valu">2</span>, <span class="tut-valu">0</span>) = <span class="tut-valu">""</span> <span class="tut-cmnt">' Bottom Left</span>
+_board(<span class="tut-valu">2</span>, <span class="tut-valu">1</span>) = <span class="tut-valu">""</span> <span class="tut-cmnt">' Bottom Middle</span>
+_board(<span class="tut-valu">2</span>, <span class="tut-valu">2</span>) = <span class="tut-valu">""</span> <span class="tut-cmnt">' Bottom Right</span>
+_hasWon = <span class="tut-rsvd">False</span>
+<span class="tut-rsvd">If</span> <span class="tut-symb">MessageBox</span>.Show(_cross &amp; <span class="tut-valu">" to go first?"</span>, <span class="tut-valu">"Noughts and Crosses"</span>, _
+    <span class="tut-symb">MessageBoxButton</span>.OKCancel) = <span class="tut-symb">MessageBoxResult</span>.OK <span class="tut-rsvd">Then</span>
+  _piece = _cross
+<span class="tut-rsvd">Else</span>
+  _piece = _nought
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4oxonewclick.png" width="552" height="354" alt="New Button Click Event" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4oxorun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Click the New Button, then it will ask "X to go first?", choose either OK or Cancel for "O" to go First, and the following will appear: 
+</p>
+<div class="tutorial-image">
+<img src="sl4oxonew.png" width="400" height="300" alt="New Game" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Click on the Buttons to place a "O" or an "X", continue until you Win, Lose or Draw, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4oxoapp.png" width="400" height="300" alt="Noughts and Crosses" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This is a very simple game using Silverlight, try adding some more advanced features such as a Computer-based Player 2 using Random
+Numbers or just change the colours, make it your own!
+</p>
+</body>
+</html>

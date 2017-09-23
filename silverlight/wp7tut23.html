@@ -1,0 +1,826 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Doodle Pad</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Doodle Pad</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Doodle Pad is a simple drawing package using InkPresenter control in Silverlight for Windows Phone 7, application features
+Draw Width and Colour plus Open/Save support using LINQ to XML.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut23.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut23.zip">Download Tutorial</a> (1.18MB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut23code.zip">Download Source Code</a> (23.4KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select Project then Add Reference... The "Add Reference" window should appear, select "System.XML.Linq" from the ".NET" List, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7linq.png" width="466" height="370" alt="Add System.XML.Linq Reference" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the Reference to "System.XML.Linq" by Clicking on OK.<br/>
+Right Click on the App.xaml Entry in the Solution Explorer and choose "View Code" then in the Code View for App.xaml.css, above the "public App()" line type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public string</span> Filename { <span class="tut-rsvd">get</span>; <span class="tut-rsvd">set</span>;}
+<span class="tut-rsvd">public object</span> Content { <span class="tut-rsvd">get</span>; <span class="tut-rsvd">set</span>;}
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padappcode.png" width="488" height="204" alt="App Filename and Content" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Right Click on the Entry for the Project in the Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "images" (without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padsolexp.png" width="217" height="527" alt="Project Images Folder" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Download the following images (delete.png, new.png, open &amp; save.png) by right-clicking on the images below and choose "Save Picture As..." or 
+"Save Image As..." and Save them to a Folder on your computer:
+</p>
+<blockquote>
+<div class="tut-img">
+<img src="tutorials/delete.png" width="48" height="48" alt="Delete Application Bar Icon" />
+<img src="tutorials/new.png" width="48" height="48" alt="New Application Bar Icon" />
+<img src="tutorials/open.png" width="48" height="48" alt="Open Application Bar Icon" />
+<img src="tutorials/save.png" width="48" height="48" alt="Save Application Bar Icon" />
+</div>
+</blockquote>
+<p class="tutorial-step">Step 7</p>
+<p>
+Right Click on the Entry for the "images" Folder for the Project in Solution Explorer, and choose "Add", then "Existing Item...", 
+then in the "Add Existing Item" dialog select Folder you saved the images, then choose "Add"
+to add the delete.png, new.png, open.png and save.png to the images folder in the project, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padsolexpimg.png" width="217" height="527" alt="Project Images Folder with Images" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+While still in the Solution Explorer click on the "delete.png" image then goto the Properties box and change the
+Build Action to Content, do the same for the "new.png", "open.png" and "save.png" images, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padimgprop.png" width="217" height="393" alt="Image Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+In the Solution Explorer select the "DoodlePad" entry from the list, below the Solution Entry.<br/> 
+Then select Project then "Add New Item...", and select the "Windows Phone Portrait Page" Template, then change the "Name" to OpenPage.xaml, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7addopenpage.png" width="939" height="624" alt="OpenPage Windows Phone Portrait Page" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Click on "Add" to add the new Windows Phone Portrait Page to the Project<br/>
+Then in the XAML Pane for OpenPage.xaml, above the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="Transparent"&gt;</span> Tag type the following ApplicationBar XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="False"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="open" <span class="tut-attr">IconUri</span>="/images/open.png" <span class="tut-attr">Click</span>="Open_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="delete" <span class="tut-attr">IconUri</span>="/images/delete.png" <span class="tut-attr">Click</span>="Delete_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padopenbar.png" width="802" height="125" alt="ApplicationBar XAML" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the XAML Pane between between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ListBox</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">FontSize</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneFontSizeExtraLarge</span>}" <span class="tut-attr">Name</span>="Files"/&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padopenxaml.png" width="704" height="45" alt="OpenPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padopendesign.png" width="359" height="660" alt="OpenPage Design View" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Right Click on the Page or the entry for "OpenPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace DoodlePad"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.IO.IsolatedStorage;
+<span class="tut-rsvd">using</span> System.Xml.Linq;
+<span class="tut-rsvd">using</span> System.Windows.Ink;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public OpenPage()" type the following Application declaration:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">App</span> app = (<span class="tut-symb">App</span>)<span class="tut-symb">Application</span>.Current;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padopenref.png" width="404" height="445" alt="OpenPage Includes and Application Declaration" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the Code View for OpenPage.xaml.cs in the "public OpenPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"DOODLE PAD"</span>;
+PageTitle.Text = <span class="tut-valu">"open"</span>;
+Loaded += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e) =>
+{
+  <span class="tut-rsvd">using</span> (<span class="tut-symb">IsolatedStorageFile</span> storage = <span class="tut-symb">IsolatedStorageFile</span>.GetUserStoreForApplication())
+  {
+    <span class="tut-rsvd">foreach</span> (<span class="tut-rsvd">string</span> filename <span class="tut-rsvd">in</span> storage.GetFileNames(<span class="tut-valu">"*.ipr"</span>))
+    {
+      Files.Items.Add(filename.ToLower());
+    }
+  }
+};
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padopeninit.png" width="726" height="253" alt="OpenPage Constructor" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+While still in the Code View for OpenPage.xaml.cs, below the "}" of the "public OpenPage()" method type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Open_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (Files.SelectedItem != <span class="tut-rsvd">null</span>)
+  {
+    app.Filename = (<span class="tut-rsvd">string</span>)Files.SelectedItem;
+    <span class="tut-rsvd">using</span> (<span class="tut-symb">IsolatedStorageFile</span> storage = <span class="tut-symb">IsolatedStorageFile</span>.GetUserStoreForApplication())
+    {
+      <span class="tut-symb">XElement</span> _xml;
+      <span class="tut-symb">Stroke</span> _stroke = <span class="tut-rsvd">new</span> <span class="tut-symb">Stroke</span>();
+      <span class="tut-symb">StrokeCollection</span> _strokes = <span class="tut-rsvd">new</span> <span class="tut-symb">StrokeCollection</span>();
+      <span class="tut-symb">DrawingAttributes</span> _drawAttr = <span class="tut-rsvd">new</span> <span class="tut-symb">DrawingAttributes</span>();
+      <span class="tut-symb">IsolatedStorageFileStream</span> location = <span class="tut-rsvd">new</span> <span class="tut-symb">IsolatedStorageFileStream</span>(app.Filename,
+      System.IO.<span class="tut-symb">FileMode</span>.Open, storage);
+      System.IO.<span class="tut-symb">StreamReader</span> file = <span class="tut-rsvd">new</span> System.IO.<span class="tut-symb">StreamReader</span>(location);
+      _xml = <span class="tut-symb">XElement</span>.Parse(file.ReadToEnd());
+      <span class="tut-rsvd">foreach</span> (<span class="tut-symb">XElement</span> element <span class="tut-rsvd">in</span> _xml.Elements(<span class="tut-valu">"Stroke"</span>))
+      {
+        <span class="tut-rsvd">foreach</span> (<span class="tut-symb">XElement</span> item <span class="tut-rsvd">in</span> element.Elements(<span class="tut-valu">"Stroke.DrawingAttributes"</span>)
+        .Elements(<span class="tut-valu">"DrawingAttributes"</span>))
+        {
+          _drawAttr = <span class="tut-rsvd">new</span> <span class="tut-symb">DrawingAttributes</span>
+          {
+            <span class="tut-symb">Color</span> = <span class="tut-symb">Color</span>.FromArgb(
+              <span class="tut-rsvd">byte</span>.Parse(item.Attribute(<span class="tut-valu">"Color"</span>).Value.Substring(1, 2),
+              System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+              <span class="tut-rsvd">byte</span>.Parse(item.Attribute(<span class="tut-valu">"Color"</span>).Value.Substring(3, 2),
+              System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+              <span class="tut-rsvd">byte</span>.Parse(item.Attribute(<span class="tut-valu">"Color"</span>).Value.Substring(5, 2),
+              System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+              <span class="tut-rsvd">byte</span>.Parse(item.Attribute(<span class="tut-valu">"Color"</span>).Value.Substring(7, 2),
+              System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber)),
+            Width = <span class="tut-rsvd">double</span>.Parse(item.Attribute(<span class="tut-valu">"Width"</span>).Value),
+            Height = <span class="tut-rsvd">double</span>.Parse(item.Attribute(<span class="tut-valu">"Height"</span>).Value)
+          };
+        }
+        <span class="tut-rsvd">foreach</span> (<span class="tut-symb">XElement</span> item <span class="tut-rsvd">in</span> element.Elements(<span class="tut-valu">"Stroke.StylusPoints"</span>))
+        {
+          _stroke = <span class="tut-rsvd">new</span> <span class="tut-symb">Stroke</span>();
+          _stroke.DrawingAttributes = _drawAttr;
+          <span class="tut-rsvd">foreach</span> (<span class="tut-symb">XElement</span> point <span class="tut-rsvd">in</span> item.Elements(<span class="tut-valu">"StylusPoint"</span>))
+          {
+            _stroke.StylusPoints.Add(<span class="tut-rsvd">new</span> <span class="tut-symb">StylusPoint</span>
+            {
+              X = <span class="tut-rsvd">double</span>.Parse(point.Attribute(<span class="tut-valu">"X"</span>).Value),
+              Y = <span class="tut-rsvd">double</span>.Parse(point.Attribute(<span class="tut-valu">"Y"</span>).Value)
+            });
+          }
+        _strokes.Add(_stroke);
+        }
+      }
+      app.Content = _strokes;
+      file.Dispose();
+      location.Dispose();
+    }
+    NavigationService.GoBack();
+  }
+}
+
+<span class="tut-rsvd">private void</span> Delete_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (Files.SelectedItem != <span class="tut-rsvd">null</span>)
+  {
+    <span class="tut-rsvd">string</span> _selected = (<span class="tut-rsvd">string</span>)Files.SelectedItem;
+    <span class="tut-rsvd">if</span> (<span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Delete selected Item "</span> + _selected + <span class="tut-valu">"?"</span>, <span class="tut-valu">"Doodle Pad"</span>,
+    <span class="tut-symb">MessageBoxButton</span>.OKCancel) == <span class="tut-symb">MessageBoxResult</span>.OK)
+    {
+      <span class="tut-rsvd">using</span> (<span class="tut-symb">IsolatedStorageFile</span> storage = <span class="tut-symb">IsolatedStorageFile</span>.GetUserStoreForApplication())
+      {
+        <span class="tut-rsvd">if</span> (storage.FileExists(_selected))
+        {
+          storage.DeleteFile(_selected);
+        }
+      }
+      NavigationService.GoBack();
+    }
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padopencode.png" width="752" height="1229" alt="OpenPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Select Project then "Add New Item...", and select the "Windows Phone Portrait Page" Template, then change the "Name" to SavePage.xaml, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7addsavepage.png" width="939" height="624" alt="SavePage Windows Phone Portrait Page" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Click on "Add" to add the new Windows Phone Portrait Page to the Project<br/>
+Then the Designer View for SavePage.xaml, in the XAML Pane between between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">StackPanel</span>&gt;
+  &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="Filename"/&gt;
+  &lt;<span class="tut-valu">Grid</span>&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/>
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/>
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    &lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="Filename"&gt;
+      &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+        &lt;<span class="tut-valu">InputScope</span>&gt;
+          &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="FileName"/&gt;
+        &lt;/<span class="tut-valu">InputScope</span>&gt;
+      &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+    &lt;/<span class="tut-valu">TextBox</span>&gt;
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="save" <span class="tut-attr">Click</span>="Save_Click"/&gt;
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+&lt;/<span class="tut-valu">StackPanel</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padsavexaml.png" width="564" height="301" alt="SavePage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padsavedesign.png" width="359" height="660" alt="OpenPage Design View" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Right Click on the Page or the entry for "SavePage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace DoodlePad"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.IO.IsolatedStorage;
+<span class="tut-rsvd">using</span> System.Xml.Linq;
+<span class="tut-rsvd">using</span> System.Windows.Ink;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public SavePage()" type the following Application declaration:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">App</span> app = (<span class="tut-symb">App</span>)<span class="tut-symb">Application</span>.Current;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padsaveref.png" width="404" height="445" alt="SavePage Includes and Application Declaration" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+While still in the Code View for SavePage.xaml.cs in the "public SavePage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"DOODLE PAD"</span>;
+PageTitle.Text = <span class="tut-valu">"save"</span>;
+Loaded += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e) =>
+{
+  <span class="tut-rsvd">if</span> (app.Filename == <span class="tut-rsvd">null</span> || app.Filename == <span class="tut-valu">""</span>)
+  {
+    Filename.Text = <span class="tut-valu">"untitled.ipr"</span>;
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    Filename.Text = app.Filename;
+  }
+};
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padsaveinit.png" width="452" height="269" alt="SavePage Constructor" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+While still in the Code View for SavePage.xaml.cs, below the "}" of the "public SavePage()" method type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Save_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (Filename.Text != <span class="tut-valu">""</span>)
+  {
+    <span class="tut-rsvd">try</span>
+    {
+      app.Filename = Filename.Text.Trim().ToLower();
+      <span class="tut-rsvd">using</span> (<span class="tut-symb">IsolatedStorageFile</span> storage = <span class="tut-symb">IsolatedStorageFile</span>.GetUserStoreForApplication())
+      {
+        <span class="tut-symb">XDocument</span> _doc = <span class="tut-rsvd">new</span> <span class="tut-symb">XDocument</span>();
+        <span class="tut-symb">StrokeCollection</span> _strokes = <span class="tut-rsvd">new</span> <span class="tut-symb">StrokeCollection</span>();
+        _strokes = (<span class="tut-symb">StrokeCollection</span>)app.Content;
+        <span class="tut-symb">XElement</span> _strokecollection = <span class="tut-rsvd">new</span> <span class="tut-symb">XElement</span>(<span class="tut-valu">"StrokeCollection"</span>);
+        <span class="tut-rsvd">foreach</span> (<span class="tut-symb">Stroke</span> item <span class="tut-rsvd">in</span> _strokes)
+        {
+          <span class="tut-symb">XElement</span> _stroke = <span class="tut-rsvd">new</span> <span class="tut-symb">XElement</span>(<span class="tut-valu">"Stroke"</span>);
+          <span class="tut-symb">XElement</span> _strokeAttr = <span class="tut-rsvd">new</span> <span class="tut-symb">XElement</span>(<span class="tut-valu">"Stroke.DrawingAttributes"</span>);
+          <span class="tut-symb">XElement</span> _attributes = <span class="tut-rsvd">new</span> <span class="tut-symb">XElement</span>(<span class="tut-valu">"DrawingAttributes"</span>);
+          <span class="tut-symb">XAttribute</span> _color = <span class="tut-rsvd">new</span> <span class="tut-symb">XAttribute</span>(<span class="tut-valu">"Color"</span>, item.DrawingAttributes.Color);
+          <span class="tut-symb">XAttribute</span> _width = <span class="tut-rsvd">new</span> <span class="tut-symb">XAttribute</span>(<span class="tut-valu">"Width"</span>, item.DrawingAttributes.Width);
+          <span class="tut-symb">XAttribute</span> _height = <span class="tut-rsvd">new</span> <span class="tut-symb">XAttribute</span>(<span class="tut-valu">"Height"</span>, item.DrawingAttributes.Height);
+          _attributes.Add(_color, _width, _height);
+          _strokeAttr.Add(_attributes);
+          <span class="tut-symb">XElement</span> _points = <span class="tut-rsvd">new</span> <span class="tut-symb">XElement</span>(<span class="tut-valu">"Stroke.StylusPoints"</span>);
+          <span class="tut-rsvd">foreach</span> (<span class="tut-symb">StylusPoint</span> point <span class="tut-rsvd">in</span> item.StylusPoints)
+          {
+            <span class="tut-symb">XElement</span> _point = <span class="tut-rsvd">new</span> <span class="tut-symb">XElement</span>(<span class="tut-valu">"StylusPoint"</span>);
+            <span class="tut-symb">XAttribute</span> _x = <span class="tut-rsvd">new</span> <span class="tut-symb">XAttribute</span>(<span class="tut-valu">"X"</span>, point.X);
+            <span class="tut-symb">XAttribute</span> _y = <span class="tut-rsvd">new</span> <span class="tut-symb">XAttribute</span>(<span class="tut-valu">"Y"</span>, point.Y);
+            _point.Add(_x, _y);
+            _points.Add(_point);
+          }
+          _stroke.Add(_strokeAttr, _points);
+          _strokecollection.Add(_stroke);
+        }
+        _doc = <span class="tut-rsvd">new</span> <span class="tut-symb">XDocument</span>(<span class="tut-rsvd">new</span> <span class="tut-symb">XDeclaration</span>(<span class="tut-valu">"1.0"</span>, <span class="tut-valu">"utf-8"</span>, <span class="tut-valu">"yes"</span>), _strokecollection);
+        <span class="tut-symb">IsolatedStorageFileStream</span> location = <span class="tut-rsvd">new</span> <span class="tut-symb">IsolatedStorageFileStream</span>(app.Filename,
+        System.IO.<span class="tut-symb">FileMode</span>.Create, storage);
+        System.IO.<span class="tut-symb">StreamWriter</span> file = <span class="tut-rsvd">new</span> System.IO.<span class="tut-symb">StreamWriter</span>(location);
+        _doc.Save(file);
+        app.Content = <span class="tut-rsvd">null</span>;
+        file.Dispose();
+        location.Dispose();
+      }
+      NavigationService.GoBack();
+    }
+    <span class="tut-rsvd">catch</span>
+    {
+      <span class="tut-cmnt">// Ignore Errors</span>
+    }
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padsavecode.png" width="752" height="829" alt="SavePage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Select the "MainPage.xaml" Tab, then in the XAML Pane for MainPage.xaml, above the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="Transparent"&gt;</span> Tag type the following ApplicationBar XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="False"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="new" <span class="tut-attr">IconUri</span>="/images/new.png" <span class="tut-attr">Click</span>="New_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="open" <span class="tut-attr">IconUri</span>="/images/open.png" <span class="tut-attr">Click</span>="Open_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="save" <span class="tut-attr">IconUri</span>="/images/save.png" <span class="tut-attr">Click</span>="Save_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padbar.png" width="760" height="141" alt="ApplicationBar XAML" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Then in while still in the XAML Pane, between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="90"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Toolbar" <span class="tut-attr">Grid.Row</span>="0"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padgridxaml.png" width="404" height="253" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padgriddesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+While still in the XAML Pane within the "ContentMain" Grid, below <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span> type the following ListBox XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ListBox</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="Size"
+<span class="tut-attr">SelectionChanged</span>="Size_SelectionChanged"&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="1"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="1" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="2"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="2" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="5" <span class="tut-attr">IsSelected</span>="True"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="5" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="10"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="10" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="15"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="15" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="20"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="25"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="25" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="30"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="30" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="40"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="40" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="50"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Width</span>="340" <span class="tut-attr">Height</span>="50" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+&lt;/<span class="tut-valu">ListBox</span>&gt;</span>
+ 
+<span class="tut-rsvd">&lt;<span class="tut-valu">ListBox</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Name</span>="Colour"
+<span class="tut-attr">SelectionChanged</span>="Colour_SelectionChanged"&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FF000000" <span class="tut-attr">IsSelected</span>="True"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Black"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FF808080"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Gray"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FFFF0000"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Red"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FFFFA500"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Orange"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FFFFFF00"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Yellow"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FF008000"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Green"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FF00FFFF"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Cyan"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FF0000FF"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Blue"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FFFF00FF"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Magenta"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ListBoxItem</span> <span class="tut-attr">Tag</span>="FF800080"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="Purple"/&gt;
+  &lt;/<span class="tut-valu">ListBoxItem</span>&gt;
+&lt;/<span class="tut-valu">ListBox</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padlstxaml.png" width="830" height="1105" alt="MainPage ListBoxes XAML" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padlstdesign.png" width="359" height="660" alt="MainPage ListBoxes Design View" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+While still in the XAML Pane for MainPage.xaml below the <span class="tut-cmnt">&lt;!-- Content --&gt;</span> line, type the following InkPresenter XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">InkPresenter</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Background</span>="White" <span class="tut-attr">Name</span>="Surface" 
+<span class="tut-attr">MouseLeftButtonDown</span>="Surface_MouseLeftButtonDown" 
+<span class="tut-attr">MouseLeftButtonUp</span>="Surface_MouseLeftButtonUp" 
+<span class="tut-attr">MouseMove</span>="Surface_MouseMove" /&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padinkxaml.png" width="544" height="81" alt="MainPage InkPresenter XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padinkdesign.png" width="359" height="660" alt="MainPage InkPresenter Design View" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Select the "MainPage.xaml" Tab then Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View above "namespace DoodlePad" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Xml.Linq;
+<span class="tut-rsvd">using</span> System.Windows.Ink;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public MainPage()" type the following declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">App</span> app = (<span class="tut-symb">App</span>)<span class="tut-symb">Application</span>.Current;
+<span class="tut-rsvd">public</span> <span class="tut-symb">Stroke</span> drawStroke;
+<span class="tut-rsvd">public</span> <span class="tut-symb">Color</span> drawColour = <span class="tut-symb">Colors</span>.Black;
+<span class="tut-rsvd">public</span> <span class="tut-symb">Size</span> drawSize = <span class="tut-rsvd">new</span> <span class="tut-symb">Size</span> { Height = 5, Width = 5 };
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padref.png" width="472" height="493" alt="MainPage Includes and Application Declaration" />
+</div> 
+<p class="tutorial-step">Step 25</p>
+<p>
+While still in the Code View for MainPage.xaml.cs in the "public MainPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"DOODLE PAD"</span>;
+PageTitle.Text = <span class="tut-valu">"untitled.ipr"</span>;
+Loaded += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e) =>
+{
+  <span class="tut-rsvd">if</span> (app.Content != <span class="tut-rsvd">null</span>)
+  {
+    Surface.Strokes.Clear();
+    Surface.Strokes = (<span class="tut-symb">StrokeCollection</span>)app.Content;
+  }
+  <span class="tut-rsvd">if</span> (app.Filename == <span class="tut-rsvd">null</span> || app.Filename == <span class="tut-valu">""</span>)
+  {      
+    PageTitle.Text = <span class="tut-valu">"untitled.ipr"</span>;
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    PageTitle.Text = app.Filename;
+  }
+};
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padinit.png" width="486" height="349" alt="MainPage Constructor" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+While still in the Code View for MainPage.xaml.cs, below the "}" of the "public MainPage()" method type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> New_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (<span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Start a new Doodle?"</span>, <span class="tut-valu">"Doodle Pad"</span>,
+  <span class="tut-symb">MessageBoxButton</span>.OKCancel) == <span class="tut-symb">MessageBoxResult</span>.OK)
+  {
+    PageTitle.Text = <span class="tut-valu">"untitled.ipr"</span>;
+    Surface.Strokes.Clear();
+    app.Filename = PageTitle.Text;
+    app.Content = Surface.Strokes;
+  }
+}
+
+<span class="tut-rsvd">private void</span> Open_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  app.Content = Surface.Strokes;
+  NavigationService.Navigate(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(<span class="tut-valu">"/OpenPage.xaml"</span>, <span class="tut-symb">UriKind</span>.Relative));
+}
+
+<span class="tut-rsvd">private void</span> Save_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  app.Content = Surface.Strokes;
+  NavigationService.Navigate(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(<span class="tut-valu">"/SavePage.xaml"</span>, <span class="tut-symb">UriKind</span>.Relative));
+}
+
+<span class="tut-rsvd">private void</span> Surface_MouseLeftButtonDown(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">MouseButtonEventArgs</span> e)
+{
+  drawStroke = <span class="tut-rsvd">new</span> <span class="tut-symb">Stroke</span>();
+  drawStroke.DrawingAttributes.Color = drawColour;
+  drawStroke.DrawingAttributes.Width = drawSize.Width;
+  drawStroke.DrawingAttributes.Height = drawSize.Height;
+  drawStroke.StylusPoints.Add(<span class="tut-rsvd">new</span> <span class="tut-symb">StylusPoint</span> 
+  {
+    X = e.GetPosition(Surface).X, 
+    Y= e.GetPosition(Surface).Y
+  });
+  Surface.Strokes.Add(drawStroke);
+}
+
+<span class="tut-rsvd">private void</span> Surface_MouseLeftButtonUp(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">MouseButtonEventArgs</span> e)
+{
+  drawStroke = <span class="tut-rsvd">null</span>;
+}
+
+<span class="tut-rsvd">private void</span> Surface_MouseMove(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">MouseEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (drawStroke != <span class="tut-rsvd">null</span>)
+  {
+    drawStroke.StylusPoints.Add(<span class="tut-rsvd">new</span> <span class="tut-symb">StylusPoint</span>
+    {
+      X = e.GetPosition(Surface).X,
+      Y = e.GetPosition(Surface).Y
+    });
+  }
+}
+
+<span class="tut-rsvd">private void</span> Size_SelectionChanged(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">SelectionChangedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (Size != <span class="tut-rsvd">null</span>)
+  {
+    <span class="tut-rsvd">double</span> _drawWidth = <span class="tut-rsvd">double</span>.Parse(((<span class="tut-symb">ListBoxItem</span>)Size.SelectedItem).Tag.ToString());
+    drawSize = <span class="tut-rsvd">new</span> <span class="tut-symb">Size</span> { Height = _drawWidth, Width = _drawWidth };
+  }
+}
+
+<span class="tut-rsvd">private void</span> Colour_SelectionChanged(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">SelectionChangedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (Colour != <span class="tut-rsvd">null</span>)
+  {
+    <span class="tut-rsvd">string</span> _colour = (<span class="tut-rsvd">string</span>)((<span class="tut-symb">ListBoxItem</span>)Colour.SelectedItem).Tag;
+    drawColour = <span class="tut-symb">Color</span>.FromArgb(
+      <span class="tut-rsvd">byte</span>.Parse(_colour.Substring(0, 2),
+      System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+      <span class="tut-rsvd">byte</span>.Parse(_colour.Substring(2, 2),
+      System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+      <span class="tut-rsvd">byte</span>.Parse(_colour.Substring(4, 2),
+      System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+      <span class="tut-rsvd">byte</span>.Parse(_colour.Substring(6, 2),
+      System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber));
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padcode.png" width="696" height="1277" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+Scroll down the "Colour" ListBox then Tap a Colour for example Blue to select a Draw Colour, select a Draw Width the same way then Tap-and-hold to draw something, which can then be saved, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7padapp.png" width="359" height="660" alt="Doodle Pad" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple Doodle Pad example using the InkPresenter and LINQ-to-XML to Save and Open the "strokes" used to draw with,
+try adding more features such as more Draw Widths and Colours - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

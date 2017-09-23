@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Alarm Clock</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Alarm Clock</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>In this tutorial you will learn how to create an Analogue Clock User Control which displays the Time and Alarm setting,
+which can be used to create a simple Alarm Clock!</p>
+<p>
+<em class="icon-print"><a href="tutorials/vb08tut18.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vb08tut18.zip">Download Tutorial</a> 571KB)</em>
+<em class="icon-dload"><a href="tutorials/vb08tut18code.zip">Download Source Code</a> (16.8KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Windows Forms Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08newapp.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08form1.png" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Form1 selected goto the Properties box and change the Name from Form1 to frmMain
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08form1prop.png" width="203" height="431" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then select Project then Add User Control... and choose the "User Control" Template if it is not already selected and give it the Name "Clock.vb" without the quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08clock.png" width="804" height="482" alt="Clock User Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+With the blank Clock User Control displayed, if not double click on the "Clock.vb" item in Solution Explorer, 
+then right click on the User Control or the entry for it in Solution Explorer, then select View Code, 
+enter the following above the Public Class Clock line: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Drawing.Drawing2D
+<span class="tut-rsvd">Imports</span> System.Drawing.Text
+</pre>
+</blockquote>
+<p>
+Then enter the following below the Public Class Clock:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Tick Style of Clock<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Enum</span> TickStyle
+    Smooth = 0
+    Normal = 1
+<span class="tut-rsvd">End Enum</span>
+
+<span class="tut-cmnt">' Private Members</span>
+
+<span class="tut-rsvd">Private</span> Smooth <span class="tut-rsvd">As</span> SmoothingMode = SmoothingMode.AntiAlias
+<span class="tut-rsvd">Private</span> Rendering <span class="tut-rsvd">As</span> TextRenderingHint = TextRenderingHint.AntiAlias
+<span class="tut-rsvd">Private</span> tsSecondHand <span class="tut-rsvd">As</span> TickStyle = TickStyle.Normal
+<span class="tut-rsvd">Private</span> tsMinuteHand <span class="tut-rsvd">As</span> TickStyle = TickStyle.Normal
+<span class="tut-rsvd">Private</span> cSecondHand <span class="tut-rsvd">As</span> Color = Color.Tomato
+<span class="tut-rsvd">Private</span> cMinuteHand <span class="tut-rsvd">As</span> Color = Color.Gainsboro
+<span class="tut-rsvd">Private</span> cHourHand <span class="tut-rsvd">As</span> Color = Color.WhiteSmoke
+<span class="tut-rsvd">Private</span> cAlarmHand <span class="tut-rsvd">As</span> Color = Color.Orange
+<span class="tut-rsvd">Private</span> Face <span class="tut-rsvd">As</span> Color = Color.RoyalBlue
+<span class="tut-rsvd">Private</span> Rim <span class="tut-rsvd">As</span> Color = Color.Blue
+<span class="tut-rsvd">Private</span> NumeralForeColor <span class="tut-rsvd">As</span> Color = Color.WhiteSmoke
+<span class="tut-rsvd">Private</span> ClockTime <span class="tut-rsvd">As</span> DateTime = Now()
+<span class="tut-rsvd">Private</span> AlarmTime <span class="tut-rsvd">As</span> DateTime
+<span class="tut-rsvd">Private</span> NumeralFont <span class="tut-rsvd">As</span> Font = <span class="tut-rsvd">Me</span>.Font
+<span class="tut-rsvd">Private</span> DrawSecondHand <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">Private</span> DrawMinuteHand <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">Private</span> DrawHourHand <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">Private</span> DrawAlarmHand <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">Private</span> DrawNumerals <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">Private</span> Radius <span class="tut-rsvd">As Single</span>
+<span class="tut-rsvd">Private</span> midX <span class="tut-rsvd">As Single</span>
+<span class="tut-rsvd">Private</span> midY <span class="tut-rsvd">As Single</span>
+<span class="tut-rsvd">Private</span> Y <span class="tut-rsvd">As Single</span>
+<span class="tut-rsvd">Private</span> X <span class="tut-rsvd">As Single</span>
+<span class="tut-rsvd">Private</span> SecondAngle <span class="tut-rsvd">As Single</span>
+<span class="tut-rsvd">Private</span> MinuteAngle <span class="tut-rsvd">As Single</span>
+<span class="tut-rsvd">Private</span> HourAngle <span class="tut-rsvd">As Single</span>
+<span class="tut-rsvd">Private</span> AlarmAngle <span class="tut-rsvd">As Single</span>
+<span class="tut-rsvd">Private</span> Hour <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Private</span> Minute <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Private</span> Second <span class="tut-rsvd">As Integer</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08clockdecs.png" width="592" height="780" alt="Clock User Control Imports and Declarations" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+With the Clock User Control Code View still displayed, enter the following Private Methods below the "Private Members" section and above "End Class":
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Private Methods</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>GetX<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Deg"&gt;</span>Degrees<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> GetX(<span class="tut-rsvd">ByVal</span> Deg <span class="tut-rsvd">As Single</span>)
+  <span class="tut-rsvd">Return CType</span>(Radius * Math.Cos((Math.PI / 180) * Deg), <span class="tut-rsvd">Single</span>)
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>GetY<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Deg"&gt;</span>Degrees<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> GetY(<span class="tut-rsvd">ByVal</span> Deg <span class="tut-rsvd">As Single</span>)
+  <span class="tut-rsvd">Return CType</span>(Radius * Math.Sin((Math.PI / 180) * Deg), <span class="tut-rsvd">Single</span>)
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Draw Clock on GDI Surface<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="g"&gt;</span>Graphics Surface<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-rsvd">Private Sub</span> DrawClock(<span class="tut-rsvd">ByVal</span> g <span class="tut-rsvd">As</span> Graphics)
+  <span class="tut-rsvd">Dim</span> Surface <span class="tut-rsvd">As</span> Graphics = g
+  Surface.SmoothingMode = Smooth
+  Surface.TextRenderingHint = Rendering
+  Surface.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic
+  midX = ClientSize.Width / 2
+  midY = ClientSize.Height / 2
+  X = ClientSize.Width
+  Y = ClientSize.Height
+  <span class="tut-rsvd">Dim</span> TextBrush <span class="tut-rsvd">As New</span> SolidBrush(NumeralForeColor)
+  <span class="tut-rsvd">Dim</span> Pen <span class="tut-rsvd">As New</span> Pen(NumeralForeColor)
+  <span class="tut-cmnt">' Define Rectangles</span>
+  <span class="tut-rsvd">Dim</span> Rect <span class="tut-rsvd">As New</span> Rectangle(0 + 10, 0 + 10, <span class="tut-rsvd">CInt</span>(X - 20), <span class="tut-rsvd">CInt</span>(Y - 20))
+  <span class="tut-rsvd">Dim</span> RectRim <span class="tut-rsvd">As New</span> Rectangle(0 + 20, 0 + 20, <span class="tut-rsvd">CInt</span>(X - 40), <span class="tut-rsvd">CInt</span>(Y - 40))
+  <span class="tut-rsvd">Dim</span> RectInner <span class="tut-rsvd">As New</span> Rectangle(0 + 40, 0 + 40, <span class="tut-rsvd">CInt</span>(X - 80), <span class="tut-rsvd">CInt</span>(Y - 80))
+  Radius = RectInner.Width / 2
+  NumeralFont = <span class="tut-rsvd">Me</span>.Font
+  <span class="tut-cmnt">' Face</span>
+  <span class="tut-rsvd">Dim</span> FaceBrush <span class="tut-rsvd">As New</span> SolidBrush(Face)
+  Surface.FillEllipse(FaceBrush, Rect)
+  <span class="tut-cmnt">' Rim</span>
+  <span class="tut-rsvd">Dim</span> RimBrush = <span class="tut-rsvd">New</span> SolidBrush(Rim)
+  Surface.FillEllipse(RimBrush, RectRim)
+  Surface.TranslateTransform(midX, midY) <span class="tut-cmnt">' Define Centre</span>
+  <span class="tut-rsvd">Using</span> Format <span class="tut-rsvd">As New</span> StringFormat
+    Format.Alignment = StringAlignment.Center
+    Format.LineAlignment = StringAlignment.Center
+    <span class="tut-cmnt">' Draw Numerals</span>
+    <span class="tut-rsvd">Dim</span> deg <span class="tut-rsvd">As Integer</span> = 360 / 12
+    <span class="tut-rsvd">If</span> Numerals <span class="tut-rsvd">Then
+      For</span> i <span class="tut-rsvd">As Integer</span> = 1 <span class="tut-rsvd">To</span> 12
+        Surface.DrawString(i.ToString(), NumeralFont, TextBrush, _
+                           -1 * GetX(i * deg + 90), -1 * GetY(i * deg + 90), Format)
+      <span class="tut-rsvd">Next
+    End If
+  End Using</span>
+  Hour = ClockTime.Hour
+  Minute = ClockTime.Minute
+  <span class="tut-rsvd">Dim</span> Centre <span class="tut-rsvd">As New</span> Point(0, 0)
+  <span class="tut-rsvd">If</span> DrawAlarmHand <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Draw Alarm Hand</span>
+      AlarmAngle = 2.0 * Math.PI * (AlarmTime.Hour + AlarmTime.Minute / 60.0) / 12.0
+      Pen.EndCap = LineCap.ArrowAnchor
+      Pen.StartCap = LineCap.RoundAnchor
+      Pen.Width = <span class="tut-rsvd">CInt</span>(Radius / 20)
+      Pen.Color = cAlarmHand
+      <span class="tut-rsvd">Dim</span> AlarmHand <span class="tut-rsvd">As New</span> Point(<span class="tut-rsvd">CInt</span>(Radius * Math.Sin(AlarmAngle) / 1.75), _
+                                 <span class="tut-rsvd">CInt</span>(-(Radius) * Math.Cos(AlarmAngle) / 1.75))
+      Surface.DrawLine(Pen, Centre, AlarmHand) <span class="tut-cmnt">' Alarm Hour</span>
+      AlarmAngle = <span class="tut-rsvd">CType</span>(2.0 * Math.PI * (AlarmTime.Minute + AlarmTime.Second / 60.0) / 60.0, <span class="tut-rsvd">Single</span>)
+      AlarmHand = <span class="tut-rsvd">New</span> Point(<span class="tut-rsvd">CInt</span>(Radius * Math.Sin(AlarmAngle) / 1.25), _
+                            <span class="tut-rsvd">CInt</span>(-(Radius) * Math.Cos(AlarmAngle) / 1.25))
+      Surface.DrawLine(Pen, Centre, AlarmHand) <span class="tut-cmnt">' Alarm Minute</span>
+  <span class="tut-rsvd">End If
+  If</span> DrawHourHand <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Draw Hour Hand</span>
+    HourAngle = 2.0 * Math.PI * (Hour + Minute / 60.0) / 12.0
+    Pen.EndCap = LineCap.Round
+    Pen.StartCap = LineCap.RoundAnchor
+    Pen.Width = <span class="tut-rsvd">CInt</span>(Radius / 14)
+    Pen.Color = cHourHand
+    <span class="tut-rsvd">Dim</span> HourHand <span class="tut-rsvd">As New</span> Point(<span class="tut-rsvd">CInt</span>(Radius * Math.Sin(HourAngle) / 1.5), _
+                              <span class="tut-rsvd">CInt</span>(-(Radius) * Math.Cos(HourAngle) / 1.5))
+    Surface.DrawLine(Pen, Centre, HourHand)
+  <span class="tut-rsvd">End If
+  If</span> DrawMinuteHand <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Draw Minute Hand</span>
+    <span class="tut-rsvd">If</span> tsMinuteHand = TickStyle.Smooth <span class="tut-rsvd">Then</span>
+      MinuteAngle = <span class="tut-rsvd">CType</span>(2.0 * Math.PI * (Minute + Second / 60.0) / 60.0, <span class="tut-rsvd">Single</span>)
+    <span class="tut-rsvd">Else</span>
+      MinuteAngle = <span class="tut-rsvd">CType</span>(2.0 * Math.PI * (Minute / 60.0), <span class="tut-rsvd">Single</span>)
+    <span class="tut-rsvd">End If</span>
+    Pen.EndCap = LineCap.Round
+    Pen.StartCap = LineCap.RoundAnchor
+    Pen.Width = <span class="tut-rsvd">CInt</span>(Radius / 14)
+    Pen.Color = cMinuteHand
+    <span class="tut-rsvd">Dim</span> MinHand <span class="tut-rsvd">As New</span> Point(<span class="tut-rsvd">CInt</span>(Radius * Math.Sin(MinuteAngle)), _
+                             <span class="tut-rsvd">CInt</span>(-(Radius) * Math.Cos(MinuteAngle)))
+    Surface.DrawLine(Pen, Centre, MinHand)
+  <span class="tut-rsvd">End If
+  If</span> DrawSecondHand <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Draw Second Hand</span>
+      <span class="tut-rsvd">If</span> tsSecondHand = TickStyle.Smooth <span class="tut-rsvd">Then</span>
+          Second = ClockTime.Second + (ClockTime.Millisecond * 0.001)
+      <span class="tut-rsvd">Else</span>
+          Second = ClockTime.Second
+      <span class="tut-rsvd">End If</span>
+      SecondAngle = 2.0 * Math.PI * Second / 60.0
+      Pen.EndCap = LineCap.Triangle
+      Pen.StartCap = LineCap.RoundAnchor
+      Pen.Width = <span class="tut-rsvd">CInt</span>(Radius / 25)
+      Pen.Color = cSecondHand
+      <span class="tut-rsvd">Dim</span> SecHand <span class="tut-rsvd">As New</span> Point(<span class="tut-rsvd">CInt</span>(Radius * Math.Sin(SecondAngle)), _
+                               <span class="tut-rsvd">CInt</span>(-(Radius) * Math.Cos(SecondAngle)))
+      Surface.DrawLine(Pen, Centre, SecHand)
+  <span class="tut-rsvd">End If</span>
+  Pen.Dispose() <span class="tut-cmnt">' Cleanup Pen</span>
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08clockprimet.png" width="868" height="1864" alt="Clock Private Methods" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Again, with the Clock User Control Code View still displayed, enter the Constructor and following Public Properties above "End Class" and below the "Private Methods" section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Constructor<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Sub New</span>()
+  <span class="tut-cmnt">' This call is required by the Windows Form Designer.</span>
+  InitializeComponent()
+  <span class="tut-cmnt">' Add any initialization after the InitializeComponent() call.</span>
+  <span class="tut-rsvd">Me</span>.SetStyle(ControlStyles.OptimizedDoubleBuffer, <span class="tut-rsvd">True</span>)
+  <span class="tut-rsvd">Me</span>.SetStyle(ControlStyles.UserPaint, <span class="tut-rsvd">True</span>)
+  <span class="tut-rsvd">Me</span>.SetStyle(ControlStyles.AllPaintingInWmPaint, <span class="tut-rsvd">True</span>)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-cmnt">' Public Properties</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Determines what Draw Smoothing should be applied<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>SmoothingMode<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Smooth as SmoothingMode<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> DrawSmoothing() <span class="tut-rsvd">As</span> SmoothingMode
+  <span class="tut-rsvd">Get
+    Return</span> Smooth
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> SmoothingMode)
+    Smooth = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Determines what Text Smoothing should be applied<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>TextRenderingHint<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Rendering as TextRenderingHint<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> TextSmoothing() <span class="tut-rsvd">As</span> TextRenderingHint
+  <span class="tut-rsvd">Get
+    Return</span> Rendering
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> TextRenderingHint)
+    Rendering = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Defines Second Hand Tick Style<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>Value as TickStyle<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>SecondHand TickStyle<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> SecondHandTickStyle() <span class="tut-rsvd">As</span> TickStyle
+  <span class="tut-rsvd">Get
+    Return</span> tsSecondHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> TickStyle)
+    tsSecondHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Defines Minute Hand Tick Style<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>Value as TickStyle<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>MinuteHand TickStyle<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> MinuteHandTickStyle() <span class="tut-rsvd">As</span> TickStyle
+  <span class="tut-rsvd">Get
+    Return</span> tsMinuteHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> TickStyle)
+    tsMinuteHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Clock Face Colour<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> FaceColour() <span class="tut-rsvd">As</span> Color
+  <span class="tut-rsvd">Get
+    Return</span> Face
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> Color)
+    Face = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Clock Rim Colour<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> RimColour() <span class="tut-rsvd">As</span> Color
+  <span class="tut-rsvd">Get
+    Return</span> Rim
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> Color)
+    Rim = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Second Hand Colour<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> SecondHandColor() <span class="tut-rsvd">As Color</span>
+  <span class="tut-rsvd">Get
+    Return</span> cSecondHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> Color)
+    cSecondHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Minute Hand Colour<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> MinuteHandColor() <span class="tut-rsvd">As</span> Color
+  <span class="tut-rsvd">Get
+    Return</span> cMinuteHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> Color)
+    cMinuteHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Hour Hand Colour<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> HourHandColor() <span class="tut-rsvd">As</span> Color
+  <span class="tut-rsvd">Get
+    Return</span> cHourHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> Color)
+    cHourHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Alarm Hand Colour<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> AlarmHandColor() <span class="tut-rsvd">As</span> Color
+  <span class="tut-rsvd">Get
+    Return</span> cAlarmHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> Color)
+    cAlarmHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Numeral Colour<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> NumeralColour() <span class="tut-rsvd">As</span> Color
+  <span class="tut-rsvd">Get
+    Return</span> NumeralForeColor
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> Color)
+    NumeralForeColor = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Draw Second Hand<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> SecondHand() <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> DrawSecondHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Boolean</span>)
+    DrawSecondHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Draw Minute Hand<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> MinuteHand() <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> DrawMinuteHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Boolean</span>)
+    DrawMinuteHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Draw Hour Hand<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> HourHand() <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> DrawHourHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Boolean</span>)
+    DrawHourHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Draw Alarm Hand<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> AlarmHand() <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> DrawAlarmHand
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Boolean</span>)
+    DrawAlarmHand = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Draw Clock Face Numerals<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Numerals() <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> DrawNumerals
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Boolean</span>)
+    DrawNumerals = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Clock Time<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Time() <span class="tut-rsvd">As</span> DateTime
+  <span class="tut-rsvd">Get
+    Return</span> ClockTime
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> DateTime)
+    ClockTime = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Alarm Time<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Alarm() <span class="tut-rsvd">As</span> DateTime
+  <span class="tut-rsvd">Get
+    Return</span> AlarmTime
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> DateTime)
+    AlarmTime = Value
+    Invalidate()
+  <span class="tut-rsvd">End Set
+End Property</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08clockpubpro.png" width="616" height="3724" alt="Clock Constructor and Public Properties" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Again while still in the Code View, there are two drop-down boxes, select "(Clock Events)" from the first "(General)",
+and then from the other "(Declarations)" select "Paint" and type the following in the Clock_Paint(...) Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+DrawClock(e.Graphics)
+</pre>
+</blockquote>
+<p>
+Finally, select "(Clock Events)" from first drop-down list in Code View again then select "Resize" from 
+the "(Declarations)" drop-down and type the following in the Clock_Resize(...) Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Me</span>.Width = <span class="tut-rsvd">Me</span>.Height
+<span class="tut-rsvd">Me</span>.Height = <span class="tut-rsvd">Me</span>.Width
+Invalidate()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08clockevents.png" width="632" height="220" alt="Clock Events" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+The Clock User Control is now Completed, to use it in the application click on Build, then "Build AlarmClock":
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08alarmclockbuild.png" width="148" height="22" alt="Build AlarmClock" />
+</div>
+<p>
+You may be asked to Save your Project, when you do and the Build has completed. Select the Clock Component that appears in the Toolbox under AlarmClock Components:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08clockitem.png" width="240" height="400" alt="Clock Component" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Display frmMain by double-clicking on the entry for it in Solution Explorer, or select the "frmMain [Design]" Tab, then
+draw the Clock Component on the Form, make sure to position and size the Control so it appears as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainclock.png" width="300" height="300" alt="frmMain with Clock" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Then goto the Properties box and change the Name to "Clock", without quotes, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08clockprop.png" width="203" height="399" alt="Clock Properties" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Then from the Common Controls tab on the Toolbox select the CheckBox component:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08checkbox.png" width="240" height="400" alt="CheckBox Component" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Draw a CheckBox on the Form, make sure to position the Control so it appears as below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainclockchkbox.png" width="300" height="300" alt="frmMain with CheckBox" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Then goto the Properties box and change the Name to "SetAlarm" and Text to "Set Alarm", both without quotes, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08setalarmprop.png" width="203" height="399" alt="SetAlarm Properties" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Then from the Common Controls tab on the Toolbox select the DateTimePicker Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08datetimepicker.png" width="240" height="400" alt="DateTimePicker Component" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Draw a DateTimePicker on the Form, make sure to position and size the Control so it appears as below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainclockdtp.png" width="300" height="300" alt="frmMain with DateTimePicker" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Then goto the Properties box and change the Name to "Alarm", CustomFormat to "hh:mm", Format to "Custom" and ShowUpDown to "True", all without quotes, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08alarmprop.png" width="203" height="399" alt="Alarm Properties" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Then from the Components tab on the Toolbox select the Timer Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08timer.png" width="240" height="400" alt="Timer Component" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Draw a Timer on the Form, or double-click on the Timer entry in the Toolbox, and it will appear in the pane, beneath the form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08panetimer.png" width="200" height="83" alt="Timer in Pane below frmMain" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Then goto the Properties box and change the Name to "Display, Enabled to "True" and the Interval property to "100", all without quotes, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08displaytimerprop.png" width="203" height="399" alt="Timer Properties" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the frmMain entry in Solution Explorer, then Double-click on the DateTimePicker,
+and type the following in the Alarm_ValueChanged(...) Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Clock.Alarm = Alarm.Value
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08alarmvaluechanged.png" width="552" height="82" alt="DateTimePicker ValueChanged Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the frmMain entry in Solution Explorer, then Double-click on the Timer called Display in the Pane below frmMain,
+and type the following in the Display_Tick(...) Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Clock.Time = Now() <span class="tut-cmnt">' Update Clock Time</span>
+<span class="tut-rsvd">If</span> Format(Clock.Time, <span class="tut-valu">"hh:mm:ss"</span>) = _
+Format(Clock.Alarm, <span class="tut-valu">"hh:mm"</span>) &amp; <span class="tut-valu">":00"</span> <span class="tut-rsvd">And</span> _
+SetAlarm.Checked <span class="tut-rsvd">Then</span>
+    Display.Stop() <span class="tut-cmnt">' Stop Clock</span>
+    MsgBox(<span class="tut-valu">"Alarm!"</span>, MsgBoxStyle.SystemModal, <span class="tut-valu">"Alarm Clock"</span>)
+    Display.Start() <span class="tut-cmnt">' Start Clock</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08displaytimertick.png" width="556" height="200" alt="Timer Tick Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the [Design] Tab to view the form again, then Double Click on the Form (frmMain) and 
+type the following in the frmMain_Load() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+Clock.Alarm = Now()
+Alarm.Value = Now()
+<span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Alarm Clock"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08alarmclockload.png" width="504" height="114" alt="frmMain Load Event" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08alarmclockrun.png" width="300" height="300" alt="Alarm Clock Running" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Set the Alarm using the DateTimePicker then Check the Set Alarm Checkbox, a Message Box will appear when the Alarm goes off, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08alarmclockshow.png" width="300" height="300" alt="Alarm Clock" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Click on the Close button <img src="tutorials/vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right to end the application.
+</p>
+<p>
+This is a very simple Alarm Clock application, you can enhance the Clock by using different colours or change SolidBrush to something else
+such as a GradientBrush! You can also improve what happens when the Alarm goes off, it is up to you, make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

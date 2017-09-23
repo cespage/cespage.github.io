@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Application Bar</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Application Bar</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>Windows Phone 7 supports the Application Bar which allows menu functionality to be added to an Application that 
+fits with the look and feel of the device.</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut2.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut2.zip">Download Tutorial</a> (340KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut2code.zip">Download Source Code</a> (17.5KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Right Click on the Entry for the Project in the Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "images" (without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appbarsolexp.png" width="217" height="527" alt="Project Images Folder" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Download the following images (opacity.png &amp; menu.png) by right-clicking on the images below and choose "Save Picture As..." or 
+"Save Image As..." and Save them to a Folder on your computer:
+</p>
+<blockquote>
+<div class="tut-img">
+<img src="tutorials/opacity.png" width="48" height="48" alt="Opacity Application Bar Icon" />
+<img src="tutorials/menu.png" width="48" height="48" alt="Menu Application Bar Icon" />
+</div>
+</blockquote>
+<p class="tutorial-step">Step 5</p>
+<p>
+Right Click on the Entry for the "image" Folder for the Project in Solution Explorer, and choose "Add", then "Existing Item...", 
+then in the "Add Existing Item" dialog select Folder you saved the images, then choose "Add"
+to add opacity.png and menu.png to the images folder in the project, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appbarsolexpimg.png" width="217" height="527" alt="Project Images Folder with Images" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the Solution Explorer click on the "menu.png" image then goto the Properties box and change the
+Build Action to Content, do the same for the "opacity.png" image, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appbarimgprop.png" width="217" height="393" alt="Image Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+While still in the XAML Pane above the "<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="Transparent"&gt;</span>" Tag type the following ApplicationBar XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="False"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="opacity" <span class="tut-attr">IconUri</span>="/images/opacity.png" <span class="tut-attr">Click</span>="Opacity_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="menu" <span class="tut-attr">IconUri</span>="/images/menu.png" <span class="tut-attr">Click</span>="ShowMenu_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.MenuItems</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarMenuItem</span> <span class="tut-attr">Text</span>="hide menu" <span class="tut-attr">Click</span>="HideMenu_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.MenuItems</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appbarxaml.png" width="824" height="173" alt="ApplicationBar XAML" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View below the "}" of the "public MainPage()" method type the following Event Handlers: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Opacity_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (ApplicationBar.Opacity == 0)
+  {
+    ApplicationBar.Opacity = 1;
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    ApplicationBar.Opacity = 0;
+  }
+}
+
+<span class="tut-rsvd">private void</span> ShowMenu_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  ApplicationBar.IsMenuEnabled = <span class="tut-rsvd">true</span>;
+}
+
+<span class="tut-rsvd">private void</span> HideMenu_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  ApplicationBar.IsMenuEnabled = <span class="tut-rsvd">false</span>;
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appbarcode.png" width="452" height="541" alt="MainPage Code" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appbarrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+You can click on the first button, Opacity which will toggle the Opacity of the Application Bar and the second button, Menu
+which will display the menu - click on the "..." to display the menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appbarapp.png" width="359" height="660" alt="Application Bar" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This was a simple Application Bar example for Windows Phone - you can add up to four of the image style buttons so try adding more
+buttons, plus the menu can support more items - common features should be on the Application Bar and less common ones in the menu - make
+it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

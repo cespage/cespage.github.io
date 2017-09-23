@@ -1,0 +1,836 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Rich Text Editor</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Rich Text Editor</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>In this tutorial you will create a Rich Text Editor using an extended version of the Rich Text Box Component to support Printing, 
+also included Open and Save Support plus Formatting like Highlight and Bold, Italics and Underline.</p>
+<p>
+<em class="icon-print"><a href="tutorials/vb08tut14.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vb08tut14.zip">Download Tutorial</a> (564KB)</em>
+<em class="icon-dload"><a href="tutorials/vb08tut14code.zip">Download Source Code</a> (16.1KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Windows Forms Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08newapp.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08form1.png" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Form1 selected goto the Properties box and change the Name from Form1 to frmMain
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08form1prop.png" width="203" height="431" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then select Project then Add Class... and choose the "Class" Template if it is not already selected and give it the Name "RichTextBoxPrint.vb" without the quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08rtbprint.png" width="804" height="482" alt="RichTextBoxPrint Class" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+With the empty RichTextBoxPrint Class displayed, if not double click on the "RichTextBoxPrint.vb" item in Solution Explorer, then enter the following 
+above the Public Class RichTextBoxPrint line: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Drawing.Printing
+<span class="tut-rsvd">Imports</span> System.Runtime.InteropServices 
+</pre>
+</blockquote>
+<p>
+Enter the following below the Public Class RichTextBoxPrint:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Inherits</span> RichTextBox
+
+<span class="tut-cmnt">' Private Constants</span>
+
+<span class="tut-rsvd">Private Const</span> AnInch <span class="tut-rsvd">As Double</span> = 14.4 <span class="tut-cmnt">' Convert .NET Units to Win32 API Units</span>
+<span class="tut-rsvd">Private Const</span> WM_USER <span class="tut-rsvd">As Integer</span> = &amp;H400
+<span class="tut-rsvd">Private Const</span> EM_FORMATRANGE <span class="tut-rsvd">As Integer</span> = WM_USER + 57
+
+<span class="tut-cmnt">' API Structures and Method</span>
+
+&lt;StructLayout(LayoutKind.Sequential)&gt; _
+<span class="tut-rsvd">Private Structure</span> RECT
+  <span class="tut-rsvd">Public</span> Left <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Public</span> Top <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Public</span> Right <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Public</span> Bottom <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">End Structure</span>
+&lt;StructLayout(LayoutKind.Sequential)&gt; _
+<span class="tut-rsvd">Private Structure</span> CHARRANGE
+  <span class="tut-rsvd">Public</span> cpMin <span class="tut-rsvd">As Integer</span> <span class="tut-cmnt">' First character of range (0 for start of doc)</span>
+  <span class="tut-rsvd">Public</span> cpMax <span class="tut-rsvd">As Integer</span> <span class="tut-cmnt">' Last character of range (-1 for end of doc)</span>
+<span class="tut-rsvd">End Structure</span>
+&lt;StructLayout(LayoutKind.Sequential)&gt; _
+<span class="tut-rsvd">Private Structure</span> FORMATRANGE
+  <span class="tut-rsvd">Public</span> hdc <span class="tut-rsvd">As</span> IntPtr <span class="tut-cmnt">' Actual Device Context to draw on</span>
+  <span class="tut-rsvd">Public</span> hdcTarget <span class="tut-rsvd">As</span> IntPtr <span class="tut-cmnt">' Target DC for text formatting</span>
+  <span class="tut-rsvd">Public</span> rc <span class="tut-rsvd">As</span> RECT <span class="tut-cmnt">' Region of the DC to draw to in twips</span>
+  <span class="tut-rsvd">Public</span> rcPage <span class="tut-rsvd">As</span> RECT <span class="tut-cmnt">' Region of the whole DC (page size) in twips</span>
+  <span class="tut-rsvd">Public</span> chrg <span class="tut-rsvd">As</span> CHARRANGE <span class="tut-cmnt">' Range of text to draw</span>
+<span class="tut-rsvd">End Structure</span>
+
+<span class="tut-rsvd">Private Declare Function</span> SendMessage <span class="tut-rsvd">Lib</span> <span class="tut-valu">"USER32"</span> <span class="tut-rsvd">Alias</span> <span class="tut-valu">"SendMessageA"</span> _
+(<span class="tut-rsvd">ByVal</span> hWnd <span class="tut-rsvd">As</span> IntPtr, <span class="tut-rsvd">ByVal</span> msg <span class="tut-rsvd">As Integer</span>, _
+ <span class="tut-rsvd">ByVal</span> wp <span class="tut-rsvd">As</span> IntPtr, <span class="tut-rsvd">ByVal</span> lp <span class="tut-rsvd">As</span> IntPtr) <span class="tut-rsvd">As</span> IntPtr
+ 
+<span class="tut-cmnt">' Private and Public Members</span>
+ 
+<span class="tut-rsvd">Private</span> checkPrint <span class="tut-rsvd">As Integer</span> = 0 <span class="tut-cmnt">' Check Print Value</span>
+<span class="tut-rsvd">Public WithEvents</span> PrintDocument <span class="tut-rsvd">As New</span> PrintDocument <span class="tut-cmnt">' Printer Document</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08rtbprintdecs.png" width="664" height="764" alt="RichTextBoxPrint Imports and API Declarations" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+With the RichTextBoxPrint Class still displayed, enter the following Function above "End Class" and below the "Private and Public Members" Section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Name    : Print
+' Params  : charFrom as Integer, charTo as Integer, e as PrintPageEventArg
+' Returns : Print as Integer
+' Desc    : Produce RichTextBox Printable Output</span>
+<span class="tut-rsvd">Private Function</span> Print(<span class="tut-rsvd">ByVal</span> charFrom <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByVal</span> charTo <span class="tut-rsvd">As Integer</span>, _
+                       <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> PrintPageEventArgs) <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Dim</span> cRange <span class="tut-rsvd">As</span> CHARRANGE
+  <span class="tut-rsvd">Dim</span> rectToPrint <span class="tut-rsvd">As</span> RECT
+  <span class="tut-rsvd">Dim</span> rectPage <span class="tut-rsvd">As</span> RECT
+  <span class="tut-rsvd">Dim</span> hdc <span class="tut-rsvd">As</span> IntPtr = e.Graphics.GetHdc()
+  <span class="tut-rsvd">Dim</span> fmtRange <span class="tut-rsvd">As</span> FORMATRANGE
+  <span class="tut-rsvd">Dim</span> res <span class="tut-rsvd">As</span> IntPtr = IntPtr.Zero
+  <span class="tut-rsvd">Dim</span> wparam <span class="tut-rsvd">As</span> IntPtr = IntPtr.Zero
+  <span class="tut-rsvd">Dim</span> lparam <span class="tut-rsvd">As</span> IntPtr = IntPtr.Zero
+  <span class="tut-cmnt">' Mark start and end character</span>
+  cRange.cpMin = charFrom
+  cRange.cpMax = charTo
+  <span class="tut-cmnt">' Calculate the area to render and print</span>
+  rectToPrint.Top = <span class="tut-rsvd">CInt</span>(e.MarginBounds.Top * AnInch)
+  rectToPrint.Bottom = <span class="tut-rsvd">CInt</span>(e.MarginBounds.Bottom * AnInch)
+  rectToPrint.Left = <span class="tut-rsvd">CInt</span>(e.MarginBounds.Left * AnInch)
+  rectToPrint.Right = <span class="tut-rsvd">CInt</span>(e.MarginBounds.Right * AnInch)
+  <span class="tut-cmnt">' Calculate the size of the page</span>
+  rectPage.Top = <span class="tut-rsvd">CInt</span>(e.PageBounds.Top * AnInch)
+  rectPage.Bottom = <span class="tut-rsvd">CInt</span>(e.PageBounds.Bottom * AnInch)
+  rectPage.Left = <span class="tut-rsvd">CInt</span>(e.PageBounds.Left * AnInch)
+  rectPage.Right = <span class="tut-rsvd">CInt</span>(e.PageBounds.Right * AnInch)
+  <span class="tut-cmnt">' Format Range</span>
+  fmtRange.chrg = cRange <span class="tut-cmnt">' Character from to character to</span> 
+  fmtRange.hdc = hdc  <span class="tut-cmnt">' Same device context for measuring and rendering</span>
+  fmtRange.hdcTarget = hdc <span class="tut-cmnt">' Point at printer hDC</span>
+  fmtRange.rc = rectToPrint <span class="tut-cmnt">' Area on page to print</span>
+  fmtRange.rcPage = rectPage <span class="tut-cmnt">' Whole size of page</span>
+  <span class="tut-cmnt">' API</span>
+  wparam = <span class="tut-rsvd">New</span> IntPtr(1)
+  lparam = Marshal.AllocCoTaskMem(Marshal.SizeOf(fmtRange))
+  Marshal.StructureToPtr(fmtRange, lparam, <span class="tut-rsvd">False</span>)
+  res = SendMessage(Handle, EM_FORMATRANGE, wparam, lparam) <span class="tut-cmnt">' Print Rendered Data</span>
+  Marshal.FreeCoTaskMem(lparam) <span class="tut-cmnt">' Free block of memory allocated</span>
+  e.Graphics.ReleaseHdc(hdc) <span class="tut-cmnt">' Release device context handle</span>
+  <span class="tut-rsvd">Return</span> res.ToInt32() <span class="tut-cmnt">' Return last + 1 character</span>
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08rtbprintfunction.png" width="712" height="712" alt="RichTextBoxPrint Print Function" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Finally in the RichTextBoxPrint Class enter the following Event handlers above "End Class" and below the Print(...) Function:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> PrintDocument_BeginPrint(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, _
+                            <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.Drawing.Printing.PrintEventArgs) _
+                            <span class="tut-rsvd">Handles</span> PrintDocument.BeginPrint
+  checkPrint = 0
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> PrintDocument_PrintPage(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, _
+                               <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.Drawing.Printing.PrintPageEventArgs) _
+                               <span class="tut-rsvd">Handles</span> PrintDocument.PrintPage
+  <span class="tut-cmnt">' Print the content of the RichTextBox. Store the last character printed.</span>
+  checkPrint = <span class="tut-rsvd">Me</span>.Print(checkPrint, <span class="tut-rsvd">Me</span>.TextLength, e)
+  <span class="tut-rsvd">If</span> checkPrint &lt; <span class="tut-rsvd">Me</span>.TextLength <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Look for more pages</span>
+    e.HasMorePages = <span class="tut-rsvd">True
+  Else</span>
+    e.HasMorePages = <span class="tut-rsvd">False
+  End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08rtbprintevents.png" width="744" height="286" alt="RichTextBoxPrint Event Handlers" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+The RichTextBoxPrint Class is now Completed, to use it in the application click on Build, then "Build RichTextEditor":
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08rtbprintbuild.png" width="148" height="22" alt="Build RichTextEditor" />
+</div>
+<p>
+You may be asked to Save your Project, when you do and the Build has completed. Select the RichTextBoxPrint Component that appears in the Toolbox under RichTextEditor Components:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08richtextboxprint.png" width="240" height="400" alt="RichTextBoxPrint Component" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw the RichTextBoxPrint Component on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainrtbprint.png" width="300" height="300" alt="frmMain with RichTextBoxPrint" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Then goto the Properties box and change the Name to rtbEditor, Dock to Fill and Scrollbars to Vertical, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08rtbprintprop.png" width="203" height="431" alt="RichTextBoxPrint Properties" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Then from the Menus &amp; Toolbars tab on the Toolbox select the MenuStrip Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08menustrip.png" width="240" height="400" alt="MenuStrip Component" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Either double-click on the MenuStrip Control entry in the Menu &amp; Toolbars tab on the Toolbox or keep the MenuStrip
+Component Clicked and then move it over the Form then let go. Change the Name of the MenuStrip in the properties to mnuRichText. The Form will then look as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainmnurichtext.png" width="300" height="300" alt="frmMain with MenuStrip" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Click or select where the MenuStrip says "Type Here", an editable Textbox will appear type in "File" without the quotes in this Box, then in the Box below
+that type in "New", below that "Open...", then "Save...", then "-" which is minus or the hyphen key which will appear as a Seperator, then "Print...",
+"Print Preview..." and below that "Page Setup", then "-" again for another Seperator, and then finally "Exit". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtext.png" width="300" height="300" alt="mnuRichText with SubMenus" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click or select where the MenuStrip says "Type Here" next to "File", and in this type in "Edit" without the quotes in this Box, then in the Box below
+that type "Cut", then below that "Copy", then "Paste" and "Delete", type in "-" which is minus or the hyphen key for a Seperator, then below that "Select All" 
+and finally "Time/Date". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextedit.png" width="300" height="300" alt="mnuRichText with Edit Sub Menu Items" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Click on or select the MenuStrip again, on this next to the Edit menu will be another "Type Here" option this this box type "Format" without the quotes, 
+then in the "Type Here" box under that type "Font...", then below that "Colour...", then "Highlight", then type "-" which is minus or the hyphen key for a Seperator,
+then "Align Left", below that "Align Centre", then "Align Right", then "-" again for a Seperator, then below that type "Bold", then "Italics", then "Underline", then "-"
+for another Seperator and finally "Bullets", see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextformat.png" width="300" height="313" alt="mnuRichText with Format Sub Menu Items" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "New" (NewToolStripMenuItem) and 
+type the following in the NewToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+Response = MsgBox(<span class="tut-valu">"Are you sure you want to start a New Document?"</span>, _
+                  MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                  <span class="tut-valu">"Rich Text Editor"</span>)
+<span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+    rtbEditor.Clear()
+    <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Rich Text Text Editor - Untitled"</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextnew.png" width="632" height="200" alt="File Menu New Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Open..." (OpenToolStripMenuItem) and 
+type the following in the OpenToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Open <span class="tut-rsvd">As New</span> OpenFileDialog()
+Open.Filter = <span class="tut-valu">"Rich Text Document (*.rtf)|*.rtf|All files (*.*)|*.*"</span>
+Open.CheckFileExists = <span class="tut-rsvd">True
+If</span> Open.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then
+    Try</span>
+        rtbEditor.LoadFile(Open.FileName)
+        <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Rich Text Editor - "</span> &amp; Open.FileName
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+        <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextopen.png" width="648" height="250" alt="File Menu Open Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Save..." (SaveToolStripMenuItem) and 
+type the following in the SaveToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Save <span class="tut-rsvd">As New</span> SaveFileDialog()
+Save.Filter = <span class="tut-valu">"Rich Text Document (*.rtf)|*.rtf|All files (*.*)|*.*"</span>
+Save.CheckPathExists = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">If</span> Save.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then
+    Try</span>
+        rtbEditor.SaveFile(Save.FileName)
+        <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Rich Text Editor - "</span> &amp; Save.FileName
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+        <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextsave.png" width="648" height="250" alt="File Menu Save Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Print..." (PrintToolStripMenuItem) and 
+type the following in the PrintToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> PrintDialog <span class="tut-rsvd">As New</span> PrintDialog()
+PrintDialog.Document = rtbEditor.PrintDocument
+<span class="tut-rsvd">If</span> PrintDialog.ShowDialog(<span class="tut-rsvd">Me</span>) = DialogResult.OK <span class="tut-rsvd">Then
+    Try</span>
+        rtbEditor.PrintDocument.Print() <span class="tut-cmnt">' Print Document</span>
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+        <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextprint.png" width="664" height="216" alt="File Menu Print Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Print Preview..." (PrintPreviewToolStripMenuItem) and 
+type the following in the PrintPreviewToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> PrintPreview <span class="tut-rsvd">As New</span> PrintPreviewDialog()
+PrintPreview.Document = rtbEditor.PrintDocument
+PrintPreview.ShowDialog(<span class="tut-rsvd">Me</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextprintpreview.png" width="776" height="114" alt="File Menu Print Preview Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Page Setup..." (PageSetupToolStripMenuItem) and 
+type the following in the PageSetupToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> PageSetup <span class="tut-rsvd">As New</span> PageSetupDialog
+PageSetup.Document = rtbEditor.PrintDocument
+<span class="tut-rsvd">If</span> PageSetup.ShowDialog(<span class="tut-rsvd">Me</span>) = DialogResult.OK <span class="tut-rsvd">Then
+    Try</span>
+        rtbEditor.PrintDocument.PrinterSettings = _
+        PageSetup.PrinterSettings <span class="tut-cmnt">' Set Page Settings</span>
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+        <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextpagesetup.png" width="712" height="232" alt="File Menu Page Setup Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Exit" (ExitToolStripMenuItem) and 
+type the following in the ExitToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+        <span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+        Response = MsgBox(<span class="tut-valu">"Are you sure you want to Exit Rich Text Editor?"</span>, _
+                          MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                          <span class="tut-valu">"Rich Text Editor"</span>)
+        <span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+            <span class="tut-rsvd">End</span>
+        <span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextexit.png" width="648" height="182" alt="File Menu Exit Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip, 
+then Double Click on the Menu Item Labeled "Cut" (CutToolStripMenuItem) and type the following in the CutToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.Cut()
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Edit",
+then Double Click on the Menu Item Labeled "Copy" (CopyToolStripMenuItem) and type the following in the CopyToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.Copy()
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Edit",
+then Double Click on the Menu Item Labeled "Paste" (PasteToolStripMenuItem) and type the following in the PasteToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.Paste()
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Edit",
+then Double Click on the Menu Item Labeled "Delete" (DeleteToolStripMenuItem) and type the following in the DeleteToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.SelectedText = <span class="tut-valu">""</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextclip.png" width="680" height="386" alt="Edit Menu Cut, Copy, Paste and Delete Events" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Select All" (SelectAllToolStripMenuItem) and type the following in the SelectAllToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.SelectAll()
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Edit",
+then Double Click on the Menu Item Labeled "Time/Date" (TimeDateToolStripMenuItem) and type the following in the TimeDateToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.SelectedText = Format(Now, <span class="tut-valu">"HH:mm dd/MM/yyyy"</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextboard.png" width="728" height="182" alt="Edit Menu Select All and Time/Date Events" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Font..." (FontToolStripMenuItem) and type the following in the FontToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Font <span class="tut-rsvd">As New</span> FontDialog()
+Font.Font = rtbEditor.SelectionFont
+<span class="tut-rsvd">If</span> Font.ShowDialog(<span class="tut-rsvd">Me</span>) = DialogResult.OK <span class="tut-rsvd">Then
+    Try</span>
+        rtbEditor.SelectionFont = Font.Font
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+        <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextfont.png" width="648" height="216" alt="Format Menu Font Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Colour..." (ColourToolStripMenuItem) and type the following in the ColourToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Colour <span class="tut-rsvd">As New</span> ColorDialog()
+Colour.Color = rtbEditor.SelectionColor
+<span class="tut-rsvd">If</span> Colour.ShowDialog(<span class="tut-rsvd">Me</span>) = DialogResult.OK <span class="tut-rsvd">Then
+    Try</span>
+        rtbEditor.SelectionColor = Colour.Color
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+        <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextcolour.png" width="680" height="216" alt="Format Menu Colour Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Highlight..." (HighlightToolStripMenuItem) and type the following in the HighlightToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Colour <span class="tut-rsvd">As New</span> ColorDialog()
+Colour.Color = rtbEditor.SelectionBackColor
+<span class="tut-rsvd">If</span> Colour.ShowDialog(<span class="tut-rsvd">Me</span>) = DialogResult.OK <span class="tut-rsvd">Then
+    Try</span>
+        rtbEditor.SelectionBackColor = Colour.Color
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+        <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtexthighlight.png" width="728" height="216" alt="Format Menu Highlight Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Align Left" (AlignLeftToolStripMenuItem) and type the following in the AlignLeftToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.SelectionAlignment = HorizontalAlignment.Left
+AlignLeftToolStripMenuItem.Checked = <span class="tut-rsvd">True</span>
+AlignCentreToolStripMenuItem.Checked = <span class="tut-rsvd">False</span>
+AlignRightToolStripMenuItem.Checked = <span class="tut-rsvd">False</span>
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Format",
+then Double Click on the Menu Item Labeled "Align Centre" (AlignCentreToolStripMenuItem) and type the following in the AlignCentreToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.SelectionAlignment = HorizontalAlignment.Center
+AlignLeftToolStripMenuItem.Checked = <span class="tut-rsvd">False</span>
+AlignCentreToolStripMenuItem.Checked = <span class="tut-rsvd">True</span>
+AlignRightToolStripMenuItem.Checked = <span class="tut-rsvd">False</span>
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Format",
+then Double Click on the Menu Item Labeled "Align Right" (AlignRightToolStripMenuItem) and type the following in the AlignRightToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.SelectionAlignment = HorizontalAlignment.Right
+AlignLeftToolStripMenuItem.Checked = <span class="tut-rsvd">False</span>
+AlignCentreToolStripMenuItem.Checked = <span class="tut-rsvd">False</span>
+AlignRightToolStripMenuItem.Checked = <span class="tut-rsvd">True</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextalign.png" width="760" height="438" alt="Format Menu Align Left, Align Centre and Align Right Events" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Bold" (BoldToolStripMenuItem) and type the following in the BoldToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> rtbEditor.SelectionFont.Bold <span class="tut-rsvd">Then</span>
+  rtbEditor.SelectionFont = <span class="tut-rsvd">New</span> Font(rtbEditor.SelectionFont, _
+                                     rtbEditor.SelectionFont.Style <span class="tut-rsvd">And Not</span> FontStyle.Bold)
+<span class="tut-rsvd">Else</span>
+  rtbEditor.SelectionFont = <span class="tut-rsvd">New</span> Font(rtbEditor.SelectionFont, _
+                                     rtbEditor.SelectionFont.Style <span class="tut-rsvd">Or</span> FontStyle.Bold)
+<span class="tut-rsvd">End If</span>
+BoldToolStripMenuItem.Checked = rtbEditor.SelectionFont.Bold
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Format",
+then Double Click on the Menu Item Labeled "Italics" (ItalicsToolStripMenuItem) and type the following in the ItalicsToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> rtbEditor.SelectionFont.Italic <span class="tut-rsvd">Then</span>
+  rtbEditor.SelectionFont = <span class="tut-rsvd">New</span> Font(rtbEditor.SelectionFont, _
+                                     rtbEditor.SelectionFont.Style <span class="tut-rsvd">And Not</span> FontStyle.Italic)
+<span class="tut-rsvd">Else</span>
+  rtbEditor.SelectionFont = <span class="tut-rsvd">New</span> Font(rtbEditor.SelectionFont, _
+                                     rtbEditor.SelectionFont.Style <span class="tut-rsvd">Or</span> FontStyle.Italic)
+<span class="tut-rsvd">End If</span>
+ItalicsToolStripMenuItem.Checked = rtbEditor.SelectionFont.Italic
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Format",
+then Double Click on the Menu Item Labeled "Underline" (UnderlineToolStripMenuItem) and type the following in the UnderlineToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> rtbEditor.SelectionFont.Underline <span class="tut-rsvd">Then</span>
+  rtbEditor.SelectionFont = <span class="tut-rsvd">New</span> Font(rtbEditor.SelectionFont, _
+                                     rtbEditor.SelectionFont.Style <span class="tut-rsvd">And Not</span> FontStyle.Underline)
+<span class="tut-rsvd">Else</span>
+  rtbEditor.SelectionFont = <span class="tut-rsvd">New</span> Font(rtbEditor.SelectionFont, _
+                                     rtbEditor.SelectionFont.Style <span class="tut-rsvd">Or</span> FontStyle.Underline)
+<span class="tut-rsvd">End If</span>
+UnderlineToolStripMenuItem.Checked = rtbEditor.SelectionFont.Underline
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextstyle.png" width="852" height="644" alt="Format Menu Bold, Italics and Underline Events" />
+</div>
+<p class="tutorial-step">Step 30</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Bullets" (BulletsToolStripMenuItem) and type the following in the BulletsToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+rtbEditor.SelectionBullet = <span class="tut-rsvd">Not</span> rtbEditor.SelectionBullet
+BulletsToolStripMenuItem.Checked = rtbEditor.SelectionBullet
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextbullets.png" width="696" height="98" alt="Format Menu Bullets Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 31</p>
+<p>
+Click on the [Design] Tab to view the form again, then Double Click on the Form (frmMain) and 
+type the following in the frmMain_Load() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+AlignLeftToolStripMenuItem.Checked = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Rich Text Editor - Untitled"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08richtextload.png" width="504" height="98" alt="frmMain Load Event" />
+</div>
+<p class="tutorial-step">Step 30</p>
+<p>
+While Still in the Code View, if not double click on the Form pr the Window Area of the Form. There should be two Drop-down boxes one labeled (frmMain Events) or (General) 
+and the other is Load or (Declarations). Click on the drop-down box with "(frmMain Events)" in it and select "rtbEditor", then from the other list, 
+select the "SelectionChanged" event from the list of events for rtbEditor, and type in rtbEditor_SelectionChanged() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+AlignLeftToolStripMenuItem.Checked = <span class="tut-rsvd">False</span>
+AlignCentreToolStripMenuItem.Checked = <span class="tut-rsvd">False</span>
+AlignRightToolStripMenuItem.Checked = <span class="tut-rsvd">False</span>
+<span class="tut-rsvd">Select Case</span> rtbEditor.SelectionAlignment
+  <span class="tut-rsvd">Case</span> HorizontalAlignment.Left
+    AlignLeftToolStripMenuItem.Checked = <span class="tut-rsvd">True
+  Case</span> HorizontalAlignment.Center
+    AlignCentreToolStripMenuItem.Checked = <span class="tut-rsvd">True
+  Case</span> HorizontalAlignment.Right
+    AlignRightToolStripMenuItem.Checked = <span class="tut-rsvd">True
+End Select</span>
+BoldToolStripMenuItem.Checked = rtbEditor.SelectionFont.Bold
+ItalicsToolStripMenuItem.Checked = rtbEditor.SelectionFont.Italic
+UnderlineToolStripMenuItem.Checked = rtbEditor.SelectionFont.Underline
+BulletsToolStripMenuItem.Checked = rtbEditor.SelectionBullet
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08rtbeditorevent.png" width="640" height="318" alt="rtbEditor SelectionChanged Event" />
+</div>
+<p class="tutorial-step">Step 31</p>
+<p>
+Steps 31-34 are optional and just add Keyboard Shortcuts to the MenuItems, you don't have to do these if you don't want to!<br/>
+Click on the [Design] Tab to view the form again, click on "New" on the MenuStrip then in the Properties box look for the "ShortcutKeys" option and 
+click on the Drop Down arrow where "None" appears. Check the "Ctrl" Checkbox in "Modifiers" and then in the "Key" dropdown list select "N", 
+see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnutextnewprop.png" width="240" height="399" alt="File Menu New Menu Item Shortcut Key" />
+</div>
+<p class="tutorial-step">Step 32</p>
+<p>
+Set the rest of the "File" MenuItem "ShortcutKeys" Properties except the "Exit" Menu Item, 
+"Open" should be set to "Ctrl+O", "Save" to "Ctrl+S" and "Print" to "Ctrl+P", the File Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextfilekeys.png" width="300" height="300" alt="File Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 33</p>
+<p>
+Click on or select the "Edit" Menu and set the "ShortcutKeys" Properties, "Cut" should be set to "Ctrl+X", "Copy" to "Ctrl+C", "Paste" to "Ctrl+V", 
+"Delete" should be just "Del" in the Keys drop-down list, "Select All" should be "Ctrl+A", "Time/Date" should be just "F5" from the Keys drop-down list. 
+The Edit Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtexteditkeys.png" width="300" height="300" alt="Edit Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 34</p>
+<p>
+Click on or select the "Format" Menu, select "Align Left" and in the "ShortcutKeys" property type "Ctrl+L", select "Align Centre" and type "Ctrl+E" in the "ShortcutKeys" property,
+"Align Right" should be set to "Ctrl+R". "Bold" to "Ctrl+B", "Italics" to "Ctrl+I" and "Underline" set to "Ctrl+U" The Format Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnurichtextformatkeys.png" width="300" height="313" alt="Format Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 35</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08richtextrun.png" width="300" height="300" alt="Rich Text Editor Running" />
+</div>
+<p class="tutorial-step">Step 36</p>
+<p>
+You can create your own Rich Text Documents or Open an existing one to edit, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08richtextshow.png" width="300" height="300" alt="Rich Text Editor" />
+</div>
+<p class="tutorial-step">Step 37</p>
+<p>
+Click File then Exit or click on the Close button <img src="tutorials/vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right of the Rich Text Editor to end the application.
+</p>
+<p>
+This program uses an extended verison of the standard Rich Text Box to enable Printing, you can use the normal Rich Text Box instead and remove
+the Printing functions if you wish. This application has all the main features of a Rich Text Editor, see if you can add more!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

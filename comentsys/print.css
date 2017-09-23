@@ -1,0 +1,46 @@
+#header { display:none; }
+#footer { display:none; }
+/* Top Right Bottom Left */
+img { border: none; }
+body { background-color:#ffffff; color:#000000;	font-family: arial, verdana, helvetica, sans-serif; margin:2px; padding:0px; }
+h1, #copy { color: #000000; font-size: 0.75em; font-weight: bold; margin:8px 0px 0px 8px; }
+h2 { color: #000000; font-size:1.5em; font-weight:normal; margin:0px; padding:0px; }
+h3 { color: #000000; font-size:1.25em; font-weight:normal; margin:0px; padding:0px; }
+dt { color:#5a7edc; font-size:1.5em;  margin:0px; padding:0px;}
+dd { margin:0px; padding:0px;  }
+ol { margin:0px; padding: 0px; width:1000px; }
+ol li { color:#5a7edc; font-size:1.5em; font-weight:bold; margin:0px 0px 0px 20px; padding: 0px; }
+ol p { color:#000000; font-size:0.70em; font-weight:normal; margin:0px; padding:0px; }
+a:link , a:hover { color: #5a7edc; }
+a:active, a:visited { color: #5a7edc; }
+.clear { clear:both; margin:0px; padding:0px; }
+.featured { float:left; margin:4px; padding:4px; }
+.featured img { height:120px; margin:0px; padding:0px; width:120px; }
+.featuredold div { background: #5a7edc; color: #ffffff; font-size:0.95em; height:40px; margin:0px; padding:2px; width:116px; }
+.featured div { text-align: center; font-size:0.90em; margin:0px; padding:0px; width:120px; }
+.featured a:link , .featured a:visited { text-decoration:none; }
+.featured a:active, .featured a:hover { text-decoration:underline; }
+.image, .wall { float:left;	margin:4px 10px 4px 8px; padding:4px 10px 4px 8px; }
+.image img, .wall img { height:100px;	margin:0px;	padding:0px; width:100px; }
+.wall div { background: #5a7edc; color: #ffffff; font-size:0.95em; margin:0px; padding:2px; width:96px; }
+.wall div a:link, .wall div a:visited, 
+.wall div a:active, .wall div a:hover { color: #ffffff; }
+.news { font-family: verdana, geneva, arial, sans-serif; font-size:1.0em; margin:4px;}
+.news img { display:block; margin:4px 0px 4px 0px; }
+.news p.date { font-size:0.85em; margin: 0px; padding: 4px 0px 0px 0px; }
+.strap { color:#5a7edc; font-size:1.0em; font-weight:bold; margin:4px 0px 4px 0px;}
+.folio { font-size:0.70em; font-weight:normal; margin:4px 0px 4px 0px; }
+.details { font-family: verdana, geneva, arial, sans-serif; font-size: 0.85em; width: 500px; line-height: 15px; margin: 0px; padding: 0px; }
+.features { font-family: verdana, geneva, arial, sans-serif; font-size: 0.85em; width: 600px; line-height: 15px; padding: 0px 0px 0px 10px; }
+/* Lists */
+.large-list img { float: left;	height: 120px; width: 120px; }
+.large-list,
+.medium-list { font-family: verdana, geneva, arial, sans-serif; height: 120px; margin: 0px 0px 20px 0px; padding: 0px; clear:left;}
+.medium-list img { float: left;	height: 100px; width: 100px; }
+.large-list div,
+.medium-list div,
+.small-list div { float:left; font-size: 0.85em; line-height: 15px; padding: 0px 0px 0px 10px; width: 500px; }
+.small-list { font-family: verdana, geneva, arial, sans-serif; height: 64px; margin: 0px 0px 20px 0px; padding: 0px; clear:left; }
+.small-list img { float: left; height: 64px; width: 64px; }
+/* Tutorials */
+.tut-img { display: block; margin: 5px; overflow: hidden; }

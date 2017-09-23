@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Slide Show</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Slide Show</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Slide Show is a Silverlight-based JPEG Image Viewer with support for Play/Pause Slideshow with Playback control such as Speed and more!
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/sl4tut16.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/sl4tut16.zip">Download Tutorial</a> (628KB)</em>
+<em class="icon-dload"><a href="tutorials/sl4tut16code.zip">Download Source Code</a> (8.41KB)</em>
+<em class="icon-odemo"><a href="tutorials/sl4tut16demo.html">Online Demonstration</a></em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Select Project then Properties... The "Properties" window should appear, check the box "Enable running application out of the browser", see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slioobena.png" width="730" height="552" alt="Enable running application out of the browser" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+While still in the Properties Window, click on the "Out-of-Browser Settings..." button, set the "Width" value to 400 and the "Height" to 300,<br/> 
+then check the box "Require elevated trust when running outside the browser", see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slioobset.png" width="504" height="597" alt="Out-of-Browser Settings" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Confirm the Settings by Clicking on OK.<br/>
+Select Project then "Add Class...", and select the "Class" Template if not already Selected, then change the "Name" to SlideShow.vb , see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slideshow.png" width="939" height="624" alt="SlideShow Class" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Add the new Class to the Project by Clicking on Add, then in the Code View for the SlideShow.vb Class, above the "Public Class SlideShow" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Windows.Media.Imaging
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slideshowref.png" width="264" height="66" alt="SlideShow Class References" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+While still in the Code View for the SlideShow.vb Class, below the "Public Class SlideShow" line type the following:  
+</p>
+<blockquote>
+<pre class="tut-code">
+
+<span class="tut-rsvd">Private WithEvents</span> _slideshow <span class="tut-rsvd">As New</span> Windows.Threading.<span class="tut-symb">DispatcherTimer</span>
+<span class="tut-rsvd">Private</span> _images <span class="tut-rsvd">As New</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of</span> <span class="tut-symb">BitmapImage</span>)
+<span class="tut-rsvd">Private</span> _index <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Private</span> _hasImages <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Private</span> _isPlaying <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Private</span> _isPaused <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Private</span> _isRepeat <span class="tut-rsvd">As Boolean</span>
+
+<span class="tut-rsvd">Public Event</span> Slide(<span class="tut-rsvd">ByVal</span> Image <span class="tut-rsvd">As</span> <span class="tut-symb">BitmapImage</span>, <span class="tut-rsvd">ByVal</span> Index <span class="tut-rsvd">As Integer</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slideshowdecs.png" width="530" height="202" alt="SlideShow Class Declarations" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the Code View the SlideShow Class, above the "End Class" for "Public Class SlideShow", type the following Constructor and Function: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Constructor<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>Initialise Values<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Sub New</span>()
+  _slideshow.Interval = <span class="tut-symb">TimeSpan</span>.FromSeconds(<span class="tut-valu">1.5</span>)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Browse<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Path"&gt;</span>Directory to Browse<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if no JPEGs Found<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>Requires Full Trust<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> Browse(<span class="tut-rsvd">ByRef</span> Path <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Dim</span> _dirInfo <span class="tut-rsvd">As New</span> IO.<span class="tut-symb">DirectoryInfo</span>(Path)
+  _images.Clear()
+  <span class="tut-rsvd">For Each</span> File <span class="tut-rsvd">In</span> _dirInfo.EnumerateFiles(<span class="tut-valu">"*.j*pg"</span>)
+    <span class="tut-rsvd">Using</span> FileStream <span class="tut-rsvd">As</span> IO.<span class="tut-symb">Stream</span> = File.OpenRead
+      <span class="tut-rsvd">Dim</span> Source <span class="tut-rsvd">As New</span> <span class="tut-symb">BitmapImage</span>
+      Source.SetSource(FileStream)
+      _images.Add(Source)
+    <span class="tut-rsvd">End Using
+  Next</span>
+  _hasImages = _images.Count > <span class="tut-valu">0</span>
+  <span class="tut-rsvd">Return</span> _hasImages
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slideshownewbrowse.png" width="482" height="388" alt="SlideShow Class Constructor and Function" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View the SlideShow Class, above the "End Class" for "Public Class SlideShow", type the following Subs: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Play<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>Play SlideShow<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Sub</span> Play()
+  <span class="tut-rsvd">If</span> _hasImages <span class="tut-rsvd">Then
+    If</span> _isPaused <span class="tut-rsvd">Or Not</span> _isPlaying <span class="tut-rsvd">Then</span>
+      _slideshow.Start()
+      _isPlaying = <span class="tut-rsvd">True</span>
+      _isPaused = <span class="tut-rsvd">False
+    End If
+  End If
+End Sub</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Pause<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>Pause SlideShow<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Sub</span> Pause()
+  <span class="tut-rsvd">If</span> _hasImages <span class="tut-rsvd">Then
+    If</span> _isPlaying <span class="tut-rsvd">Then</span>
+      _slideshow.Stop()
+      _isPaused = <span class="tut-rsvd">True</span>
+      _isPlaying = <span class="tut-rsvd">False
+    End If
+  End If
+End Sub</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Stop<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>Stop SlideShow<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Sub</span> [Stop]()
+  <span class="tut-rsvd">If</span> _hasImages <span class="tut-rsvd">Then</span>
+    _index = <span class="tut-valu">0</span>
+    _slideshow.Stop()
+    _isPaused = <span class="tut-rsvd">False</span>
+    _isPlaying = <span class="tut-rsvd">False
+  End If
+End Sub</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Selected<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Index"&gt;</span>Selected Index<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>Selected Slide<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Sub</span> Selected(<span class="tut-rsvd">ByRef</span> index <span class="tut-rsvd">As Integer</span>)
+  <span class="tut-rsvd">If</span> _hasImages <span class="tut-rsvd">Then
+    If</span> index &lt; _images.Count <span class="tut-rsvd">Then</span>
+      _index = index
+      <span class="tut-rsvd">If</span> _isPlaying <span class="tut-rsvd">Then</span>
+        Me.Play()
+      <span class="tut-rsvd">End If
+    End If
+  End If
+End Sub</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>SlideShow_Tick<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="sender"&gt;</span>Object<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="e"&gt;</span>Event<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>SlideShow DispatcherTimer<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Private Sub</span> SlideShow_Tick(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, _
+    <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> <span class="tut-symb">EventArgs</span>) _
+    <span class="tut-rsvd">Handles</span> _slideshow.Tick
+  <span class="tut-rsvd">If</span> _hasImages <span class="tut-rsvd">And</span> _isPlaying <span class="tut-rsvd">Then
+    If</span> _index &lt; _images.Count <span class="tut-rsvd">Then
+      RaiseEvent</span> Slide(_images.Item(_index), _index)
+      _index += <span class="tut-valu">1</span>
+    <span class="tut-rsvd">Else
+      If</span> _isRepeat <span class="tut-rsvd">Then</span>
+        _index = <span class="tut-valu">0</span> <span class="tut-cmnt">' Reset if Repeat</span>
+      <span class="tut-rsvd">Else</span>
+        <span class="tut-rsvd">Me</span>.Stop() <span class="tut-cmnt">' Stop</span>
+      <span class="tut-rsvd">End If
+    End If
+  End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slideshowsubs.png" width="444" height="1170" alt="SlideShow Class Subs" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for SlideShow.vb, above the "End Class" for "Public Class SlideShow", type the following Properties: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Speed<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>TimeSpan<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>DispatchTimer TimeSpan<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>SlideShow Interval (Speed)<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Speed <span class="tut-rsvd">As</span> <span class="tut-symb">TimeSpan</span>
+  <span class="tut-rsvd">Get
+    Return</span> _slideshow.Interval
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As</span> <span class="tut-symb">TimeSpan</span>)
+    <span class="tut-rsvd">If</span> value &lt;&gt; _slideshow.Interval <span class="tut-rsvd">Then</span>
+      _slideshow.Interval = value
+    <span class="tut-rsvd">End If
+  End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Position<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>Integer<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Integer<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>SlideShow Current Position<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Position <span class="tut-rsvd">As Integer
+  Get
+    Return</span> _index
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Integer</span>)
+    _index = value
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Count<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>Integer<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Images List(Of BitmapImage) Count<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>SlideShow Count<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public ReadOnly Property</span> Count <span class="tut-rsvd">As Integer
+  Get
+    Return</span> _images.Count
+  <span class="tut-rsvd">End Get
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Playing<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>Boolean<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Playing, False if Not<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>SlideShow Playing<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public ReadOnly Property</span> Playing <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> _isPlaying
+  <span class="tut-rsvd">End Get
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Paused<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>Boolean<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Paused, False if Not<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>SlideShow Paused<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public ReadOnly Property</span> Paused <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> _isPaused
+  <span class="tut-rsvd">End Get
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Repeat<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;value&gt;</span>Boolean<span class="tut-prop">&lt;/value&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Boolean<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>Repeat SlideShow<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Repeat() <span class="tut-rsvd">As Boolean
+  Get
+    Return</span> _isRepeat
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Boolean</span>)
+    _isRepeat = value
+  <span class="tut-rsvd">End Set
+End Property</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slideshowprops.png" width="432" height="1188" alt="SlideShow Class Properties" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Draw a Two Canvases on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "&lt;Canvas&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="35" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="35" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,265,0,0" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Playback"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplaycvs.png" width="420" height="319" alt="MainPage with Toolbar Canvas and Playback Canvas" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Draw Three Buttons on the "Toolbar" Canvas by dragging the Buttons from the Toolbox onto the Canvas then in the XAML Pane inbetween top the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Browse" <span class="tut-attr">Content</span>="Browse..."/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="PlayPause" <span class="tut-attr">Content</span>="Play Pause"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Stop" <span class="tut-attr">Content</span>="Stop"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slicvsbtns.png" width="423" height="315" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the CheckBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4checkbox.png" width="180" height="428" alt="CheckBox Control" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Draw a CheckBox on the Upper Canvas (Toolbar) next to the Buttons, and change the &lt;CheckBox&gt; line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">CheckBox</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="10" <span class="tut-attr">Height</span>="17" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Content</span>="Repeat" <span class="tut-attr">Name</span>="Repeat"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slichk.png" width="415" height="314" alt="MainPage with Toolbar Buttons and Repeat CheckBox" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Slider control: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slider.png" width="180" height="428" alt="Slider Control" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Draw Two Sliders onto the Lower Canvas (Playback) and change the &lt;Slider&gt; lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Slider</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="237" <span class="tut-attr">Name</span>="Position"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Slider</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Minimum</span>="100" <span class="tut-attr">Maximum</span>="5000" <span class="tut-attr">Value</span>="1500" <span class="tut-attr">Name</span>="Speed"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slisli.png" width="423" height="321" alt="MainPage with Buttons, CheckBox and Sliders" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Image control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4image.png" width="180" height="428" alt="Image Control" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Draw an Image on the Page between the Canvases and in the XAML Pane change the "&lt;Image&gt;" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Image</span> <span class="tut-attr">Height</span>="230" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,35,0,0" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Stretch</span>="Uniform" <span class="tut-attr">Name</span>="Display"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4sliimg.png" width="422" height="314" alt="MainPage with Image Control" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public WithEvents</span> SlideShow <span class="tut-rsvd">As New</span> <span class="tut-symb">SlideShow</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slidecs.png" width="350" height="150" alt="MainPage.xaml Declarations" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+While still in the Code View, below the "End Sub" for "Public Sub New()" Constructor type the following Event Handler Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> SlideShow_Slide(<span class="tut-rsvd">ByVal</span> Image <span class="tut-rsvd">As</span> Imaging.<span class="tut-symb">BitmapImage</span>, _
+    <span class="tut-rsvd">ByVal</span> Index <span class="tut-rsvd">As Integer</span>) _
+    <span class="tut-rsvd">Handles</span> SlideShow.Slide
+  Display.Source = Image
+  Position.Value = Index
+<span class="tut-rsvd">End Sub</span> 
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slislide.png" width="496" height="99" alt="MainPage.xaml SlideShow Slide Event Handler" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Browse..." Button and type in the Browse_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> OpenDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">OpenFileDialog</span>
+OpenDialog.Filter = <span class="tut-valu">"JPEG Images (*.jpg;*.jpeg)|*.jpg;*.jpeg"</span>
+<span class="tut-rsvd">If</span> OpenDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    If</span> OpenDialog.File.Exists <span class="tut-rsvd">Then
+      If</span> App.Current.HasElevatedPermissions <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Show All Images</span>
+        <span class="tut-rsvd">If</span> SlideShow.Browse(OpenDialog.File.DirectoryName) <span class="tut-rsvd">Then</span>
+          Position.Value = <span class="tut-valu">0</span>
+          Position.Minimum = <span class="tut-valu">0</span>
+          Position.Maximum = SlideShow.Count - <span class="tut-valu">1</span>
+          SlideShow.Play()
+        <span class="tut-rsvd">End If
+      Else</span> <span class="tut-cmnt">' Show Single Image</span>
+        <span class="tut-rsvd">Using</span> FileStream <span class="tut-rsvd">As</span> IO.<span class="tut-symb">Stream</span> = OpenDialog.File.OpenRead
+        <span class="tut-rsvd">Dim</span> Source <span class="tut-rsvd">As New</span> Imaging.<span class="tut-symb">BitmapImage</span>
+        Source.SetSource(FileStream)
+        Display.Source = Source
+      <span class="tut-rsvd">End Using
+    End If
+  End If
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slibrowseclick.png" width="572" height="474" alt="Browse Button Click Event" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Play Pause" Button and type in the PlayPause_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> SlideShow.Playing <span class="tut-rsvd">Then
+  If</span> SlideShow.Paused <span class="tut-rsvd">Then</span>
+    SlideShow.Play()
+  <span class="tut-rsvd">Else</span>
+    SlideShow.Pause()
+  <span class="tut-rsvd">End If
+Else</span>
+  SlideShow.Play()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4sliplaypauseclick.png" width="546" height="218" alt="Play Pause Button Click Event" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Stop" Button Control and type in the Stop_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+SlideShow.Stop()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slistopclick.png" width="510" height="82" alt="Stop Button Click Event" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Click on the "Repeat" Checkbox, then goto the Properties box and Click on the "Events" Tab, see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slirepeatpropevents.png" width="217" height="393" alt="Repeat CheckBox Property Events" />
+</div>
+<p>
+Double Click on the "Click" Event and type in the Repeat_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+SlideShow.Repeat = Repeat.IsChecked
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slirepeatclick.png" width="524" height="82" alt="Repeat Button Click Event" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Position" Slider Control, which is the larger Slider on the "Playback" Canvas, and type in the Position_ValueChanged Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+SlideShow.Position = <span class="tut-rsvd">CInt</span>(Position.Value)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slipositionval.png" width="818" height="82" alt="Position Slider ValueChanged Event" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Speed" Slider Control, which is next to the "Position" Slider, and type in the Speed_ValueChanged Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+SlideShow.Speed = <span class="tut-symb">TimeSpan</span>.FromMilliseconds(Speed.Value)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slispeedval.png" width="798" height="82" alt="Speed Slider ValueChanged Event" />
+</div>
+<p class="tutorial-step">Step 30</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slirun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 31</p>
+<p>
+If you Click on Browse... then Select a File, that Image will be Displayed, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slipre.png" width="400" height="300" alt="Image Displayed" />
+</div>
+<p class="tutorial-step">Step 32</p>
+<p>
+Notice that this is not a Slide Show, this is because this feature only works Out-of-Browser with Full Trust to get all the Images.<br/> 
+Right-click on the Application in the Browser and choose the "Install SlideShow Application onto this Computer..." option to show the Installation Screen, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4sliins.png" width="441" height="280" alt="Install Application" />
+</div>
+<p class="tutorial-step">Step 33</p>
+<p>
+Check the "Start menu" or "Desktop" boxes to add a Shortcut to the Application in either or both locations, and then click on the "Install" button, the following will then appear in a new Window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slioob.png" width="400" height="300" alt="Application Installed" />
+</div>
+<p class="tutorial-step">Step 34</p>
+<p>
+Now if you Click on Browse... and Select a File, all the Images in the Same Folder will become a SlideShow, and start Playing, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4sliapp.png" width="400" height="300" alt="SlideShow" />
+</div>
+<p class="tutorial-step">Step 35</p>
+<p>
+Close the Application and Browser window by clicking on the Close Button <img src="tutorials/sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p>
+This is a Simple Slide Show application, you can try adding your own features such as Animations and Transitions between the Image or add other
+features, make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

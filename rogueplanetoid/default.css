@@ -1,0 +1,128 @@
+.background {
+	COLOR: #ffffff
+}
+A:link {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #0000ff; cursor:hand; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #0000ff; cursor:hand; TEXT-DECORATION: underline
+}
+
+.sitetitle {
+	BACKGROUND-COLOR: #849CE7; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt
+}
+
+.pagetitle {
+	BACKGROUND-COLOR: #5A7EDC; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 11pt; TEXT-ALIGN: left; BORDER-BOTTOM: #000000 1px solid; BACKGROUND: url(images/gradtitle.gif) right bottom
+}
+
+.sidebar {
+	BACKGROUND-COLOR: #D2E4F2; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt; BORDER-RIGHT: #000000 1px solid
+}
+
+.sidebarlink {
+	COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt; TEXT-ALIGN: left
+}
+
+A.sidebarlink:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.sidebarlink:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.sidebarlink:active {
+	COLOR: #000000; TEXT-DECORATION: none; cursor:hand
+}
+A.sidebarlink:hover {
+	COLOR: #000000; TEXT-DECORATION: underline; cursor:hand; 
+}
+
+.sidebarselected {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt; TEXT-ALIGN: left; BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid;
+}
+
+.sidebardivider {
+	BACKGROUND-COLOR: #D2E4F2; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt; BORDER-TOP: #000000 1px solid;
+}
+
+.description {
+	COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt;
+}
+
+.bottombar {
+	BACKGROUND-COLOR: #5A7EDC; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 9pt; TEXT-ALIGN: left; BORDER-TOP: #000000 1px solid
+}
+
+.bottombarlink {
+	BACKGROUND-COLOR: #5A7EDC; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 9pt; TEXT-ALIGN: left
+}
+A.bottombarlink:link {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.bottombarlink:visited {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.bottombarlink:active {
+	COLOR: #ffffff; TEXT-DECORATION: underline; cursor:hand
+}
+A.bottombarlink:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline; cursor:hand; 
+}
+
+.bottomlogo {
+	BACKGROUND-COLOR: #5A7EDC; TEXT-ALIGN: center; BORDER-TOP: #000000 1px solid
+}
+
+.content {
+	COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt; TEXT-ALIGN: left
+}
+
+.divider {
+	BACKGROUND-COLOR: #5A7EDC; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt;
+}
+A.divider:link {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.divider:visited {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.divider:active {
+	COLOR: #ffffff; TEXT-DECORATION: underline; cursor:hand
+}
+A.divider:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline; cursor:hand; 
+}
+
+.navigatorheader {
+	BACKGROUND-COLOR: #5A7EDC; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt;
+}
+A.navigatorheader:link {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.navigatorheader:visited {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.navigatorheader:active {
+	COLOR: #ffffff; TEXT-DECORATION: underline; cursor:hand
+}
+A.navigatorheader:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline; cursor:hand; 
+}
+
+.navigatorodd {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt;
+}
+
+.navigatoreven {
+	BACKGROUND-COLOR: #c0c0c0; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 10pt;
+}
+
+.blogtitle {
+	BACKGROUND-COLOR: #5A7EDC; COLOR: #ffffff; FONT-FAMILY: Arial, Verdana, Helvetica; FONT-SIZE: 12pt;
+}

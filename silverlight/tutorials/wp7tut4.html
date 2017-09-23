@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Text Editor</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>Text Editor</h1>
+<p>
+Text Editing is one of the most common tasks performed, and using Silverlight with Windows Phone 7 it is possible to create a basic Text Editor
+with Open and Save support for the device.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut4.html">www.cespage.com/silverlight/wp7tut4.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Right Click on the App.xaml Entry in the Solution Explorer for the Solution and choose "View Code" then in the Code View for App.xaml.css, above "public App()" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private string</span> _filename = <span class="tut-valu">""</span>;
+<span class="tut-rsvd">private object</span> _content = <span class="tut-rsvd">null</span>;
+
+<span class="tut-rsvd">public string</span> Filename
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _filename; }
+  <span class="tut-rsvd">set</span> { _filename = <span class="tut-rsvd">value</span>; }
+}
+
+<span class="tut-rsvd">public object</span> Content
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _content; }
+  <span class="tut-rsvd">set</span> { _content = <span class="tut-rsvd">value</span>; }
+}
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7txtappcode.png" width="488" height="396" alt="App Filename and Content" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab. Then in the XAML Pane above the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneBackgroundBrush</span>}"&gt;</span> line type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="True"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.MenuItems</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarMenuItem</span> <span class="tut-attr">Text</span>="new" <span class="tut-attr">Click</span>="New_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarMenuItem</span> <span class="tut-attr">Text</span>="open" <span class="tut-attr">Click</span>="Open_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarMenuItem</span> <span class="tut-attr">Text</span>="save" <span class="tut-attr">Click</span>="Save_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.MenuItems</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7txtbarxaml.png" width="558" height="141" alt="ApplicationBar Menu XAML" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="wp7textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Draw a TextBox on the Page, below the Page Title, and in the XAML Pane between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines, change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">AcceptsReturn</span>="True" <span class="tut-attr">TextWrapping</span>="Wrap" <span class="tut-attr">VerticalScrollBarVisibility</span>="Auto" <span class="tut-attr">FontSize</span>="24" <span class="tut-attr">Name</span>="Editor"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7txtmain.png" width="359" height="659" alt="MainPage with Editor TextBox" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Select Project then "Add New Item...", and select the "Windows Phone Portrait Page" Template, then change the "Name" to OpenPage.xaml, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7addopenpage.png" width="939" height="624" alt="OpenPage Windows Phone Portrait Page" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+In the Designer View for OpenPage.xaml, in the XAML Pane between between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+  &lt;<span class="tut-valu">ListBox</span> <span class="tut-attr">Grid.Row</span>="0" <span class="tut-attr">Margin</span>="10" <span class="tut-attr">FontSize</span>="48" <span class="tut-attr">Name</span>="Files"/&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Buttons" &gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Buttons --&gt;</span>
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Content</span>="open" <span class="tut-attr">Click</span>="Open_Click"/&gt;
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="delete" <span class="tut-attr">Click</span>="Delete_Click"/&gt;
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="2" <span class="tut-attr">Content</span>="cancel" <span class="tut-attr">Click</span>="Cancel_Click"/&gt;
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7openpagexaml.png" width="594" height="333" alt="OpenPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7openpagedesign.png" width="359" height="659" alt="OpenPage Design View" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Right Click on the Page or the entry for "OpenPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace TextEditor"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.IO.IsolatedStorage;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public OpenPage()" type the following Application declaration:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">App</span> app = (<span class="tut-symb">App</span>)<span class="tut-symb">Application</span>.Current;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7openpageref.png" width="404" height="413" alt="OpenPage Includes and Application Declaration" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View for OpenPage.xaml.cs in the "public OpenPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"TEXT EDITOR"</span>;
+PageTitle.Text = <span class="tut-valu">"open"</span>;
+Loaded += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e) =>
+  {
+    Files.Items.Clear();
+    <span class="tut-rsvd">using</span> (<span class="tut-symb">IsolatedStorageFile</span> storage = <span class="tut-symb">IsolatedStorageFile</span>.GetUserStoreForApplication())
+    {
+      <span class="tut-rsvd">foreach</span> (<span class="tut-rsvd">string</span> filename <span class="tut-rsvd">in</span> storage.GetFileNames(<span class="tut-valu">"*.txt"</span>))
+      {
+        Files.Items.Add(filename.ToLower());
+      }
+    }
+  };
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7openpageinit.png" width="724" height="269" alt="OpenPage Constructor" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for OpenPage.xaml.cs, below the "}" of the "public OpenPage()" method type the following Event Handlers
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Open_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (Files.SelectedItem != <span class="tut-rsvd">null</span>)
+  {
+    app.Filename = (<span class="tut-rsvd">string</span>)Files.SelectedItem;
+    <span class="tut-rsvd">using</span> (<span class="tut-symb">IsolatedStorageFile</span> storage = <span class="tut-symb">IsolatedStorageFile</span>.GetUserStoreForApplication())
+    {
+      <span class="tut-symb">IsolatedStorageFileStream</span> location = <span class="tut-rsvd">new</span> <span class="tut-symb">IsolatedStorageFileStream</span>(app.Filename, 
+        System.IO.<span class="tut-symb">FileMode</span>.Open, storage);
+      System.IO.<span class="tut-symb">StreamReader</span> file = <span class="tut-rsvd">new</span> System.IO.<span class="tut-symb">StreamReader</span>(location);
+      app.Content = file.ReadToEnd();
+      file.Dispose();
+      location.Dispose();
+    }
+    NavigationService.GoBack();
+  }
+}
+ 
+<span class="tut-rsvd">private void</span> Delete_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (Files.SelectedItem != <span class="tut-rsvd">null</span>)
+  {
+    <span class="tut-rsvd">string</span> _selected = (<span class="tut-rsvd">string</span>)Files.SelectedItem;
+    <span class="tut-rsvd">if</span> (<span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Delete selected Document "</span> + _selected + <span class="tut-valu">"?"</span>, <span class="tut-valu">"Text Editor"</span>,
+      <span class="tut-symb">MessageBoxButton</span>.OKCancel) == <span class="tut-symb">MessageBoxResult</span>.OK)
+    {
+      <span class="tut-rsvd">using</span> (<span class="tut-symb">IsolatedStorageFile</span> storage = <span class="tut-symb">IsolatedStorageFile</span>.GetUserStoreForApplication())
+      {
+        <span class="tut-rsvd">if</span> (storage.FileExists(_selected))
+        {
+          storage.DeleteFile(_selected);
+        }
+      }
+      NavigationService.GoBack();
+    }
+  }
+}
+
+<span class="tut-rsvd">private void</span> Cancel_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  NavigationService.GoBack();
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7txtopencode.png" width="752" height="669" alt="OpenPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Select Project then "Add New Item...", and select the "Windows Phone Portrait Page" Template, then change the "Name" to SavePage.xaml, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7addsavepage.png" width="939" height="624" alt="SavePage Windows Phone Portrait Page" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+In the Designer View for SavePage.xaml, in the XAML Pane between between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+  &lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Row</span>="0" <span class="tut-attr">FontSize</span>="24" <span class="tut-attr">Name</span>="Filename"&gt;
+    &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+      &lt;<span class="tut-valu">InputScope</span>&gt;
+        &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="FileName"/&gt;
+      &lt;/<span class="tut-valu">InputScope</span>&gt;
+    &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+  &lt;/<span class="tut-valu">TextBox</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="2" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Buttons" &gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Buttons --&gt;</span>
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Content</span>="save" <span class="tut-attr">Click</span>="Save_Click"/&gt;
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="2" <span class="tut-attr">Content</span>="cancel" <span class="tut-attr">Click</span>="Cancel_Click"/&gt;
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7savepagexaml.png" width="592" height="429" alt="SavePage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7savepagedesign.png" width="359" height="659" alt="OpenPage Design View" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Right Click on the Page or the entry for "SavePage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace TextEditor"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.IO.IsolatedStorage;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public SavePage()" type the following Application declaration:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">App</span> app = (<span class="tut-symb">App</span>)<span class="tut-symb">Application</span>.Current;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7savepageref.png" width="404" height="413" alt="SavePage Includes and Application Declaration" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+While still in the Code View for SavePage.xaml.cs in the "public SavePage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"TEXT EDITOR"</span>;
+PageTitle.Text = <span class="tut-valu">"save"</span>;
+Loaded += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e) =>
+  {
+    <span class="tut-rsvd">if</span> (app.Filename == <span class="tut-valu">""</span>)
+    {
+      Filename.Text = <span class="tut-valu">"untitled.txt"</span>;
+    }
+      else
+    {
+      Filename.Text = app.Filename;
+    }
+  };
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7txtsaveinit.png" width="424" height="269" alt="SavePage Constructor" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still in the Code View for SavePage.xaml.cs, below the "}" of the "public SavePage()" method type the following Event Handlers
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Save_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (Filename.Text != <span class="tut-valu">""</span>)
+  {
+    <span class="tut-rsvd">try</span>
+    {
+      app.Filename = Filename.Text.Trim().ToLower();
+      <span class="tut-rsvd">using</span> (<span class="tut-symb">IsolatedStorageFile</span> storage = <span class="tut-symb">IsolatedStorageFile</span>.GetUserStoreForApplication())
+      {
+        <span class="tut-symb">IsolatedStorageFileStream</span> location = <span class="tut-rsvd">new</span> <span class="tut-symb">IsolatedStorageFileStream</span>(app.Filename, 
+        System.IO.<span class="tut-symb">FileMode.Create</span>, storage);
+        System.IO.<span class="tut-symb">StreamWriter</span> file = <span class="tut-rsvd">new</span> System.IO.<span class="tut-symb">StreamWriter</span>(location);
+        file.Write(app.Content);
+        file.Dispose();
+        location.Dispose();
+      }
+    NavigationService.GoBack();
+    }
+    <span class="tut-rsvd">catch</span>
+    {
+      <span class="tut-cmnt">// Ignore Errors</span>
+    }
+  }
+}
+ 
+<span class="tut-rsvd">private void</span> Cancel_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  NavigationService.GoBack();
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7txtsavecode.png" width="752" height="461" alt="SavePage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "public MainPage()"
+type the following Application declaration:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">App</span> app = (<span class="tut-symb">App</span>)<span class="tut-symb">Application</span>.Current;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7txtmainref.png" width="403" height="413" alt="MainPage Application Declaration" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+While still in the Code View for MainPage.xaml.cs in the "public MainPage()" Constructor below "InitializeComponent();" type or replace with the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"TEXT EDITOR"</span>;
+PageTitle.Text = <span class="tut-valu">"untitled.txt"</span>;
+Loaded += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e) =>
+  {
+    <span class="tut-rsvd">if</span> (app.Content != <span class="tut-rsvd">null</span>)
+    {
+      Editor.Text = (<span class="tut-rsvd">string</span>)app.Content;
+    }
+    <span class="tut-rsvd">if</span> (app.Filename != <span class="tut-valu">""</span>)
+    {
+      PageTitle.Text = app.Filename;
+    }
+    <span class="tut-rsvd">else</span>
+    {
+      PageTitle.Text = <span class="tut-valu">"untitled.txt"</span>;
+    }
+  };
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7txtmaininit.png" width="424" height="333" alt="MainPage Constructor" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+While still in the Code View for MainPage.xaml.cs, below the "}" of the "public MainPage()" method type the following Helper Method and Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> New_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (<span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Start a new Document?"</span>, <span class="tut-valu">"Text Editor"</span>,
+  <span class="tut-symb">MessageBoxButton</span>.OKCancel) == <span class="tut-symb">MessageBoxResult</span>.OK)
+  {
+    PageTitle.Text = <span class="tut-valu">"untitled.txt"</span>;
+    Editor.Text = <span class="tut-valu">""</span>;
+    app.Filename = PageTitle.Text;
+    app.Content = Editor.Text;
+  }
+}
+
+<span class="tut-rsvd">private void</span> Open_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  app.Content = Editor.Text;
+  NavigationService.Navigate(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(<span class="tut-valu">"/OpenPage.xaml"</span>, <span class="tut-symb">UriKind</span>.Relative));
+}
+
+<span class="tut-rsvd">private void</span> Save_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  app.Content = Editor.Text;
+  NavigationService.Navigate(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(<span class="tut-valu">"/SavePage.xaml"</span>, <span class="tut-symb">UriKind</span>.Relative));
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7txtmaincode.png" width="598" height="365" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7txtrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+If you select the TextBox - you can then begin typing a new Document, then if you want to Save this - click on the "..." on the menu then choose "save"
+enter a filename and click "save" to save the document and return to the main screen, you can then use Open to open this later, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7txtapp.png" width="359" height="660" alt="Text Editor" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a Simple Text Editing application with the ability to Open and Save Text Files using a Windows Phone 7 Silverlight Application.
+You can try adding your own features such as the ablity to change the font size and more - make it your own!
+</p>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Image Carousel</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Image Carousel</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Image Carousel is a Carousel that allows images to be displayed as it revolves around, in this case it is a Horizontal Carousel.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/sl4tut27.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/sl4tut27.zip">Download Tutorial</a> (639KB)</em>
+<em class="icon-dload"><a href="tutorials/sl4tut27code.zip">Download Source Code</a> (8.37KB)</em>
+<em class="icon-odemo"><a href="tutorials/sl4tut27demo.html">Online Demonstration</a></em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Select Project then "Add New Item...", and select the "Silverlight User Control" Template if not already Selected, then change the "Name" to CarouselItem.xaml, see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcaritem.png" width="939" height="624" alt="Add New Silverlight User Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the new User Control to the Project by Clicking on Add, then in the XAML Pane for the CarouselItem.xaml User Control,<br/>
+for the "&lt;UserControl&gt;" Tag change the DesignHeight and DesignWidth Attributes to "100", see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcaritemuser.png" width="530" height="184" alt="CarouselItem UserControl Attributes" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the XAML Pane for CarouselItem.xaml below the "&lt;Grid&gt;" and above the "&lt;/Grid&gt;" Tag, type the following Image Control XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">
+&lt;<span class="tut-valu">Image</span> <span class="tut-attr">Height</span>="100" <span class="tut-attr">Width</span>="100" <span class="tut-attr">Name</span>="Image"&gt;
+  &lt;<span class="tut-valu">Image.RenderTransform</span>&gt;
+    &lt;<span class="tut-valu">TransformGroup</span>&gt;
+      &lt;<span class="tut-valu">ScaleTransform</span> <span class="tut-attr">ScaleX</span>="1" <span class="tut-attr">ScaleY</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ItemScale"/&gt;
+    &lt;/<span class="tut-valu">TransformGroup</span>&gt;
+  &lt;/<span class="tut-valu">Image.RenderTransform</span>&gt;
+&lt;/<span class="tut-valu">Image</span>&gt;
+</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcaritemimg.png" width="125" height="124" alt="CarouselItem UserControl with Image Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Right Click on the Page or the entry for "CarouselItem.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public</span> Angle <span class="tut-rsvd">As Double</span> = <span class="tut-valu">0</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcaritemdecs.png" width="244" height="133" alt="CarouselItem Declarations" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Select Project then "Add New Item...", and select the "Silverlight User Control" Template if not already Selected, then change the "Name" to Carousel.xaml, see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcaradd.png" width="939" height="624" alt="Add New Silverlight User Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Add the new User Control to the Project by Clicking on Add, then in the XAML Pane for the Carousel.xaml User Control,<br/>
+for the "&lt;UserControl&gt;" Tag change the DesignHeight Atrribute to "250" and DesignWidth Attribute to "350", see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcaruser.png" width="530" height="184" alt="Carousel UserControl Attributes" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the XAML Pane for Carousel.xaml below the "&lt;Grid&gt;" and above the "&lt;/Grid&gt;" Tag, type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">
+&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="250" <span class="tut-attr">Width</span>="350" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Container"&gt;
+  &lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="100" <span class="tut-attr">Width</span>="100" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Display"/&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;
+</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarcvs.png" width="376" height="275" alt="Carousel UserControl with Canvases" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Right Click on the Page or the entry for "Carousel.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> _rotate <span class="tut-rsvd">As New</span> <span class="tut-symb">Storyboard</span>
+<span class="tut-rsvd">Private</span> _images <span class="tut-rsvd">As New</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of</span> <span class="tut-symb">ImageSource</span>)
+<span class="tut-rsvd">Private</span> _items <span class="tut-rsvd">As New</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of</span> <span class="tut-symb">CarouselItem</span>)
+<span class="tut-rsvd">Private</span> _position <span class="tut-rsvd">As</span> <span class="tut-symb">Point</span>
+<span class="tut-rsvd">Private</span> _radius <span class="tut-rsvd">As</span> <span class="tut-symb">Point</span> = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span> <span class="tut-rsvd">With</span> {.X = <span class="tut-valu">150</span>, .Y = -<span class="tut-valu">40</span>}
+<span class="tut-rsvd">Private</span> _speed <span class="tut-rsvd">As Double</span> = <span class="tut-valu">0.0125</span>
+<span class="tut-rsvd">Private</span> _perspective <span class="tut-rsvd">As Double</span> = <span class="tut-valu">200</span>
+<span class="tut-rsvd">Private</span> _distance <span class="tut-rsvd">As Double</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcardecs.png" width="474" height="286" alt="Carousel Declarations" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for Carousel, above the "Public Sub New()" line type the following Subs:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Populate(<span class="tut-rsvd">ByRef</span> Canvas <span class="tut-rsvd">As</span> <span class="tut-symb">Canvas</span>)
+  Canvas.Children.Clear()
+  <span class="tut-rsvd">For Each</span> _image <span class="tut-rsvd">In</span> _images
+    <span class="tut-rsvd">Dim</span> _index <span class="tut-rsvd">As Integer
+    Dim</span> _item <span class="tut-rsvd">As New</span> <span class="tut-symb">CarouselItem</span>
+    _item.Image.Source = _image
+    _item.Angle = _index * ((<span class="tut-symb">Math</span>.PI * <span class="tut-valu">2</span>) / _images.Count)
+    _position.X = <span class="tut-symb">Math</span>.Cos(_item.Angle) * _radius.X
+    _position.Y = <span class="tut-symb">Math</span>.Sin(_item.Angle) * _radius.Y
+    Canvas.SetLeft(_item, _position.X)
+    Canvas.SetTop(_item, _position.Y)
+    _distance = <span class="tut-valu">1</span> / (<span class="tut-valu">1</span> - (_position.Y / _perspective))
+    _item.ItemScale.ScaleY = _distance
+    _item.ItemScale.ScaleX = _item.ItemScale.ScaleY
+    _item.Opacity = _item.ItemScale.ScaleX
+    _items.Add(_item)
+    Canvas.Children.Add(_item)
+    _index += <span class="tut-valu">1</span>
+  <span class="tut-rsvd">Next
+End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> Rotate()
+  <span class="tut-rsvd">For Each</span> _item <span class="tut-rsvd">As</span> <span class="tut-symb">CarouselItem</span> <span class="tut-rsvd">In</span> _items
+    _item.Angle -= _speed
+    _position.X = <span class="tut-symb">Math</span>.Cos(_item.Angle) * _radius.X
+    _position.Y = <span class="tut-symb">Math</span>.Sin(_item.Angle) * _radius.Y
+    <span class="tut-symb">Canvas</span>.SetLeft(_item, _position.X)
+    <span class="tut-symb">Canvas</span>.SetTop(_item, _position.Y)
+    <span class="tut-rsvd">If</span> _radius.Y >= <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span>
+      _distance = <span class="tut-valu">1</span> * (<span class="tut-valu">1</span> - (_position.Y / _perspective))
+      <span class="tut-symb">Canvas</span>.SetZIndex(_item, <span class="tut-rsvd">CInt</span>(_position.Y))
+    <span class="tut-rsvd">Else</span>
+      _distance = <span class="tut-valu">1</span> / (<span class="tut-valu">1</span> - (_position.Y / _perspective))
+      <span class="tut-symb">Canvas</span>.SetZIndex(_item, <span class="tut-rsvd">CInt</span>(_position.Y))
+    <span class="tut-rsvd">End If</span>
+    _item.ItemScale.ScaleY = _distance
+    _item.ItemScale.ScaleX = _item.ItemScale.ScaleY
+    _item.Opacity = _item.ItemScale.ScaleX
+  <span class="tut-rsvd">Next</span>
+  _rotate.Begin()
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Public Sub</span> Add(<span class="tut-rsvd">ByVal</span> Source <span class="tut-rsvd">As</span> <span class="tut-symb">ImageSource</span>)
+  _images.Add(Source)
+  Populate(Display)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Public Sub</span> RemoveLast()
+  <span class="tut-rsvd">If</span> _images.Count > <span class="tut-valu">0</span> Then
+    _images.RemoveAt(_images.Count - <span class="tut-valu">1</span>)
+    Populate(Display)
+  <span class="tut-rsvd">End If
+End Sub</span>
+
+<span class="tut-rsvd">Public Sub</span> Clear()
+  _images.Clear()
+  Populate(Display)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarsubs.png" width="474" height="983" alt="Carousel Private and Public Subs" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Still In the Code View for the Carousel User Control in the "Public Sub New()" Constructor below the "InitializeComponent()" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-symb">Canvas</span>.SetLeft(Display, Container.Width / <span class="tut-valu">2</span> - Display.Width / <span class="tut-valu">2</span>)
+<span class="tut-symb">Canvas</span>.SetTop(Display, Container.Height / <span class="tut-valu">2</span> - Display.Height / <span class="tut-valu">2</span>)
+<span class="tut-rsvd">AddHandler</span> _rotate.Completed, <span class="tut-rsvd">AddressOf</span> Rotate
+_rotate.Begin()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarinit.png" width="522" height="116" alt="Carousel User Control Constructor" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Select Debug then the "Build ImageCarousel" option from the menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarbuild.png" width="233" height="24" alt="Build ImageCarousel" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Return to the MainPage.xaml Designer View by selecting the "MainPage.xaml" Tab, or Double Clicking on the Entry for "MainPage.xaml" 
+in Solution Explorer.<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Draw a Two Canvases on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "&lt;Canvas&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="35" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="265" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,35,0,0" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Body"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4alarmcvs.png" width="420" height="319" alt="MainPage with Toolbar Canvas and Content Canvas" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Draw Three Buttons on the "Toolbar" Canvas by dragging the Buttons from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Add" <span class="tut-attr">Content</span>="Add..."/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Remove" <span class="tut-attr">Content</span>="Remove"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Clear" <span class="tut-attr">Content</span>="Clear"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarcvsbtns.png" width="423" height="315" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Then from the ImageCarousel Controls section in the Toolbox select the Carousel control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4carousel.png" width="180" height="428" alt="Carousel Control" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Draw a Carousel on the larger Canvas (Body) by dragging the Carousel from the Toolbox onto the Canvas, then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "my:Carousel" XAML to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Carousel</span> <span class="tut-attr">Canvas.Left</span>="25" <span class="tut-attr">Canvas.Top</span>="5" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Images"/&gt;</span>
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarcvscar.png" width="415" height="314" alt="MainPage with Toolbar and Carousel" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+While Still in the Designer View for MainPage.xaml, Double Click on the "Add..." Button and type in the Add_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> OpenDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">OpenFileDialog</span>
+OpenDialog.Filter = <span class="tut-valu">"JPEG Image (*.jpg;*.jpeg)|*.jpg;*.jpeg"</span>
+<span class="tut-rsvd">If</span> OpenDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    If</span> OpenDialog.File.Exists <span class="tut-rsvd">Then
+      Using</span> FileStream <span class="tut-rsvd">As</span> IO.<span class="tut-symb">Stream</span> = OpenDialog.File.OpenRead
+        <span class="tut-rsvd">Dim</span> Source <span class="tut-rsvd">As New</span> Imaging.<span class="tut-symb">BitmapImage</span>
+        Source.SetSource(FileStream)
+        Images.Add(Source)
+      <span class="tut-rsvd">End Using
+    End If
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcaraddclick.png" width="544" height="320" alt="Add Button Click Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Remove" Button and type in the Remove_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Images.RemoveLast()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarremoveclick.png" width="524" height="82" alt="Remove Button Click Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Clear" Button Control and type in the Clear_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Images.Clear()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarclearclick.png" width="524" height="82" alt="Clear Button Click Event" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Click on the Add Button, then using the File Open Dialog select an Image, you can do this multiple times to add more Images to the Carousel, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcarapp.png" width="400" height="300" alt="Image Carousel" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Close the Application and Browser window by clicking on the Close Button <img src="tutorials/sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p>
+This is a simple Carousel-based way of displaying images, it could be altered so it displays anything in a carousel including Videos or any Content,
+try changing it such as making it a vertical carousel - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

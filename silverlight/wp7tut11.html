@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Playing Cards</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Playing Cards</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Playing Cards is a simple card matching using the standard 52 playing cards with all four suites; 
+Spades, Clubs, Diamonds and Hearts using Silverlight on Windows Phone 7. 
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut11.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut11.zip">Download Tutorial</a> (799KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut11code.zip">Download Source Code</a> (17.7KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+In the XAML Pane for MainPage.xaml between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines, enter the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="300"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="0" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Header"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="220"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="220"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Header --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Footer --&gt;</span>
+  &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Row</span>="2" <span class="tut-attr">Width</span>="160" <span class="tut-attr">Content</span>="new" <span class="tut-attr">Click</span>="New_Click"/&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardmainxaml.png" width="586" height="301" alt="MainPage XAML View" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardmaindesign.png" width="359" height="659" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw Two Buttons on the "Header" section of the Grid, the large section below "Page Title", by dragging the buttons onto the Top part of the Grid, then in the XAML Pane below <span class="tut-cmnt">&lt;!-- Header --&gt;</span>, change the "Button" lines to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="PileOne" <span class="tut-attr">Click</span>="PileOne_Click"/&gt;
+&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="2" <span class="tut-attr">Name</span>="PileTwo" <span class="tut-attr">Click</span>="PileTwo_Click"/&gt;</span>
+</pre>
+</blockquote>
+<p>See Below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardbtns.png" width="359" height="659" alt="MainPage with Buttons" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "public MainPage()" type the following declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">const string</span> CLUBS = <span class="tut-valu">"&clubs;"</span>;
+<span class="tut-rsvd">const string</span> DIAMONDS = <span class="tut-valu">"&diams;"</span>;
+<span class="tut-rsvd">const string</span> HEARTS = <span class="tut-valu">"&hearts;"</span>;
+<span class="tut-rsvd">const string</span> SPADES = <span class="tut-valu">"&spades;"</span>;
+<span class="tut-rsvd">const string</span> ACE = <span class="tut-valu">"A"</span>;
+<span class="tut-rsvd">const string</span> JACK = <span class="tut-valu">"J"</span>;
+<span class="tut-rsvd">const string</span> QUEEN = <span class="tut-valu">"Q"</span>;
+<span class="tut-rsvd">const string</span> KING = <span class="tut-valu">"K"</span>;
+
+<span class="tut-rsvd">private</span> <span class="tut-symb">List</span>&lt;<span class="tut-rsvd">int</span>&gt; _deckOne = <span class="tut-rsvd">new</span> <span class="tut-symb">List</span>&lt;<span class="tut-rsvd">int</span>&gt;();
+<span class="tut-rsvd">private</span> <span class="tut-symb">List</span>&lt;<span class="tut-rsvd">int</span>&gt; _deckTwo = <span class="tut-rsvd">new</span> <span class="tut-symb">List</span>&lt;<span class="tut-rsvd">int</span>&gt;();
+<span class="tut-rsvd">private int</span> _cardOne, _cardTwo;
+<span class="tut-rsvd">private int</span> _first, _second;
+<span class="tut-rsvd">private int</span> _score, _counter;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7carddecs.png" width="404" height="621" alt="MainPage Declarations" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Method:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">TextBlock</span> Pip(<span class="tut-rsvd">string</span> Content, <span class="tut-symb">Color</span> Foreground, 
+<span class="tut-rsvd">double</span> FontSize, <span class="tut-rsvd">string</span> FontFamily, <span class="tut-rsvd">double</span> Left, <span class="tut-rsvd">double</span> Top)
+{
+  <span class="tut-symb">TextBlock</span> _pip = <span class="tut-rsvd">new</span> <span class="tut-symb">TextBlock</span>();
+  _pip.FontSize = FontSize;
+  _pip.FontFamily = <span class="tut-rsvd">new</span> <span class="tut-symb">FontFamily</span>(FontFamily);
+  _pip.Text = Content;
+  _pip.Foreground = <span class="tut-rsvd">new</span> <span class="tut-symb">SolidColorBrush</span>(Foreground);
+  _pip.SetValue(<span class="tut-symb">Canvas</span>.LeftProperty, Left);
+  _pip.SetValue(<span class="tut-symb">Canvas</span>.TopProperty, Top);
+  <span class="tut-rsvd">return</span> _pip;
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardpip.png" width="486" height="190" alt="MainPage Pip Method" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+While still the Code View for MainPage.xaml.cs, below the "}" of the "private TextBlock Pip(...)" method type the following Method: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">Canvas</span> Deck(<span class="tut-rsvd">ref int</span> Card, <span class="tut-rsvd">ref</span> <span class="tut-symb">Color</span> BackColor)
+{
+  <span class="tut-symb">Canvas</span> _card = <span class="tut-rsvd">new</span> <span class="tut-symb">Canvas</span>();
+  <span class="tut-symb">Color</span> _fore = <span class="tut-symb">Colors</span>.Black;
+  <span class="tut-rsvd">string</span> _suite = <span class="tut-valu">""</span>;
+  <span class="tut-rsvd">string</span> _display = <span class="tut-valu">""</span>;
+  <span class="tut-rsvd">int</span> _value;
+  <span class="tut-rsvd">if</span> (Card &gt;= 1 &amp;&amp; Card &lt;= 13)
+  {
+    _fore = <span class="tut-symb">Colors</span>.Black;
+    _suite = CLUBS;
+    _display = Card.ToString();
+  }
+  <span class="tut-rsvd">else if</span> (Card &gt;= 14 &amp;&amp; Card &lt;= 26)
+  {
+    _fore = <span class="tut-symb">Colors</span>.Red;
+    _suite = DIAMONDS;
+    _display = (Card - 13).ToString();
+  }
+  <span class="tut-rsvd">else if</span> (Card &gt;= 27 &amp;&amp; Card &lt;= 39)
+  {
+    _fore = <span class="tut-symb">Colors</span>.Red;
+    _suite = HEARTS;
+    _display = (Card - 26).ToString();
+  }
+  <span class="tut-rsvd">else if</span> (Card &gt;= 40 &amp;&amp; Card &lt;= 52)
+  {
+    _fore = <span class="tut-symb">Colors</span>.Black;
+    _suite = SPADES;
+    _display = (Card - 39).ToString();
+  }
+  _value = <span class="tut-rsvd">int</span>.Parse(_display);
+  _card.Width = 170;
+  _card.Height = 250;
+  _card.Background = <span class="tut-rsvd">new</span> <span class="tut-symb">SolidColorBrush</span>(BackColor);
+  <span class="tut-rsvd">switch</span> (_value)
+  {
+    <span class="tut-rsvd">case</span> 1:
+      _display = ACE;
+      _card.Children.Add(Pip(_suite, _fore, 100, <span class="tut-valu">"Times New Roman"</span>, 50, 60)); <span class="tut-cmnt">// Centre</span>
+      <span class="tut-rsvd">break</span>;
+    <span class="tut-rsvd">case</span> 2:
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 20)); <span class="tut-cmnt">// Middle Top</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 160)); <span class="tut-cmnt">// Middle Bottom</span>
+      break;                                
+    <span class="tut-rsvd">case</span> 3:                                   
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 20)); <span class="tut-cmnt">// Middle Top</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 90)); <span class="tut-cmnt">// Centre</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 160)); <span class="tut-cmnt">// Middle Bottom</span>
+      <span class="tut-rsvd">break</span>;                                
+    <span class="tut-rsvd">case</span> 4:                                   
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 20)); <span class="tut-cmnt">// Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 20)); <span class="tut-cmnt">// Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 160)); <span class="tut-cmnt">// Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 160)); <span class="tut-cmnt">// Bottom Right</span>
+      <span class="tut-rsvd">break</span>;                                
+    <span class="tut-rsvd">case</span> 5:                                   
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 20)); <span class="tut-cmnt">// Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 20)); <span class="tut-cmnt">// Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 90)); <span class="tut-cmnt">// Centre</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 160)); <span class="tut-cmnt">// Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 160)); <span class="tut-cmnt">// Bottom Right</span>
+      <span class="tut-rsvd">break</span>;                                
+    <span class="tut-rsvd">case</span> 6:                                   
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 20)); <span class="tut-cmnt">// Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 20)); <span class="tut-cmnt">// Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 90)); <span class="tut-cmnt">// Centre Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 90)); <span class="tut-cmnt">// Centre Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 160)); <span class="tut-cmnt">// Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 160)); <span class="tut-cmnt">// Bottom Right</span>
+      <span class="tut-rsvd">break</span>;                                
+    <span class="tut-rsvd">case</span> 7:                                   
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 20)); <span class="tut-cmnt">// Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 20)); <span class="tut-cmnt">// Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 90)); <span class="tut-cmnt">// Centre Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 55)); <span class="tut-cmnt">// Centre Top</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 90)); <span class="tut-cmnt">// Centre Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 160)); <span class="tut-cmnt">// Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 160)); <span class="tut-cmnt">// Bottom Right</span>
+      <span class="tut-rsvd">break</span>;                                
+    <span class="tut-rsvd">case</span> 8:                                   
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 20)); <span class="tut-cmnt">// Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 20)); <span class="tut-cmnt">// Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 90)); <span class="tut-cmnt">// Centre Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 55)); <span class="tut-cmnt">// Centre Top</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 125)); <span class="tut-cmnt">// Centre Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 90)); <span class="tut-cmnt">// Centre Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 160)); <span class="tut-cmnt">// Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 160)); <span class="tut-cmnt">// Bottom Right</span>
+      <span class="tut-rsvd">break</span>;                                
+    <span class="tut-rsvd">case</span> 9:                                   
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 20)); <span class="tut-cmnt">// Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 20)); <span class="tut-cmnt">// Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 65)); <span class="tut-cmnt">// Centre Left Top</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 110)); <span class="tut-cmnt">// Centre Left Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 90)); <span class="tut-cmnt">// Centre</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 65)); <span class="tut-cmnt">// Centre Right Top</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 110)); <span class="tut-cmnt">// Centre Right Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 160)); <span class="tut-cmnt">// Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 160)); <span class="tut-cmnt">// Bottom Right</span>
+      <span class="tut-rsvd">break</span>;                                
+    <span class="tut-rsvd">case</span> 10:                                  
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 20)); <span class="tut-cmnt">// Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 20)); <span class="tut-cmnt">// Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 65)); <span class="tut-cmnt">// Centre Left Top</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 110)); <span class="tut-cmnt">// Centre Left Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 55)); <span class="tut-cmnt">// Centre Top</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 65, 125)); <span class="tut-cmnt">// Centre Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 65)); <span class="tut-cmnt">// Centre Right Top</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 110)); <span class="tut-cmnt">// Centre Right Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 20, 160)); <span class="tut-cmnt">// Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, 60, <span class="tut-valu">"Arial"</span>, 110, 160)); <span class="tut-cmnt">// Bottom Right</span>
+      <span class="tut-rsvd">break</span>;
+    <span class="tut-rsvd">case</span> 11:
+      _display = JACK;
+      _card.Children.Add(Pip(_display, _fore, 100, <span class="tut-valu">"Times New Roman"</span>, 65, 65)); <span class="tut-cmnt">// Centre</span>
+      <span class="tut-rsvd">break</span>;
+    <span class="tut-rsvd">case</span> 12:
+      _display = QUEEN;
+      _card.Children.Add(Pip(_display, _fore, 100, <span class="tut-valu">"Times New Roman"</span>, 50, 65)); <span class="tut-cmnt">// Centre</span>
+      <span class="tut-rsvd">break</span>;
+    <span class="tut-rsvd">case</span> 13:
+      _display = KING;
+      _card.Children.Add(Pip(_display, _fore, 100, <span class="tut-valu">"Times New Roman"</span>, 50, 65)); <span class="tut-cmnt">// Centre</span>
+      <span class="tut-rsvd">break</span>;
+  }
+  <span class="tut-rsvd">if</span> ((_display.Length == 1))
+  {
+    _card.Children.Add(Pip(_display, _fore, 20, <span class="tut-valu">"Times New Roman"</span>, 10, 4));
+    _card.Children.Add(Pip(_display, _fore, 20, <span class="tut-valu">"Times New Roman"</span>, 150, 204));
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    _card.Children.Add(Pip(_display, _fore, 20, <span class="tut-valu">"Times New Roman"</span>, 5, 4));
+    _card.Children.Add(Pip(_display, _fore, 20, <span class="tut-valu">"Times New Roman"</span>, 145, 204));
+  }
+  _card.Children.Add(Pip(_suite, _fore, 30, <span class="tut-valu">"Arial"</span>, 7, 16));
+  _card.Children.Add(Pip(_suite, _fore, 30, <span class="tut-valu">"Arial"</span>, 145, 215));
+  <span class="tut-rsvd">return</span> _card;
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7carddeck.png" width="748" height="2237" alt="MainPage Deck Method" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still the Code View for MainPage.xaml.cs, below the "}" of the "private Canvas Deck(...)" method type the following Methods: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">Canvas</span> Card(<span class="tut-rsvd">int</span> Value, <span class="tut-rsvd">bool</span> IsFacing, <span class="tut-symb">Color</span> BackColor)
+{
+  <span class="tut-rsvd">if</span> (IsFacing)
+  {
+    <span class="tut-rsvd">return</span> Deck(<span class="tut-rsvd">ref</span> Value, <span class="tut-rsvd">ref</span> BackColor);
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    <span class="tut-symb">Canvas</span> _card = <span class="tut-rsvd">new</span> <span class="tut-symb">Canvas</span>();
+    _card.Width = 170;
+    _card.Height = 250;
+    _card.Background = <span class="tut-rsvd">new</span> <span class="tut-symb">SolidColorBrush</span>(BackColor);
+    <span class="tut-rsvd">return</span> _card;
+  }
+}
+
+<span class="tut-rsvd">private void</span> Match()
+{
+  <span class="tut-rsvd">if</span> ((_cardOne &lt; 52) &amp;&amp; (_cardTwo &lt; 52))
+  {
+    _first = _deckOne[_cardOne];
+    PileOne.Content = Card(_first, <span class="tut-rsvd">true</span>, <span class="tut-symb">Colors</span>.White);
+    _cardOne++;
+    _second = _deckTwo[_cardTwo];
+    PileTwo.Content = Card(_second, <span class="tut-rsvd">true</span>, <span class="tut-symb">Colors</span>.White);
+    _cardTwo++;
+    <span class="tut-rsvd">if</span> ((_first % 13) == (_second % 13)) <span class="tut-cmnt">// Ignore Suite for Match</span>
+    {
+      _score++;
+      <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Match!"</span>, <span class="tut-valu">"Playing Cards"</span>, <span class="tut-symb">MessageBoxButton</span>.OK);
+    }
+    _counter++;
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Game Over! Matched "</span> + _score + <span class="tut-valu">" out of "</span> +
+    _counter + <span class="tut-valu">" cards!"</span>, <span class="tut-valu">"Playing Cards"</span>, <span class="tut-symb">MessageBoxButton</span>.OK);
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardmatch.png" width="600" height="622" alt="MainPage Card and Match Method" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still the Code View for MainPage.xaml.cs, below the "}" of the "private void Match()" method type the following Methods: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">List</span>&lt;<span class="tut-rsvd">int</span>&gt; Shuffle()
+{
+  <span class="tut-rsvd">int</span> number;
+  <span class="tut-symb">List</span>&lt;<span class="tut-rsvd">int</span>&gt; _numbers = <span class="tut-rsvd">new</span> <span class="tut-symb">List</span>&lt;<span class="tut-rsvd">int</span>&gt;();
+  <span class="tut-symb">Random</span> random = <span class="tut-rsvd">new</span> <span class="tut-symb">Random</span>();
+  <span class="tut-rsvd">while</span> ((_numbers.Count &lt; 52)) <span class="tut-cmnt">// Select 52 Numbers</span>
+  {
+    number = random.Next(1, 53); <span class="tut-cmnt">// Seeded Random Number</span>
+    <span class="tut-rsvd">if</span> ((!_numbers.Contains(number)) || (_numbers.Count &lt; 1))
+    {
+      _numbers.Add(number); <span class="tut-cmnt">// Add if number Chosen or None</span>
+    }
+  }
+  <span class="tut-rsvd">return</span> _numbers;
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardshuffle.png" width="524" height="237" alt="MainPage Shuffle Method" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still the Code View for MainPage.xaml.cs, below the "}" of the "public MainPage()" method type the following Event Handlers: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> New_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  _score = 0;
+  PileOne.Content = Card(1, <span class="tut-rsvd">false</span>, <span class="tut-symb">Colors</span>.Red);
+  PileTwo.Content = Card(1, <span class="tut-rsvd">false</span>, <span class="tut-symb">Colors</span>.Blue);
+  _deckOne = Shuffle();
+  _deckTwo = Shuffle();
+}
+
+<span class="tut-rsvd">private void</span> PileOne_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (PileOne.Content != <span class="tut-rsvd">null</span>)
+  {
+    Match();
+  }
+}
+
+<span class="tut-rsvd">private void</span> PileTwo_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (PileTwo.Content != <span class="tut-rsvd">null</span>)
+  {
+    Match();
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardcode.png" width="490" height="382" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Tap the "new" Button and the following will appear: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardnew.png" width="359" height="660" alt="New" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Tap on either two of the Buttons to show a Card, match two to score a point, do this until all the cards have been displayed, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7cardapp.png" width="359" height="660" alt="Playing Cards" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a very simple game using the standard 52 playing cards deck, try using this as a basis for your own more 
+complex games such as 21 or Poker - make it your own! 
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

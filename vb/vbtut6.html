@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Simple Drawing Package</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Simple Drawing Package</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>Well if you did the Drawing Tutorial this is even better, which will introduce you to the ComboBox and PictureBox Controls plus a little about Command Buttons.</p>
+<p>
+<em class="icon-print"><a href="tutorials/vbtut6.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vbtut6.zip">Download Tutorial</a> (51.6KB)</em>
+<em class="icon-dload"><a href="tutorials/vbtut6code.zip">Download Source Code</a> (7KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Basic, then select Standard EXE Project if VB5/6, click on the option then click Open, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/fignewproject.gif" width="446" height="426" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figform1.gif" width="320" height="240" alt="Form 1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Visual Basic Components Menu Select the Picture Box Control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figpicbox.gif" width="136" height="218" alt="Picture Box Control" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a Picture Box on the Form as shown below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figfrmpicbox.gif" width="320" height="240" alt="Form with Picture Box" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then goto the Properties Box and change AutoRedraw to True, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figpicboxprop.gif" width="210" height="255" alt="Picture Box Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Visual Basic Components Menu Select the ComboBox Control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figcbobox.gif" width="136" height="250" alt="ComboBox Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw Two Combo Boxes on the Form as shown below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figcbopic.gif" width="320" height="240" alt="Form with PictureBox and Two Combo Boxes" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Change the Style Property of both Combo Boxes (Combo1 and Combo2) to 2- Dropdown List.
+</p>
+<p class="tutorial-step">Step 9</p>
+<p>
+Then from the Visual Basic Components Menu Select the Command Button Control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figcommand.gif" width="163" height="221" alt="Command Button Control" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Draw a Command Button on the Form, and change the Caption Property of the Button to Quit, as shown below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figcbopiccom.gif" width="320" height="240" alt="Form with Picture Box, Two Combo Boxes and a Command Button" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Double Click on the Button Labeled Quit (Command1) and type in the Command1_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Unload Me
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 12</p>
+<p>
+Double Click on the Form (Form1) and type in the Form_Load() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">With</span> Combo1
+  .AddItem 1
+  .AddItem 2
+  .AddItem 4
+  .AddItem 8
+  .AddItem 16
+  .AddItem 32
+  .AddItem 64
+<span class="tut-rsvd">End With</span>
+Combo1.ListIndex = 0
+<span class="tut-rsvd">With</span> Combo2
+  .AddItem "Black"
+  .AddItem "Red"
+  .AddItem "Green"
+  .AddItem "Blue"
+  .AddItem "White"
+<span class="tut-rsvd">End With</span>
+Combo2.ListIndex = 0 
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 13</p>
+<p>
+Double Click on the PictureBox (Picture1) and type in the Picture1_MouseDown() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Picture1.CurrentX = X
+Picture1.CurrentY = Y
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 14</p>
+<p>
+Double Click on the PictureBox (Picture1) and type in the Picture1_MouseMove() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Colour <span class="tut-rsvd">As String</span>
+<span class="tut-rsvd">If</span> Button = 1 <span class="tut-rsvd">Then</span>
+  Picture1.DrawWidth = Combo1.Text
+  <span class="tut-rsvd">If</span> Combo2.Text = "Black" <span class="tut-rsvd">Then</span> Colour = vbBlack
+  <span class="tut-rsvd">If</span> Combo2.Text = "Red" <span class="tut-rsvd">Then</span> Colour = vbRed
+  <span class="tut-rsvd">If</span> Combo2.Text = "Green" <span class="tut-rsvd">Then</span> Colour = vbGreen
+  <span class="tut-rsvd">If</span> Combo2.Text = "Blue" <span class="tut-rsvd">Then</span> Colour = vbBlue
+  <span class="tut-rsvd">If</span> Combo2.Text = "White" <span class="tut-rsvd">Then</span> Colour = vbWhite
+  Picture1.<span class="tut-rsvd">Line (</span>Picture1.CurrentX, Picture1.CurrentY<span class="tut-rsvd">)</span>-<span class="tut-rsvd">(</span>X, Y<span class="tut-rsvd">)</span>, Colour
+<span class="tut-rsvd">End If</span> 
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 15</p>
+<p>
+Save the Project (for example prjDrawingPackage) into a vacant folder as you have finished the application. Click on Start / Run 
+<img src="tutorials/figstart.gif" width="23" height="22" alt="Start / Run" /> or Press F5 and the below will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figcbopiccomrun.gif" width="320" height="240" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Change the Value in the Left Combo Box to 8 and the Text in the Right Combo Box to Blue, and draw something, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figdrawpack.gif" width="320" height="240" alt="Drawing with Drawing Package" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+You can draw in any of the widths and colours available by selecting the appropriate option from the two combo boxes. To Quit the Application, Click on Quit.
+</p>
+<p>
+Great you have just created an improved Drawing Package! Try changing the program so that other Draw Widths are available 
+(add more values to the Combo1 With Combo1 List!) Plus add more colours by adding the new names e.g. Yellow and then in the 
+MouseMove Sub of the PictureBox add a conversion routine e.g. If Combo2.Text="Yellow" then Colour=vbYellow. 
+Try changing other parts of the code and extending it, you can learn a lot from this drawing package!
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

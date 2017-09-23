@@ -1,0 +1,505 @@
+img {
+  border: none;
+}
+
+body {
+  color: #000000;
+  background-color: #ffffff;	
+}
+
+#main {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  width:100%;			 
+}
+
+#header {
+  color: #000000;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  background: #849CE7 url(images/glassitem.gif) right top;
+  clear:both;
+}
+
+#titlebar {
+  height:22px;
+  width: 100%;
+  background-color: #5A7EDC;
+  padding: 4px 0px 0px 0px;
+}
+
+h1 {
+  color: #ffffff; 
+  font-size: 1.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+  margin-left:5px;
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+#container {
+  margin: 0px;
+  padding: 0px;
+  background-color: #D2E4F2;
+  width:100%;
+}
+
+.navbar {
+  margin: 0px;
+  padding: 0px;
+  background-color:#D2E4F2;
+  width: 180px;
+  float:left;
+}
+
+.navbar-element {
+  color: #000000; 
+  font-size: 0.8em;  
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  background-color:#D2E4F2;
+  width:162px;
+  padding: 5px 5px 5px 5px;
+  margin: 3px 3px 3px 3px;
+}
+
+.navbar-selected {
+  color: #000000; 
+  font-size: 0.8em;
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  background-color:#ffffff;
+  width:164px;
+  padding: 5px 5px 5px 5px;
+  margin: 3px 3px 3px 3px;
+  background: #ffffff url(images/navsel.jpg) right top;
+}
+
+.navbar-section {
+  color: #ffffff; 
+  font-size: 0.8em;
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  background-color:#c0c0c0;
+  width:164px;
+  padding: 5px 5px 5px 5px;
+  margin: 3px 3px 3px 3px;
+  background: #c0c0c0 url(images/navsec.jpg) right top;
+}
+
+.navbar-seperator {
+  color: #000000; 
+  font-size: 0.8em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  color: #ffffff; 
+  background-color:#5A7EDC;
+  width:174px;
+  padding: 5px 5px 5px 5px;
+  margin: 3px 3px 3px 3px;
+}
+
+A.navbar-link:link {
+  color: #000000; 
+  text-decoration: none;
+}
+A.navbar-link:visited {
+  color: #000000; 
+  text-decoration: none;
+}
+A.navbar-link:active {
+  color: #000000; 
+  text-decoration: none; 
+  cursor: pointer;
+}
+A.navbar-link:hover {
+  color: #000000; 
+  text-decoration: underline; 
+  cursor: pointer; 
+}
+
+#content {
+  padding: 0px;
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+  margin-left: 180px;
+  padding-top: 2px;
+  padding-bottom: 15%;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+dl.genitem { 
+  margin : .5em;
+  padding : 1em;
+  border : 1px solid #5A7EDC;
+  line-height: 140%;
+}
+
+dl.newsitem { 
+  margin : .5em;
+  padding : 1em;
+  border : 1px solid #5A7EDC;
+  line-height: 140%;
+}
+
+dd {
+  margin : 0px;
+  padding : 0px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  overflow: hidden;
+}
+
+dt {
+  color: #5A7EDC;
+  margin : 0px;
+  padding : 0px;
+  text-align: left;
+}
+
+dd p  {
+  padding : 0px;
+}
+
+dd p.date  {
+  margin : 0px;
+  padding-top : .25em;
+  font-size : 92%;
+}
+
+.article-head {
+  margin-top: 4px;
+  color: #000000; 
+  font-size: 1.6em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+
+.article-strap {
+  color: #5A7EDC; 
+  font-size: 1.2em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  font-weight: bold; 
+  text-align: left;
+}
+
+.article-folio {
+  color: #000000; 
+  font-size: 0.9em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+
+.article-image {
+  margin: 5px 5px 5px 5px;
+  float: right;
+  display: block;
+  z-index: 99;					 
+}
+
+.article-section {
+  color: #5A7EDC; 
+  font-size: 1.1em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  font-weight: bold;  
+  text-align: left;
+}
+
+.icon-print {
+  font-style: normal;
+  padding-left:18px;
+  background:url(images/print16x16.gif) center left no-repeat;
+}
+
+.icon-dload {
+  font-style: normal;
+  padding-left:18px;
+  background:url(images/dload16x16.gif) center left no-repeat;
+}
+
+.icon-odemo {
+  font-style: normal;
+  padding-left:18px;
+  background:url(images/demo16x16.gif) center left no-repeat;
+}
+
+.tutorial-list {
+  height: 200px;
+  padding: 0 0 0 0px;	
+  margin: 0 0 20px 0;
+}
+
+.tutorial-list img {
+  float: left;
+	width: 250px;
+	height: 200px
+}
+
+.tutorial-list div {
+	float:left;
+	width: 300px;
+  font-size: 0.95em;
+  line-height: 15px;
+  padding: 0 0 0 8px;
+}
+
+.tutorial-image {
+  overflow: hidden;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+
+.tut-text {
+  color: #000000;
+}
+
+.tut-xatr {
+  color:#555555;
+}
+
+.tut-xexp {
+  color:#555555;
+  background-color:#FFFEBF;
+}
+
+.tut-xatn {
+  color:#B96464;
+}
+
+.tut-xnam {
+  color:#844646;
+}
+
+.tut-xatt {
+  color:#6464B9;
+}
+
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.tut-symb {
+  color:#2B91AF; 
+}
+
+.tut-valu {
+  color: maroon;
+}
+
+.tut-attr {
+  color: red;
+}
+
+.tut-rsvd {
+  color: blue;
+}
+
+.tut-prop {
+  color: gray;
+}
+
+.tut-cmnt {
+  color: #008000;
+}
+
+.tut-img {
+  background:#000000;
+}
+
+.TitleDetailsList {
+  position: relative;
+  width: 600px;
+  height: 140px;
+  padding: 0 0 0 0px;	
+  margin: 0 0 20px 0;
+}
+
+.TitleDetailsListImage {
+  position: relative;
+  float: left;
+  width: 120px;
+  height: 140px;
+  text-align: center;
+}	
+
+.TitleDetailsListText {
+  position: relative;
+  float: left;
+  width: 400px;
+  height:140px;
+  padding: 0 0 0 8px;
+}
+
+.LargeImageList {
+  position: relative;
+  width: 540px;
+  height: 120px;
+  padding: 0 0 0 0px;	
+  margin: 0 0 20px 0;
+}
+
+.LargeImageListImage {
+  position: relative;
+  float: left;
+  width: 120px;
+  text-align: center;
+}	
+
+.LargeImageListText {
+  position: relative;
+  float: left;
+  left: 0px;
+  width: 400px;
+  padding: 0 0 0 8px;
+}
+
+.ImageListTitle {
+  position: relative;
+  padding: 0 0 11px 0;
+}
+
+.ImageListBlurb {
+  position: relative;
+  font-size: 0.95em;
+  line-height: 15px;
+}
+
+div.container {
+  width : 600px;
+  padding-bottom: 10px;			 
+}
+
+div.showcase {
+  width: 800px;
+  padding-bottom: 5px;
+}
+
+div.floatshowcase {
+  width: 200px;
+  height: 180px;
+  padding: 5px;
+  float: left;
+  text-align: center;
+}
+
+div.floatfeature {
+  width: 120px;
+  height: 140px;
+  padding: 10px;
+  float: left;
+  text-align: center;
+}
+
+div.floatfeature img {
+  border : 1px solid #5A7EDC;
+}
+
+div.floatfeature a {
+  text-align: center;
+}
+
+div.floatwall {
+ 					 width: 120px;
+					 height: 180px;
+ 					 padding: 10px;
+  				 float: left;
+}
+
+
+div.appbar {
+  width: 80px;
+	height: 80px;
+	padding: 0px;
+	float:left;
+	text-align:center;
+	font-size:0.80em;
+}
+
+div.appbar img.light 
+{
+  padding:2px;
+  height: 48px;
+	width: 48px;
+	background: #000000 no-repeat url(appbar/light/circle.png) center center;
+  background-color: #000000;
+}
+
+div.appbar img.dark
+{
+  height: 48px;
+	width: 48px;
+	background: #ffffff no-repeat url(appbar/dark/circle.png);
+  background-color: #ffffff;
+}
+
+div.spacer {
+  clear: both;
+}
+
+.image {
+  float: right;
+  margin: 4px 4px 4px 4px;
+  display: block; 	 
+}
+
+#networkbar {
+  color: #000000;
+  font-size: 0.7em; 
+  font-family: Verdana, Geneva, Arial, sans-serif;
+  text-align: center;
+  padding: 1px 4px 1px 4px;
+  background-color: #D2E4F2;
+  vertical-align: middle;
+  height: 25px;
+  line-height: 25px;
+  clear:both;
+}
+
+#bottombar {
+  color: #000000;
+  font-size: 0.7em; 
+  font-family: Verdana, Geneva, Arial, sans-serif;
+  background-color: #ffffff;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  clear:both;
+}
+
+#widgetbar {
+  height:18px;
+  background-color: #5A7EDC;
+  padding: 4px 4px 1px 4px;
+  clear:both;	
+}
+
+#footer {
+  color: #ffffff;
+  width: 100%;
+  height: 50px;
+  background: #5A7EDC url(images/glassitemi.gif) right bottom;
+  clear:both;		
+}

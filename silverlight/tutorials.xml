@@ -1,0 +1,404 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <atom:link href="http://www.cespage.com/silverlight/tutorials.xml" rel="self" type="application/rss+xml" />
+    <title>CESPage.com Silverlight - Tutorials</title>
+    <link>http://www.cespage.com/silverlight/tutorials.html</link>
+    <description>Silverlight brings the best of Windows Presentation Framework to the Browser and to the Phone, build Windows Phone 7 applications, Browser-based applications or even Out-of-Browser Experiences using these Tutorials.</description>
+    <language>en-gb</language>
+    <copyright>Copyright 2010 Comentsys</copyright>
+    <lastBuildDate>Tue, 22 Jun 2010 12:00:00 GMT</lastBuildDate>
+    <ttl>20</ttl>
+		<item>
+			<title>Flip Clock</title>
+			<description>70's style Flip Clock using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut27.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut28.png</guid>
+			<pubDate>Tue, 22 Jun 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>Image Carousel</title>
+			<description>Image Carousel using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut27.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut27.png</guid>
+			<pubDate>Tue, 22 Jun 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>Dial Control</title>
+			<description>Dial Custom Control using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut26.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut26.png</guid>
+			<pubDate>Tue, 15 Jun 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>FlipPanel Control</title>
+			<description>FlipPanel Custom Control using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut25.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut25.png</guid>
+			<pubDate>Tue, 15 Jun 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>Expander Control</title>
+			<description>Expander Custom Control using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut24.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut24.png</guid>
+			<pubDate>Tue, 08 Jun 2010 12:00:00 GMT</pubDate>
+		</item>			
+		<item>
+			<title>Doodle Pad</title>
+			<description>Simple Drawing Package with InkPresenter using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut23.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut23.png</guid>
+			<pubDate>Tue, 08 Jun 2010 12:00:00 GMT</pubDate>
+		</item>	
+		<item>
+			<title>Gamer Card</title>
+			<description>Simple Gamer Card Xbox LIVE application using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut22.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut22.png</guid>
+			<pubDate>Tue, 01 Jun 2010 12:00:00 GMT</pubDate>
+		</item>				
+		<item>
+			<title>Application Settings</title>
+			<description>Windows Phone 7 Application Settings Example</description>
+			<link>http://cespage.com/silverlight/wp7tut21.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut21.png</guid>
+			<pubDate>Tue, 01 Jun 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>Audio Recorder</title>
+			<description>Audio Recording with XNA using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut20.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut20.png</guid>
+			<pubDate>Tue, 25 May 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>Control Template</title>
+			<description>Create Button with a custom Control Template and Visual State Manager using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut19.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut19.png</guid>
+			<pubDate>Tue, 25 May 2010 12:00:00 GMT</pubDate>
+		</item>				
+		<item>
+			<title>Analogue Clock</title>
+			<description>Analogue Clock using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut18.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut18.png</guid>
+			<pubDate>Tue, 18 May 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>RSS Reader</title>
+			<description>RSS Feed Reader using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut17.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut17.png</guid>
+			<pubDate>Tue, 18 May 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Slide Show</title>
+			<description>Photo Viewer and Slideshow Application using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut16.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut16.png</guid>
+			<pubDate>Tue, 11 May 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>mPlayer</title>
+			<description>Audio and Video Media Player using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut15.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut15.png</guid>
+			<pubDate>Tue, 11 May 2010 12:00:00 GMT</pubDate>
+		</item>					
+		<item>
+			<title>Tweet View</title>
+			<description>Simple Twitter Viewer using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut14.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut14.png</guid>
+			<pubDate>Tue, 4 May 2010 12:00:00 GMT</pubDate>
+		</item>			
+		<item>
+			<title>Tweet Search</title>
+			<description>Simple Twitter Search Application using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut13.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut13.png</guid>
+			<pubDate>Tue, 4 May 2010 12:00:00 GMT</pubDate>
+		</item>				
+		<item>
+			<title>Web Browser</title>
+			<description>Simple Web Browser using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut12.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut12.png</guid>
+			<pubDate>Tue, 27 Apr 2010 12:00:00 GMT</pubDate>
+		</item>				
+		<item>
+			<title>Playing Cards</title>
+			<description>Simple Playing Cards Matching Game using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut11.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut11.png</guid>
+			<pubDate>Tue, 27 Apr 2010 12:00:00 GMT</pubDate>
+		</item>				
+		<item>
+			<title>Memory Game</title>
+			<description>Memory Game with Random Shape Matching using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut10.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut10.png</guid>
+			<pubDate>Tue, 20 Apr 2010 12:00:00 GMT</pubDate>
+		</item>			
+		<item>
+			<title>Noughts and Crosses</title>
+			<description>Noughts and Crosses or Tic-Tac-Toe with Winner / Draw rules applied using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut9.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut9.png</guid>
+			<pubDate>Tue, 20 Apr 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>Lucky Lotto</title>
+			<description>Lotto numbers chooser with UK Lotto coloured Balls using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut8.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut8.png</guid>
+			<pubDate>Tue, 13 Apr 2010 12:00:00 GMT</pubDate>
+		</item>			
+		<item>
+			<title>Lucky Dice</title>
+			<description>Create simple random Dice rolling game using Silverlight on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut7.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut7.png</guid>
+			<pubDate>Tue, 13 Apr 2010 12:00:00 GMT</pubDate>
+		</item>					
+		<item>
+			<title>Imager</title>
+			<description>Simple Image Viewer with Projection Animation for Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut6.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut6.png</guid>
+			<pubDate>Tue, 6 Apr 2010 12:00:00 GMT</pubDate>
+		</item>				
+		<item>
+			<title>Task List</title>
+			<description>XML-based Task List application with New, Open, Save, Add and Remove items using Linq-to-XML on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut5.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut5.png</guid>
+			<pubDate>Tue, 6 Apr 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>Text Editor</title>
+			<description>Text Editing application with New, Open and Save on Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut4.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut4.png</guid>
+			<pubDate>Tue, 30 Mar 2010 12:00:00 GMT</pubDate>
+		</item>					
+		<item>
+			<title>Input Scope</title>
+			<description>Using Keyboard Input Scope with Windows Phone 7</description>
+			<link>http://cespage.com/silverlight/wp7tut3.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut3.png</guid>
+			<pubDate>Tue, 30 Mar 2010 12:00:00 GMT</pubDate>
+		</item>				
+		<item>
+			<title>Application Bar</title>
+			<description>Windows Phone 7 Application Bar Example</description>
+			<link>http://cespage.com/silverlight/wp7tut2.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut2.png</guid>
+			<pubDate>Tue, 23 Mar 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>Hello World</title>
+			<description>Classic "Hello World" Example for Windows Phone 7 in Silverlight!</description>
+			<link>http://cespage.com/silverlight/wp7tut1.html</link>
+			<guid>http://cespage.com/silverlight/images/wp7tut1.png</guid>
+			<pubDate>Tue, 16 Mar 2010 12:00:00 GMT</pubDate>
+		</item>				
+		<item>
+			<title>Flip Clock</title>
+			<description>Silverlight 70's style Flip Clock</description>
+			<link>http://cespage.com/silverlight/sl4tut28.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut28.png</guid>
+			<pubDate>Tue, 09 Mar 2010 12:00:00 GMT</pubDate>
+		</item>		
+		<item>
+			<title>Image Carousel</title>
+			<description>Image Carousel in Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut27.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut27.png</guid>
+			<pubDate>Tue, 02 Mar 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Custom Slider</title>
+			<description>Customise the Silverlight Slider Control</description>
+			<link>http://cespage.com/silverlight/sl4tut26.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut26.png</guid>
+			<pubDate>Tue, 23 Feb 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>FlipPanel Control</title>
+			<description>FlipPanel Custom Control in Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut25.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut25.png</guid>
+			<pubDate>Tue, 16 Feb 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Expander Control</title>
+			<description>Expander Custom Control in Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut24.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut24.png</guid>
+			<pubDate>Tue, 9 Feb 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Doodle Pad</title>
+			<description>Basic Drawing Package using InkPresenter</description>
+			<link>http://cespage.com/silverlight/sl4tut23.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut23.png</guid>
+			<pubDate>Tue, 2 Feb 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Data Binding</title>
+			<description>Basic Databinding with DataGrid in Silverlight.</description>
+			<link>http://cespage.com/silverlight/sl4tut22.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut22.png</guid>
+			<pubDate>Tue, 26 Jan 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Virtual Keyboard</title>
+			<description>On-screen Keyboard for Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut21.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut21.png</guid>
+			<pubDate>Tue, 19 Jan 2010 12:00:00 GMT</pubDate>
+		</item>  
+		<item>
+			<title>Audio Recorder</title>
+			<description>Audio Recording Application in Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut20.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut20.png</guid>
+			<pubDate>Tue, 12 Jan 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Control Template</title>
+			<description>Create a Customised Button with Control Template and Visual State Manager in Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut19.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut19.png</guid>
+			<pubDate>Tue, 12 Jan 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Alarm Clock</title>
+			<description>Silverlight Analogue Clock with Alarm.</description>
+			<link>http://cespage.com/silverlight/sl4tut18.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut18.png</guid>
+			<pubDate>Tue, 12 Jan 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>RSS Reader</title>
+			<description>RSS Reader with Out-of-Browser Mode and Elevated Trust.</description>
+			<link>http://cespage.com/silverlight/sl4tut17.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut17.png</guid>
+			<pubDate>Tue, 12 Jan 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Slide Show</title>
+			<description>Photo Viewer and Slideshow Application with Out-of-Browser Mode and Elevated Trust</description>
+			<link>http://cespage.com/silverlight/sl4tut16.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut16.png</guid>
+			<pubDate>Tue, 5 Jan 2010 12:00:00 GMT</pubDate>
+		</item>  
+		<item>
+			<title>mPlayer</title>
+			<description>Audio and Video Media Player using Silverlight.</description>
+			<link>http://cespage.com/silverlight/sl4tut15.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut15.png</guid>
+			<pubDate>Tue, 5 Jan 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Rich Text Editor</title>
+			<description>Rich Text Editor with Formatting, Printing, Open/Save and more.</description>
+			<link>http://cespage.com/silverlight/sl4tut14.html</link>
+			<guid>http://cespage.com/silverlight/images/l4tut14.png</guid>
+			<pubDate>Tue, 5 Jan 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Tweet Search</title>
+			<description>Simple Twitter Search Application.</description>
+			<link>http://cespage.com/silverlight/sl4tut13.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut13.png</guid>
+			<pubDate>Tue, 5 Jan 2010 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Web Browser</title>
+			<description>Simple Web Browser with Out-of-Browser Mode and Elevated Trust.</description>
+			<link>http://cespage.com/silverlight/sl4tut12.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut12.png</guid>
+			<pubDate>Tue, 29 Dec 2009 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Playing Cards</title>
+			<description>Simple Playing Cards Matching Game.</description>
+			<link>http://cespage.com/silverlight/sl4tut11.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut11.png</guid>
+			<pubDate>Tue, 29 Dec 2009 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Memory Game</title>
+			<description>Memory Game with Random Shape Matching.</description>
+			<link>http://cespage.com/silverlight/sl4tut10.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut10.png</guid>
+			<pubDate>Tue, 29 Dec 2009 12:00:00 GMT</pubDate>
+		</item>  
+		<item>
+			<title>Noughts and Crosses</title>
+			<description>Noughts and Crosses or Tic-Tac-Toe a simple game with Winner / Draw rule detection.</description>
+			<link>http://cespage.com/silverlight/sl4tut9.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut9.png</guid>
+			<pubDate>Tue, 29 Dec 2009 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Lucky Lotto</title>
+			<description>Lotto numbers chooser with UK Lotto coloured Balls.</description>
+			<link>http://cespage.com/silverlight/sl4tut8.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut8.png</guid>
+			<pubDate>Tue, 22 Dec 2009 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Lucky Dice</title>
+			<description>Create simple random Dice rolling game using Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut7.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut7.png</guid>
+			<pubDate>Tue, 22 Dec 2009 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Imager</title>
+			<description>Simple Image Viewer with Projection Animation</description>
+			<link>http://cespage.com/silverlight/sl4tut6.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut6.png</guid>
+			<pubDate>Tue, 22 Dec 2009 12:00:00 GMT</pubDate>
+		</item>  
+		<item>
+			<title>Task List</title>
+			<description>XML-based Task List application with New, Open, Save, Add and Remove items using Linq-to-XML and Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut5.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut5.png</guid>
+			<pubDate>Tue, 15 Dec 2009 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Text Editor (Part Two)</title>
+			<description>Adding Clipboard Support to Text Editor with Cut, Copy and Paste</description>
+			<link>http://cespage.com/silverlight/sl4tut4.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut4.png</guid>
+			<pubDate>Tue, 15 Dec 2009 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Text Editor (Part One)</title>
+			<description>Text Editing application with New, Open and Save using Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut3.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut3.png</guid>
+			<pubDate>Tue, 8 Dec 2009 12:00:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Webcam</title>
+			<description>Using the Webcam in Silverlight</description>
+			<link>http://cespage.com/silverlight/sl4tut2.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut2.png</guid>
+			<pubDate>Tue, 1 Dec 2009 12:00:00 GMT</pubDate>
+		</item>  
+		<item>
+			<title>Hello World</title>
+			<description>Classic "Hello World" Example using Silverlight!</description>
+			<link>http://cespage.com/silverlight/sl4tut1.html</link>
+			<guid>http://cespage.com/silverlight/images/sl4tut1.png</guid>
+			<pubDate>Tue, 24 Nov 2009 12:00:00 GMT</pubDate>
+		</item>
+  </channel>
+</rss>

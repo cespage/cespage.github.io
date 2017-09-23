@@ -1,0 +1,479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Playing Cards</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Playing Cards</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Playing Cards is a simple card matching using the standard 52 playing cards with all four suites; Spades, Clubs, Diamonds and Hearts represented.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/sl4tut11.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/sl4tut11.zip">Download Tutorial</a> (420KB)</em>
+<em class="icon-dload"><a href="tutorials/sl4tut11code.zip">Download Source Code</a> (7.5KB)</em>
+<em class="icon-odemo"><a href="tutorials/sl4tut11demo.html">Online Demonstration</a></em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Canvas that fill the whole Page or in the XAML Pane between the "&lt;Grid&gt;" and "&lt;/Grid&gt;" lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="300" <span class="tut-attr">Width</span>="400" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Page"&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cvspage.png" width="423" height="322" alt="MainPage with Canvas" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw Three Buttons on the Canvas by dragging the Buttons from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="35" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="160" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Name</span>="PileOne"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="245" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="160" <span class="tut-attr">Width</span>="120" <span class="tut-attr">Name</span>="PileTwo"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="163" <span class="tut-attr">Canvas.Top</span>="263" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="New" <span class="tut-attr">Content</span>="New"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardcvsbtns.png" width="423" height="322" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Const</span> CLUBS <span class="tut-rsvd">As String</span> = <span class="tut-valu">"&clubs;"</span>
+<span class="tut-rsvd">Private Const</span> DIAMONDS <span class="tut-rsvd">As String</span> = <span class="tut-valu">"&diams;"</span>
+<span class="tut-rsvd">Private Const</span> HEARTS <span class="tut-rsvd">As String</span> = <span class="tut-valu">"&hearts;"</span>
+<span class="tut-rsvd">Private Const</span> SPADES <span class="tut-rsvd">As String</span> = <span class="tut-valu">"&spades;"</span>
+<span class="tut-rsvd">Private Const</span> ACE <span class="tut-rsvd">As String</span> = <span class="tut-valu">"A"</span>
+<span class="tut-rsvd">Private Const</span> JACK <span class="tut-rsvd">As String</span> = <span class="tut-valu">"J"</span>
+<span class="tut-rsvd">Private Const</span> QUEEN <span class="tut-rsvd">As String</span> = <span class="tut-valu">"Q"</span>
+<span class="tut-rsvd">Private Const</span> KING <span class="tut-rsvd">As String</span> = <span class="tut-valu">"K"</span>
+
+<span class="tut-rsvd">Private</span> _deckOne, _deckTwo <span class="tut-rsvd">As</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>)
+<span class="tut-rsvd">Private</span> _cardOne, _cardTwo <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Private</span> _first, _second <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Private</span> _score, _counter <span class="tut-rsvd">As Integer</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4carddecs.png" width="362" height="337" alt="MainPage.xaml Declarations" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Public Sub New()" Constructor type the following Function: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Pip(<span class="tut-rsvd">ByRef</span> Content <span class="tut-rsvd">As String</span>, <span class="tut-rsvd">ByRef</span> Foreground <span class="tut-rsvd">As</span> <span class="tut-symb">Color</span>, _
+    <span class="tut-rsvd">ByRef</span> FontSize <span class="tut-rsvd">As Double</span>, <span class="tut-rsvd">ByRef</span> FontFamily <span class="tut-rsvd">As String</span>, _
+    <span class="tut-rsvd">ByRef</span> Left <span class="tut-rsvd">As Double</span>, <span class="tut-rsvd">ByRef</span> Top <span class="tut-rsvd">As Double</span>) <span class="tut-rsvd">As</span> <span class="tut-symb">TextBlock</span>
+  <span class="tut-rsvd">Dim</span> _pip <span class="tut-rsvd">As New</span> <span class="tut-symb">TextBlock</span>
+  _pip.FontSize = FontSize
+  _pip.FontFamily = <span class="tut-rsvd">New</span> <span class="tut-symb">FontFamily</span>(FontFamily)
+  _pip.Text = Content
+  _pip.Foreground = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(Foreground)
+  _pip.SetValue(<span class="tut-symb">Canvas</span>.LeftProperty, Left)
+  _pip.SetValue(<span class="tut-symb">Canvas</span>.TopProperty, Top)
+  <span class="tut-rsvd">Return</span> _pip
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardpip.png" width="560" height="201" alt="MainPage Pip Function" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View for MainPage.xaml, below "End Function" for "Private Function Pip(...)" Function, type the following Function:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Deck(<span class="tut-rsvd">ByRef</span> Card <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByRef</span> BackColor <span class="tut-rsvd">As</span> <span class="tut-symb">Color</span>) <span class="tut-rsvd">As</span> <span class="tut-symb">Canvas</span>
+  <span class="tut-rsvd">Dim</span> _card <span class="tut-rsvd">As New</span> <span class="tut-symb">Canvas</span>
+  <span class="tut-rsvd">Dim</span> _text <span class="tut-rsvd">As</span> <span class="tut-symb">TextBlock</span> = <span class="tut-rsvd">Nothing</span>
+  <span class="tut-rsvd">Dim</span> _fore <span class="tut-rsvd">As</span> <span class="tut-symb">Color</span> = <span class="tut-symb">Colors</span>.Black
+  <span class="tut-rsvd">Dim</span> _suite <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+  <span class="tut-rsvd">Dim</span> _display <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+  <span class="tut-rsvd">Dim</span> _value <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+  <span class="tut-rsvd">Select Case</span> Card
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">1</span> <span class="tut-rsvd">To</span> <span class="tut-valu">13</span>
+      _fore = <span class="tut-symb">Colors</span>.Black
+      _suite = CLUBS
+      _display = Card
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">14</span> <span class="tut-rsvd">To</span> <span class="tut-valu">26</span>
+      _fore = <span class="tut-symb">Colors</span>.Red
+      _suite = DIAMONDS
+      _display = Card - <span class="tut-valu">13</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">27</span> <span class="tut-rsvd">To</span> <span class="tut-valu">39</span>
+      _fore = <span class="tut-symb">Colors</span>.Red
+      _suite = HEARTS
+      _display = Card - <span class="tut-valu">26</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">40</span> <span class="tut-rsvd">To</span> <span class="tut-valu">52</span>
+      _fore = <span class="tut-symb">Colors</span>.Black
+      _suite = SPADES
+      _display = Card - <span class="tut-valu">39</span>
+  <span class="tut-rsvd">End Select</span>
+  _value = _display
+  _card.Width = <span class="tut-valu">110</span>
+  _card.Height = <span class="tut-valu">150</span>
+  _card.Background = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(BackColor)
+  <span class="tut-rsvd">Select Case</span> _value
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">1</span>
+      _display = ACE
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">70</span>, <span class="tut-valu">"Times New Roman"</span>, <span class="tut-valu">35</span>, <span class="tut-valu">30</span>)) <span class="tut-cmnt">' Centre</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">2</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Middle Top</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Middle Bottom</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">3</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Middle Top</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">52</span>)) <span class="tut-cmnt">' Centre</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Middle Bottom</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">4</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">5</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">52</span>)) <span class="tut-cmnt">' Centre</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">6</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">52</span>)) <span class="tut-cmnt">' Centre Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">52</span>)) <span class="tut-cmnt">' Centre Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">7</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">52</span>)) <span class="tut-cmnt">' Centre Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">26</span>)) <span class="tut-cmnt">' Centre Top</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">52</span>)) <span class="tut-cmnt">' Centre Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">8</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">52</span>)) <span class="tut-cmnt">' Centre Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">26</span>)) <span class="tut-cmnt">' Centre Top</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">78</span>)) <span class="tut-cmnt">' Centre Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">52</span>)) <span class="tut-cmnt">' Centre Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">9</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">34</span>)) <span class="tut-cmnt">' Centre Left Top</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">70</span>)) <span class="tut-cmnt">' Centre Left Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">52</span>)) <span class="tut-cmnt">' Centre</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">34</span>)) <span class="tut-cmnt">' Centre Right Top</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">70</span>)) <span class="tut-cmnt">' Centre Right Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">10</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">0</span>)) <span class="tut-cmnt">' Top Right</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">34</span>)) <span class="tut-cmnt">' Centre Left Top</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">70</span>)) <span class="tut-cmnt">' Centre Left Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">26</span>)) <span class="tut-cmnt">' Centre Top</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">42</span>, <span class="tut-valu">78</span>)) <span class="tut-cmnt">' Centre Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">34</span>)) <span class="tut-cmnt">' Centre Right Top</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">70</span>)) <span class="tut-cmnt">' Centre Right Bottom</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">16</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Left</span>
+      _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">40</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">68</span>, <span class="tut-valu">104</span>)) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">11</span>
+      _display = JACK
+      _card.Children.Add(Pip(_display, _fore, <span class="tut-valu">70</span>, <span class="tut-valu">"Times New Roman"</span>, <span class="tut-valu">40</span>, <span class="tut-valu">35</span>)) <span class="tut-cmnt">' Centre</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">12</span>
+      _display = QUEEN
+      _card.Children.Add(Pip(_display, _fore, <span class="tut-valu">70</span>, <span class="tut-valu">"Times New Roman"</span>, <span class="tut-valu">30</span>, <span class="tut-valu">30</span>)) <span class="tut-cmnt">' Centre</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">13</span>
+      _display = KING
+      _card.Children.Add(Pip(_display, _fore, <span class="tut-valu">70</span>, <span class="tut-valu">"Times New Roman"</span>, <span class="tut-valu">30</span>, <span class="tut-valu">35</span>)) <span class="tut-cmnt">' Centre</span>
+  <span class="tut-rsvd">End Select
+  If</span> Len(_display) = <span class="tut-valu">1</span> <span class="tut-rsvd">Then</span>
+    _card.Children.Add(Pip(_display, _fore, <span class="tut-valu">16</span>, <span class="tut-valu">"Times New Roman"</span>, <span class="tut-valu">2</span>, <span class="tut-valu">4</span>))
+    _card.Children.Add(Pip(_display, _fore, <span class="tut-valu">16</span>, <span class="tut-valu">"Times New Roman"</span>, <span class="tut-valu">96</span>, <span class="tut-valu">116</span>))
+  <span class="tut-rsvd">Else</span>
+    _card.Children.Add(Pip(_display, _fore, <span class="tut-valu">16</span>, <span class="tut-valu">"Times New Roman"</span>, <span class="tut-valu">0</span>, <span class="tut-valu">4</span>))
+    _card.Children.Add(Pip(_display, _fore, <span class="tut-valu">16</span>, <span class="tut-valu">"Times New Roman"</span>, <span class="tut-valu">93</span>, <span class="tut-valu">116</span>))
+  <span class="tut-rsvd">End If</span>
+  _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">20</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">1</span>, <span class="tut-valu">16</span>))
+  _card.Children.Add(Pip(_suite, _fore, <span class="tut-valu">20</span>, <span class="tut-valu">"Arial"</span>, <span class="tut-valu">94</span>, <span class="tut-valu">130</span>))
+  <span class="tut-rsvd">Return</span> _card
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4carddeck.png" width="692" height="1986" alt="MainPage Deck Function" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Function" for "Private Function Deck(...)" type the following Function and Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Card(<span class="tut-rsvd">ByRef</span> Value <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByRef</span> IsFacing <span class="tut-rsvd">As Boolean</span>, _
+    <span class="tut-rsvd">ByRef</span> BackColor <span class="tut-rsvd">As</span> <span class="tut-symb">Color</span>) <span class="tut-rsvd">As</span> <span class="tut-symb">Canvas</span>
+  <span class="tut-rsvd">If</span> IsFacing <span class="tut-rsvd">Then
+    Return</span> Deck(Value, BackColor)
+  <span class="tut-rsvd">Else
+    Dim</span> _card <span class="tut-rsvd">As New</span> <span class="tut-symb">Canvas</span>
+    _card.Width = <span class="tut-valu">110</span>
+    _card.Height = <span class="tut-valu">150</span>
+    _card.Background = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(BackColor)
+    <span class="tut-rsvd">Return</span> _card
+  <span class="tut-rsvd">End If
+End Function</span>
+
+<span class="tut-rsvd">Private Sub</span> Match()
+  <span class="tut-rsvd">If</span> _cardOne &lt; <span class="tut-valu">52</span> <span class="tut-rsvd">And</span> _cardTwo &lt; <span class="tut-valu">52</span> <span class="tut-rsvd">Then</span>
+    _first = _deckOne(_cardOne)
+    PileOne.Content = Card(_first, <span class="tut-rsvd">True</span>, <span class="tut-symb">Colors</span>.White)
+    _cardOne += <span class="tut-valu">1</span>
+    _second = _deckTwo(_cardTwo)
+    PileTwo.Content = Card(_second, <span class="tut-rsvd">True</span>, <span class="tut-symb">Colors</span>.White)
+    _cardTwo += <span class="tut-valu">1</span>
+    <span class="tut-rsvd">If</span> _first <span class="tut-rsvd">Mod</span> 13 = _second <span class="tut-rsvd">Mod</span> 13 <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Ignore Suite for Match</span>
+      _score += <span class="tut-valu">1</span>
+      <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Match!"</span>, <span class="tut-valu">"Playing Cards"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+    <span class="tut-rsvd">End If</span>
+    _counter += <span class="tut-valu">1</span>
+  <span class="tut-rsvd">Else</span>
+    <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Game Over! Matched "</span> &amp; _score &amp; <span class="tut-valu">" out of "</span> &amp; _counter &amp; <span class="tut-valu">" cards!"</span>, _
+      <span class="tut-valu">"Playing Cards"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardmatch.png" width="692" height="524" alt="MainPage Card Function and Match Sub" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Private Sub Match()" type the following Function: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Shuffle() <span class="tut-rsvd">As</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>)
+  <span class="tut-rsvd">Dim</span> _number <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Dim</span> _numbers <span class="tut-rsvd">As New</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>)
+  <span class="tut-rsvd">While</span> _numbers.Count &lt; <span class="tut-valu">52</span> <span class="tut-cmnt">' Select 52 Numbers</span>
+    Randomize() <span class="tut-cmnt">' Random Number</span>
+    _number = Int((<span class="tut-valu">52</span> * Rnd()) + <span class="tut-valu">1</span>) <span class="tut-cmnt">' Between 1 - 52</span>
+    <span class="tut-rsvd">If Not</span> _numbers.Contains(_number) _
+        <span class="tut-rsvd">Or</span> _numbers.Count &lt; <span class="tut-valu">1</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' If Chosen or None</span>
+      _numbers.Add(_number) <span class="tut-cmnt">' Add Number</span>
+    <span class="tut-rsvd">End If
+  End While
+  Return</span> _numbers
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardshuffle.png" width="446" height="218" alt="MainPage Shuffle Function" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "New" Button Control and type in the New_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+_score = <span class="tut-valu">0</span>
+PileOne.Content = Card(<span class="tut-valu">1</span>, <span class="tut-rsvd">False</span>, <span class="tut-symb">Colors</span>.Red)
+PileTwo.Content = Card(<span class="tut-valu">1</span>, <span class="tut-rsvd">False</span>, <span class="tut-symb">Colors</span>.Blue)
+_deckOne = Shuffle()
+_deckTwo = Shuffle()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardnewclick.png" width="502" height="150" alt="New Button Click Event" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the Left-most Button (PileOne) and type in the PileOne_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If Not</span> PileOne.Content <span class="tut-rsvd">Is Nothing Then</span>
+    Match()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardpileoneclick.png" width="532" height="116" alt="PileOne Button Click Event" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the Right-most Button (PileTwo) and type in the PileTwo_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If Not</span> PileTwo.Content <span class="tut-rsvd">Is Nothing Then</span>
+    Match()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardpiletwoclick.png" width="532" height="117" alt="PileTwo Button Click Event" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Click on the New Button and the following will appear: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardnew.png" width="400" height="300" alt="New Game" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Click on either of the two Buttons to show a Card, match two to score a point, do this until all the cards have been displayed, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cardapp.png" width="400" height="300" alt="Playing Cards" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="tutorials/sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This is a very simple game using the standard deck of 52 playing cards - try using this as a basis for your own more complex card games such as 21 or Poker,
+or make them look mroe like cards, it is up to you!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,656 @@
+img {
+		 		 border: none;
+}
+
+body {
+     		 color: #000000;
+		 		 background-color: #ffffff;	
+}
+
+#main {
+			   position: absolute;
+				 top: 0px;
+				 left: 0px;
+				 margin: 0px;
+				 padding: 0px;
+				 width:100%;			 
+}
+
+h1 {
+				 color: #ffffff; 
+				 font-size: 1.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+				 margin-left:5px;
+				 margin-top:0px;
+				 margin-bottom:0px;
+}
+
+#header {
+				 color: #000000;
+				 top: 0px;
+				 left: 0px;
+				 width: 100%;
+				 height: 50px;
+				 background:  #849CE7 url(images/glassitem.jpg) right top;
+				 clear:both;
+}
+
+#titlebar {
+  			 height:22px;
+				 width: 100%;
+				 background-color: #5A7EDC;
+				 padding: 4px 0px 0px 0px;
+}
+
+#container {
+				  margin: 0px;
+				  padding: 0px;
+				  background-color: #D2E4F2;
+					/* float: left; */
+					width:100%;
+}
+
+.navbar {
+				  margin: 0px;
+				  padding: 0px;
+				 	background-color:#D2E4F2;
+					width: 180px;
+					float:left;
+}
+
+.navbar-element {
+					color: #000000; 
+					font-size: 0.8em;  
+					font-family: Arial, Verdana, Helvetica, Sans-Serif;
+					background-color:#D2E4F2;
+					width:162px;
+					padding: 5px 5px 5px 5px;
+ 					margin: 3px 3px 3px 3px;
+}
+
+.navbar-graphic {
+					text-align: center;
+					background-color:#D2E4F2;
+					width:162px;
+					padding: 5px 5px 5px 5px;
+ 					margin: 3px 3px 3px 3px;
+}
+
+.navbar-selected {
+					color: #000000; 
+					font-size: 0.8em;
+					font-family: Arial, Verdana, Helvetica, Sans-Serif;
+					background-color:#ffffff;
+					width:164px;
+					padding: 5px 5px 5px 5px;
+  				margin: 3px 3px 3px 3px;
+					background: #ffffff url(images/navsel.jpg) right top;
+}
+
+.navbar-section {
+					color: #ffffff; 
+					font-size: 0.8em;
+					font-family: Arial, Verdana, Helvetica, Sans-Serif;
+					background-color:#c0c0c0;
+					width:164px;
+					padding: 5px 5px 5px 5px;
+  				margin: 3px 3px 3px 3px;
+					background: #c0c0c0 url(images/navsec.jpg) right top;
+}
+
+.navbar-seperator {
+					color: #000000; 
+					font-size: 0.8em; 
+					font-family: Arial, Verdana, Helvetica, Sans-Serif;
+					color: #ffffff; 
+					background-color:#5A7EDC;
+					width:174px;
+					padding: 5px 5px 5px 5px;
+  				margin: 3px 3px 3px 3px;
+}
+
+A.navbar-link:link {
+					color: #000000; 
+					text-decoration: none;
+}
+A.navbar-link:visited {
+					color: #000000; 
+					text-decoration: none;
+}
+A.navbar-link:active {
+					color: #000000; 
+					text-decoration: none; 
+					cursor: pointer;
+}
+A.navbar-link:hover {
+					color: #000000; 
+					text-decoration: underline; 
+					cursor: pointer; 
+}
+
+#content {
+				 padding: 0px;
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+				 margin-left: 180px;
+				 padding-top: 2px;
+				 padding-bottom: 15%;
+				 padding-left: 4px;
+				 padding-right: 4px;
+}
+
+#banner {
+				 padding: 0px;
+				 background-color: #ffffff; 
+				 margin-left: 180px;
+				 padding-top: 0px;
+				 padding-bottom: 2px;
+				 padding-left: 0px;
+				 padding-right: 0px;
+}
+
+#subnav ul {
+				 padding:0;
+				 margin:0;
+				 background-color:#D2E4F2;
+				 color:#ffffff;
+				 float:left;
+				 width:500px;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+				 border-top: 2px solid #ffffff;
+}
+
+#subnav ul li {
+				 display: inline;
+				 height:15px;
+}
+
+#subnav ul li a {
+				 float:left;
+				 padding:0.3em 1em;
+				 background-color:#D2E4F2;
+				 color:#000000;
+				 text-decoration:none;
+				 border-right: 2px solid #ffffff;
+				 font-size:12px;
+}
+
+#subnav ul li a:hover {
+				 background-color:#FAB148;
+				 color: #000000;
+}
+
+#subnav-active {
+				 float:left;
+				 padding:0.3em 1em;
+				 background-color:#c0c0c0;
+				 color: #000000;
+				 text-decoration:none;
+				 border-right: 2px solid #ffffff;
+				 font-size:12px;
+}
+
+.tlayout {
+				 padding: 0px;
+				 border: 0px;
+				 margin: 0px;
+				 border-spacing: 4px;		 
+}
+
+td.tlayout {
+				 vertical-align: top;
+				 width: 25%;
+}
+
+th.tlayouthalf {
+				 width: 50%;
+}
+
+
+dl.genitem { 
+				 margin : .5em;
+				 padding : 1em;
+				 border : 1px solid #5A7EDC;
+				 line-height: 140%;
+}
+
+dl.newsitem { 
+				 margin : .5em;
+				 padding : 1em;
+				 border : 1px solid #5A7EDC;
+				 line-height: 140%;
+}
+
+dd {
+	 			 margin : 0px;
+	 			 padding : 0px;
+				 padding-top: 15px;
+				 padding-bottom: 5px;
+	 			 overflow: hidden;
+}
+
+dt {
+	 			 color: #5A7EDC;
+	 			 margin : 0px;
+	 			 padding : 0px;
+				 text-align: left;
+}
+
+dd p  {
+	 		 	 padding : 0px;
+}
+
+dd p.date  {
+	 			 margin : 0px;
+	 		   padding-top : .25em;
+			   font-size : 92%;
+}
+
+.article-head {
+							margin-top: 4px;
+							color: #000000; 
+							font-size: 1.6em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+
+.article-strap {
+							 color: #5A7EDC; 
+							 font-size: 1.2em; 
+							 font-family: Arial, Verdana, Helvetica, Sans-Serif;
+							 font-weight: bold; 
+							 text-align: left;
+}
+
+.article-folio {
+							 color: #000000; 
+							 font-size: 0.9em; 
+							 font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							 text-align: left;
+}
+
+.article-image {
+					margin: 5px 5px 5px 5px;
+					float: right;
+					display: block;
+					z-index: 99;					 
+}
+
+.article-section {
+								 color: #5A7EDC; 
+								 font-size: 1.1em; 
+								 font-family: Arial, Verdana, Helvetica, Sans-Serif;
+								 font-weight: bold;  
+								 text-align: left;
+}
+
+.TitleList {
+				 position: relative;
+				 height: 80px;
+				 padding: 4px 0 4px 0;	
+				 margin: 0 10px 0 0;
+}
+
+.TitleListImage {
+				 position: relative;
+				 float: left;
+				 width: 100px;
+}	
+
+.TitleListText {
+				 position: relative;
+				 float: left;
+				 padding: 0 0 0 8px;
+}
+
+.MediumImageList {
+				 position: relative;
+				 height: 100px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.MediumImageListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 100px;
+				 height: 100px;
+				 text-align: center;
+}	
+
+.MediumImageListText
+{
+				 position: relative;
+				 float: left;
+				 height:100px;
+				 padding: 0 0 0 8px;
+}
+
+.ExampleList
+{
+				 position: relative;
+				 width: 605px;
+				 height: 200px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.ExampleListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 300px;
+				 height: 200px;
+				 text-align: center;
+}	
+
+.ExampleListText
+{
+				 position: relative;
+				 float: left;
+				 width: 290px;
+				 height:200px;
+				 padding: 0 0 0 8px;
+}
+
+.SpecList
+{
+				 position: relative;
+				 width: 515px;
+				 height: 200px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.SpecListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 160px;
+				 height: 200px;
+				 text-align: left;
+}	
+
+.SpecListText
+{
+				 position: relative;
+				 float: left;
+				 width: 300px;
+				 height:200px;
+				 padding: 0 0 0 8px;
+}
+
+.LargeImageList
+{
+				 position: relative;
+				 width: 540px;
+				 height: 120px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.LargeImageListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 120px;
+/*				 height: 180px;*/
+				 text-align: center;
+}	
+
+.LargeImageListText
+{
+				 position: relative;
+				 float: left;
+				 left: 0px;
+				 width: 400px;
+/*				 height:200px;*/
+				 padding: 0 0 0 8px;
+}
+
+
+.ShowcaseImageList
+{
+				 position: relative;
+				 width: 600px;
+				 height: 150px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.ShowcaseImageListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 150px;
+				 height: 180px;
+				 text-align: center;
+}	
+
+.ShowcaseImageListText
+{
+				 position: relative;
+				 float: left;
+				 width: 330px;
+				 height:150px;
+				 padding: 0 0 0 8px;
+}
+
+.TitleDetailsList
+{
+				 position: relative;
+				 width: 600px;
+				 height: 220px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.TitleDetailsListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 150px;
+				 height: 220px;
+				 text-align: center;
+}	
+
+.TitleDetailsListText
+{
+				 position: relative;
+				 float: left;
+				 width: 400px;
+				 height:220px;
+				 padding: 0 0 0 8px;
+}
+
+
+
+.ImageList
+{
+				 position: relative;
+				 width: 515px;
+				 height: 70px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.ImageListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 70px;
+				 height: 70px;
+}	
+
+.ImageListText
+{
+				 position: relative;
+				 float: left;
+				 width: 394px;
+				 height:70px;
+				 padding: 0 0 0 8px;
+}
+
+
+.ImageListTitle
+{
+				 position: relative;
+				 padding: 0 0 11px 0;
+}
+
+.ImageListBlurb
+{
+				 position: relative;
+				 font-size: 0.95em;
+				 line-height: 15px;
+}
+
+.WallpaperList
+{
+				 position: relative;
+				 width: 615px;
+				 height: 155px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.WallpaperListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 205px;
+				 height: 155px;
+}	
+
+.EssentialsListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 95px;
+				 height: 70px;
+}	
+
+div.container {
+				 width : 600px;
+				/* height : 200px; */
+				 padding-bottom: 10px;
+				 
+}
+
+div.float {
+ 					 width: 120px;
+				 	 height: 120px;
+ 					 padding: 10px;
+  				 float: left;
+}
+
+div.imagefloat {
+ 					 width: 100px;
+				 	 height: 100px;
+					 padding: 0px 10px 0px 10px;
+  				 float: left;
+}
+
+
+div.floatfeature {
+ 					 width: 120px;
+				 	 height: 140px;
+ 					 padding: 10px;
+  				 float: left;
+					 text-align: center;
+}
+
+div.floatwall {
+ 					 width: 120px;
+					 height: 180px;
+ 					 padding: 10px;
+  				 float: left;
+}
+  
+div.float img {
+  				margin-left: 5px;
+}
+
+div.floatfeature img {
+					border : 1px solid #5A7EDC;
+}
+
+.floattext {
+  				margin-left: 5px;
+  				font-size: 1.0em;
+					text-align: center;
+}
+
+div.floatfeature a {
+					text-align: center;
+}
+
+div.float p {
+  				font-size: 0.9em;
+					text-align: center;
+}
+
+div.float a {
+  				font-size: 1.0em;
+}
+
+div.spacer {
+  				clear: both;
+}
+
+.block {
+			 		height: 250px;
+}
+
+
+
+.image {
+			 		float: right;
+					margin: 4px 4px 4px 4px;
+					display: block; 	 
+}
+
+#networkbar {
+				 color: #000000;
+				 font-size: 0.7em; 
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+				 text-align: center;
+				 padding: 1px 4px 1px 4px;
+				 background-color: #D2E4F2;
+				 vertical-align: middle;
+				 height: 25px;
+				 line-height: 25px;
+				 clear:both;
+}
+
+#bottombar {
+				 color: #000000;
+				 font-size: 0.7em; 
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+				 background-color: #ffffff;
+				 vertical-align: middle;
+				 text-align: center;
+				 width: 100%;
+				 height: 25px;
+				 line-height: 25px;
+				 clear:both;
+}
+
+#widgetbar {
+  			 height:18px;
+				 background-color: #5A7EDC;
+				 padding: 4px 4px 1px 4px;
+				 clear:both;	
+}
+
+#footer {
+				 color: #ffffff;
+				 width: 100%;
+				 height: 50px;
+				 background: #5A7EDC url(images/glassitemi.jpg) right bottom;
+				 clear:both;		
+}

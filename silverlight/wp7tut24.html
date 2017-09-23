@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Expander Control</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Expander Control</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Expander Control is a Collapsible panel, which when collapsed shows only header and button, 
+when expanded the content is displayed using Silverlight for Windows Phone 7.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut24.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut24.zip">Download Tutorial</a> (644KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut24code.zip">Download Source Code</a> (20.5KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select from the Main Menu "File" then "Add", then "New Project...", and select the "Windows Phone Class Library" Template, then change the "Name" to Expander see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expclslib.png" width="939" height="624" alt="Add Expander Class Library Project" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the New Class Library Project by Clicking on Add, then in the Solution Explorer for "Expander", 
+click on the "Class1.cs" entry, then goto Properties and change the File Name property to "Expander.cs" (without the quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expprop.png" width="217" height="393" alt="Expander Class Properties" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+In the "You are renaming a file. Would you also like to perform a rename in this project of all references to the code element 'Class1'?" choose Yes.<br/>
+Right Click on the Entry for the "Expander" Project (not Expander.cs) in Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "Themes" (again without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expsolthemes.png" width="217" height="527" alt="Expander Project Themes Folder" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Right Click on the Entry for the "Themes" Folder for the Expander Project, and choose "Add", then "New Item...", 
+select the "Text File" Template and change the name to "Generic.xaml", (without the quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7generic.png" width="939" height="624" alt="Generic.xaml Resource Dictionary Text File" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Add the Text File for the ResourceDictionary by Clicking on Add.<br/>
+In the XAML Pane for the Generic.xaml type the following Resource Dictionary XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">
+&lt;<span class="tut-valu">ResourceDictionary</span>
+<span class="tut-attr">xmlns</span>="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<span class="tut-attr">xmlns</span>:<span class="tut-attr">x</span>="http://schemas.microsoft.com/winfx/2006/xaml"
+<span class="tut-attr">xmlns</span>:<span class="tut-attr">local</span>="clr-namespace:Expander"&gt;
+  &lt;<span class="tut-valu">Style</span> <span class="tut-attr">TargetType</span>="local:Expander"&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Template"&gt;
+      &lt;<span class="tut-valu">Setter.Value</span>&gt;
+        &lt;<span class="tut-valu">ControlTemplate</span> <span class="tut-attr">TargetType</span>="local:Expander"&gt;
+          &lt;<span class="tut-valu">Grid</span>&gt;
+            &lt;<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+              &lt;<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ViewStates"&gt;
+                &lt;<span class="tut-valu">VisualStateGroup.Transitions</span>&gt;
+                  &lt;<span class="tut-valu">VisualTransition</span> <span class="tut-attr">GeneratedDuration</span>="0:0:0.5"/&gt;
+                &lt;/<span class="tut-valu">VisualStateGroup.Transitions</span>&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Expanded"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="ContentScaleTransform"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="ScaleY" <span class="tut-attr">To</span>="1" <span class="tut-attr">Duration</span>="0"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="RotateButtonTransform"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="Angle" <span class="tut-attr">To</span>="180" <span class="tut-attr">Duration</span>="0"/&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">VisualState</span>&gt;
+              &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Collapsed"&gt;
+                &lt;<span class="tut-valu">Storyboard</span>&gt;
+                  &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="ContentScaleTransform"
+                      <span class="tut-attr">Storyboard.TargetProperty</span>="ScaleY" <span class="tut-attr">To</span>="0" <span class="tut-attr">Duration</span>="0"/&gt;
+                  &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="RotateButtonTransform"
+                      <span class="tut-attr">Storyboard.TargetProperty</span>="Angle" <span class="tut-attr">To</span>="0" <span class="tut-attr">Duration</span>="0"/&gt;
+                &lt;/<span class="tut-valu">Storyboard</span>&gt;
+              &lt;/<span class="tut-valu">VisualState</span>&gt;
+            &lt;/<span class="tut-valu">VisualStateGroup</span>&gt;
+          &lt;/<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+            &lt;<span class="tut-valu">Border</span> <span class="tut-attr">BorderBrush</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderBrush</span>}"
+                <span class="tut-attr">BorderThickness</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderThickness</span>}"
+                <span class="tut-attr">CornerRadius</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">CornerRadius</span>}"
+                <span class="tut-attr">Background</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Background</span>}"&gt;
+              &lt;<span class="tut-valu">Grid</span>&gt;
+                &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+                  &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+                  &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+                &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+                &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Margin</span>="3"&gt;
+                  &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+                    &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+                    &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+                  &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+                  &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">VerticalAlignment</span>="Center" <span class="tut-attr">Content</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">HeaderContent</span>}"/&gt;
+                  &lt;<span class="tut-valu">ToggleButton</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ExpandCollapseButton"&gt;
+                    &lt;<span class="tut-valu">ToggleButton.Template</span>&gt;
+                      &lt;<span class="tut-valu">ControlTemplate</span>&gt;
+                        &lt;<span class="tut-valu">Grid</span>&gt;
+                          &lt;<span class="tut-valu">Ellipse</span> <span class="tut-attr">Width</span>="50" <span class="tut-attr">Height</span>="50" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+                          &lt;<span class="tut-valu">Path</span> <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5" <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Center" 
+                              <span class="tut-attr">Data</span>="M2,3L9,10 16,3" <span class="tut-attr">Stroke</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneForegroundBrush</span>}" <span class="tut-attr">StrokeThickness</span>="4"/&gt;
+                        &lt;/<span class="tut-valu">Grid</span>&gt;
+                      &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+                    &lt;/<span class="tut-valu">ToggleButton.Template</span>&gt;
+                    &lt;<span class="tut-valu">ToggleButton.RenderTransform</span>&gt;
+                      &lt;<span class="tut-valu">RotateTransform</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="RotateButtonTransform"/&gt;
+                    &lt;/<span class="tut-valu">ToggleButton.RenderTransform</span>&gt;
+                  &lt;/<span class="tut-valu">ToggleButton</span>&gt;
+                &lt;/<span class="tut-valu">Grid</span>&gt;
+                &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Content</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Content</span>}" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Content"&gt;
+                  &lt;<span class="tut-valu">ContentPresenter.RenderTransform</span>&gt;
+                    &lt;<span class="tut-valu">ScaleTransform</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentScaleTransform"/&gt;
+                  &lt;/<span class="tut-valu">ContentPresenter.RenderTransform</span>&gt;
+                &lt;/<span class="tut-valu">ContentPresenter</span>&gt;
+              &lt;/<span class="tut-valu">Grid</span>&gt;
+            &lt;/<span class="tut-valu">Border</span>&gt;
+          &lt;/<span class="tut-valu">Grid</span>&gt;
+        &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+      &lt;/<span class="tut-valu">Setter.Value</span>&gt;
+    &lt;/<span class="tut-valu">Setter</span>&gt;
+  &lt;/<span class="tut-valu">Style</span>&gt;
+&lt;/<span class="tut-valu">ResourceDictionary</span>&gt;
+</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expres.png" width="1034" height="1197" alt="Expander Resource Dictionary" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Right Click on the Entry for the "Expander.cs" Class in Solution Explorer in the "Expander Project" and choose
+"View Code" or Double click on "Expander.cs".<br/>
+In the Code View for Expander above "namespace Expander" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Windows.Controls.Primitives;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public class Expander" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+[<span class="tut-symb">TemplateVisualState</span>(Name = <span class="tut-valu">"Collapsed"</span>, GroupName = <span class="tut-valu">"ViewStates"</span>)]
+[<span class="tut-symb">TemplateVisualState</span>(Name = <span class="tut-valu">"Expanded"</span>, GroupName = <span class="tut-valu">"ViewStates"</span>)]
+[<span class="tut-symb">TemplatePart</span>(Name = <span class="tut-valu">"Content"</span>, Type = <span class="tut-rsvd">typeof</span>(<span class="tut-symb">FrameworkElement</span>))]
+[<span class="tut-symb">TemplatePart</span>(Name = <span class="tut-valu">"ExpandCollapseButton"</span>, Type = <span class="tut-rsvd">typeof</span>(<span class="tut-symb">ToggleButton</span>))]
+</pre>
+</blockquote>
+<p>
+Again in the CodeView at the end of the line "public class Expander" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ : <span class="tut-symb">ContentControl</span>
+</pre>
+</blockquote>
+<p>
+And in the CodeView below the "{" of the line "public class Expander : ContentControl" type the following Declarations and Dependancy Properties:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private bool</span> _useTransitions = <span class="tut-rsvd">true</span>;
+<span class="tut-rsvd">private</span> <span class="tut-symb">VisualState</span> _collapsedState;
+<span class="tut-rsvd">private</span> <span class="tut-symb">ToggleButton</span> _toggleExpander;
+<span class="tut-rsvd">private</span> <span class="tut-symb">FrameworkElement</span> _contentElement;
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> HeaderContentProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"HeaderContent"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">object</span>), 
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Expander</span>), <span class="tut-rsvd">null</span>);
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> IsExpandedProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"IsExpanded"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">bool</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Expander</span>), <span class="tut-rsvd">new</span> <span class="tut-symb">PropertyMetadata</span>(<span class="tut-rsvd">true</span>));
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> CornerRadiusProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"CornerRadius"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-symb">CornerRadius</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Expander</span>), <span class="tut-rsvd">null</span>);
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expclsref.png" width="556" height="621" alt="Expander.cs Imports, Template, Declarations and Dependancy Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the Code View below the "CornerRadiusProperty" declaration type the following Properties and Methods:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public object</span> HeaderContent
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> GetValue(HeaderContentProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(HeaderContentProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public bool</span> IsExpanded
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-rsvd">bool</span>)GetValue(IsExpandedProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(IsExpandedProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">CornerRadius</span> CornerRadius
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-symb">CornerRadius</span>)GetValue(CornerRadiusProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(CornerRadiusProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public</span> Expander()
+{
+  DefaultStyleKey = <span class="tut-rsvd">typeof</span>(<span class="tut-symb">Expander</span>);
+}
+
+<span class="tut-rsvd">private void</span> ChangeVisualState(<span class="tut-rsvd">bool</span> useTransitions)
+{
+  <span class="tut-rsvd">if</span> (IsExpanded)
+  {
+    <span class="tut-rsvd">if</span> (_contentElement != <span class="tut-rsvd">null</span>)
+    {
+      _contentElement.Visibility = <span class="tut-symb">Visibility</span>.Visible;
+    }
+    <span class="tut-symb">VisualStateManager</span>.GoToState(<span class="tut-rsvd">this</span>, <span class="tut-valu">"Expanded"</span>, useTransitions);
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    <span class="tut-symb">VisualStateManager</span>.GoToState(<span class="tut-rsvd">this</span>, <span class="tut-valu">"Collapsed"</span>, useTransitions);
+    _collapsedState = (<span class="tut-symb">VisualState</span>)GetTemplateChild(<span class="tut-valu">"Collapsed"</span>);
+    <span class="tut-rsvd">if</span> (_collapsedState == <span class="tut-rsvd">null</span>)
+    {
+      <span class="tut-rsvd">if</span> (_contentElement != <span class="tut-rsvd">null</span>)
+      {
+        _contentElement.Visibility = <span class="tut-symb">Visibility</span>.Collapsed;
+      }
+    }
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expclsmets.png" width="570" height="733" alt="Expander Properties and Methods" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View below the "}" of the "ChangeVisualState" Method type the following Event Handlers:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Toggle_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  IsExpanded = !IsExpanded;
+  _toggleExpander.IsChecked = IsExpanded;
+  ChangeVisualState(_useTransitions);
+}
+
+<span class="tut-rsvd">private void</span> Collapsed_Completed(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  _contentElement.Visibility = <span class="tut-symb">Visibility</span>.Collapsed;
+}
+
+<span class="tut-rsvd">public override void</span> OnApplyTemplate()
+{
+  <span class="tut-rsvd">base</span>.OnApplyTemplate();
+  _toggleExpander = (<span class="tut-symb">ToggleButton</span>)GetTemplateChild(<span class="tut-valu">"ExpandCollapseButton"</span>);
+  <span class="tut-rsvd">if</span> (_toggleExpander != <span class="tut-rsvd">null</span>)
+  {
+    _toggleExpander.Click += Toggle_Click;
+  }
+  _contentElement = (<span class="tut-symb">FrameworkElement</span>)GetTemplateChild(<span class="tut-valu">"Content"</span>);
+  <span class="tut-rsvd">if</span> (_contentElement != null)
+  {
+    _collapsedState = (<span class="tut-symb">VisualState</span>)GetTemplateChild(<span class="tut-valu">"Collapsed"</span>);
+    <span class="tut-rsvd">if</span> ((_collapsedState != <span class="tut-rsvd">null</span>) &amp;&amp; (_collapsedState.Storyboard != <span class="tut-rsvd">null</span>))
+    {
+      _collapsedState.Storyboard.Completed += Collapsed_Completed;
+    }
+  }
+  ChangeVisualState(<span class="tut-rsvd">false)</span>;
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expclscode.png" width="614" height="493" alt="Expander Event Handlers" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Select "Build Solution" from the Debug menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7build.png" width="233" height="24" alt="Build Solution" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+When the Build completes, return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then from the Expander Controls section in the Toolbox select the Expander control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expander.png" width="180" height="428" alt="Expander User Control" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Draw an Expander onto the Page by dragging an Expander from the Toolbox onto the Page, then in the XAML Pane between the 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines, change "expander1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Expander</span> <span class="tut-attr">HeaderContent</span>="Expander"&gt;
+  &lt;<span class="tut-valu">my</span>:<span class="tut-valu">Expander.Content</span>&gt;
+    &lt;<span class="tut-valu">StackPanel</span>&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button One"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button Two"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button Three"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button Four"/&gt;
+    &lt;/<span class="tut-valu">StackPanel</span>&gt;
+  &lt;/<span class="tut-valu">my</span>:<span class="tut-valu">Expander.Content</span>&gt;
+&lt;/<span class="tut-valu">my</span>:<span class="tut-valu">Expander</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expxaml.png" width="566" height="189" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expdesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7exprun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Tap the Round button with the Arrow to Collapse or Expand the Expander, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7expapp.png" width="359" height="660" alt="Expander Control" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple Expander Control example it could be extended to support more Properties such as HeaderContent Background colour for example,
+or adding more features - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

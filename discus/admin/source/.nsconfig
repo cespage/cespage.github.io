@@ -1,0 +1,3 @@
+<FILES *>
+RestrictAccess type=deny ip=*
+</FILES>

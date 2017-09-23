@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Slide Show</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>Slide Show</h1>
+<p>
+Slide Show is a Windows Phone 7 Image Viewer with support for Play/Pause Slide Show with Playback and Speed control.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut16.html">www.cespage.com/silverlight/wp7tut16.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Right Click on the Entry for the Project in the Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "images" (without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slidesolexp.png" width="217" height="527" alt="Project Images Folder" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Download the following images (add.png, remove.png, play.png &amp; stop.png) by right-clicking on the images below and choose "Save Picture As..." or 
+"Save Image As..." and Save them to a Folder on your computer:
+</p>
+<blockquote>
+<div class="tut-img">
+<img src="add.png" width="48" height="48" alt="Add Application Bar Icon" />
+<img src="remove.png" width="48" height="48" alt="Remove Application Bar Icon" />
+<img src="play.png" width="48" height="48" alt="Play Application Bar Icon" />
+<img src="stop.png" width="48" height="48" alt="Stop Application Bar Icon" />
+</div>
+</blockquote>
+<p class="tutorial-step">Step 5</p>
+<p>
+Right Click on the Entry for the "image" Folder for the Project in Solution Explorer, and choose "Add", then "Existing Item...", 
+then in the "Add Existing Item" dialog select Folder you saved the images, then choose "Add"
+to add the add.png, remove.png, play.png and stop.png to the images folder in the project, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slidesolexpimg.png" width="217" height="527" alt="Project Images Folder with Images" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the Solution Explorer click on the "add.png" image then goto the Properties box and change the
+Build Action to Content, do the same for the "play.png", "remove.png" and "stop.png" images, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slideimgprop.png" width="217" height="393" alt="Image Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Select the SlideShow Project in the Solution Explorer then from the Menu Select Project then "Add Class...", and select the "Class" Template is not already Selected, then change the "Name" to SlideShow.cs see below: 
+</p>
+<div class="tutorial-image">
+<img src="wp7slideshow.png" width="939" height="624" alt="Tweet Class" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Add the new Class to the Project by Clicking on Add, then in the Code View for the new Class above "namespace SlideShow"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Collections.Generic;
+<span class="tut-rsvd">using</span> System.Windows.Threading;
+<span class="tut-rsvd">using</span> System.Windows.Media.Imaging;
+<span class="tut-rsvd">using</span> System.IO;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView below the "{" of the line "public class SlideShow" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">DispatcherTimer</span> _slideshow = <span class="tut-rsvd">new</span> <span class="tut-symb">DispatcherTimer</span>();
+<span class="tut-rsvd">private</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">BitmapImage</span>&gt; _images = <span class="tut-rsvd">new</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">BitmapImage</span>&gt;();
+<span class="tut-rsvd">private int</span> _index;
+<span class="tut-rsvd">private bool</span> _hasImages;
+<span class="tut-rsvd">private bool</span> _isPlaying;
+<span class="tut-rsvd">private bool</span> _isPaused;
+
+<span class="tut-rsvd">public delegate void</span> SlideEvent(<span class="tut-symb">BitmapImage</span> image, <span class="tut-rsvd">int</span> index);
+<span class="tut-rsvd">public event</span> <span class="tut-symb">SlideEvent</span> Slide;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slideshowref.png" width="500" height="493" alt="SlideShow Includes and Declarations" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the Code View for SlideShow.cs below "<span class="tut-rsvd">public event</span> <span class="tut-symb">SlideEvent</span> Slide;" type the following Constructor and Methods: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> SlideShow()
+{
+  _slideshow.Interval = <span class="tut-symb">TimeSpan</span>.FromSeconds(1.5);
+  _slideshow.Tick += <span class="tut-rsvd">new</span> <span class="tut-symb">EventHandler</span>(SlideShow_Tick);
+}
+
+<span class="tut-rsvd">public bool</span> Add(<span class="tut-symb">Uri</span> uri)
+{
+  <span class="tut-symb">BitmapImage</span> _image = <span class="tut-rsvd">new</span> <span class="tut-symb">BitmapImage</span>(uri);
+  _images.Add(_image);
+  <span class="tut-rsvd">return</span> _hasImages = _images.Count > 0;
+}
+
+<span class="tut-rsvd">public void</span> Remove(<span class="tut-rsvd">int</span> index)
+{
+  <span class="tut-rsvd">if</span> (index &lt; _images.Count &amp;&amp; index &gt; -1)
+  {
+    _images.RemoveAt(index);
+  }
+}
+
+<span class="tut-rsvd">public void</span> Play()
+{
+  <span class="tut-rsvd">if</span> (_hasImages &amp;&amp; (_isPaused || !_isPlaying))
+  {
+    _slideshow.Start();
+    _isPlaying = <span class="tut-rsvd">true</span>;
+    _isPaused = <span class="tut-rsvd">false</span>;
+  }
+}
+
+<span class="tut-rsvd">public void</span> Pause()
+{
+  <span class="tut-rsvd">if</span> (_hasImages &amp;&amp; _isPlaying)
+  {
+    _slideshow.Stop();
+    _isPaused = <span class="tut-rsvd">true</span>;
+    _isPlaying = <span class="tut-rsvd">false</span>;
+  }
+}
+
+<span class="tut-rsvd">public void</span> Stop()
+{
+  <span class="tut-rsvd">if</span> (_hasImages)
+  {
+    _index = 0;
+    _slideshow.Stop();
+    _isPaused = <span class="tut-rsvd">false</span>;
+    _isPlaying = <span class="tut-rsvd">false</span>;
+  }
+}
+
+<span class="tut-rsvd">public void</span> Selected(<span class="tut-rsvd">int</span> index)
+{
+  <span class="tut-rsvd">if</span> (_hasImages &amp;&amp; index &lt; _images.Count)
+  {
+    _index = index;
+    <span class="tut-rsvd">if</span> (_isPlaying)
+    {
+      this.Play();
+    }
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slideshowmets.png" width="460" height="1005" alt="SlideShow Constructor and Methods" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View for SlideShow.cs above "public SlideShow" type the following Event Handler and Properties: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> SlideShow_Tick(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (_hasImages &amp;&amp; _isPlaying)
+  {
+    <span class="tut-rsvd">if</span> (_index &lt; _images.Count)
+    {
+      Slide(_images[_index], _index);
+      _index += 1;
+    }
+    <span class="tut-rsvd">else</span>
+    {
+      <span class="tut-rsvd">this</span>.Stop();
+    }
+  }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">TimeSpan</span> Speed
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _slideshow.Interval; }
+  <span class="tut-rsvd">set</span>
+  {
+    <span class="tut-rsvd">if</span> (value != _slideshow.Interval)
+    {
+      _slideshow.Interval = <span class="tut-rsvd">value</span>;
+    }
+  }
+}
+
+<span class="tut-rsvd">public int</span> Position
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _index; }
+  <span class="tut-rsvd">set</span> { _index = <span class="tut-rsvd">value</span>; }
+}
+
+<span class="tut-rsvd">public int</span> Count
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _images.Count; }
+}
+
+<span class="tut-rsvd">public bool</span> Playing
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _isPlaying; }
+}
+
+<span class="tut-rsvd">public bool</span> Paused
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _isPaused; }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slideshowcode.png" width="452" height="765" alt="SlideShow Event Handler and Properties" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab then in the XAML Pane above the "&lt;Grid&gt;" Tag type the following ApplicationBar XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="False"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="add" <span class="tut-attr">IconUri</span>="/images/add.png" <span class="tut-attr">Click</span>="Add_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="remove" <span class="tut-attr">IconUri</span>="/images/remove.png" <span class="tut-attr">Click</span>="Remove_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="play" <span class="tut-attr">IconUri</span>="/images/play.png" <span class="tut-attr">Click</span>="Play_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="stop" <span class="tut-attr">IconUri</span>="/images/stop.png" <span class="tut-attr">Click</span>="Stop_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7slidexaml.png" width="802" height="157" alt="ApplicationBar XAML" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the in XAML Pane between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="80"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="80"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Toolbar" <span class="tut-attr">Grid.Row</span>="0"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Playback" <span class="tut-attr">Grid.Row</span>="2"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="120"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Playback --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7mplaypagexaml.png" width="404" height="349" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7mplaypagedesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="wp7textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Draw a TextBox onto the Toolbar Section (upper smaller section) of the Grid on the Page, below the Page Title, and in the XAML Pane below the <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span> line, change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="Location"&gt;
+  &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+    &lt;<span class="tut-valu">InputScope</span>&gt;
+      &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="Url"/&gt;
+    &lt;/<span class="tut-valu">InputScope</span>&gt;
+  &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+&lt;/<span class="tut-valu">TextBox</span>&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7mplaytxt.png" width="359" height="660" alt="MainPage with Location TextBox" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="wp7button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Draw a Button onto the Toolbar Section by dragging the Button from the Toolbox onto the Toolbar section of the Grid on the Page, 
+then in the XAML Pane change the "Button1" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="go" <span class="tut-attr">Click</span>="Go_Click"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7mplaybtn.png" width="359" height="660" alt="MainPage with Button" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Slider control:
+</p>
+<div class="tutorial-image">
+<img src="wp7slider.png" width="180" height="428" alt="Slider Control" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Draw two Sliders on the Playback Section (the lower smaller section) of the Grid on the Page by dragging the Sliders from the Toolbox
+onto the Playback section of the Page, then in the XAML pane change the "&lt;Slider&gt;" lines to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Slider</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Minimum</span>="0" <span class="tut-attr">Name</span>="Position"
+<span class="tut-attr">ValueChanged</span>="Position_ValueChanged"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Slider</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Minimum</span>="100" <span class="tut-attr">Maximum</span>="5000" <span class="tut-attr">Value</span>="1500"
+<span class="tut-attr">Name</span>="Speed" <span class="tut-attr">ValueChanged</span>="Speed_ValueChanged"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7slidesli.png" width="359" height="660" alt="MainPage with Sliders" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Image control:
+</p>
+<div class="tutorial-image">
+<img src="wp7image.png" width="180" height="428" alt="Image Control" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Draw an Image on the largest section of the Grid on the Page (Content) by dragging an Image onto the Content section of the Page then
+in the XAML Pane change the "&lt;Image&gt;" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Image</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Stretch</span>="Uniform" <span class="tut-attr">Name</span>="Display"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7slideimg.png" width="359" height="660" alt="MainPage with Image" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+While still in the Designer View for MainPage.xaml, Select the "Page Name" TextBlock (PageTitle) and then Delete or Right-Click and Choose the Delete option so the MainPage.xaml appears as below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slidemain.png" width="359" height="660" alt="MainPage with PageTitle Removed" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace mPlayer"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Windows.Media.Imaging;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public MainPage()" type the following declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">SlideShow</span> SlideShow = <span class="tut-rsvd">new</span> <span class="tut-symb">SlideShow</span>();
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slideref.png" width="404" height="429" alt="MainPage Include and Declarations" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+While still in the Code View for MainPage.xaml.cs in the "public MainPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"SLIDESHOW"</span>;
+Location.Text = <span class="tut-valu">"http://"</span>;
+SlideShow.Slide += (<span class="tut-symb">BitmapImage</span> image, <span class="tut-rsvd">int</span> index) =>
+{
+  Display.Source = image;
+  Position.Value = index;
+};
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slideinit.png" width="460" height="173" alt="MainPage Constructor" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Go_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  Display.Source = <span class="tut-rsvd">new</span> <span class="tut-symb">BitmapImage</span>(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(Location.Text));
+}
+
+<span class="tut-rsvd">private void</span> Add_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  SlideShow.Add(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(Location.Text));
+  Position.Maximum = SlideShow.Count - 1;
+}
+
+<span class="tut-rsvd">private void</span> Remove_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  SlideShow.Remove((<span class="tut-rsvd">int</span>)Position.Value);
+  Position.Maximum = SlideShow.Count - 1;
+}
+
+<span class="tut-rsvd">private void</span> Play_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (SlideShow.Playing)
+  {
+    <span class="tut-rsvd">if</span> (SlideShow.Paused)
+    {
+      SlideShow.Play();
+    }
+    <span class="tut-rsvd">else</span>
+    {
+      SlideShow.Pause();
+    }
+  }
+  <span class="tut-rsvd">else</span> 
+  {
+    SlideShow.Play();
+  }
+}
+
+<span class="tut-rsvd">private void</span> Stop_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  SlideShow.Stop();
+}
+
+<span class="tut-rsvd">private void</span> Position_ValueChanged(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedPropertyChangedEventArgs</span>&lt;<span class="tut-rsvd">double</span>&gt; e)
+{
+  SlideShow.Position = (<span class="tut-rsvd">int</span>)Position.Value;
+}
+
+<span class="tut-rsvd">private void</span> Speed_ValueChanged(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedPropertyChangedEventArgs</span>&lt;<span class="tut-rsvd">double</span>&gt; e)
+{
+  <span class="tut-rsvd">if</span> (Speed != <span class="tut-rsvd">null</span>)
+  {
+    SlideShow.Speed = <span class="tut-symb">TimeSpan</span>.FromMilliseconds(Speed.Value);
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7slidecode.png" width="704" height="845" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7sliderun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Tap the TextBox and enter in the web address of an Image such as <a href="http://cespage.com/phone.jpg">http://cespage.com/phone.jpg</a> then
+click on the "go" button, when loaded you can "add" this to the SlideShow with the "+" button, you can add multiple images to make up a slide show, see below: 
+</p>
+<div class="tutorial-image">
+<img src="wp7slideapp.png" width="359" height="660" alt="Slide Show" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple Slide Show, you can keep adding images or remove a selected one with the "-" button, try adding your own features such as Animations
+or Transitions between Images - make it your own!
+</p>
+</body>
+</html>

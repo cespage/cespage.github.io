@@ -1,0 +1,786 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Web Editor</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Web Editor</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>This Tutorial will allow you to create your very own WYSIWYG (What You See Is What You Get) Web Editor using the Web Browser Control and the
+mshtml Component with Open / Save HTML Support.</p>
+<p>
+<em class="icon-print"><a href="tutorials/vb08tut13.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vb08tut13.zip">Download Tutorial</a> (468KB)</em>
+<em class="icon-dload"><a href="tutorials/vb08tut13code.zip">Download Source Code</a> (14.9KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Windows Forms Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08newapp.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08form1.png" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Form1 selected goto the Properties box and change the Name from Form1 to frmMain
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08form1prop.png" width="203" height="431" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then select Project, then select "Add Reference...", make sure that Microsoft.mshtml component is selected, if not use the Browse
+tab and locate the "mshtml.tlb" file on your computer (use the Windows Search feature). If it is available it will appear in the list as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mshtml.png" width="482" height="406" alt="MSHTML Component" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the Reference to mshtml by clicking on Ok, from the Common Controls tab on the Toolbox select the WebBrowser component:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webbrowser.png" width="240" height="400" alt="WebBrowser Component" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Draw a WebBrowser on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainwebcom.png" width="300" height="300" alt="frmMain with WebBrowser" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Select or click on the WebBrowser Component, then goto the Properties box and change the name to "webEditor", then set the Dock
+property to "Fill" if not already set, all without quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webeditorprop.png" width="203" height="399" alt="WebBrowser Properties" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the Menus &amp; Toolbars tab on the Toolbox select the MenuStrip Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08menustrip.png" width="240" height="400" alt="MenuStrip Component" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Either double-click on the MenuStrip Control entry in the Menu &amp; Toolbars tab on the Toolbox or keep the MenuStrip Component Clicked and then move it over the Form then let go. 
+Change the Name of the MenuStrip in the properties to mnuWebEditor The Form will then look as below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainmnuwebeditor.png" width="300" height="300" alt="frmMain with MenuStrip" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Click or select where the MenuStrip says "Type Here", an editable Textbox will appear type in "File" without the quotes in this Box, then in the Box below
+that type in "New" then after that, "Open...", then below that "Save...", then "-" this is a minus or hyphen key and will show as a Separator 
+and finally "Exit" all without quotes. The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditor.png" width="300" height="300" alt="mnuWebEditor with File Menu" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Click or select where the MenuStrip says "Type Here" next to "File", and in this type in "Edit" without the quotes in this Box, 
+then in the Box below that type "Cut", then below that "Copy", then "Paste" and "Delete", type in "-" which is minus or the hyphen 
+key for a Seperator, then below that "Select All" and finally "Time/Date". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditoredit.png" width="300" height="300" alt="mnuWebEditor with Edit Menu" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Click or select next to "Edit" where the MenuStrip says "Type Here", and type in "Insert" without the quotes in this Box, then in the Box below
+that type in "Title...", below that "Link...", then "Image..." and finally "Divider". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorinsert.png" width="300" height="300" alt="mnuWebEditor with Insert Menu" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Click or select next to "Insert" where the MenuStrip says "Type Here", and type in "Format" without the quotes in this Box, then in the Box below
+that type in "Font...", then below that "Colour..." then "Background...", then "-" which is minus or the hyphen key for a Separator, then below that
+type "Align Left", then "Align Centre" then finally "Align Right", see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorformat.png" width="300" height="300" alt="mnuWebEditor with Format Menu" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Right Click on the Form or the entry of the Form in Solution Explorer and choose the "View Code" option then above the "Public Class frmMain"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> mshtml
+</pre>
+</blockquote>
+<p>
+Also while still in the Code View, below the "Public Class frmMain" part type the following Declaration and Subroutine:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public</span> doc <span class="tut-rsvd">As</span> mshtml.IHTMLDocument2
+
+<span class="tut-rsvd">Public Sub</span> Command(<span class="tut-rsvd">ByRef</span> Name <span class="tut-rsvd">As String</span>, _
+                   <span class="tut-rsvd">Optional ByVal</span> Value <span class="tut-rsvd">As Object</span> = <span class="tut-rsvd">Nothing</span>)
+  doc.execCommand(Name, <span class="tut-rsvd">False</span>, Value)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webeditordecs.png" width="524" height="152" alt="Web Editor Declarations and Command Subroutine" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+While still in the Code View for frmMain, enter the following Function and Subroutine above the "End Class" and below the "End Sub" of "Public Sub Command()":
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public Function</span> SelectedItem(<span class="tut-rsvd">ByVal</span> Command <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Object</span>
+  <span class="tut-rsvd">Dim</span> Selection <span class="tut-rsvd">As</span> IHTMLSelectionObject = doc.selection <span class="tut-cmnt">' Get Selection</span>
+  <span class="tut-rsvd">If Not</span> Selection <span class="tut-rsvd">Is Nothing Then
+    Dim</span> Range <span class="tut-rsvd">As</span> IHTMLTxtRange = Selection.createRange <span class="tut-cmnt">' Get the Range</span>
+    <span class="tut-rsvd">If</span> Range.queryCommandSupported(Command) <span class="tut-rsvd">And</span> _
+    Range.queryCommandEnabled(Command) <span class="tut-rsvd">Then</span>
+      Return Range.queryCommandValue(Command)
+    <span class="tut-rsvd">End If
+  End If
+  Return Nothing
+End Function</span>
+
+<span class="tut-rsvd">Public Sub</span> SelectedText(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As String</span>)
+  <span class="tut-rsvd">Dim</span> Selection <span class="tut-rsvd">As</span> IHTMLSelectionObject = doc.selection <span class="tut-cmnt">' Get Selection</span>
+  <span class="tut-rsvd">If Not</span> Selection <span class="tut-rsvd">Is Nothing Then
+    Dim</span> Range <span class="tut-rsvd">As</span> IHTMLTxtRange = Selection.createRange <span class="tut-cmnt">' Get the Range</span>
+    <span class="tut-rsvd">If Not</span> Range <span class="tut-rsvd">Is Nothing Then</span>
+      Range.pasteHTML(Value)
+    <span class="tut-rsvd">End If
+  End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webeditorselection.png" width="640" height="354" alt="Web Editor Selection Function and Subroutine" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Again while still in the Code View for frmMain, below the "End Sub" of "Public Sub SelectedText()", enter the following Functions
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> FontSizeToHTML(<span class="tut-rsvd">ByVal</span> Size <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">If</span> Size &lt; 10 <span class="tut-rsvd">Then
+    Return</span> 1
+  <span class="tut-rsvd">ElseIf</span> Size &lt; 12 <span class="tut-rsvd">Then
+    Return</span> 2
+  <span class="tut-rsvd">ElseIf</span> Size &lt; 14 <span class="tut-rsvd">Then
+    Return</span> 3
+  <span class="tut-rsvd">ElseIf</span> Size &lt; 18 <span class="tut-rsvd">Then
+    Return</span> 4
+  <span class="tut-rsvd">ElseIf</span> Size &lt; 24 <span class="tut-rsvd">Then
+    Return</span> 5
+  <span class="tut-rsvd">ElseIf</span> Size &lt; 36 <span class="tut-rsvd">Then
+    Return</span> 6
+  <span class="tut-rsvd">Else
+    Return</span> 7
+  <span class="tut-rsvd">End If
+End Function</span>
+
+<span class="tut-rsvd">Private Function</span> FontSizeFromHTML(<span class="tut-rsvd">ByRef</span> Size <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Single</span>
+  <span class="tut-rsvd">Select Case</span> Size
+    <span class="tut-rsvd">Case</span> 1
+      <span class="tut-rsvd">Return</span> 8.0F
+    <span class="tut-rsvd">Case</span> 2
+      <span class="tut-rsvd">Return</span> 10.0F
+    <span class="tut-rsvd">Case</span> 3
+      <span class="tut-rsvd">Return</span> 12.0F
+    <span class="tut-rsvd">Case</span> 4
+      <span class="tut-rsvd">Return</span> 14.0F
+    <span class="tut-rsvd">Case</span> 5
+      <span class="tut-rsvd">Return</span> 18.0F
+    <span class="tut-rsvd">Case</span> 6
+      <span class="tut-rsvd">Return</span> 24.0F
+    <span class="tut-rsvd">Case</span> 7
+      <span class="tut-rsvd">Return</span> 36.0F
+    <span class="tut-rsvd">Case Else
+      Return</span> 12.0F
+  <span class="tut-rsvd">End Select
+End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webeditorfontsize.png" width="574" height="646" alt="Web Editor Font Size Conversion Functions" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Still in the Code View for frmMain, below the "End Function" of "Private Function FontSizeFromHTML()", enter the following Function and Subroutine
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public Function</span> GetFormatFont() <span class="tut-rsvd">As</span> Font
+  <span class="tut-rsvd">Try
+    Dim</span> FontName <span class="tut-rsvd">As String</span> = SelectedItem(<span class="tut-valu">"FontName"</span>)
+    <span class="tut-rsvd">Dim</span> FontSize <span class="tut-rsvd">As String</span> = FontSizeFromHTML(SelectedItem(<span class="tut-valu">"FontSize"</span>))
+    <span class="tut-rsvd">Dim</span> IsBold <span class="tut-rsvd">As Boolean</span> = SelectedItem(<span class="tut-valu">"Bold"</span>)
+    <span class="tut-rsvd">Dim</span> IsItalic <span class="tut-rsvd">As Boolean</span> = SelectedItem(<span class="tut-valu">"Italic"</span>)
+    <span class="tut-rsvd">Dim</span> TheFontStyle <span class="tut-rsvd">As Integer</span> = 0
+    <span class="tut-rsvd">If</span> IsBold <span class="tut-rsvd">Then</span> TheFontStyle = FontStyle.Bold
+    <span class="tut-rsvd">If</span> IsItalic <span class="tut-rsvd">Then</span> TheFontStyle = FontStyle.Italic
+    <span class="tut-rsvd">If</span> IsBold <span class="tut-rsvd">And</span> IsItalic <span class="tut-rsvd">Then</span> TheFontStyle = FontStyle.Bold + FontStyle.Italic
+    <span class="tut-rsvd">If Not</span> (IsBold And IsItalic) <span class="tut-rsvd">Then</span> TheFontStyle = FontStyle.Regular
+    <span class="tut-rsvd">Return New</span> Font(FontName, FontSize, TheFontStyle, GraphicsUnit.Point)
+  <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-rsvd">Return Nothing
+  End Try
+End Function</span>
+
+<span class="tut-rsvd">Public Sub</span> FormatFont(<span class="tut-rsvd">ByRef</span> Font <span class="tut-rsvd">As</span> Font)
+  Command(<span class="tut-valu">"FontName"</span>, Font.Name)
+  Command(<span class="tut-valu">"FontSize"</span>, FontSizeToHTML(Font.Size))
+  <span class="tut-rsvd">If</span> Font.Bold <span class="tut-rsvd">Then</span>
+    Command(<span class="tut-valu">"Bold"</span>)
+  <span class="tut-rsvd">End If
+  If</span> Font.Italic <span class="tut-rsvd">Then</span>
+    Command(<span class="tut-valu">"Italic"</span>)
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webeditorfont.png" width="720" height="456" alt="Web Editor Font Function and Subroutine" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Finally while still in the Code View for frmMain, below the "End Sub" of "Public Sub FormatFont()", enter the following Subroutines
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public Sub</span> FormatColour(<span class="tut-rsvd">ByRef</span> Colour <span class="tut-rsvd">As</span> Color)
+  <span class="tut-rsvd">Dim</span> strColour <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">If Not</span> Colour.Equals(Color.Empty) <span class="tut-rsvd">Then</span>
+    strColour = ColorTranslator.ToHtml(Colour)
+  <span class="tut-rsvd">Else</span>
+    strColour = <span class="tut-rsvd">Nothing</span>
+  <span class="tut-rsvd">End If</span>
+  Command(<span class="tut-valu">"ForeColor"</span>, strColour)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Public Sub</span> FormatBackground(<span class="tut-rsvd">ByRef</span> Colour <span class="tut-rsvd">As</span> Color)
+  <span class="tut-rsvd">Dim</span> strColour <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">If Not</span> Colour.Equals(Color.Empty) <span class="tut-rsvd">Then</span>
+    strColour = ColorTranslator.ToHtml(Colour)
+  <span class="tut-rsvd">Else</span>
+    strColour = <span class="tut-rsvd">String</span>.Empty
+  <span class="tut-rsvd">End If</span>
+  doc.bgColor = strColour
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webeditorcolour.png" width="444" height="320" alt="Web Editor Colour Subroutines" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Return to the Design view by selecting the [Design] tab or Right Click on the "View Designer" option in Solution Explorer for frmMain.
+Click on "File" on the MenuStrip, then Double Click on the Menu Item Labeled "New" (NewToolStripMenuItem) and type the following in the NewToolStripMenuItem_Click() Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+Response = MsgBox(<span class="tut-valu">"Are you sure you want to start a New Document?"</span>, _
+                  MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                  <span class="tut-valu">"Web Editor"</span>)
+<span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+    doc.clear()
+    webEditor.Navigate(<span class="tut-valu">"about:blank"</span>) <span class="tut-cmnt">' New Document</span>
+    <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Web Editor - Untitled"</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditornew.png" width="632" height="218" alt="File Menu New Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip, then Double Click on the Menu Item Labeled "Open..." (OpenToolStripMenuItem) and 
+type the following in the OpenToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Open <span class="tut-rsvd">As New</span> OpenFileDialog()
+Open.Filter = <span class="tut-valu">"HTML Files (*.html,*.htm)|*.html;*.htm|All files (*.*)|*.*"</span>
+Open.CheckFileExists = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">If</span> Open.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then
+  Try</span>
+    webEditor.Navigate(Open.FileName)
+    <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Web Editor - "</span> &amp; Open.FileName
+  <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-cmnt">' Do nothing on Exception</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditoropen.png" width="670" height="250" alt="File Menu Open Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip, then Double Click on the Menu Item Labeled "Save..." (SaveToolStripMenuItem) and 
+type the following in the SaveToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Save <span class="tut-rsvd">As New</span> SaveFileDialog()
+<span class="tut-rsvd">Dim</span> myStreamWriter <span class="tut-rsvd">As</span> System.IO.StreamWriter
+Save.Filter = <span class="tut-valu">"HTML Files (*.html)|*.html|All files (*.*)|*.*"</span>
+Save.CheckPathExists = <span class="tut-rsvd">True</span>
+<span class="tut-rsvd">If</span> Save.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then
+  Try</span>
+    myStreamWriter = System.IO.File.CreateText(Save.FileName)
+    myStreamWriter.Write(webEditor.DocumentText)
+    myStreamWriter.Flush()
+    <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Web Editor - "</span> &amp; Save.FileName
+  <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-cmnt">' Do nothing on Exception</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorsave.png" width="648" height="300" alt="File Menu Save Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip, then Double Click on the Menu Item Labeled "Exit" (ExitToolStripMenuItem) and 
+type the following in the ExitToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+Response = MsgBox(<span class="tut-valu">"Are you sure you want to Exit Web Editor?"</span>, _
+                  MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                  <span class="tut-valu">"Web Editor"</span>)
+<span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+   <span class="tut-rsvd">End</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorexit.png" width="648" height="184" alt="File Menu Exit Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip, 
+then Double Click on the Menu Item Labeled "Cut" (CutToolStripMenuItem) and type the following in the CutToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Command(<span class="tut-valu">"Cut"</span>)
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Edit",
+then Double Click on the Menu Item Labeled "Copy" (CopyToolStripMenuItem) and type the following in the CopyToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Command(<span class="tut-valu">"Copy"</span>)
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Edit",
+then Double Click on the Menu Item Labeled "Paste" (PasteToolStripMenuItem) and type the following in the PasteToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Command(<span class="tut-valu">"Paste"</span>)
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Edit",
+then Double Click on the Menu Item Labeled "Delete" (DeleteToolStripMenuItem) and type the following in the DeleteToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Command(<span class="tut-valu">"Delete"</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorclip.png" width="680" height="388" alt="Edit Menu Cut, Copy, Paste and Delete Events" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Select All" (SelectAllToolStripMenuItem) and type the following in the SelectAllToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Command(<span class="tut-valu">"SelectAll"</span>)
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Edit",
+then Double Click on the Menu Item Labeled "Time/Date" (TimeDateToolStripMenuItem) and type the following in the TimeDateToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+SelectedText(Format(Now, <span class="tut-valu">"HH:mm dd/MM/yyyy"</span>))
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorboard.png" width="728" height="182" alt="Edit Menu Select All and Time/Date Events" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Insert" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Title..." (TitleToolStripMenuItem) and type the following in the TitleToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As String</span> = <span class="tut-valu">"My Website"</span>
+<span class="tut-rsvd">If</span> webEditor.DocumentTitle &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+  Response = webEditor.DocumentTitle
+<span class="tut-rsvd">End If</span>
+Response = InputBox(<span class="tut-valu">"Title"</span>, <span class="tut-valu">"Web Editor"</span>, Response)
+<span class="tut-rsvd">If</span> Response &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+  doc.title = Response
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditortitle.png" width="664" height="200" alt="Insert Menu Title Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Insert" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Link..." (LinkToolStripMenuItem) and type the following in the LinkToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As String</span> = <span class="tut-valu">"http://www.cespage.com/vb"</span>
+Response = InputBox(<span class="tut-valu">"Web Address"</span>, <span class="tut-valu">"Web Editor"</span>, Response)
+<span class="tut-rsvd">If</span> Response &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+    Command(<span class="tut-valu">"CreateLink"</span>, Response)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorlink.png" width="648" height="148" alt="Insert Menu Link Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Insert" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Image..." (ImageToolStripMenuItem) and type the following in the ImageToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As String</span> = <span class="tut-valu">"http://www.cespage.com/vb/images/vb08tut13.png"</span>
+Response = InputBox(<span class="tut-valu">"Image URL"</span>, <span class="tut-valu">"Web Editor"</span>, Response)
+<span class="tut-rsvd">If</span> Response &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+    Command(<span class="tut-valu">"InsertImage"</span>, Response)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorimage.png" width="664" height="150" alt="Insert Menu Image Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Insert" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Divider" (DividerToolStripMenuItem) and type the following in the DividerToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+Command(<span class="tut-valu">"InsertHorizontalRule"</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditordivider.png" width="698" height="82" alt="Insert Menu Divider Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Font..." (FontToolStripMenuItem) and type the following in the FontToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Font <span class="tut-rsvd">As New</span> FontDialog()
+Font.MaxSize = 36
+Font.ShowEffects = <span class="tut-rsvd">False</span>
+Font.AllowScriptChange = <span class="tut-rsvd">False</span>
+Font.Font = GetFormatFont()
+Font.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  FormatFont(Font.Font)
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorfont.png" width="648" height="252" alt="Format Menu Font Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 30</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Colour..." (ColourToolStripMenuItem) and type the following in the ColourToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Colour <span class="tut-rsvd">As New</span> ColorDialog()
+Colour.Color = ColorTranslator.FromHtml(doc.fgColor)
+Colour.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  FormatColour(Colour.Color)
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorcolour.png" width="680" height="200" alt="Format Menu Colour Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 31</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Background..." (BackgroundToolStripMenuItem) and type the following in the BackgroundToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Colour <span class="tut-rsvd">As New</span> ColorDialog()
+Colour.Color = ColorTranslator.FromHtml(doc.bgColor)
+Colour.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  FormatBackground(Colour.Color)
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorbackground.png" width="744" height="200" alt="Format Menu Background Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 32</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Format" on the MenuStrip,
+then Double Click on the Menu Item Labeled "Align Left" (AlignLeftToolStripMenuItem) and type the following in the AlignLeftToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Command(<span class="tut-valu">"JustifyLeft"</span>)
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Format",
+then Double Click on the Menu Item Labeled "Align Centre" (AlignCentreToolStripMenuItem) and type the following in the AlignCentreToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Command(<span class="tut-valu">"JustifyCenter"</span>)
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Format",
+then Double Click on the Menu Item Labeled "Align Right" (AlignRightToolStripMenuItem) and type the following in the AlignRightToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Command(<span class="tut-valu">"JustifyRight"</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditoralign.png" width="760" height="284" alt="Format Menu Align Left, Align Centre and Align Right Events" />
+</div>
+<p class="tutorial-step">Step 33</p>
+<p>
+Click on the [Design] Tab to view the form again, then Double Click on the Form (frmMain) and 
+type the following in the frmMain_Load() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+webEditor.Navigate(<span class="tut-valu">"about:blank"</span>) <span class="tut-cmnt">' New Document</span>
+doc = <span class="tut-rsvd">DirectCast</span>(<span class="tut-rsvd">Me</span>.webEditor.Document.DomDocument,  _
+mshtml.IHTMLDocument2) <span class="tut-cmnt">' Prepare Document</span>
+doc.designMode = <span class="tut-valu">"On"</span> <span class="tut-cmnt">' Design Mode</span>
+<span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Web Editor - Untitled"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webeditorload.png" width="512" height="148" alt="frmMain Load Event" />
+</div>
+<p class="tutorial-step">Step 34</p>
+<p>
+Steps 34-37 are optional and just add Keyboard Shortcuts to the MenuItems, you don't have to do these if you don't want to!<br/>
+Click on the [Design] Tab to view the form again, click on "New" on the MenuStrip then in the Properties box look for the "ShortcutKeys" option and 
+click on the Drop Down arrow where "None" appears. Check the "Ctrl" Checkbox in "Modifiers" and then in the "Key" dropdown list select "N", 
+see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnutextnewprop.png" width="240" height="399" alt="File Menu New Menu Item Shortcut Key" />
+</div>
+<p class="tutorial-step">Step 35</p>
+<p>
+Set the rest of the "File" MenuItem "ShortcutKeys" Properties except the "Exit" Menu Item, 
+"Open" should be set to "Ctrl+O" and "Save" to "Ctrl+S", the File Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorfilekeys.png" width="300" height="300" alt="File Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 36</p>
+<p>
+Click on or select the "Edit" Menu and set the "ShortcutKeys" Properties, "Cut" should be set to "Ctrl+X", "Copy" to "Ctrl+C", "Paste" to "Ctrl+V", 
+"Delete" should be just "Del" in the Keys drop-down list, "Select All" should be "Ctrl+A", "Time/Date" should be just "F5" from the Keys drop-down list. 
+The Edit Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditoreditkeys.png" width="300" height="300" alt="Edit Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 37</p>
+<p>
+Click on or select the "Format" Menu, select "Align Left" and in the "ShortcutKeys" property type "Ctrl+L", select "Align Centre" and type "Ctrl+E" in the "ShortcutKeys" property,
+"Align Right" should be set to "Ctrl+R". The Format Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnuwebeditorformatkeys.png" width="319" height="300" alt="Format Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 38</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webeditorrun.png" width="300" height="300" alt="Web Editor Running" />
+</div>
+<p class="tutorial-step">Step 39</p>
+<p>
+You can start creating your own Web Page, or Open an existing one and edit it, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08webeditorshow.png" width="300" height="300" alt="Web Browser" />
+</div>
+<p class="tutorial-step">Step 40</p>
+<p>
+Click File then Exit or click on the Close button <img src="tutorials/vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right of Web Browser to end the application.
+</p>
+<p>
+This program uses the mshtml component with the Web Browser control, see if you can add more functions using the Command function such as
+Bold, Italic and even Print, you can use this as the start of your very own Web Editor!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

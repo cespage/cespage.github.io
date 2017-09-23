@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Image Carousel</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Image Carousel</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Image Carousel is a Carousel that allows images to be displayed as it revolves around, in this case it is a Vertical Carousel using Silverlight on Windows Phone 7.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut27.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut27.zip">Download Tutorial</a> (905KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut27code.zip">Download Source Code</a> (19.9KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Right Click on the Entry for the Project in the Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "images" (without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarsolexp.png" width="217" height="527" alt="Project Images Folder" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Download the following images (add.png, remove.png &amp; clear.png) by right-clicking on the images below and choose "Save Picture As..." or 
+"Save Image As..." and Save them to a Folder on your computer:
+</p>
+<blockquote>
+<div class="tut-img">
+<img src="tutorials/add.png" width="48" height="48" alt="Add Application Bar Icon" />
+<img src="tutorials/remove.png" width="48" height="48" alt="Remove Application Bar Icon" />
+<img src="tutorials/clear.png" width="48" height="48" alt="Clear Application Bar Icon" />
+</div>
+</blockquote>
+<p class="tutorial-step">Step 5</p>
+<p>
+Right Click on the Entry for the "image" Folder for the Project in Solution Explorer, and choose "Add", then "Existing Item...", 
+then in the "Add Existing Item" dialog select Folder you saved the images, then choose "Add"
+to add add.png, remove.png and clear.png to the images folder in the project, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarsolexpimg.png" width="217" height="527" alt="Project Images Folder with Images" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the Solution Explorer click on the "add.png" image then goto the Properties box and change the
+Build Action to Content, do the same for the "clear.png" and "remove.png" images, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7slideimgprop.png" width="217" height="393" alt="Image Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Select the ImageCarousel Project from Solution Explorer.<br/>
+Then select from the Main Menu "Project" then "Add New Item...", and select the "Windows Phone User Control" Template, then change the "Name" to CarouselItem.xaml see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcaradditem.png" width="939" height="624" alt="Add CarouselItem User Control" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Add the new User Control to the Project by Clicking on Add, then in the XAML Pane for the CarouselItem.xaml User Control.<br/> 
+Remove <span class="tut-rsvd"><span class="tut-attr">d</span>:<span class="tut-attr">DesignHeight</span>="480" <span class="tut-attr">d</span>:<span class="tut-attr">DesignWidth</span>="480"</span>
+from the <span class="tut-rsvd">&lt;<span class="tut-valu">UserControl</span> ...&gt;</span> Tag.<br/>
+Also remove <span class="tut-rsvd"><span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneChromeBrush</span>}"</span> from <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" ...&gt;</span>, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcaritemuser.png" width="528" height="221" alt="CarouselItem UserControl Attributes" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in XAML Pane for CarouselItem.xaml between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following Image Control XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Image</span> <span class="tut-attr">Height</span>="150" <span class="tut-attr">Width</span>="150" <span class="tut-attr">Name</span>="Image"&gt;
+  &lt;<span class="tut-valu">Image.RenderTransform</span>&gt;
+    &lt;<span class="tut-valu">TransformGroup</span>&gt;
+      &lt;<span class="tut-valu">ScaleTransform</span> <span class="tut-attr">ScaleX</span>="1" <span class="tut-attr">ScaleY</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ItemScale"/&gt;
+    &lt;/<span class="tut-valu">TransformGroup</span>&gt;
+  &lt;/<span class="tut-valu">Image.RenderTransform</span>&gt;
+&lt;/<span class="tut-valu">Image</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcaritemimgxaml.png" width="558" height="141" alt="CarouselItem XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcaritemimgdesign.png" width="112" height="100" alt="CarouselItem Design View" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Right Click on the Page or the entry for "CarouselItem.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "public CarouselItem()" type the following Declaration: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public double</span> Angle = 0;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcaritemdecs.png" width="370" height="141" alt="CarouselItem Declarations" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Select from the Main Menu "Project" then "Add New Item...", and select the "Windows Phone User Control" Template, then change the "Name" to Carousel.xaml see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcaradd.png" width="939" height="624" alt="Add Carousel User Control" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Add the new User Control to the Project by Clicking on Add, then in the XAML Pane for the Carousel.xaml User Control.<br/> 
+Remove <span class="tut-rsvd"><span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneChromeBrush</span>}"</span> from <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" ...&gt;</span>
+from the <span class="tut-rsvd">&lt;<span class="tut-valu">UserControl</span> ...&gt;</span> Tag, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcaruserref.png" width="528" height="237" alt="CarouselItem UserControl Attributes" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in XAML Pane for Carousel.xaml between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Container" <span class="tut-attr">Width</span>="480" <span class="tut-attr">Height</span>="480"&gt;
+  &lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="150" <span class="tut-attr">Width</span>="150" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Display"/&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarcvsxaml.png" width="454" height="77" alt="Carousel XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarcvsdesign.png" width="310" height="298" alt="Carousel Design View" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Right Click on the Entry for the "Carousel.xaml" Class in Solution Explorer and choose "View Code".<br/>
+In the Code View for Carousel.xaml.cs above "namespace ImageCarousel", type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Windows.Media.Imaging;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView below the "{" of the line "public partial class Carousel : UserControl" type the following Declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">Storyboard</span> _rotate = <span class="tut-rsvd">new</span> <span class="tut-symb">Storyboard</span>();
+<span class="tut-rsvd">private</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">BitmapImage</span>&gt; _images = <span class="tut-rsvd">new</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">BitmapImage</span>&gt;();
+<span class="tut-rsvd">private</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">CarouselItem</span>&gt; _items = <span class="tut-rsvd">new</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">CarouselItem</span>&gt;();
+<span class="tut-rsvd">private</span> <span class="tut-symb">Point</span> _position;
+<span class="tut-rsvd">private</span> <span class="tut-symb">Point</span> _radius = <span class="tut-rsvd">new</span> <span class="tut-symb">Point</span> { X = -25, Y = 200 };
+<span class="tut-rsvd">private double</span> _speed = 0.0125;
+<span class="tut-rsvd">private double</span> _perspective = 75;
+<span class="tut-rsvd">private double</span> _distance;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcardecs.png" width="494" height="510" alt="Carousel Imports and Declarations" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+While still in the Code View below the "_distance" declaration type the following Methods:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Populate(<span class="tut-rsvd">ref</span> <span class="tut-symb">Canvas</span> canvas)
+{
+  canvas.Children.Clear();
+  <span class="tut-rsvd">for</span> (<span class="tut-rsvd">int</span> index = 0; index &lt; _images.Count(); index++)
+  {
+    <span class="tut-symb">CarouselItem</span> item = <span class="tut-rsvd">new</span> <span class="tut-symb">CarouselItem</span>();
+    item.Image.Source = _images[index];
+    item.Angle = index * ((<span class="tut-symb">Math</span>.PI * 2) / _images.Count);
+    _position.X = <span class="tut-symb">Math</span>.Cos(item.Angle) * _radius.X;
+    _position.Y = <span class="tut-symb">Math</span>.Sin(item.Angle) * _radius.Y;
+    <span class="tut-symb">Canvas</span>.SetLeft(item, _position.X);
+    <span class="tut-symb">Canvas</span>.SetTop(item, _position.Y);
+    _distance = 1 / (1 - (_position.X / _perspective));
+    item.Opacity = item.ItemScale.ScaleX = 
+      item.ItemScale.ScaleY = _distance;
+    _items.Add(item);
+    canvas.Children.Add(item);
+  }
+}
+
+<span class="tut-rsvd">private void</span> Rotate(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">foreach</span> (<span class="tut-symb">CarouselItem</span> item <span class="tut-rsvd">in</span> _items)
+  {
+    item.Angle -= _speed;
+    _position.X = <span class="tut-symb">Math</span>.Cos(item.Angle) * _radius.X;
+    _position.Y = <span class="tut-symb">Math</span>.Sin(item.Angle) * _radius.Y;
+    <span class="tut-symb">Canvas</span>.SetLeft(item, _position.X);
+    <span class="tut-symb">Canvas</span>.SetTop(item, _position.Y);
+    <span class="tut-rsvd">if</span> (_radius.X &gt;= 0)
+    {
+      _distance = 1 * (1 - (_position.X / _perspective));
+      <span class="tut-symb">Canvas</span>.SetZIndex(item, -(<span class="tut-rsvd">int</span>)(_position.X));
+    }
+    <span class="tut-rsvd">else</span>
+    {
+      _distance = 1 / (1 - (_position.X / _perspective));
+      <span class="tut-symb">Canvas</span>.SetZIndex(item, (<span class="tut-rsvd">int</span>)(_position.X));
+    }
+  item.Opacity = item.ItemScale.ScaleX = 
+    item.ItemScale.ScaleY = _distance;
+  }
+  _rotate.Begin();
+}
+
+<span class="tut-rsvd">public void</span> Add(<span class="tut-symb">Uri</span> uri)
+{
+  <span class="tut-symb">BitmapImage</span> _image = <span class="tut-rsvd">new</span> <span class="tut-symb">BitmapImage</span>(uri);
+  _images.Add(_image);
+  Populate(<span class="tut-rsvd">ref</span> Display);
+}
+
+<span class="tut-rsvd">public void</span> RemoveLast()
+{
+  <span class="tut-rsvd">if</span> (_images.Count &gt; 0)
+  {
+    _images.RemoveAt(_images.Count - 1);
+    Populate(<span class="tut-rsvd">ref</span> Display);
+  }
+}
+
+<span class="tut-rsvd">public void</span> Clear()
+{
+  _images.Clear();
+  Populate(<span class="tut-rsvd">ref</span> Display);
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarmets.png" width="508" height="1165" alt="Carousel Methods" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still in the Code View in the "public Carousel()" Constructor below "InitializeComponent();" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-symb">Canvas</span>.SetLeft(Display, Container.Width / 2 - Display.Width / 2);
+<span class="tut-symb">Canvas</span>.SetTop(Display, Container.Height / 2 - Display.Height / 2);
+_rotate.Completed += Rotate;
+_rotate.Begin();
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarinit.png" width="556" height="125" alt="Carousel Constructor" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Select "Build Solution" from the Debug menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7build.png" width="233" height="24" alt="Build Solution" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+When the Build completes, return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+In the XAML Pane for MainPage.xaml, above the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneBackgroundBrush</span>}"&gt;</span> Tag type the following ApplicationBar XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="False"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="add" <span class="tut-attr">IconUri</span>="/images/add.png" <span class="tut-attr">Click</span>="Add_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="remove" <span class="tut-attr">IconUri</span>="/images/remove.png" <span class="tut-attr">Click</span>="Remove_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="clear" <span class="tut-attr">IconUri</span>="/images/clear.png" <span class="tut-attr">Click</span>="Clear_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarbar.png" width="802" height="141" alt="ApplicationBar XAML" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+While still in XAML Pane between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="80"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span>
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarxaml.png" width="348" height="157" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcardesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Draw a TextBox onto the Toolbar Section (upper smaller section) of the Grid on the Page, below the Page Title, and in the XAML Pane below the <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span> line, change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Row</span>="0" <span class="tut-attr">Name</span>="Location"&gt;
+  &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+    &lt;<span class="tut-valu">InputScope</span>&gt;
+      &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="Url"/&gt;
+    &lt;/<span class="tut-valu">InputScope</span>&gt;
+  &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+&lt;/<span class="tut-valu">TextBox</span>&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcartxt.png" width="359" height="660" alt="MainPage with Location TextBox" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Then from the ImageCarousel Controls section in the Toolbox select the Carousel control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7carousel.png" width="180" height="428" alt="Carousel User Control" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Draw a Carousel onto the Page by dragging a Carousel from the Toolbox onto the larger portion of the Grid on the Page (Content), then in the XAML Pane below the <span class="tut-cmnt">&lt;!-- Content --&gt;</span> line, change "carousel1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Carousel</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Images"/&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarimagesxaml.png" width="420" height="32" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarimagesdesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+While still in the Designer View for MainPage.xaml, Select the "page name" TextBlock (PageTitle) and then Delete or Right-Click and Choose the Delete option so the MainPage.xaml appears as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarmain.png" width="359" height="660" alt="MainPage with textBlockListTitle Removed" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option.<br/> 
+In the Code View in the "public MainPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"IMAGE CAROUSEL"</span>;
+Location.Text = <span class="tut-valu">"<span class="tut-link">http://cespage.com/phone.jpg</span>"</span>;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarmaininit.png" width="424" height="93" alt="MainPage Constructor" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Add_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  Images.Add(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(Location.Text));
+}
+
+<span class="tut-rsvd">private void</span> Remove_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  Images.RemoveLast();
+}
+
+<span class="tut-rsvd">private void</span> Clear_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  Images.Clear();
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarcode.png" width="438" height="221" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+Tap the "Location" TextBox and enter using the SIP to enter the URL of an Image then tap the "add" button to Add it to the Carousel, 
+you can do this multiple times to add more Images to the Carousel, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7imgcarapp.png" width="359" height="660" alt="Image Carousel" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a Simple Image Carousel for displaying images, it could be altered to display any content in a Carousel such as Buttons or other content, try changing it
+such as making it into a horizontal carousel - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>On-Screen Keyboard</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-prop {
+					 		color: gray;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>On-Screen Keyboard</h1>
+<p>You will create an application which can Log Off, Restart or Shut Down your Computer from the Task Tray / Notification Area, 
+and have the application load on Startup.</p>
+<p>
+<a href="http://www.cespage.com/vb/vb08tut21.html">www.cespage.com/vb/vb08tut21.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Windows Forms Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08newapp.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08form1.png" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Form1 selected goto the Properties box and change the Name from Form1 to frmMain and FormBorderStyle to FixedToolWindow. Size to "390, 208" and Text to "Keyboard" both without the quotes and then set TopMost to True.
+</p>
+<div class="tutorial-image">
+<img src="vb08keyboardprop.png" width="203" height="431" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the Common Controls tab on the Toolbox select the ComboBox component:
+</p>
+<div class="tutorial-image">
+<img src="vb08combobox.png" width="240" height="400" alt="ComboBox Component" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a ComboBox on the Form, see below: 
+</p>
+<div class="tutorial-image">
+<img src="vb08keyboardcbo.png" width="390" height="208" alt="frmMain with ComboBox" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Select or click on the ComboBox, then goto the Properties box and change the Name to cboWindows and DropDownStyle to DropDownList, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08cbowindowsprop.png" width="203" height="431" alt="ComboBox Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Right Click on the Form or the entry of the Form in Solution Explorer and choose the "View Code" option then below the "Public Class frmMain"
+type the following API Methods and Declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' API Methods</span>
+
+<span class="tut-rsvd">Public Declare Function</span> IsWindowVisible <span class="tut-rsvd">Lib</span> <span class="tut-valu">"user32.dll"</span> _
+<span class="tut-rsvd">Alias</span> <span class="tut-valu">"IsWindowVisible"</span> (<span class="tut-rsvd">ByVal</span> hwnd <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Boolean</span>
+
+<span class="tut-rsvd">Public Declare Function</span> GetWindow <span class="tut-rsvd">Lib</span> <span class="tut-valu">"user32.dll"</span> _
+<span class="tut-rsvd">Alias</span> <span class="tut-valu">"GetWindow"</span> (<span class="tut-rsvd">ByVal</span> hwnd <span class="tut-rsvd">As Integer</span>, _
+                   <span class="tut-rsvd">ByVal</span> wCmd <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Integer</span>
+
+<span class="tut-rsvd">Public Declare Function</span> GetWindowLong <span class="tut-rsvd">Lib</span> <span class="tut-valu">"user32.dll"</span> _
+<span class="tut-rsvd">Alias</span> <span class="tut-valu">"GetWindowLongA"</span> (<span class="tut-rsvd">ByVal</span> hwnd <span class="tut-rsvd">As Integer</span>, _
+                        <span class="tut-rsvd">ByVal</span> nIndex <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Integer</span>
+
+<span class="tut-rsvd">Public Declare Function</span> GetParent <span class="tut-rsvd">Lib</span> <span class="tut-valu">"user32.dll"</span> _
+<span class="tut-rsvd">Alias</span> <span class="tut-valu">"GetParent"</span> (<span class="tut-rsvd">ByVal</span> hwnd <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Integer</span>
+
+<span class="tut-rsvd">Public Declare Function</span> SetForegroundWindow <span class="tut-rsvd">Lib</span> <span class="tut-valu">"user32.dll"</span> _
+<span class="tut-rsvd">Alias</span> <span class="tut-valu">"SetForegroundWindow"</span> (<span class="tut-rsvd">ByVal</span> hwnd <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Integer</span>
+
+<span class="tut-cmnt">' Declarations</span>
+
+<span class="tut-rsvd">Private</span> RowOne <span class="tut-rsvd">As String</span>() = {<span class="tut-valu">"`"</span>, <span class="tut-valu">"1"</span>, <span class="tut-valu">"2"</span>, <span class="tut-valu">"3"</span>, <span class="tut-valu">"4"</span>, <span class="tut-valu">"5"</span>, <span class="tut-valu">"6"</span>, <span class="tut-valu">"7"</span>, <span class="tut-valu">"8"</span>, <span class="tut-valu">"9"</span>, <span class="tut-valu">"0"</span>, <span class="tut-valu">"-"</span>, <span class="tut-valu">"="</span>}
+<span class="tut-rsvd">Private</span> RowTwo <span class="tut-rsvd">As String</span>() = {<span class="tut-valu">"q"</span>, <span class="tut-valu">"w"</span>, <span class="tut-valu">"e"</span>, <span class="tut-valu">"r"</span>, <span class="tut-valu">"t"</span>, <span class="tut-valu">"y"</span>, <span class="tut-valu">"u"</span>, <span class="tut-valu">"i"</span>, <span class="tut-valu">"o"</span>, <span class="tut-valu">"p"</span>, <span class="tut-valu">"["</span>, <span class="tut-valu">"]"</span>}
+<span class="tut-rsvd">Private</span> RowThree <span class="tut-rsvd">As String</span>() = {<span class="tut-valu">"a"</span>, <span class="tut-valu">"s"</span>, <span class="tut-valu">"d"</span>, <span class="tut-valu">"f"</span>, <span class="tut-valu">"g"</span>, <span class="tut-valu">"h"</span>, <span class="tut-valu">"j"</span>, <span class="tut-valu">"k"</span>, <span class="tut-valu">"l"</span>, <span class="tut-valu">";"</span>, <span class="tut-valu">"'"</span>, <span class="tut-valu">"#"</span>}
+<span class="tut-rsvd">Private</span> RowFour <span class="tut-rsvd">As String</span>() = {<span class="tut-valu">"\"</span>, <span class="tut-valu">"z"</span>, <span class="tut-valu">"x"</span>, <span class="tut-valu">"c"</span>, <span class="tut-valu">"v"</span>, <span class="tut-valu">"b"</span>, <span class="tut-valu">"n"</span>, <span class="tut-valu">"m"</span>, <span class="tut-valu">","</span>, <span class="tut-valu">"."</span>, <span class="tut-valu">"/"</span>}
+<span class="tut-rsvd">Private</span> CapsLock <span class="tut-rsvd">As New</span> CheckBox
+<span class="tut-rsvd">Private</span> Key, Special <span class="tut-rsvd">As String</span>
+<span class="tut-rsvd">Private</span> Windows <span class="tut-rsvd">As New</span> ArrayList
+<span class="tut-rsvd">Private</span> Window <span class="tut-rsvd">As</span> IntPtr
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08keyboarddecs.png" width="796" height="560" alt="API Methods and Declarations" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Still within the Code View of the Form, enter below the API Methods and Declarations the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Event Handlers</span>
+
+<span class="tut-rsvd">Private Sub</span> Key_Special(<span class="tut-rsvd">ByVal</span> Sender <span class="tut-rsvd">As</span> Button, _
+                      <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.EventArgs)
+  <span class="tut-rsvd">If</span> Special = <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+    Special = Sender.Tag
+  <span class="tut-rsvd">Else</span>
+    Special = <span class="tut-valu">""</span>
+  <span class="tut-rsvd">End If
+End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> Key_Click(<span class="tut-rsvd">ByVal</span> Sender <span class="tut-rsvd">As</span> Button, _
+                    <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.EventArgs)
+  Key = Sender.Tag
+  <span class="tut-rsvd">If</span> Key = <span class="tut-valu">"{SPACE}"</span> <span class="tut-rsvd">Then</span> Key = <span class="tut-valu">" "</span> <span class="tut-cmnt">'Convert {SPACE} to Space</span>
+  <span class="tut-rsvd">If</span> Window &lt;&gt; 0 <span class="tut-rsvd">Then</span>
+    SetForegroundWindow(Window)
+    SendKeys.SendWait(Special &amp; IIf(Capslock.Checked _
+                                    <span class="tut-rsvd">And Not</span> Special &lt;&gt; <span class="tut-valu">"^"</span>, _
+                                    UCase(Key), Key))
+    SetForegroundWindow(Window)
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08keyboardevents.png" width="568" height="388" alt="Event Handlers" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+With the Code View still displayed for the Form, below the Event Handlers enter the following Private Methods:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Private Methods</span>
+
+<span class="tut-rsvd">Private Function</span> IsActiveWindow(<span class="tut-rsvd">ByVal</span> hWnd <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Boolean
+  Dim</span> IsOwned <span class="tut-rsvd">As Boolean
+  Dim</span> Style <span class="tut-rsvd">As Integer</span>
+  IsOwned = GetWindow(hWnd, 4) &lt;&gt; 0
+  Style = GetWindowLong(hWnd, -20)
+  <span class="tut-rsvd">If Not</span> IsWindowVisible(hWnd) <span class="tut-rsvd">Then Return False</span> <span class="tut-cmnt">' Not Visible</span>
+  <span class="tut-rsvd">If</span> GetParent(hWnd) &lt;&gt; 0 <span class="tut-rsvd">Then Return False</span> <span class="tut-cmnt">' Has Parent</span>
+  <span class="tut-rsvd">If</span> (Style <span class="tut-rsvd">And</span> &amp;H80) &lt;&gt; 0 <span class="tut-rsvd">And Not</span> IsOwned <span class="tut-rsvd">Then Return False</span> <span class="tut-cmnt">' Is Tooltip</span>
+  <span class="tut-rsvd">If</span> (Style <span class="tut-rsvd">And</span> &amp;H40000) = 0 <span class="tut-rsvd">And</span> IsOwned <span class="tut-rsvd">Then Return False</span> <span class="tut-cmnt">' Has Owner</span>
+  <span class="tut-rsvd">If</span> Process.GetCurrentProcess.MainWindowHandle = hWnd <span class="tut-rsvd">Then Return False
+  Return True</span> <span class="tut-cmnt">' Window Valid</span>
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-rsvd">Private Sub</span> KeyboardButton(<span class="tut-rsvd">ByVal</span> Width <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByVal</span> Height <span class="tut-rsvd">As Integer</span>, _
+                         <span class="tut-rsvd">ByVal</span> Top <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByVal</span> Left <span class="tut-rsvd">As Integer</span>, _
+                         Optional <span class="tut-rsvd">ByVal</span> Text <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>, _
+                         Optional <span class="tut-rsvd">ByVal</span> Tag <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>, _
+                         Optional <span class="tut-rsvd">ByVal</span> Special <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">False</span>)
+  <span class="tut-rsvd">Dim</span> Button <span class="tut-rsvd">As New</span> Button
+  Button.Size = <span class="tut-rsvd">New</span> Size(Width,Height)
+  Button.Location = <span class="tut-rsvd">New</span> Point(Left, Top)
+  Button.Text = Text
+  Button.Tag = Tag
+  <span class="tut-rsvd">If</span> Special <span class="tut-rsvd">Then
+    AddHandler</span> Button.Click, <span class="tut-rsvd">AddressOf</span> Key_Special
+  <span class="tut-rsvd">Else
+    AddHandler</span> Button.Click, <span class="tut-rsvd">AddressOf</span> Key_Click
+  <span class="tut-rsvd">End If</span>
+  Controls.Add(Button)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08keyboardmethods.png" width="664" height="542" alt="Private Methods" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Return to the Design view by selecting the [Design] tab or Right Click on the "View Designer" option in Solution Explorer for frmMain. 
+With the Form Displayed, Double Click on the Form (frmMain) and type the following in the frmMain_Load() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Col <span class="tut-rsvd">As Integer</span>
+<span class="tut-cmnt">' Row One</span>
+<span class="tut-rsvd">For</span> Col = 0 <span class="tut-rsvd">To</span> 12
+  KeyboardButton(25, 25, 40, Col * 25 + 4, _
+                 RowOne(Col), RowOne(Col))
+<span class="tut-rsvd">Next</span>
+KeyboardButton(50, 25, 40, Col * 25 + 4, <span class="tut-valu">"BkSp"</span>, <span class="tut-valu">"{BACKSPACE}"</span>)
+<span class="tut-cmnt">' Row Two</span>
+KeyboardButton(36, 25, 66, 4, <span class="tut-valu">"Tab"</span>, <span class="tut-valu">"{TAB}"</span>)
+<span class="tut-rsvd">For</span> Col = 0 <span class="tut-rsvd">To</span> 11
+  KeyboardButton(25, 25, 66, Col * 25 + 40, _
+                 UCase(RowTwo(Col)), RowTwo(Col))
+<span class="tut-rsvd">Next</span>
+KeyboardButton(39, 25, 66, 36 + Col * 25 + 4, <span class="tut-valu">"&#8629;"</span>, <span class="tut-valu">"{ENTER}"</span>)
+<span class="tut-cmnt">' Row Three</span>
+CapsLock.Appearance = Appearance.Button
+CapsLock.Size = <span class="tut-rsvd">New</span> Size(48, 25)
+CapsLock.Location = <span class="tut-rsvd">New</span> Point(4, 92)
+CapsLock.Text = <span class="tut-valu">"Caps"</span>
+Controls.Add(CapsLock)
+<span class="tut-rsvd">For</span> Col = 0 <span class="tut-rsvd">To</span> 11
+  KeyboardButton(25, 25, 92, Col * 25 + 52, _
+                 UCase(RowThree(Col)), RowThree(Col))
+<span class="tut-rsvd">Next</span>
+KeyboardButton(27, 25, 92, 48 + Col * 25 + 4, <span class="tut-valu">""</span>, <span class="tut-valu">"{ENTER}"</span>)
+<span class="tut-cmnt">' Row Four</span>
+KeyboardButton(38, 25, 118, 4, <span class="tut-valu">"Shift"</span>, <span class="tut-valu">"+"</span>, <span class="tut-rsvd">True</span>)
+<span class="tut-rsvd">For</span> Col = 0 <span class="tut-rsvd">To</span> 10
+  KeyboardButton(25, 25, 118, Col * 25 + 42, _
+                 UCase(RowFour(Col)), RowFour(Col))
+<span class="tut-rsvd">Next</span>
+KeyboardButton(62, 25, 118, Col * 25 + 42, <span class="tut-valu">"Shift"</span>, <span class="tut-valu">"+"</span>, <span class="tut-rsvd">True</span>)
+<span class="tut-cmnt">' Row Five</span>
+KeyboardButton(50, 25, 144, 4, <span class="tut-valu">"Ctrl"</span>, <span class="tut-valu">"^"</span>, <span class="tut-rsvd">True</span>)
+KeyboardButton(50, 25, 144, 54, <span class="tut-valu">"Alt"</span>, <span class="tut-valu">"%"</span>, <span class="tut-rsvd">True</span>)
+KeyboardButton(154, 25, 144, 104, <span class="tut-valu">"Space"</span>, <span class="tut-valu">"{SPACE}"</span>)
+KeyboardButton(44, 25, 144, 258, <span class="tut-valu">"Home"</span>, <span class="tut-valu">"{HOME}"</span>)
+KeyboardButton(44, 25, 144, 302, <span class="tut-valu">"End"</span>, <span class="tut-valu">"{END}"</span>)
+KeyboardButton(33, 25, 144, 346, <span class="tut-valu">"Del"</span>, <span class="tut-valu">"{DEL}"</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08keyboardload.png" width="582" height="728" alt="frmMain Load Event" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Return to the Code View, by double-clicking on the Form, this will show the frmMain_Load Sub from the previous step, 
+in Code view are two drop-down boxes, select "cboWindows" from the first drop-down with "(frmMain Events)", 
+and then from the other "(Declarations)" select "DropDown" and type the following in the cboWindows_DropDown(...) Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Windows.Clear()
+cboWindows.Items.Clear()
+<span class="tut-rsvd">For Each</span> Item <span class="tut-rsvd">As</span> Process <span class="tut-rsvd">In</span> Process.GetProcesses
+  <span class="tut-rsvd">If</span> IsActiveWindow(Item.MainWindowHandle) _
+  <span class="tut-rsvd">And</span> Item.MainWindowTitle &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+    Windows.Add(Item.MainWindowHandle)
+    cboWindows.Items.Add(Item.MainWindowTitle)
+  <span class="tut-rsvd">End If
+Next</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08cbowindowsdropdown.png" width="544" height="216" alt="cboWindows DropDown Event" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View, select "cboWindows" from the first drop-down box again "(General)", 
+then from the other "(Declarations)" select "SelectedIndexChanged" and type following in the cboWindows_SelectedIndexChanged(...) Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> cboWindows.SelectedItem &lt;&gt; <span class="tut-rsvd">Nothing Then</span>
+  Window = Windows.Item(cboWindows.SelectedIndex)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08cbowindowschanged.png" width="712" height="114" alt="cboWindows SelectedIndexChanged Event" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vb08keyboardrun.png" width="400" height="218" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Any Windows open on your Computer will be displayed in the ComboBox, when selected 
+it is this window that will receive input from the On-screen Keyboard, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08keyboardlist.png" width="400" height="218" alt="Keyboard Target Windows" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Click on the Close button <img src="vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right to end the application.
+</p>
+<p>
+This is a very simple application showing how you can create an On-Screen Keyboard using some of the features present in Windows to allow the keyboard
+to interact with other Application Windows, the layout used in the keyboard is UK you can change the RowOne, RowTwo, RowThree and RowFour lists to alter
+the layout shown such as swapping Y and Z for German layout etc, make it your own!
+</p>
+</body>
+</html>

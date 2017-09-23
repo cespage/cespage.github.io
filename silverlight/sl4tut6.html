@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Imager</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Imager</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Create a simple Image Viewing application with simple Animation effects with this Tutorial using Projection animation created procedurally.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/sl4tut6.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/sl4tut6.zip">Download Tutorial</a> (211KB)</em>
+<em class="icon-dload"><a href="tutorials/sl4tut6code.zip">Download Source Code</a> (6.37KB)</em>
+<em class="icon-odemo"><a href="tutorials/sl4tut6demo.html">Online Demonstration</a></em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Canvas on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "Canvas1" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="35" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cvstoolbar.png" width="423" height="315" alt="MainPage with Toolbar Canvas" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw Four Buttons on the Page by dragging the Buttons from the Toolbox onto the Page or in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button1" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button2" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button3" <span class="tut-attr">Content</span>="Button"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button4" <span class="tut-attr">Content</span>="Button"/&gt;</span>  
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgcvsbtns.png" width="423" height="315" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Click on the first Button (Button1), then goto the Properties box and change the Name to "Open" and the Content property from Button to "Open..." (both without the quotes), see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4btnopenprop.png" width="217" height="393" alt="Button Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on the second Button (Button2), then goto the Properties box and change the Name to "Pitch" and the Content property from Button to "Pitch".<br/>
+Click on the third Button (Button3) and goto the Properties box and change the Name to "Roll" and the Content property to "Roll".<br/>
+Then click on the fourth Button (Button4) and goto the Properties box and change the Name to "Yaw" and the Content property to "Yaw".
+(all without the quotes), the page should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgbtngrp.png" width="423" height="315" alt="MainPage with Canvas and Open, Pitch, Roll and Yaw Buttons" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Then in the XAML Pane to add a Image Control to the Page below the "&lt;/Canvas&gt;" line and above the "&lt;/Grid&gt;" line, add the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Image</span> <span class="tut-attr">Height</span>="200" <span class="tut-attr">Width</span>="300" <span class="tut-attr">Margin</span>="50,65,0,0" <span class="tut-attr">Stretch</span>="Uniform" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Display"&gt;
+  &lt;<span class="tut-valu">Image.Projection</span>&gt;
+    &lt;<span class="tut-valu">PlaneProjection</span> <span class="tut-valu">x</span>:<span class="tut-valu">Name</span>="Target"/&gt;
+  &lt;/<span class="tut-valu">Image.Projection</span>&gt;
+&lt;/<span class="tut-valu">Image</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgdisplay.png" width="415" height="314" alt="MainPage with Image Control" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> Rotating <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Private</span> Rotation <span class="tut-rsvd">As New</span> <span class="tut-symb">Storyboard</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgdecs.png" width="278" height="150" alt="MainPage.xaml Declarations" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for MainPage.xaml, below "End Sub" for "Public Sub New()" Constructor type the following Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Rotate(<span class="tut-rsvd">ByRef</span> Parameter <span class="tut-rsvd">As Object</span>)
+  <span class="tut-rsvd">If</span> Rotating <span class="tut-rsvd">Then</span>
+    Rotation.Stop()
+    Rotating = <span class="tut-rsvd">False
+  Else
+    Dim</span> _animation <span class="tut-rsvd">As New</span> <span class="tut-symb">DoubleAnimation</span>
+    _animation.From = <span class="tut-valu">0.0</span>
+    _animation.To = <span class="tut-valu">360.0</span>
+    _animation.Duration = <span class="tut-rsvd">New</span> <span class="tut-symb">Duration</span>(<span class="tut-symb">TimeSpan</span>.FromSeconds(<span class="tut-valu">10</span>))
+    _animation.RepeatBehavior = Animation.<span class="tut-symb">RepeatBehavior</span>.Forever
+    <span class="tut-symb">Storyboard</span>.SetTarget(_animation, Target)
+    <span class="tut-symb">Storyboard</span>.SetTargetProperty(_animation, <span class="tut-rsvd">New</span> <span class="tut-symb">PropertyPath</span>(Parameter))
+    Rotation.Children.Clear()
+    Rotation.Children.Add(_animation)
+    Rotation.Begin()
+    Rotating = <span class="tut-rsvd">True
+  End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgrotate.png" width="578" height="303" alt="MainPage Rotate Sub" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Open..." Button Control and type in the Open_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> OpenDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">OpenFileDialog</span>
+OpenDialog.Filter = <span class="tut-valu">"JPEG Image (*.jpg;*.jpeg)|*.jpg;*.jpeg"</span>
+<span class="tut-rsvd">If</span> OpenDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    If</span> OpenDialog.File.Exists <span class="tut-rsvd">Then
+    Using</span> FileStream <span class="tut-rsvd">As</span> IO.<span class="tut-symb">Stream</span> = OpenDialog.File.OpenRead
+      <span class="tut-rsvd">Dim</span> Source <span class="tut-rsvd">As New</span> Imaging.<span class="tut-symb">BitmapImage</span>
+      Source.SetSource(FileStream)
+      Display.Source = Source
+    <span class="tut-rsvd">End Using
+  End If
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgopenclick.png" width="544" height="320" alt="Open Button Click Event" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Pitch" Button and type in the Pitch_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Rotate(<span class="tut-symb">PlaneProjection</span>.RotationXProperty)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgpitchclick.png" width="518" height="82" alt="Pitch Button Click Event" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Roll" Button and type in the Roll_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Rotate(<span class="tut-symb">PlaneProjection</span>.RotationZProperty)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgrollclick.png" width="510" height="82" alt="Roll Button Click Event" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Yaw" Button and type in the Yaw_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Rotate(<span class="tut-symb">PlaneProjection</span>.RotationYProperty)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgyawclick.png" width="504" height="82" alt="Yaw Button Click Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Now click where it says "Open...", a File Open Dialog - then select a JPEG Image File or ".jpg" / ".jpeg" file on your Computer and select Open and the contents will appear in the Image Control,
+which you can then Animate with the Pitch, Roll and Yaw Buttons, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4imgapp.png" width="400" height="300" alt="Imager with Open Image" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="tutorials/sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This is a very simple example on animating an Image using Code, it is also possible to have multiple animations - if you declare on Animation object
+for each type you can combine animations together - see what you can add and change yourself!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

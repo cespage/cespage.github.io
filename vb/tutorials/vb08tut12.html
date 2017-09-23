@@ -1,0 +1,584 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Web Browser</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Web Browser</h1>
+<p>Browsing the Internet, is what you are doing now if you're reading this tutorial, which will allow you to implement your very own Web Browser!
+This uses the Webbrowser Control with Open/Save support for your Favourite websites!</p>
+<p>
+<a href="http://www.cespage.com/vb/vb08tut12.html">www.cespage.com/vb/vb08tut12.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Windows Forms Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08newapp.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08form1.png" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Form1 selected goto the Properties box and change the Name from Form1 to frmMain
+</p>
+<div class="tutorial-image">
+<img src="vb08form1prop.png" width="203" height="431" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the Common Controls tab on the Toolbox select the WebBrowser component:
+</p>
+<div class="tutorial-image">
+<img src="vb08webbrowser.png" width="240" height="400" alt="WebBrowser Component" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a WebBrowser on the Form, make sure to position and size the WebBrowser so it appears as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainweb.png" width="300" height="300" alt="frmMain with WebBrowser" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Common Controls tab on the Toolbox select the Textbox component:
+</p>
+<div class="tutorial-image">
+<img src="vb08textbox.png" width="240" height="400" alt="Textbox Component" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a Textbox on the Form, this should be just above the WebBrowser, see below:<br/>
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainwebtxt.png" width="300" height="300" alt="frmMain with WebBrowser and TextBox" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Select or click on the Textbox if it is not already selected, then goto the Properties box and change the name to "txtURL", then set the Anchor
+property to "Top, Left, Right" and set the TabIndex Property to "0", all without quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08txturlprop.png" width="203" height="399" alt="TextBox Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Select or click on the WebBrowser, then goto the Properties box and change the name to "webMain", then set the Anchor
+property to "Top, Bottom, Left, Right" and set the TabIndex Property to "1", all without quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08webmainprop.png" width="203" height="399" alt="CheckedListBox Properties" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Then from the Menus &amp; Toolbars tab on the Toolbox select the MenuStrip Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08menustrip.png" width="240" height="400" alt="MenuStrip Component" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Either double-click on the MenuStrip Control entry in the Menu &amp; Toolbars tab on the Toolbox or keep the MenuStrip Component Clicked and then move it over the Form then let go. 
+Change the Name of the MenuStrip in the properties to mnuWeb The Form will then look as below: 
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainmnuweb.png" width="300" height="300" alt="frmMain with MenuStrip" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Click or select where the MenuStrip says "Type Here", an editable Textbox will appear type in "File" without the quotes in this Box, then in the Box below
+that type in "Open...", then below that "Save..." and finally "Exit". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuweb.png" width="300" height="300" alt="mnuWeb with File Menu" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Click or select next to "File" where the MenuStrip says "Type Here", and type in "Edit" without the quotes in this Box, then in the Box below
+that type in "Cut", below that "Copy", then "Paste" and finally "Select All". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebedit.png" width="300" height="300" alt="mnuWeb with Edit Menu" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click or select next to "Edit" where the MenuStrip says "Type Here", and type in "View" without the quotes in this Box, then in the Box below
+that type in "Go To", below that "Home", then "Back", "Forward", "Refresh" and finally "Stop". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebview.png" width="300" height="300" alt="mnuWeb with View Menu" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Right Click on the Form or the entry of the Form in Solution Explorer and choose the "View Code" option then above the "Public Class frmMain"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+    <span class="tut-rsvd">Private Const</span> BLOCK_DEFAULT <span class="tut-rsvd">As String</span> = <span class="tut-valu">"[DEFAULT]"</span>
+    <span class="tut-rsvd">Private Const</span> BLOCK_INTERNETSHORTCUT <span class="tut-rsvd">As String</span> = <span class="tut-valu">"[InternetShortcut]"</span>
+    <span class="tut-rsvd">Private Const</span> ITEM_URL <span class="tut-rsvd">As String</span> = <span class="tut-valu">"URL="</span>
+    <span class="tut-rsvd">Private Const</span> ITEM_BASEURL <span class="tut-rsvd">As String</span> = <span class="tut-valu">"BASEURL="</span>
+</pre>
+</blockquote>
+<p>
+Also while still in the Code View, below the "Public Class frmMain" part type the following Subroutine:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Navigate(<span class="tut-rsvd">ByRef</span> URL <span class="tut-rsvd">As String</span>)
+  <span class="tut-rsvd">If</span> String.IsNullOrEmpty(URL) <span class="tut-rsvd">Then Return</span>
+  <span class="tut-rsvd">If</span> URL.Equals(<span class="tut-valu">"about:blank"</span>) <span class="tut-rsvd">Then Return</span>
+  <span class="tut-rsvd">If Not</span> URL.StartsWith(<span class="tut-valu">"http://"</span>) <span class="tut-rsvd">And</span> _
+  <span class="tut-rsvd">Not</span> URL.StartsWith(<span class="tut-valu">"https://"</span>) <span class="tut-rsvd">Then</span>
+      URL = <span class="tut-valu">"http://"</span> &amp; URL
+  <span class="tut-rsvd">End If
+  Try</span>
+    webMain.Navigate(URL)
+  <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-cmnt">' Do nothing on Exception</span>
+  <span class="tut-rsvd">End Try
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08webdecs.png" width="600" height="340" alt="Task List Declarations and Navigate Subroutine" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Return to the Design view by selecting the [Design] tab or Right Click on the "View Designer" option in Solution Explorer for frmMain.
+Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Open" (OpenToolStripMenuItem) and type the following in the OpenToolStripMenuItem_Click() Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Open <span class="tut-rsvd">As New</span> OpenFileDialog()
+<span class="tut-rsvd">Dim</span> URLFile <span class="tut-rsvd">As String</span>()
+<span class="tut-rsvd">Dim</span> myStreamReader <span class="tut-rsvd">As</span> System.IO.StreamReader
+Open.Filter = <span class="tut-valu">"Internet Favourite (*.url)|*.url|All files (*.*)|*.*"</span>
+Open.CheckFileExists = <span class="tut-rsvd">True</span>
+Open.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  Open.OpenFile()
+  myStreamReader = System.IO.File.OpenText(Open.FileName)
+  URLFile = myStreamReader.ReadToEnd().Split(<span class="tut-rsvd">New String</span>() {ControlChars.CrLf}, _
+                                           StringSplitOptions.RemoveEmptyEntries)
+  <span class="tut-rsvd">For Each</span> Item <span class="tut-rsvd">As String In</span> URLFile
+    <span class="tut-rsvd">If</span> Item.StartsWith(ITEM_URL) <span class="tut-rsvd">Then</span>
+      Navigate(Item.Substring(ITEM_URL.Length))
+      <span class="tut-rsvd">Exit For
+    End If
+  Next
+Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebopen.png" width="740" height="406" alt="File Menu Open Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Save..." (SaveToolStripMenuItem) and 
+type the following in the SaveToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Save <span class="tut-rsvd">As New</span> SaveFileDialog()
+<span class="tut-rsvd">Dim</span> myStreamWriter <span class="tut-rsvd">As</span> System.IO.StreamWriter
+Save.Filter = <span class="tut-valu">"Internet Favourite (*.url)|*.url|All files (*.*)|*.*"</span>
+Save.CheckPathExists = <span class="tut-rsvd">True</span>
+Save.FileName = webMain.DocumentTitle
+Save.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  myStreamWriter = System.IO.File.CreateText(Save.FileName)
+  myStreamWriter.Write(BLOCK_DEFAULT &amp; vbCrLf &amp; _
+                       ITEM_BASEURL &amp; webMain.Url.ToString &amp; vbCrLf &amp; _
+                       BLOCK_INTERNETSHORTCUT &amp; vbCrLf &amp; _
+                       ITEM_URL &amp; webMain.Url.ToString)
+  myStreamWriter.Flush()
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  ' Do nothing on Exception
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebsave.png" width="664" height="338" alt="File Menu Save Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Exit" (ExitToolStripMenuItem) and 
+type the following in the ExitToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+Response = MsgBox(<span class="tut-valu">"Are you sure you want to Exit Web Browser?"</span>, _
+                  MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                  <span class="tut-valu">"Web Browser"</span>)
+<span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+   <span class="tut-rsvd">End</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebexit.png" width="648" height="184" alt="File Menu Exit Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Cut" (CutToolStripMenuItem) and type the following in the CutToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+txtURL.Cut()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebcut.png" width="632" height="82" alt="Edit Menu Cut Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Copy" (CopyToolStripMenuItem) and type the following in the CopyToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+txtURL.Copy()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebcopy.png" width="648" height="82" alt="Edit Menu Copy Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Paste" (PasteToolStripMenuItem) and type the following in the PasteToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+txtURL.Paste()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebpaste.png" width="664" height="82" alt="Edit Menu Paste Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Select All" (SelectAllToolStripMenuItem) and type the following in the SelectAllToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+txtURL.SelectAll()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebselectall.png" width="728" height="82" alt="Edit Menu Select All Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "View" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Go To" (GoToToolStripMenuItem) and type the following in the GoToToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+Navigate(txtURL.Text)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebgoto.png" width="648" height="82" alt="View Menu Go To Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "View" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Home" (HomeToolStripMenuItem) and type the following in the HomeToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+webMain.GoHome()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebhome.png" width="648" height="82" alt="View Menu Home Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "View" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Back" (BackToolStripMenuItem) and type the following in the BackToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+webMain.GoBack()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebback.png" width="648" height="82" alt="View Menu Back Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "View" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Forward" (ForwardToolStripMenuItem) and type the following in the ForwardToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+webMain.GoForward()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebforward.png" width="696" height="82" alt="View Menu Forward Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "View" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Refresh" (RefreshToolStripMenuItem) and type the following in the RefreshToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If Not</span> webMain.Url.Equals(<span class="tut-valu">"about:blank"</span>) <span class="tut-rsvd">Then</span>
+    webMain.Refresh()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebrefresh.png" width="696" height="116" alt="View Menu Refresh Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "View" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Stop" (StopToolStripMenuItem) and type the following in the StopToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+webMain.Stop()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebstop.png" width="648" height="82" alt="View Menu Stop Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+Click on the [Design] Tab to view the form again, then Double Click on the Form (frmMain) and 
+type the following in the frmMain_Load() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Web Browser"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainwebload.png" width="504" height="82" alt="frmMain Load Event" />
+</div>
+<p class="tutorial-step">Step 30</p>
+<p>
+While Still in the Code View, if not double click on the Form, the Window Area of the Form will work, this will show 
+the frmMain_Load Sub from the previous step, on this screen at the top are two Drop-down boxes one labeled (frmMain Events) 
+and the other is Load. Click on the drop-down box with "(frmMain Events)" in it and select "txtURL", then from the list "(Declarations)" 
+select the KeyDown option from the list of events for txtURL, and type in txtURL_KeyDown() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> (e.KeyCode = Keys.Enter) <span class="tut-rsvd">Then</span>
+  Navigate(txtURL.Text)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08txturlkeydown.png" width="640" height="116" alt="txtURL KeyDown Event" />
+</div>
+<p class="tutorial-step">Step 31</p>
+<p>
+Again while Still in the Code View with the two combo boxes (General) and (Declarations), select "webMain" from the first list
+and then from the list "(Declarations)" select the "Navigated" ooption from the list of events for webMain, and type in webMain_Navigated() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Web Browser - "</span> &amp; webMain.DocumentTitle
+txtURL.Text = webMain.Url.ToString
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08webmainnavigated.png" width="792" height="100" alt="webMain Navigated Event" />
+</div>
+<p class="tutorial-step">Step 32</p>
+<p>
+Steps 31-36 are optional and just add Keyboard Shortcuts to the MenuItems, you don't have to do these if you don't want to!<br/>
+Return to the Design view of the Form by selecting the [Design] tab for the Form, or double click on the Form's name in Solution Explorer.<br/>
+Click on "File" on the Menu Strip to select the Menu Strip and show the File Menu then mouse over the "Type Here" box.<br/> 
+Click on the Drop Down arrow inside the "Type Here" box to show the following options: MenuItem, ComboBox, Separator and TextBox, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebfile.png" width="300" height="300" alt="File Menu with Type Here options displayed at bottom of menu" />
+</div>
+<p class="tutorial-step">Step 33</p>
+<p>
+Click on the "Separator" option to place a Menu Separator in this menu, then click on it an move it so it goes above the "Exit" option in the file menu,
+do this by clicking on the separator (the horizontal line which has appeared) then whilst keeping clicked move it up, it should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebfilediv.png" width="300" height="300" alt="File Menu with Divider above Exit MenuItem" />
+</div>
+<p class="tutorial-step">Step 34</p>
+<p>
+With the "File" Menu still being displayed click on "Open" then in the Properties box look for the "Shortcut Key" option and click on the Drop Down arrow
+where "None" appears. Check the "Ctrl" Checkbox in "Modifiers" and then in the "Key" dropdown list select "O", see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebopenprop.png" width="240" height="399" alt="File Menu Open Menu Item Shortcut Key" />
+</div>
+<p class="tutorial-step">Step 35</p>
+<p>
+Again with the "File" menu displayed click on "Save" and set the "Shortcut Key" to "Ctrl" and "S", the File Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebfilekeys.png" width="300" height="300" alt="File Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 36</p>
+<p>
+Click on or select the "Edit" Menu and set the "Shortcut Keys" Properties, "Cut" should be set to "Ctrl" and "X", "Copy" to "Ctrl" and "C", 
+"Paste" to "Ctrl" and "V", "Select All" should be "Ctrl" and "A". The Edit Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebeditkeys.png" width="300" height="300" alt="Edit Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 37</p>
+<p>
+Click on or select the "View" Menu, select "Go To" and in the "ShortcutKeys" property type "Ctrl+Enter", select "Home" and type "Ctrl+Home" in the "ShortcutKeys" property.
+"Back" should be set to "Ctrl" and "Left", "Forward" should be "Ctrl" and "Right" and "Refresh" should be just "F5". The View Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebviewkeys.png" width="300" height="300" alt="View Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 38</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vb08webrun.png" width="300" height="300" alt="Web Browser Running" />
+</div>
+<p class="tutorial-step">Step 39</p>
+<p>
+You can type into the TextBox any website address then click on Go To or just press Enter/Ctrl+Enter to visit that website,
+you can Save this address to open later, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08webshow.png" width="300" height="300" alt="Web Browser" />
+</div>
+<p class="tutorial-step">Step 40</p>
+<p>
+Click File then Exit or click on the Close button <img src="vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right of Web Browser to end the application.
+</p>
+<p>
+This program uses the standard URL format to Save the Website and the WebBrowser control to display it, this control supports other features such as
+Printing and Saving the Webpage itself to see what other functions it supports type "webMain." without the quotes, and the functions supported will be shown!
+</p>
+</body>
+</html>

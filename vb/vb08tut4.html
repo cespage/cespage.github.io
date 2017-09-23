@@ -1,0 +1,918 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Text Editor (Part Two)</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Text Editor (Part Two)</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+This Tutorial adds Find &amp; Replace to the Text Editor (Part One), please follow all the Steps of 
+<a href="vb08tut3.html">Text Editor (Part One)</a> before starting this Tutorial, or use the Source Code 
+from Part One and start from there.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/vb08tut4.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vb08tut4.zip">Download Tutorial</a> (545KB)</em>
+<em class="icon-dload"><a href="tutorials/vb08tut4code.zip">Download Source Code</a> (17.6KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then Open Project... and select the Solution File 
+for Part One (e.g. TextEditorPartOne.sln), the following should then appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08txteditorpart2.png" width="307" height="307" alt="Text Editor (Part One)" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+Then select Project then Add Class... and choose the "Class" Template if it is not already 
+selected and give it the Name "FindReplaceDialog.vb" without the quotes, see below:<br/>
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08txtaddclass.png" width="804" height="482" alt="Add FindReplaceDialog Class" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With the empty FindReplaceDialog Class displayed, if not double click on the "FindReplaceDialog.vb" item in Solution Explorer, then enter the following 
+above the Public Class FindReplaceDialog line: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System
+<span class="tut-rsvd">Imports</span> System.Windows.Forms
+<span class="tut-rsvd">Imports</span> System.Runtime.InteropServices
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>FindReplaceDialog Component<span class="tut-prop">&lt;/summary&gt;</span></span> 
+</pre>
+</blockquote>
+<p>
+Enter the following below the Public Class FindReplaceDialog:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Private Members</span>
+
+<span class="tut-rsvd">Private</span> hwndDlg <span class="tut-rsvd">As</span> IntPtr <span class="tut-cmnt">' Dialog handle</span>
+
+<span class="tut-cmnt">' API Class and Methods</span>
+
+&lt;StructLayout(LayoutKind.Sequential)> _
+<span class="tut-rsvd">Friend Class</span> FindReplace
+  <span class="tut-rsvd">Friend</span> cbSize <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Friend</span> hwndOwner <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Friend</span> hInstance <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Friend</span> flags <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Friend</span> findwhat <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Friend</span> replacewith <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Friend</span> findwhatlen <span class="tut-rsvd">As Short</span>
+  <span class="tut-rsvd">Friend</span> replacewithlen <span class="tut-rsvd">As Short</span>
+  <span class="tut-rsvd">Friend</span> custdata <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Friend</span> hookproc <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Friend</span> templateName <span class="tut-rsvd">As</span> IntPtr
+<span class="tut-rsvd">End Class</span>
+
+&lt;DllImport(<span class="tut-valu">"Comdlg32.dll"</span>, CharSet:=CharSet.Auto, SetLastError:=<span class="tut-rsvd">True</span>)&gt; _
+<span class="tut-rsvd">Private Shared Function</span> FindText(<span class="tut-rsvd">ByVal</span> lpfr <span class="tut-rsvd">As</span> IntPtr) <span class="tut-rsvd">As</span> IntPtr
+<span class="tut-rsvd">End Function</span>
+
+&lt;DllImport(<span class="tut-valu">"Comdlg32.dll"</span>, CharSet:=CharSet.Auto, SetLastError:=<span class="tut-rsvd">True</span>)&gt; _
+<span class="tut-rsvd">Private Shared Function</span> ReplaceText(<span class="tut-rsvd">ByVal</span> lpfr <span class="tut-rsvd">As</span> IntPtr) <span class="tut-rsvd">As</span> IntPtr
+<span class="tut-rsvd">End Function</span>
+
+&lt;DllImport(<span class="tut-valu">"User32.dll"</span>, CharSet:=CharSet.Auto, SetLastError:=<span class="tut-rsvd">True</span>)&gt; _
+<span class="tut-rsvd">Private Shared Function</span> RegisterWindowMessage(&lt;MarshalAs(UnmanagedType.LPTStr)&gt; _
+  <span class="tut-rsvd">ByVal</span> message <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">End Function</span>
+
+&lt;DllImport(<span class="tut-valu">"User32.dll"</span>)&gt; _
+<span class="tut-rsvd">Private Shared Function</span> DestroyWindow(<span class="tut-rsvd">ByVal</span> hwnd <span class="tut-rsvd">As</span> IntPtr) <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">End Function</span>
+
+&lt;StructLayout(LayoutKind.Sequential)&gt; _
+<span class="tut-rsvd">Private Structure</span> MSG
+  <span class="tut-rsvd">Friend</span> hwnd <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Friend</span> message <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Friend</span> wparam <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Friend</span> lparam <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Private</span> time <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Private</span> x <span class="tut-rsvd">As Long</span>
+  <span class="tut-rsvd">Private</span> y <span class="tut-rsvd">As Long</span>
+<span class="tut-rsvd">End Structure</span>
+
+&lt;DllImport(<span class="tut-valu">"User32.dll"</span>)&gt; _
+<span class="tut-rsvd">Private Shared Function</span> IsDialogMessage(<span class="tut-rsvd">ByVal</span> hwnd <span class="tut-rsvd">As</span> IntPtr, _
+                                        <span class="tut-rsvd">ByRef</span> msg <span class="tut-rsvd">As</span> MSG) <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">' IMessageFilter Implementation</span>
+
+<span class="tut-rsvd">Public Function</span> PreFilterMessage(<span class="tut-rsvd">ByRef</span> m <span class="tut-rsvd">As</span> System.Windows.Forms.Message) _
+<span class="tut-rsvd">As Boolean Implements</span> System.Windows.Forms.IMessageFilter.PreFilterMessage
+  Dim msg <span class="tut-rsvd">As New</span> MSG()
+  msg.hwnd = m.HWnd
+  msg.lparam = m.LParam
+  msg.message = m.Msg
+  msg.wparam = m.WParam
+  <span class="tut-rsvd">Return</span> IsDialogMessage(hwndDlg, msg)
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmfindreplacedecs.png" width="698" height="1292" alt="FindReplaceDialog Imports and API Declarations" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Still with the FindReplaceDialog Class Displayed, go to the Top of the Class and below the "Implements System.Windows.Forms.IMessageFilter" and above
+the "Private Members" section type the following Public Enums:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Public Enums</span>
+
+<span class="tut-rsvd">Public Enum</span> FindDirection
+  Up = 0
+  Down = 1
+<span class="tut-rsvd">End Enum</span>
+
+<span class="tut-rsvd">Public Enum</span> FindReplaceDialogType
+  Find = 0
+  Replace = 1
+<span class="tut-rsvd">End Enum</span>
+
+<span class="tut-rsvd">Public Enum</span> FindReplaceItem
+  UpDown = 0
+  MatchCase = 1
+  WholeWord = 2
+<span class="tut-rsvd">End Enum</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplacedecs.png" width="312" height="288" alt="FindReplaceDialog Public Enums" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+After the Public Enums entered below this type the following Private Constants:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Private Constants</span>
+
+<span class="tut-rsvd">Private Const</span> FR_DOWN <span class="tut-rsvd">As Integer</span> = 1
+<span class="tut-rsvd">Private Const</span> FR_MATCHWHOLEWORD <span class="tut-rsvd">As Integer</span> = 2
+<span class="tut-rsvd">Private Const</span> FR_MATCHCASE <span class="tut-rsvd">As Integer</span> = 4
+<span class="tut-rsvd">Private Const</span> FR_FINDNEXT <span class="tut-rsvd">As Integer</span> = 8
+<span class="tut-rsvd">Private Const</span> FR_REPLACE <span class="tut-rsvd">As Integer</span> = 16
+<span class="tut-rsvd">Private Const</span> FR_REPLACEALL <span class="tut-rsvd">As Integer</span> = 32
+<span class="tut-rsvd">Private Const</span> FR_DIALOGTERM <span class="tut-rsvd">As Integer</span> = 64
+<span class="tut-rsvd">Private Const</span> FR_SHOWHELP <span class="tut-rsvd">As Integer</span> = 128
+<span class="tut-rsvd">Private Const</span> FR_ENABLEHOOK <span class="tut-rsvd">As Integer</span> = 256
+<span class="tut-rsvd">Private Const</span> FR_ENABLETEMPLATE <span class="tut-rsvd">As Integer</span> = 512
+<span class="tut-rsvd">Private Const</span> FR_DISABLEUPDOWN <span class="tut-rsvd">As Integer</span> = 1024
+<span class="tut-rsvd">Private Const</span> FR_DISABLEMATCHCASE <span class="tut-rsvd">As Integer</span> = 2048
+<span class="tut-rsvd">Private Const</span> FR_DISABLEWHOLEWORD <span class="tut-rsvd">As Integer</span> = 4096
+<span class="tut-rsvd">Private Const</span> FR_ENABLETEMPLATEHANDLE <span class="tut-rsvd">As Integer</span> = 8192
+<span class="tut-rsvd">Private Const</span> FR_HIDEUPDOWN <span class="tut-rsvd">As Integer</span> = 16384
+<span class="tut-rsvd">Private Const</span> FR_HIDEMATCHCASE <span class="tut-rsvd">As Integer</span> = 32768
+<span class="tut-rsvd">Private Const</span> FR_HIDEWHOLEWORD <span class="tut-rsvd">As Integer</span> = 65536
+<span class="tut-rsvd">Private Const</span> MINBUFFERSIZE <span class="tut-rsvd">As Integer</span> = 256
+<span class="tut-rsvd">Private Const</span> DIALOG_MESSAGE <span class="tut-rsvd">As String</span> = <span class="tut-valu">"commdlg_FindReplace"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplaceconsts.png" width="542" height="358" alt="FindReplaceDialog Constants" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+In FindReplaceDialog Class enter the following above the "API Class and Methods" section and at the end of the "Private Members" section enter the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> flags <span class="tut-rsvd">As Integer</span> <span class="tut-cmnt">' Dialog Flags</span>
+<span class="tut-rsvd">Private</span> fr <span class="tut-rsvd">As</span> IntPtr <span class="tut-cmnt">' Copy of memory passed to FindReplace</span>
+<span class="tut-rsvd">Private</span> dialogType <span class="tut-rsvd">As</span> FindReplaceDialogType <span class="tut-cmnt">' Dialog type</span> 
+<span class="tut-rsvd">Private</span> m_findwhat <span class="tut-rsvd">As String</span> <span class="tut-cmnt">' String to be found</span>
+<span class="tut-rsvd">Private</span> m_replacewith <span class="tut-rsvd">As String</span> <span class="tut-cmnt">' String to be replaced with</span>
+<span class="tut-rsvd">Private</span> findwhatbuffer <span class="tut-rsvd">As</span> IntPtr = IntPtr.Zero <span class="tut-cmnt">' Buffer for find what string</span>
+<span class="tut-rsvd">Private</span> replacewithbuffer <span class="tut-rsvd">As</span> IntPtr = IntPtr.Zero <span class="tut-cmnt">' Buffer for replace with</span>
+<span class="tut-rsvd">Friend Shared</span> findmsgstring <span class="tut-rsvd">As Integer</span> = 0 <span class="tut-cmnt">' Message used by dialog</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplaceprivate.png" width="654" height="206" alt="FindReplaceDialog Private Members" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Still in the FindReplaceDialog Class, enter the following Private Methods below the "Private Members" section and above the "API Class and Methods" section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Private Methods</span>
+
+<span class="tut-rsvd">Private Sub</span> SetOption(<span class="tut-rsvd">ByVal</span> [option] <span class="tut-rsvd">As Integer</span>, _
+                      <span class="tut-rsvd">ByVal</span> b <span class="tut-rsvd">As Boolean</span>)
+  <span class="tut-rsvd">If</span> b <span class="tut-rsvd">Then</span>
+    flags = flags <span class="tut-rsvd">Or</span> [option]
+  <span class="tut-rsvd">Else</span>
+    flags = flags <span class="tut-rsvd">And Not</span> [option]
+  <span class="tut-rsvd">End If
+End Sub</span>
+
+<span class="tut-rsvd">Private Function</span> GetOption(<span class="tut-rsvd">ByVal</span> [option] <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Return</span> (flags <span class="tut-rsvd">And</span> [option]) &lt;&gt; 0
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-rsvd">Private Function</span> StringToBuffer(<span class="tut-rsvd">ByVal</span> stringIn <span class="tut-rsvd">As String</span>, _
+                                <span class="tut-rsvd">ByRef</span> Length <span class="tut-rsvd">As Short</span>) <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">Dim</span> stringPointer <span class="tut-rsvd">As New</span> IntPtr
+  <span class="tut-rsvd">Try</span> <span class="tut-cmnt">' Accept a string and pass back a pointer to the string.</span>
+    stringPointer = Marshal.StringToHGlobalAuto(stringIn)
+    Length = <span class="tut-rsvd">CType</span>(stringIn.Length, <span class="tut-rsvd">Short</span>)
+    <span class="tut-rsvd">If</span> (stringIn <span class="tut-rsvd">Is Nothing</span>) <span class="tut-rsvd">Or</span> (stringIn.Length &lt; MINBUFFERSIZE) <span class="tut-rsvd">Then</span>
+      stringPointer = Marshal.ReAllocHGlobal(stringPointer, _
+                           <span class="tut-rsvd">New</span> IntPtr(MINBUFFERSIZE * _
+                                      Marshal.SystemDefaultCharSize))
+      Length = <span class="tut-rsvd">CType</span>(MINBUFFERSIZE, <span class="tut-rsvd">Short</span>)
+    <span class="tut-rsvd">End If
+    Return</span> stringPointer
+  <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> System.Exception
+    <span class="tut-rsvd">Throw</span> ex
+  <span class="tut-rsvd">End Try
+End Function</span>
+
+<span class="tut-rsvd">Private Sub</span> CleanUp()
+  <span class="tut-rsvd">If</span> findwhatbuffer &lt;&gt; IntPtr.Zero <span class="tut-rsvd">Then</span>
+    Marshal.FreeHGlobal(findwhatbuffer)
+  <span class="tut-rsvd">End If
+  If</span> replacewithbuffer &lt;&gt; IntPtr.Zero <span class="tut-rsvd">Then</span>
+    Marshal.FreeHGlobal(replacewithbuffer)
+  <span class="tut-rsvd">End If
+  If</span> fr &lt;&gt; IntPtr.Zero <span class="tut-rsvd">Then</span>
+    <span class="tut-rsvd">Dim</span> tempfr <span class="tut-rsvd">As</span> FindReplace = _
+    <span class="tut-rsvd">DirectCast</span>(Marshal.PtrToStructure(fr, <span class="tut-rsvd">GetType</span>(FindReplace)), FindReplace)
+    Marshal.FreeHGlobal(fr)
+  <span class="tut-rsvd">End If</span>
+  fr = IntPtr.Zero
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplacemethods.png" width="694" height="800" alt="FindReplaceDialog Private Methods" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Goto the Bottom of the FindReplaceDialogClass and type the following Public Properties above the "End Class" section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Public Properties</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Get or set the search direction, Up/Down<span class="tut-prop">&lt;/summary&gt;</span></span> 
+<span class="tut-rsvd">Public Property</span> Direction() <span class="tut-rsvd">As</span> FindDirection
+  <span class="tut-rsvd">Get
+    Return</span> IIf(GetOption(FR_DOWN), _
+                       FindDirection.Down, FindDirection.Up)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> FindDirection)
+    SetOption(FR_DOWN, Value = FindDirection.Down)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Hides Up/Down radio buttons<span class="tut-prop">&lt;/summary&gt;</span></span> 
+<span class="tut-rsvd">Public Property</span> HideUpDown() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Get
+    Return</span> GetOption(FR_HIDEUPDOWN)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Boolean</span>)
+    SetOption(FR_HIDEUPDOWN, Value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Hides Match Case checkbox<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> HideMatchCase() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Get
+    Return</span> GetOption(FR_HIDEMATCHCASE)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Boolean</span>)
+    SetOption(FR_HIDEMATCHCASE, Value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Hides Whole Word checkbox<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> HideWholeWord() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Get
+    Return</span> GetOption(FR_HIDEWHOLEWORD)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Boolean</span>)
+    SetOption(FR_HIDEWHOLEWORD, Value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Uses match case option while searching<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> MatchCase() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Get
+    Return</span> GetOption(FR_MATCHCASE)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Boolean</span>)
+    SetOption(FR_MATCHCASE, value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Disables Match Case checkbox<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> DisableMatchCase() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Get
+    Return</span> GetOption(FR_DISABLEMATCHCASE)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Boolean</span>)
+    SetOption(FR_DISABLEMATCHCASE, value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Disables Up/Down radio buttons<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> DisableUpDown() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Get
+    Return</span> GetOption(FR_DISABLEUPDOWN)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Boolean</span>)
+    SetOption(FR_DISABLEUPDOWN, value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Disables Whole Word checkbox<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> DisableWholeWord() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Get
+    Return</span> GetOption(FR_DISABLEWHOLEWORD)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Boolean</span>)
+    SetOption(FR_DISABLEWHOLEWORD, value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Matches Whole Word<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> MatchWholeWord() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Get
+    Return</span> GetOption(FR_MATCHWHOLEWORD)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Boolean</span>)
+    SetOption(FR_MATCHWHOLEWORD, value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Show Help Button in Title bar<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> ShowHelp() <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">Get
+    Return</span> GetOption(FR_SHOWHELP)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Boolean</span>)
+    SetOption(FR_SHOWHELP, value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Get or Set the String to be found<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> FindWhat() <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">Get
+    Return</span> m_findwhat
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As String</span>)
+    m_findwhat = value
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Gets or Set the String to replaced with<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> ReplaceWith() <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">Get
+    Return</span> m_replacewith
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As String</span>)
+    m_replacewith = value
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Get or Set the Dialog Type<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Property</span> Type() <span class="tut-rsvd">As</span> FindReplaceDialogType
+  <span class="tut-rsvd">Get
+    Return</span> dialogType
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As</span> FindReplaceDialogType)
+    dialogType = value
+  <span class="tut-rsvd">End Set
+End Property</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplaceprops.png" width="552" height="2242" alt="FindReplaceDialog Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Find the "Private Members" section of FindReplaceDialog and after the last item or above "Private Methods", enter the follow Declaration and Inner Class: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> owner <span class="tut-rsvd">As</span> OwnerWindow <span class="tut-cmnt">' Window that subclasses the owner</span> 
+
+<span class="tut-cmnt">' Owner Window InnerClass</span>
+
+<span class="tut-rsvd">Private Class</span> OwnerWindow
+  <span class="tut-rsvd">Inherits</span> NativeWindow
+  <span class="tut-rsvd">Private</span> Source <span class="tut-rsvd">As</span> FindReplaceDialog
+
+  <span class="tut-rsvd">Friend Sub New</span>(<span class="tut-rsvd">ByVal</span> Source <span class="tut-rsvd">As</span> FindReplaceDialog)
+    <span class="tut-rsvd">Me</span>.Source = Source
+  <span class="tut-rsvd">End Sub</span>
+
+  <span class="tut-rsvd">Protected Overloads Overrides Sub</span> WndProc(<span class="tut-rsvd">ByRef</span> m <span class="tut-rsvd">As</span> System.Windows.Forms.Message)
+    <span class="tut-rsvd">If</span> m.Msg = FindReplaceDialog.findmsgstring <span class="tut-rsvd">Then</span>
+      Source.HandleFindMsgString(m)
+    <span class="tut-rsvd">Else</span>
+      DefWndProc(m)
+    <span class="tut-rsvd">End If
+  End Sub
+End Class</span>
+
+<span class="tut-cmnt">' Constructor</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Initialises a FindReplaceDialog Instance<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Sub New</span>()
+    owner = <span class="tut-rsvd">New</span> OwnerWindow(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplaceowner.png" width="734" height="462" alt="FindReplaceDialog Owner Window" />
+</div>
+<p>
+Then enter the following above the "End Class" of FindReplaceDialog or below the "Public Properties":
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Events</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Fired when user clicks the replace button<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Event</span> Replace <span class="tut-rsvd">As</span> EventHandler
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Fired when the user clicks ReplaceAll button<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Event</span> ReplaceAll <span class="tut-rsvd">As</span> EventHandler
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Fired when the user clicks the FindNext button<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Event</span> FindNext <span class="tut-rsvd">As</span> EventHandler
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Fired when the dialog is terminated by the user<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Public Event</span> DialogTerminate <span class="tut-rsvd">As</span> EventHandler
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Allows derived classes to handle replace event<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Protected Overridable Sub</span> OnReplace()
+  <span class="tut-rsvd">RaiseEvent</span> Replace(<span class="tut-rsvd">Me</span>, EventArgs.Empty)
+<span class="tut-rsvd">End Sub</span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Allows derived classes to handle replace all event<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Protected Overridable Sub</span> OnReplaceAll()
+  <span class="tut-rsvd">RaiseEvent</span> ReplaceAll(<span class="tut-rsvd">Me</span>, EventArgs.Empty)
+<span class="tut-rsvd">End Sub</span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Allows derive classes to handle find next event<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Protected Overridable Sub</span> OnFindNext()
+  <span class="tut-rsvd">RaiseEvent</span> FindNext(<span class="tut-rsvd">Me</span>, EventArgs.Empty)
+<span class="tut-rsvd">End Sub</span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Allows derive classes to dialog terminate event<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-rsvd">Protected Overridable Sub</span> OnDialogTerminate()
+  hwndDlg = IntPtr.Zero
+  <span class="tut-rsvd">Me</span>.owner.ReleaseHandle()
+  Application.RemoveMessageFilter(<span class="tut-rsvd">Me</span>)
+  <span class="tut-rsvd">RaiseEvent</span> DialogTerminate(<span class="tut-rsvd">Me</span>, EventArgs.Empty)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-cmnt">' Dialog Methods</span>
+
+<span class="tut-rsvd">Friend Sub</span> HandleFindMsgString(<span class="tut-rsvd">ByVal</span> m <span class="tut-rsvd">As</span> Message)
+  <span class="tut-rsvd">Dim</span> tempfr <span class="tut-rsvd">As</span> FindReplace = _
+        <span class="tut-rsvd">DirectCast</span>(Marshal.PtrToStructure(m.LParam, <span class="tut-rsvd">GetType</span>(FindReplace)), FindReplace)
+  flags = tempfr.flags
+  m_findwhat = Marshal.PtrToStringAuto(tempfr.findwhat)
+  m_replacewith = Marshal.PtrToStringAuto(tempfr.replacewith)
+  <span class="tut-rsvd">If</span> GetOption(FR_DIALOGTERM) <span class="tut-rsvd">Then</span>
+    SetOption(FR_DIALOGTERM, <span class="tut-rsvd">False</span>)
+    OnDialogTerminate()
+  <span class="tut-rsvd">ElseIf</span> GetOption(FR_FINDNEXT) T<span class="tut-rsvd">hen</span>
+    SetOption(FR_FINDNEXT, <span class="tut-rsvd">False</span>)
+    OnFindNext()
+  <span class="tut-rsvd">ElseIf</span> GetOption(FR_REPLACE) <span class="tut-rsvd">Then</span>
+    SetOption(FR_REPLACE, <span class="tut-rsvd">False</span>)
+    OnReplace()
+  <span class="tut-rsvd">ElseIf</span> GetOption(FR_REPLACEALL) <span class="tut-rsvd">Then</span>
+    SetOption(FR_REPLACEALL, <span class="tut-rsvd">False</span>)
+    OnReplaceAll()
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplaceevents.png" width="710" height="882" alt="FindReplaceDialog Imports and API Declarations" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Goto the Bottom of the FindReplaceDialogClass and type the following above the "End Class" or the end the "Dialog Methods" section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Shows the dialog. Throws an execption if something goes wrong<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="owner"&gt;</span>The owner of the dialog box (a form)<span class="tut-prop">&lt;/param&gt;</span></span>  
+<span class="tut-rsvd">Public Sub</span> ShowDialog(<span class="tut-rsvd">ByVal</span> owner <span class="tut-rsvd">As</span> IWin32Window)
+  <span class="tut-rsvd">If</span> findmsgstring = 0 <span class="tut-rsvd">Then</span>
+    findmsgstring = RegisterWindowMessage(DIALOG_MESSAGE)
+  <span class="tut-rsvd">End If</span>
+  <span class="tut-rsvd">Me</span>.owner.AssignHandle(owner.Handle) <span class="tut-cmnt">' Subclass Owner</span> 
+  CleanUp() <span class="tut-cmnt">' Reset Buffers</span>
+  <span class="tut-rsvd">Dim</span> tempfr <span class="tut-rsvd">As New</span> FindReplace() <span class="tut-cmnt">' Create new FindReplace</span> 
+  tempfr.hwndOwner = owner.Handle
+  tempfr.cbSize = Marshal.SizeOf(<span class="tut-rsvd">GetType</span>(FindReplace))
+  findwhatbuffer = StringToBuffer(<span class="tut-rsvd">New String</span>(m_findwhat), tempfr.findwhatlen)
+  tempfr.findwhat = findwhatbuffer
+  replacewithbuffer = StringToBuffer(<span class="tut-rsvd">New String</span>(m_replacewith), tempfr.replacewithlen)
+  tempfr.replacewith = replacewithbuffer
+  tempfr.flags = flags
+  tempfr.hInstance = IntPtr.Zero
+  fr = Marshal.AllocHGlobal(Marshal.SizeOf(tempfr))
+  Marshal.StructureToPtr(tempfr, fr, <span class="tut-rsvd">True</span>)
+  Application.AddMessageFilter(<span class="tut-rsvd">Me</span>)
+  <span class="tut-rsvd">If</span> dialogType = FindReplaceDialogType.Find <span class="tut-rsvd">Then</span>
+    hwndDlg = FindText(fr)
+  <span class="tut-rsvd">Else</span>
+    hwndDlg = ReplaceText(fr)
+  <span class="tut-rsvd">End If
+  If</span> hwndDlg = IntPtr.Zero <span class="tut-rsvd">Then</span>
+    Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error())
+  <span class="tut-rsvd">End If
+End Sub</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Destroys dialog if already open<span class="tut-prop">&lt;/summary&gt;</span></span>  
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="disposing"&gt;</span>Free unmanaged resources<span class="tut-prop">&lt;/param&gt;</span></span>  
+<span class="tut-rsvd">Protected Overloads Overrides Sub</span> Dispose(<span class="tut-rsvd">ByVal</span> disposing <span class="tut-rsvd">As Boolean</span>)
+  <span class="tut-rsvd">MyBase</span>.Dispose(disposing)
+  CleanUp()
+  <span class="tut-rsvd">If</span> hwndDlg &lt;&gt; IntPtr.Zero <span class="tut-rsvd">Then</span>
+    DestroyWindow(hwndDlg)
+    Application.RemoveMessageFilter(<span class="tut-rsvd">Me</span>)
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplaceshow.png" width="750" height="680" alt="FindReplaceDialog Properties" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+The FindReplaceDialog Class is now Complete. Right click on the Main Form (frmMain) either on the Form itself by double clicking on the Form in the
+Solution Explorer and right clicking on the Form or right click on the entry in the Solution Explorer and choose the View Code option.<br/>
+Enter the following above Public Class frmMain:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Text.RegularExpressions
+</pre>
+</blockquote>
+<p>
+Enter the following below the Public Class frmMain:
+</p>
+<blockquote>
+<pre class="tut-code">
+    <span class="tut-rsvd">Private WithEvents</span> FindReplace <span class="tut-rsvd">As New</span> FindReplaceDialog
+    <span class="tut-rsvd">Private</span> FindReplaceRegex <span class="tut-rsvd">As</span> Regex
+    <span class="tut-rsvd">Private</span> FindReplaceMatch <span class="tut-rsvd">As</span> Match
+    <span class="tut-rsvd">Private</span> IsFirstFind <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">True</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplacemaindecs.png" width="488" height="118" alt="frmMain Imports and Declarations" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the View Code of frmMain, type the following Function below the Declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+    <span class="tut-rsvd">Private Function</span> SearchRegEx() <span class="tut-rsvd">As</span> Regex
+        <span class="tut-rsvd">If</span> FindReplace.MatchCase <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Search with Match Case</span>
+            <span class="tut-rsvd">Return New</span> Regex(Regex.Escape(FindReplace.FindWhat))
+        <span class="tut-rsvd">Else</span> <span class="tut-cmnt">' Search with Ignore Case</span>
+            <span class="tut-rsvd">Return New</span> Regex(Regex.Escape(FindReplace.FindWhat), RegexOptions.IgnoreCase)
+        <span class="tut-rsvd">End If
+    End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplacesearchregex.png" width="724" height="114" alt="SearchRegEx Function" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Again while still in the Code View enter the following Sub below the SearchRegEx() Function (just after the "End Function"):
+</p>
+<blockquote>
+<pre class="tut-code">
+    <span class="tut-rsvd">Private Sub</span> FindText(<span class="tut-rsvd">ByRef</span> TextBox <span class="tut-rsvd">As</span> TextBox)
+        <span class="tut-rsvd">If</span> IsFirstFind <span class="tut-rsvd">Then</span>
+            FindReplaceRegex = SearchRegEx()
+            FindReplaceMatch = FindReplaceRegex.Match(TextBox.Text)
+            IsFirstFind = <span class="tut-rsvd">False
+        Else</span>
+            FindReplaceMatch = FindReplaceRegex.Match(TextBox.Text, _
+                                                      FindReplaceMatch.Index + 1)
+        <span class="tut-rsvd">End If
+        If</span> FindReplaceMatch.Success <span class="tut-rsvd">Then</span>
+            TextBox.Focus()
+            TextBox.SelectionStart = FindReplaceMatch.Index
+            TextBox.SelectionLength = FindReplaceMatch.Length
+        <span class="tut-rsvd">Else</span>
+            IsFirstFind = <span class="tut-rsvd">True
+        End If
+    End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplacefindtext.png" width="660" height="290" alt="FindText Function" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Again while still in the Code View enter the following Sub below the FindText() Sub (just after the "End Sub"):
+</p>
+<blockquote>
+<pre class="tut-code">
+    <span class="tut-rsvd">Private Sub</span> ReplaceText(<span class="tut-rsvd">ByRef</span> TextBox <span class="tut-rsvd">As</span> TextBox)
+        <span class="tut-rsvd">Dim</span> ReplaceRegex <span class="tut-rsvd">As</span> Regex = SearchRegEx()
+        <span class="tut-rsvd">Dim</span> ReplaceMatch <span class="tut-rsvd">As</span> Match = ReplaceRegex.Match(TextBox.SelectedText)
+        <span class="tut-rsvd">If</span> ReplaceMatch.Success <span class="tut-rsvd">Then</span>
+            <span class="tut-rsvd">If</span> ReplaceMatch.Value = TextBox.SelectedText <span class="tut-rsvd">Then</span>
+                TextBox.SelectedText = FindReplace.ReplaceWith
+            <span class="tut-rsvd">End If
+        End If</span>
+        FindText(TextBox)
+    <span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplacetext.png" width="620" height="164" alt="ReplaceText Function" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Again while still in the Code View enter the following Sub below the ReplaceText() Sub (just after the "End Sub"):
+</p>
+<blockquote>
+<pre class="tut-code">
+    <span class="tut-rsvd">Private Sub</span> ReplaceAllText(<span class="tut-rsvd">ByRef</span> TextBox <span class="tut-rsvd">As</span> TextBox)
+        <span class="tut-rsvd">Dim</span> ReplaceRegex <span class="tut-rsvd">As</span> Regex = SearchRegEx()
+        <span class="tut-rsvd">Dim</span> strReplaced <span class="tut-rsvd">As String</span>
+        <span class="tut-rsvd">Dim</span> selectedPos <span class="tut-rsvd">As Integer</span> = TextBox.SelectionStart
+        strReplaced = ReplaceRegex.Replace(TextBox.Text, FindReplace.ReplaceWith)
+        <span class="tut-rsvd">If</span> TextBox.Text &lt;&gt; strReplaced <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Replace Text if Changed</span>
+            TextBox.Text = strReplaced
+            TextBox.SelectionStart = selectedPos <span class="tut-cmnt">' Restore SelectionStart</span>
+        <span class="tut-rsvd">End If</span>
+        TextBox.Focus()
+    <span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplaceall.png" width="660" height="184" alt="Replace All Function" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still in the Code View enter the following Sub below the ReplaceAllText() Sub (just after the "End Sub"):
+</p>
+<blockquote>
+<pre class="tut-code">
+    <span class="tut-rsvd">Public Sub</span> FindNext(<span class="tut-rsvd">ByRef</span> TextBox <span class="tut-rsvd">As</span> TextBox)
+        FindText(TextBox)
+    <span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplacepublic.png" width="404" height="50" alt="frmFindReplace Public Functions" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Within the Code View of frmMain, if not right click on the frmMain entry in Solution Explorer and choose View Code,
+then there should be two drop down lists "(General)" and "(Declarations)", from the first list select "FindReplace",
+then from the other list select "FindNext", then type the following in the FindReplace_FindNext() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+FindNext(txtEditor)
+</pre>
+</blockquote>
+<p>
+Still in the Code View select "FindReplace" again from the first then select "Replace" from the second list,
+then type the following in the FindReplace_Replace() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+ReplaceText(txtEditor)
+</pre>
+</blockquote>
+<p>
+Again while in the Code View select the "FindReplace" from the first list, then select "ReplaceAll" from the second list,
+then type the following in the FindReplace_ReplaceAll() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+ReplaceAllText(txtEditor)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08findreplaceclick.png" width="570" height="286" alt="frmFindReplace Button Click Event Handlers" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Double-click on the frmMain entry in the Solution Explorer or click on the frmMain [Design] Tab to show the main form.<br/>
+Click on or select the MenuStrip, this is the component with "File" on the top left of the Form, then click on the "Edit" menu, see below:<br/>
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnutexteditkeys.png" width="300" height="300" alt="Text Editor Edit Menu" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+At the bottom of the Edit menu will be a "Type Here" box, type "Find...", then in the box below that "Find Next", then "Replace..." and finally "-" this
+is just a minus or hyphen for the Separator, the menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnutexteditsearch.png" width="300" height="300" alt="Find, Find Next and Replace Edit Menu Items" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Move the "Select All" item to the bottom of the "Edit" menu by clicking on it while keeping it clicked move it to the bottom of the list (towards the "Type Here" box at the bottom),
+do the same with the "Time/Date" item, they should still be in the same order, the menu should then appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnutexteditdiv.png" width="300" height="300" alt="Edit Menu with Dividers above and below the Find Menu Items" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+With the Edit Menu displayed or Click on "Edit" on the MenuStrip to show the MenuStrip, Double Click on the Menu Item Labeled "Find..." (FindToolStripMenuItem) and 
+type the following in the FindToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+FindReplace.FindWhat = txtEditor.SelectedText
+FindReplace.HideWholeWord = <span class="tut-rsvd">True</span>
+FindReplace.Type = FindReplaceDialog.FindReplaceDialogType.Find
+FindReplace.ShowDialog(<span class="tut-rsvd">Me</span>)
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, 
+then Double Click on the Menu Item Labeled "Find Next" (FindNextToolStripMenuItem) and type the following in the FindNextToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+FindNext(txtEditor)
+txtEditor.Focus()
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, 
+then Double Click on the Menu Item Labeled "Replace..." (ReplaceToolStripMenuItem) and type the following in the ReplaceToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+FindReplace.FindWhat = txtEditor.SelectedText
+FindReplace.HideWholeWord = <span class="tut-rsvd">True</span>
+FindReplace.Type = FindReplaceDialog.FindReplaceDialogType.Replace
+FindReplace.ShowDialog(<span class="tut-rsvd">Me</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08frmmainfindreplace.png" width="712" height="406" alt="Edit Menu Find, Find Next and Replace Events" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Steps 22 &amp; 23 are optional and just add Keyboard Shortcuts to the MenuItems and clean-up the Edit menu you don't have to do these if you don't want to!<br/>
+Return the the [Design] Tab for frmMain, or Double-click on the frmMain Entry on the Solution Explorer then click on "Edit" on the Form.<br/>
+Click on "Find..." then in the Properties box look for the "ShortcutKey" property and click on the Drop Down arrow where "None" appears. 
+Check the "Ctrl" Checkbox in "Modifiers" and then in the "Key" dropdown list select "F", see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnutextfindprop.png" width="240" height="399" alt="Edit Menu Find Menu Item Shortcut Key" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Set other added "Edit" MenuItem "ShortcutKey" Properties , "Find Next" should be set to the Key "F3" only and "Replace" should be "Ctrl+H", all without quotes, 
+the Edit Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08mnutextfindkeys.png" width="300" height="300" alt="Edit Menu with all Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08txttworun.png" width="300" height="300" alt="Text Editor Running" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Click on the File Menu and select Open...,this will show the Open File Dialog, 
+then select a Text File on your Computer this should appear in the Textbox, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08txttworunopen.png" width="300" height="300" alt="Text Editor with Opened Document" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Click File then Exit or click on the Close button <img src="tutorials/vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right of the Text Editor to end the application.
+</p>
+<p>
+This Text Editor is now complete, but has one feature missing - Printing, however feel free to add this yourself, use the Menu Techniques,
+by adding Find &amp; Replace, makes this Text Editor a little more useful, plus you can use the FindReplaceDialog component in other projects
+too!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

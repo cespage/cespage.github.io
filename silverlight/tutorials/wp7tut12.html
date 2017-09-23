@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Web Browser</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>Web Browser</h1>
+<p>
+Web Browsing is another common task, create a simple Web Browser which can Open and Save a Favourite 
+website address using Silverlight on Windows Phone 7.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut12.html">www.cespage.com/silverlight/wp7tut12.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then in the XAML Pane for MainPage.xaml above the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneBackgroundBrush</span>}"&gt;</span> line type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="True"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.MenuItems</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarMenuItem</span> <span class="tut-attr">Text</span>="open favourite" <span class="tut-attr">Click</span>="Open_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarMenuItem</span> <span class="tut-attr">Text</span>="save favourite" <span class="tut-attr">Click</span>="Save_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarMenuItem</span> <span class="tut-attr">Text</span>="delete favourite" <span class="tut-attr">Click</span>="Delete_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.MenuItems</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7webbarxaml.png" width="656" height="141" alt="ApplicationBar Menu XAML" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+While still in the XAML Pane between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="80"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Toolbar" <span class="tut-attr">Grid.Row</span>="0"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7webpagexaml.png" width="412" height="235" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7webpagedesign.png" width="359" height="659" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="wp7textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Draw a TextBox onto the Toolbar Section (upper smaller section) of the Grid on the Page, below the Page Title, and in the XAML Pane below the <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span> line, change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="Location"&gt;
+  &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+    &lt;<span class="tut-valu">InputScope</span>&gt;
+      &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="Url"/&gt;
+    &lt;/<span class="tut-valu">InputScope</span>&gt;
+  &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+&lt;/<span class="tut-valu">TextBox</span>&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7webtxt.png" width="359" height="659" alt="MainPage with Location TextBox" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="wp7button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Draw a Button onto the Toolbar Section by dragging the Button from the Toolbox onto the Toolbar section of the Grid on the Page, 
+then in the XAML Pane change the "Button1" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="go" <span class="tut-attr">Click</span>="Go_Click"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7webbtn.png" width="359" height="659" alt="MainPage with Button" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Web Browser control:
+</p>
+<div class="tutorial-image">
+<img src="wp7webbrowser.png" width="180" height="428" alt="Web Browser Control" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Draw a Web Browser onto the Content Section of the Grid on the Page (below the Toolbar section), 
+then in the XAML Pane change the "webBrowser1" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">WebBrowser</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Name</span>="Browser"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7webweb.png" width="359" height="659" alt="MainPage with Web Browser" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace WebBrowser"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Text.RegularExpressions;
+<span class="tut-rsvd">using</span> System.IO.IsolatedStorage;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public MainPage()" type the following declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">string</span> filename = <span class="tut-valu">"favourite.url"</span>;
+<span class="tut-symb">Regex</span> favourite = <span class="tut-rsvd">new</span> <span class="tut-symb">Regex</span>(<span class="tut-valu">"^URL=(?&lt;URL&gt;.*)$"</span>, <span class="tut-symb">RegexOptions</span>.Multiline);
+<span class="tut-symb">IsolatedStorageFile</span> storage = <span class="tut-symb">IsolatedStorageFile</span>.GetUserStoreForApplication();
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7webdecs.png" width="620" height="477" alt="MainPage Includes and Declarations" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Go_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (!Location.Text.StartsWith(<span class="tut-valu">"http://"</span>)
+  &amp;&amp; !Location.Text.StartsWith(<span class="tut-valu">"https://"</span>))
+  {
+    Location.Text = ("http://" + Location.Text);
+  }
+  Browser.Navigate(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(Location.Text));
+}
+
+<span class="tut-rsvd">private void</span> Open_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (storage.FileExists(filename))
+  {
+    <span class="tut-symb">IsolatedStorageFileStream</span> location = <span class="tut-rsvd">new</span> <span class="tut-symb">IsolatedStorageFileStream</span>(filename,
+    System.IO.<span class="tut-symb">FileMode</span>.Open, storage);
+    System.IO.<span class="tut-symb">StreamReader</span> file = <span class="tut-rsvd">new</span> System.IO.<span class="tut-symb">StreamReader</span>(location);
+    Location.Text = favourite.Match(file.ReadToEnd()).Groups[<span class="tut-valu">"URL"</span>].Value;
+    Browser.Navigate(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(Location.Text));
+  }
+}
+
+<span class="tut-rsvd">private void</span> Save_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-symb">IsolatedStorageFileStream</span> location = <span class="tut-rsvd">new</span> <span class="tut-symb">IsolatedStorageFileStream</span>(filename,
+  System.IO.<span class="tut-symb">FileMode</span>.Create, storage);
+  System.IO.<span class="tut-symb">StreamWriter</span> file = <span class="tut-rsvd">new</span> System.IO.<span class="tut-symb">StreamWriter</span>(location);
+  file.Write(<span class="tut-valu">"[DEFAULT]\r\n"</span> +
+  <span class="tut-valu">"BASEURL="</span> + Browser.Source.AbsoluteUri + <span class="tut-valu">"\r\n"</span> +
+  <span class="tut-valu">"[InternetShortcut]\r\n"</span> +
+  <span class="tut-valu">"URL="</span> + Browser.Source.AbsoluteUri);
+  file.Dispose();
+  location.Dispose();
+}
+
+<span class="tut-rsvd">private void</span> Delete_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (<span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Delete Favourite?"</span>, <span class="tut-valu">"Web Browser"</span>,
+  <span class="tut-symb">MessageBoxButton</span>.OKCancel) == <span class="tut-symb">MessageBoxResult</span>.OK)
+  {
+    <span class="tut-rsvd">if</span> (storage.FileExists(filename))
+    {
+      storage.DeleteFile(filename);
+    }
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7webcode.png" width="654" height="733" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7webrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Tap the TextBox and then using the SIP or Keyboard enter the address of a Website, then Tap on "go" to visit that website, you can use "save favourite"
+to allow you to "open favourite" later, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7webapp.png" width="359" height="660" alt="Web Browser" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a very simple Web Browser, this example can also "save favourite" and "open favourite" using the standard ".url" format. You
+can use the Web Browser control to display any HTML content, try adding more features such as the ability to store more than one favourite - make it your own!
+</p>
+</body>
+</html>

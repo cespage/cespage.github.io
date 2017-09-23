@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Lucky Dice</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+
+.tut-valu {
+							color: maroon;
+}
+
+.tut-attr {
+							color: red;
+}
+
+.tut-rsvd {
+							color: blue;
+}
+
+.tut-prop {
+					 		color: gray;
+}
+
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>Lucky Dice</h1>
+<p>
+Create a simple Dice game with this Tutorial using Random Numbers, Functions all based using Silverlight. 
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut7.html">www.cespage.com/silverlight/sl4tut7.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Canvas that fill the whole Page or in the XAML Pane between the "&lt;Grid&gt;" and "&lt;/Grid&gt;" lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="300" <span class="tut-attr">Width</span>="400" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Page"&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4cvspage.png" width="423" height="322" alt="MainPage with Canvas" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw Three Buttons on the Canvas by dragging the Buttons from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt; lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="35" <span class="tut-attr">Canvas.Top</span>="32" <span class="tut-attr">Height</span>="64" <span class="tut-attr">Width</span>="64" <span class="tut-attr">Name</span>="Button1" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="298" <span class="tut-attr">Canvas.Top</span>="32" <span class="tut-attr">Height</span>="64" <span class="tut-attr">Width</span>="64" <span class="tut-attr">Name</span>="Button2" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="163" <span class="tut-attr">Canvas.Top</span>="263" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Button3" <span class="tut-attr">Content</span>="Button"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4dicecvsbtns.png" width="423" height="322" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Click on the first Button (Button1), then goto the Properties box and change the Name to "DiceOne" and have the Content Property blank (without the quotes), see below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4diceoneprop.png" width="217" height="393" alt="Button Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on the second Button (Button2), then goto the Properties box and change the Name to "DiceTwo" and the Content property from Button to blank like the First Button.<br/>
+Click on the third Button (Button3) and goto the Properties box and change the Name to "New" and the Content property to "New".<br/>
+(all without the quotes), the page should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="sl4dicebtngrp.png" width="423" height="322" alt="MainPage with Canvas and Dice and New Buttons" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View below "End Sub" for "Public Sub New()" Constructor type the following Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Add(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> <span class="tut-symb">Grid</span>, _
+    <span class="tut-rsvd">ByRef</span> Row <span class="tut-rsvd">As Integer</span>, _
+    <span class="tut-rsvd">ByRef</span> Column <span class="tut-rsvd">As Integer</span>)
+  <span class="tut-rsvd">Dim</span> _dot <span class="tut-rsvd">As New</span> <span class="tut-symb">Ellipse</span>
+  _dot.Width = <span class="tut-valu">12</span>
+  _dot.Height = <span class="tut-valu">12</span>
+  _dot.Fill = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.Black)
+  _dot.SetValue(Grid.ColumnProperty, Column)
+  _dot.SetValue(Grid.RowProperty, Row)
+  Grid.Children.Add(_dot)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4diceadd.png" width="382" height="184" alt="MainPage Add Sub" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for MainPage.xaml, below "End Sub" for "Private Sub Add(...)" Sub, type the following Function:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Dice(<span class="tut-rsvd">ByRef</span> Value <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As</span> <span class="tut-symb">Grid</span>  
+  <span class="tut-rsvd">Dim</span> _grid <span class="tut-rsvd">As New</span> <span class="tut-symb">Grid</span>
+  _grid.Height = <span class="tut-valu">54</span>
+  _grid.Width = <span class="tut-valu">54</span>
+  <span class="tut-rsvd">For</span> Index <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span> <span class="tut-rsvd">To</span> <span class="tut-valu">2</span> <span class="tut-cmnt">' 3 by 3 Grid</span> 
+    _grid.RowDefinitions.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">RowDefinition</span>)
+    _grid.ColumnDefinitions.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">ColumnDefinition</span>)
+  <span class="tut-rsvd">Next
+  Select Case</span> Value
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">0</span>
+      <span class="tut-cmnt">' No Dots</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">1</span>
+      Add(_grid, <span class="tut-valu">1</span>, <span class="tut-valu">1</span>) <span class="tut-cmnt">' Middle</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">2</span>
+      Add(_grid, <span class="tut-valu">0</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Top Right</span>
+      Add(_grid, <span class="tut-valu">2</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Bottom Left</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">3</span>
+      Add(_grid, <span class="tut-valu">0</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Top Right</span>
+      Add(_grid, <span class="tut-valu">1</span>, <span class="tut-valu">1</span>) <span class="tut-cmnt">' Middle</span>
+      Add(_grid, <span class="tut-valu">2</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Bottom Left</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">4</span>
+      Add(_grid, <span class="tut-valu">0</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Top Left</span>
+      Add(_grid, <span class="tut-valu">0</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Top Right</span>
+      Add(_grid, <span class="tut-valu">2</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Bottom Left</span>
+      Add(_grid, <span class="tut-valu">2</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">5</span>
+      Add(_grid, <span class="tut-valu">0</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Top Left</span>
+      Add(_grid, <span class="tut-valu">0</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Top Right</span>
+      Add(_grid, <span class="tut-valu">1</span>, <span class="tut-valu">1</span>) <span class="tut-cmnt">' Middle</span>
+      Add(_grid, <span class="tut-valu">2</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Bottom Left</span>
+      Add(_grid, <span class="tut-valu">2</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">6</span>
+      Add(_grid, <span class="tut-valu">0</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Top Left</span>
+      Add(_grid, <span class="tut-valu">0</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Top Right</span>
+      Add(_grid, <span class="tut-valu">1</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Middle Left</span>
+      Add(_grid, <span class="tut-valu">1</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Middle Right</span>
+      Add(_grid, <span class="tut-valu">2</span>, <span class="tut-valu">0</span>) <span class="tut-cmnt">' Bottom Left</span>
+      Add(_grid, <span class="tut-valu">2</span>, <span class="tut-valu">2</span>) <span class="tut-cmnt">' Bottom Right</span>
+  <span class="tut-rsvd">End Select
+  Return</span> _grid
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4dicedice.png" width="438" height="694" alt="MainPage Dice Function" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for MainPage.xaml, below "End Function" for "Private Function Dice(...)" Function, type the following Function:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Roll() <span class="tut-rsvd">As Integer</span>
+  Randomize(Timer)
+  <span class="tut-rsvd">Return</span> <span class="tut-rsvd">CInt</span>(Int((<span class="tut-valu">6</span> * Rnd()) + <span class="tut-valu">1</span>))
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4diceroll.png" width="298" height="65" alt="MainPage Roll Function" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "New" Button Control and type in the New_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+DiceOne.Content = Dice(<span class="tut-valu">0</span>)
+DiceTwo.Content = Dice(<span class="tut-valu">0</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4dicenewclick.png" width="504" height="99" alt="New Button Click Event" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the Left-most Button (DiceOne) and type in the DiceOne_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+DiceOne.Content = Dice(Roll)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4diceoneclick.png" width="532" height="82" alt="DiceOne Button Click Event" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the Right-most Button (DiceTwo) and type in the DiceTwo_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+DiceTwo.Content = Dice(Roll)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4dicetwoclick.png" width="532" height="82" alt="DiceTwo Button Click Event" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4dicerun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Now Click on the Left Large Button (DiceOne) for Player One, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4diceapp.png" width="400" height="300" alt="Lucky Dice" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+Clicking on either the First Large button is Player One and the Second is Player Two (Left &amp; Right). This is a very simple Dice Game,
+you could add a Score system to see who's roll is better and give that player points or see what else you can add to this simple game!
+</p>
+</body>
+</html>

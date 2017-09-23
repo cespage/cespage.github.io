@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>RSS Reader</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-xatt {
+					color:#6464B9;
+}
+.tut-link {
+					color: blue;
+					text-decoration: underline;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-prop {
+					 		color: gray;
+}
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>RSS Reader</h1>
+<p>
+RSS Reader allows you to access RSS Feed content using the Service Model Syndication Support in Silverlight plus has 
+an optional Out-of-Browser mode for browsing any compatible Syndication Feed.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut17.html">www.cespage.com/silverlight/sl4tut17.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Select Project then Add Reference... The "Add Reference" window should appear, select "System.ServiceModel.Syndication" from the ".NET" List, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4syndication.png" width="466" height="370" alt="Add System.XML.Linq Reference" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the Reference to "System.ServiceModel.Syndication" by Clicking on OK<br/>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above the "Partial Public Class MainPage" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.ServiceModel.Syndication
+<span class="tut-rsvd">Imports</span> System.Windows.Data
+<span class="tut-rsvd">Imports</span> System.Text.RegularExpressions
+<span class="tut-rsvd">Imports</span> System.Windows.Browser
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssref.png" width="284" height="219" alt="MainPage.xaml Imports" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the Code View, below the "End Class" for "Partial Public Class MainPage" Class type the following Classes: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public Class</span> LinkFormatter
+    <span class="tut-rsvd">Implements</span> <span class="tut-symb">IValueConverter</span>
+  <span class="tut-rsvd">Public Function</span> Convert(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Object</span>, <span class="tut-rsvd">ByVal</span> targetType <span class="tut-rsvd">As</span> <span class="tut-symb">Type</span>, _
+      <span class="tut-rsvd">ByVal</span> parameter <span class="tut-rsvd">As Object</span>, _
+      <span class="tut-rsvd">ByVal</span> culture <span class="tut-rsvd">As</span> System.Globalization.<span class="tut-symb">CultureInfo</span>) <span class="tut-rsvd">As Object</span> _
+      <span class="tut-rsvd">Implements</span> <span class="tut-symb">IValueConverter</span>.Convert
+    <span class="tut-rsvd">Return DirectCast</span>(value, System.Collections.ObjectModel.<span class="tut-symb">Collection</span>(<span class="tut-rsvd">Of</span> <span class="tut-symb">SyndicationLink</span>)).FirstOrDefault.Uri
+  <span class="tut-rsvd">End Function</span>
+
+  <span class="tut-rsvd">Public Function</span> ConvertBack(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Object</span>, <span class="tut-rsvd">ByVal</span> targetType <span class="tut-rsvd">As</span> <span class="tut-symb">Type</span>, _
+     <span class="tut-rsvd">ByVal</span> parameter <span class="tut-rsvd">As Object</span>, _
+     <span class="tut-rsvd">ByVal</span> culture <span class="tut-rsvd">As</span> System.Globalization.<span class="tut-symb">CultureInfo</span>) <span class="tut-rsvd">As Object</span> _
+     <span class="tut-rsvd">Implements</span> <span class="tut-symb">IValueConverter</span>.ConvertBack
+    <span class="tut-rsvd">Throw New</span> <span class="tut-symb">NotImplementedException</span>()
+  <span class="tut-rsvd">End Function
+End Class</span>
+
+<span class="tut-rsvd">Public Class</span> HtmlSanitiser
+    <span class="tut-rsvd">Implements</span> <span class="tut-symb">IValueConverter</span>
+    <span class="tut-rsvd">Implements</span> <span class="tut-symb">IValueConverter</span>
+  <span class="tut-rsvd">Public Function</span> Convert(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Object</span>, <span class="tut-rsvd">ByVal</span> targetType <span class="tut-rsvd">As</span> <span class="tut-symb">Type</span>, _
+      <span class="tut-rsvd">ByVal</span> parameter <span class="tut-rsvd">As Object</span>, _
+      <span class="tut-rsvd">ByVal</span> culture <span class="tut-rsvd">As</span> System.Globalization.<span class="tut-symb">CultureInfo</span>) <span class="tut-rsvd">As Object</span> _
+      <span class="tut-rsvd">Implements</span> <span class="tut-symb">IValueConverter</span>.Convert
+    <span class="tut-rsvd">Dim</span> _convert <span class="tut-rsvd">As String</span>
+    _convert = <span class="tut-symb">Regex</span>.Replace(<span class="tut-rsvd">TryCast</span>(value, <span class="tut-rsvd">String</span>), <span class="tut-valu">"&lt;.*?&gt;"</span>, <span class="tut-valu">""</span>) <span class="tut-symb">' Remove HTML Tags</span>
+    _convert = <span class="tut-symb">Regex</span>.Replace(_convert, <span class="tut-valu">"\n+\s+"</span>, vbLf &amp; vbLf) <span class="tut-cmnt">' Remove Spaces</span>
+    _convert = HttpUtility.<span class="tut-symb">HtmlDecode</span>(_convert) <span class="tut-cmnt">' Decode HTML Entities</span>
+    <span class="tut-rsvd">Return</span> _convert
+  <span class="tut-rsvd">End Function</span>
+
+  <span class="tut-rsvd">Public Function</span> ConvertBack(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Object</span>, <span class="tut-rsvd">ByVal</span> targetType <span class="tut-rsvd">As</span> <span class="tut-symb">Type</span>, _
+     <span class="tut-rsvd">ByVal</span> parameter <span class="tut-rsvd">As Object</span>, _
+     <span class="tut-rsvd">ByVal</span> culture <span class="tut-rsvd">As</span> System.Globalization.<span class="tut-symb">CultureInfo</span>) <span class="tut-rsvd">As Object</span> _
+     <span class="tut-rsvd">Implements</span> <span class="tut-symb">IValueConverter</span>.ConvertBack
+    <span class="tut-rsvd">Throw New</span> <span class="tut-symb">NotImplementedException</span>()
+  <span class="tut-rsvd">End Function
+End Class</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssvalconvs.png" width="810" height="626" alt="MainPage.xaml ValueConverter Classes" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Draw a Canvas on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "Canvas1" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="65" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4tskcvs.png" width="423" height="315" alt="MainPage with Toolbar Canvas" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="sl4textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Draw a TextBox on the Canvas and in the XAML Pane below the "&lt;Canvas&gt;" tag and above the "&lt;/Canvas&gt;" change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="237" <span class="tut-attr">Name</span>="Location"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4rsstxt.png" width="415" height="314" alt="MainPage with Location TextBox" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Draw a Button on the Canvas (Toolbar) next to the TextBox, by dragging the Button from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;TextBox&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt;" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Go" <span class="tut-attr">Content</span>="Go"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4rssbtn.png" width="415" height="314" alt="MainPage with TextBox and Button" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Select Debug then the "Build RSSReader" option from the menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssbuild.png" width="233" height="24" alt="Build RSSReader" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Then in the XAML Pane for MainPage.xaml below the "x:Class="RSSReader.MainPage" section, type the following XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd"><span class="tut-attr">xmlns</span>:<span class="tut-attr">app</span>="clr-namespace:RSSReader"</span>
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4rssxmlns.png" width="530" height="136" alt="MainPage.xaml Namespaces" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+While still in the XAML Pane for MainPage.xaml above the "&lt;Grid&gt;" tag and below the "&lt;UserControl&gt;" tag, type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">UserControl.Resources</span>&gt;
+  &lt;<span class="tut-valu">app</span>:<span class="tut-valu">HtmlSanitiser</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="HtmlSanitiser"/&gt;
+  &lt;<span class="tut-valu">app</span>:<span class="tut-valu">LinkFormatter</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="LinkFormatter"/&gt;
+&lt;/<span class="tut-valu">UserControl.Resources</span>&gt;</span>
+</pre>
+</blockquote>
+<p>
+Again while still in the XAML Pane for MainPage.xaml below the "&lt;Button&gt;" and above "&lt;/Canvas&gt;" Tag, type the following ComboBox XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ComboBox</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="36" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="318" <span class="tut-attr">ItemsSource</span>="{<span class="tut-valu">Binding</span>}" <span class="tut-attr">Name</span>="Title"&gt;
+  &lt;<span class="tut-valu">ComboBox.ItemTemplate</span>&gt;
+    &lt;<span class="tut-valu">DataTemplate</span>&gt;
+      &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Title</span>.Text,<span class="tut-attr">Converter</span>={<span class="tut-valu">StaticResource</span> <span class="tut-attr">HtmlSanitiser</span>}}"/&gt;
+    &lt;/<span class="tut-valu">DataTemplate</span>&gt;
+  &lt;/<span class="tut-valu">ComboBox.ItemTemplate</span>&gt;
+&lt;/<span class="tut-valu">ComboBox</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4rsscbo.png" width="415" height="314" alt="MainPage with Toolbar Buttons and ComboBox" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still in the XAML Pane below the "&lt;/Canvas&gt;" and above the "&lt;/Grid&gt;" Tag, type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ScrollViewer</span> <span class="tut-attr">Height</span>="235" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,65,0,0" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left">
+  &lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Orientation</span>="Vertical" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Content"&gt;
+    &lt;<span class="tut-valu">HyperlinkButton</span> <span class="tut-attr">FontSize</span>="16" <span class="tut-attr">TargetName</span>="_blank" <span class="tut-attr">Content</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Title</span>.Text,<span class="tut-attr">Converter</span>={<span class="tut-valu">StaticResource</span> <span class="tut-attr">HtmlSanitiser</span>}}" 
+      <span class="tut-attr">NavigateUri</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Links</span>,<span class="tut-attr">Converter</span>={<span class="tut-valu">StaticResource</span> <span class="tut-attr">LinkFormatter</span>}}"/>
+    &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">FontSize</span>="14" <span class="tut-attr">TextWrapping</span>="Wrap" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">PublishDate</span>}"/>
+    &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">TextWrapping</span>="Wrap" <span class="tut-attr">FontSize</span>="14" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Summary</span>.Text,<span class="tut-attr">Converter</span>={<span class="tut-valu">StaticResource</span> <span class="tut-attr">HtmlSanitiser</span>}}"/>
+  &lt;/<span class="tut-valu">StackPanel</span>&gt;
+&lt;/<span class="tut-valu">ScrollViewer</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4rssviewer.png" width="423" height="321" alt="MainPage with TextBox, Button and ScrollViewer Content" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View in the "Public Sub New()" constructor below the "InitializeComponent()" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Location.Text = <span class="tut-valu">"</span><span class="tut-link">http://feeds.feedburner.com/cespageblog</span><span class="tut-valu">"</span> 
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssinit.png" width="466" height="65" alt="MainPage.xaml Constructor" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Go..." Button and type in the Go_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> _client <span class="tut-rsvd">As New</span> <span class="tut-symb">WebClient</span>
+<span class="tut-rsvd">AddHandler</span> _client.OpenReadCompleted, <span class="tut-rsvd">Sub</span>(s <span class="tut-rsvd">As Object</span>, args <span class="tut-rsvd">As</span> <span class="tut-symb">OpenReadCompletedEventArgs</span>)
+    <span class="tut-rsvd">If Not</span> args.Cancelled <span class="tut-rsvd">Then
+      Try
+        Dim</span> _reader <span class="tut-rsvd">As</span> <span class="tut-symb">XmlReader</span> = <span class="tut-symb">XmlReader</span>.Create(args.Result)
+        <span class="tut-rsvd">Dim</span> _feed <span class="tut-rsvd">As</span> <span class="tut-symb">SyndicationFeed</span> = <span class="tut-symb">SyndicationFeed</span>.Load(_reader)
+        Title.DataContext = _feed.Items
+        Title.SelectedIndex = 0
+      <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+        <span class="tut-symb">MessageBox</span>.Show(ex.ToString, <span class="tut-valu">"RSS Reader"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+      <span class="tut-rsvd">End Try
+    End If
+  End Sub</span>
+_client.OpenReadAsync(<span class="tut-rsvd">New</span> <span class="tut-symb">Uri</span>(Location.Text))
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssgoclick.png" width="858" height="304" alt="Go Button Click Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Title" ComboBox and type in the Title_SelectionChanged Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Content.DataContext = <span class="tut-rsvd">CType</span>(<span class="tut-rsvd">CType</span>(sender, <span class="tut-symb">ComboBox</span>).SelectedItem, <span class="tut-symb">SyndicationItem</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rsstitleselchanged.png" width="726" height="82" alt="Title SelectionChanged Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+If you Click on Go... then Select an RSS Feed Item Title, that RSS Feed Item Content will appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssapp.png" width="400" height="300" alt="RSS Reader" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Close the Application and Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p class="tutorial-step">Step 23</p>
+<p>
+There is an issue with this RSS Reader as it only works if there is special file located on the Server where the RSS Feed is located called a "Client Access Policy".<br/>
+However it is possible to access any RSS Feed, by following the next few optional Steps.<br/>
+Select Project then Properties... The "Properties" window should appear, check the box "Enable running application out of the browser",
+also make sure the Target Silverlight Version is "Silverlight 4", see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssoobena.png" width="730" height="552" alt="Enable running application out of the browser" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+While still in the Properties Window, click on the "Out-of-Browser Settings..." button, set the "Width" value to 400 and the "Height" to 300,<br/> 
+then check the box "Require elevated trust when running outside the browser", see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssoobset.png" width="504" height="597" alt="Out-of-Browser Settings" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Confirm the Settings by Clicking on OK.<br/>
+Save the Project again you have now finished updating the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+To access any RSS Feed only works Out-of-Browser with Full Trust to access a Feed where there is no "Client Access Policy" or "Cross Domain Access".<br/> 
+Right-click on the Application in the Browser and choose the "Install RSSReader Application onto this Computer..." option to show the Installation Screen, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssins.png" width="441" height="280" alt="Install Application" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Check the "Start menu" or "Desktop" boxes to add a Shortcut to the Application in either or both locations, 
+and then click on the "Install" button, the following will then appear in a new Window:
+</p>
+<div class="tutorial-image">
+<img src="sl4rssoob.png" width="400" height="300" alt="Application Installed" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+It will be possible to enter into the Location box any RSS Feed URL or RSS Address and the RSS Reader will be able to access it.<br/>
+Close the Application and Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p>
+This is a Simple RSS Reader, you can try customising the application to make it more useful, also add more of the Syndication items to display more
+information, plus with the Out-of-Browser support you are not limited to RSS Feeds which have a "Client Access Policy", 
+use it as a basis for your own RSS Feed reader, it is up to you! 
+</p>
+</body>
+</html>

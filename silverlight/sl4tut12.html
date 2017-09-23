@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Web Browser</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Web Browser</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Web Browsing is another common task, create a simple Web Browser which can Open and Save Favourite website addresses.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/sl4tut12.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/sl4tut12.zip">Download Tutorial</a> (263KB)</em>
+<em class="icon-dload"><a href="tutorials/sl4tut12code.zip">Download Source Code</a> (6.81KB)</em>
+<em class="icon-odemo"><a href="tutorials/sl4tut12demo.html">Online Demonstration</a></em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Select Project then Properties... The "Properties" window should appear, check the box "Enable running application out of the browser", see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4oobenable.png" width="730" height="552" alt="Enable running application out of the browser" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+While still in the Properties Window, click on the "Out-of-Browser Settings..." button, set the "Width" value to 400 and the "Height" to 300,<br/> 
+then check the box "Require elevated trust when running outside the browser", see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4weboob.png" width="504" height="597" alt="Out-of-Browser Settings" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Confirm the Settings by Clicking on OK, return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a Canvas on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "Canvas1" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="65" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4tskcvs.png" width="423" height="315" alt="MainPage with Toolbar Canvas" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw Three Buttons on the Canvas by dragging the Buttons from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Open" <span class="tut-attr">Content</span>="Open..."/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Save" <span class="tut-attr">Content</span>="Save..."/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Go" <span class="tut-attr">Content</span>="Go"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4webcvsbtns.png" width="423" height="315" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Draw a TextBox on the Canvas (Toolbar) with the Buttons, and in the XAML Pane below the "&lt;Button&gt;" tag and above the "&lt;/Canvas&gt;" change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="36" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="388" <span class="tut-attr">Name</span>="Address"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4webtxt.png" width="415" height="314" alt="MainPage with Toolbar Buttons and Address TextBox" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the XAML Pane below the "&lt;/Canvas&gt;" and above the "&lt;/Grid&gt;" Tag, type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">WebBrowser</span> <span class="tut-attr">Height</span>="235" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,65,0,0" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Browser"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4webgrpweb.png" width="422" height="321" alt="MainPage with Toolbar Buttons, Address TextBox and WebBrowser" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above the "Partial Public Class MainPage" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Text.RegularExpressions
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4webref.png" width="278" height="151" alt="MainPage.xaml Imports" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Open..." Button and type in the Open_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> OpenDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">OpenFileDialog</span>
+OpenDialog.Filter = <span class="tut-valu">"Internet Favourite (*.url)|*.url"</span>
+<span class="tut-rsvd">If</span> OpenDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    If</span> OpenDialog.File.Exists <span class="tut-rsvd">Then
+      Dim</span> _url <span class="tut-rsvd">As New</span> <span class="tut-symb">Regex</span>(<span class="tut-valu">"^URL=(?&lt;URL&gt;.*)$"</span>, <span class="tut-symb">RegexOptions</span>.Multiline)
+      Address.Text = _url.Match(OpenDialog.File.OpenText.ReadToEnd).Groups(<span class="tut-valu">"URL"</span>).Value
+    <span class="tut-rsvd">End If
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4webopenclick.png" width="720" height="269" alt="Open Button Click Event" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Return to the Designer View again, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Save..." Button and type in the Save_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+
+<span class="tut-rsvd">Dim</span> SaveDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">SaveFileDialog</span>
+SaveDialog.Filter = <span class="tut-valu">"Internet Favourite (*.url)|*.url"</span>
+<span class="tut-rsvd">If</span> SaveDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    Using</span> FileStream <span class="tut-rsvd">As</span> IO.<span class="tut-symb">StreamWriter</span> = _
+      <span class="tut-rsvd">New</span> IO.<span class="tut-symb">StreamWriter</span>(SaveDialog.OpenFile)
+      FileStream.Write(<span class="tut-valu">"[DEFAULT]"</span> &amp; vbCrLf &amp; _
+      <span class="tut-valu">"BASEURL="</span> &amp; Browser.Source.AbsoluteUri &amp; vbCrLf &amp; _
+      <span class="tut-valu">"[InternetShortcut]"</span> &amp; vbCrLf &amp; _
+      <span class="tut-valu">"URL="</span> &amp; Browser.Source.AbsoluteUri)
+    <span class="tut-rsvd">End Using
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4websaveclick.png" width="636" height="320" alt="Save Button Click Event" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Go" Button Control and type in the Go_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If Not</span> Address.Text.StartsWith(<span class="tut-valu">"http://"</span>) _
+  <span class="tut-rsvd">And Not</span> Address.Text.StartsWith(<span class="tut-valu">"https://"</span>) <span class="tut-rsvd">Then</span>
+    Address.Text = <span class="tut-valu">"http://"</span> &amp; Address.Text
+<span class="tut-rsvd">End If</span>
+Browser.Navigate(<span class="tut-rsvd">New</span> <span class="tut-symb">Uri</span>(Address.Text))
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4webgoclick.png" width="496" height="150" alt="Go Button Click Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4webrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Notice that Web Browser pane contains the following "HTML is disabled", this is because it only works Out-of-Browser, Right-click on the Application
+in the Browser and choose the "Install WebBrowser Application onto this Computer..." option to show the Installation Screen, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4webins.png" width="441" height="280" alt="Install Application" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Check the "Start menu" or "Desktop" boxes to add a Shortcut to the Application in either or both locations, and then click on the "Install" button, the following will then appear in a new Window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4weball.png" width="400" height="300" alt="Application Installed" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Now type into the TextBox the Address of a Website, then Click on the Go button to visit that Website, you can "Save" this as a Favourite to "Open" later, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4webapp.png" width="400" height="300" alt="Web Browser with Website Displayed" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Close the Application and Browser window by clicking on the Close Button <img src="tutorials/sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p>
+This is a very Simple Web Browser using the new WebBrowser feature in Silverlight 4, this example can also Open and Save Favourites in the standard ".url" format.
+You can use this to display any HTML content you want - including other Silverlight applications it only works in the Out-of-Browser mode, but you can use it for
+any web content! 
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

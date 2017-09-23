@@ -1,0 +1,543 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Playing Cards</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Playing Cards</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+All the most common games use Playing Cards, here you can create a very simple card game using the standard 52 playing cards with text, shapes
+using Windows Presentation Foundation (WPF).
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/vb08tut11.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vb08tut11.zip">Download Tutorial</a> (361KB)</em>
+<em class="icon-dload"><a href="tutorials/vb08tut11code.zip">Download Source Code</a> (12.2KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose WPF Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08newwpf.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Window named Window1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08window1.png" width="310" height="310" alt="Window1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Controls tab on the Toolbox select the Grid component:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08wpfgrid.png" width="240" height="400" alt="Grid Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a Grid on the Window or in the XAML Pane below the "&lt;Grid&gt;" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Margin</span>="0,0,0,42" <span class="tut-attr">Name</span>="Grid1" /&gt;</span>
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08window1cardgrid.png" width="311" height="310" alt="Window1 with Grid" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Select or click on the Grid then goto the Properties box, change the Name to "BoardLayout" without the quotes, see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08boardprop.png" width="203" height="461" alt="Grid Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Controls tab on the Toolbox select the Button component:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08wpfbtn.png" width="240" height="400" alt="Button Component" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a Button on the Window, by dragging the Button from the Toolbox onto the Window, or in the XAML Pane above the bottom "&lt;/Grid&gt;" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="102,0,100,12" <span class="tut-attr">Name</span>="Button1" <span class="tut-attr">Height</span>="23" <span class="tut-attr">VerticalAlignment</span>="Bottom"&gt;<span class="tut-valu">Button</span>&lt;/<span class="tut-valu">Button</span>&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08window1cardgridbtn.png" width="311" height="310" alt="Window1 with Grid and Button" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Select or click on the Button (Button1), then goto the Properties box and change the Name to btnNew and the Content property from Button to New Game, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08btnnewprop.png" width="203" height="461" alt="btnNew Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Right Click on the Window or the entry for "Window1" in the Solution Explorer and choose the "View Code" option then below "Class Window1" 
+type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Const</span> CLUBS <span class="tut-rsvd">As String</span> = <span class="tut-valu">"&clubs;"</span>
+<span class="tut-rsvd">Private Const</span> DIAMONDS <span class="tut-rsvd">As String</span> = <span class="tut-valu">"&diams;"</span>
+<span class="tut-rsvd">Private Const</span> HEARTS <span class="tut-rsvd">As String</span> = <span class="tut-valu">"&hearts;"</span>
+<span class="tut-rsvd">Private Const</span> SPADES <span class="tut-rsvd">As String</span> = <span class="tut-valu">"&spades;"</span>
+<span class="tut-rsvd">Private Const</span> ACE <span class="tut-rsvd">As String</span> = <span class="tut-valu">"A"</span>
+<span class="tut-rsvd">Private Const</span> JACK <span class="tut-rsvd">As String</span> = <span class="tut-valu">"J"</span>
+<span class="tut-rsvd">Private Const</span> QUEEN <span class="tut-rsvd">As String</span> = <span class="tut-valu">"Q"</span>
+<span class="tut-rsvd">Private Const</span> KING <span class="tut-rsvd">As String</span> = <span class="tut-valu">"K"</span>
+
+<span class="tut-rsvd">Private WithEvents</span> btn1, btn2 <span class="tut-rsvd">As New</span> Button
+<span class="tut-rsvd">Private</span> DeckOne, DeckTwo <span class="tut-rsvd">As New</span> ArrayList
+<span class="tut-rsvd">Private</span> CardOne, CardTwo <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Private</span> FirstChoice, SecondChoice <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Private</span> Score <span class="tut-rsvd">As Integer</span> = 0
+<span class="tut-rsvd">Private</span> Counter <span class="tut-rsvd">As Integer</span> = 0
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08carddecs.png" width="400" height="289" alt="Window1 Declarations" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View for Window1, above "End Class" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Deck(<span class="tut-rsvd">ByRef</span> Card <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Object</span>
+  <span class="tut-rsvd">Dim</span> Display <span class="tut-rsvd">As Integer</span> = 0
+  <span class="tut-rsvd">Dim</span> Suite <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+  <span class="tut-rsvd">Dim</span> Value <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+  <span class="tut-rsvd">Dim</span> CardBrush <span class="tut-rsvd">As</span> SolidColorBrush = Brushes.Black
+  <span class="tut-rsvd">Dim</span> CardPath <span class="tut-rsvd">As New</span> Path
+  <span class="tut-rsvd">Dim</span> CardGroup <span class="tut-rsvd">As New</span> GeometryGroup
+  <span class="tut-rsvd">Dim</span> CardItem <span class="tut-rsvd">As</span> FormattedText = <span class="tut-rsvd">Nothing</span>
+  <span class="tut-rsvd">Dim</span> Culture <span class="tut-rsvd">As</span> Globalization.CultureInfo = _
+  Globalization.CultureInfo.GetCultureInfo(<span class="tut-valu">"en-us"</span>)
+  <span class="tut-rsvd">Dim</span> Flow <span class="tut-rsvd">As</span> Windows.FlowDirection = _
+  Windows.FlowDirection.LeftToRight
+  <span class="tut-rsvd">Dim</span> Serif <span class="tut-rsvd">As New</span> Typeface(<span class="tut-valu">"Times New Roman"</span>)
+  <span class="tut-rsvd">Dim</span> SanSerif <span class="tut-rsvd">As New</span> Typeface(<span class="tut-valu">"Arial"</span>)
+  <span class="tut-rsvd">If</span> Card &gt;= 1 <span class="tut-rsvd">And</span> Card &lt;= 13 <span class="tut-rsvd">Then</span>
+    CardBrush = Brushes.Black
+    Suite = CLUBS
+    Display = Card
+  <span class="tut-rsvd">ElseIf</span> Card &gt;= 14 <span class="tut-rsvd">And</span> Card &lt;= 26 <span class="tut-rsvd">Then</span>
+    CardBrush = Brushes.Red
+    Suite = DIAMONDS
+    Display = Card - 13
+  <span class="tut-rsvd">ElseIf</span> Card &gt;= 27 <span class="tut-rsvd">And</span> Card &lt;= 39 <span class="tut-rsvd">Then</span>
+    CardBrush = Brushes.Red
+    Suite = HEARTS
+    Display = Card - 26
+  <span class="tut-rsvd">ElseIf</span> Card &gt;= 40 <span class="tut-rsvd">And</span> Card &lt;= 52 <span class="tut-rsvd">Then</span>
+    CardBrush = Brushes.Black
+    Suite = SPADES
+    Display = Card - 39
+  <span class="tut-rsvd">End If
+  Dim</span> CardFace <span class="tut-rsvd">As New</span> FormattedText(Suite, Culture, Flow, SanSerif, 40, Brushes.Black)
+  Value = Display
+  CardPath.Width = 124
+  CardPath.Height = 222
+  CardPath.Fill = CardBrush
+  <span class="tut-rsvd">Select Case</span> Display
+    <span class="tut-rsvd">Case</span> 1
+      Value = ACE
+      CardItem = <span class="tut-rsvd">New</span> FormattedText(Suite, Culture, Flow, SanSerif, 72, Brushes.Black)
+      CardGroup.Children.Add(CardItem.BuildGeometry(<span class="tut-rsvd">New</span> Point(36, 34))) <span class="tut-cmnt">' Middle</span>
+    <span class="tut-rsvd">Case</span> 2
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 0))) <span class="tut-cmnt">' Centre Top</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 104))) <span class="tut-cmnt">' Centre Bottom</span>
+    <span class="tut-rsvd">Case</span> 3
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 0))) <span class="tut-cmnt">' Centre Top</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 52))) <span class="tut-cmnt">' Centre</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 104))) <span class="tut-cmnt">' Centre Bottom</span>
+    <span class="tut-rsvd">Case</span> 4
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 0))) <span class="tut-cmnt">' Top Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 0))) <span class="tut-cmnt">' Top Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 104))) <span class="tut-cmnt">' Bottom Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 104))) <span class="tut-cmnt">' Bottom Left</span>
+    <span class="tut-rsvd">Case</span> 5
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 0))) <span class="tut-cmnt">' Top Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 0))) <span class="tut-cmnt">' Top Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 52))) <span class="tut-cmnt">' Centre</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 104))) <span class="tut-cmnt">' Bottom Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 104))) <span class="tut-cmnt">' Bottom Left</span>
+    <span class="tut-rsvd">Case</span> 6
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 0))) <span class="tut-cmnt">' Top Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 0))) <span class="tut-cmnt">' Top Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 52))) <span class="tut-cmnt">' Centre Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 52))) <span class="tut-cmnt">' Centre Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 104))) <span class="tut-cmnt">' Bottom Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 104))) <span class="tut-cmnt">' Bottom Left</span>
+    <span class="tut-rsvd">Case</span> 7
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 0))) <span class="tut-cmnt">' Top Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 0))) <span class="tut-cmnt">' Top Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 52))) <span class="tut-cmnt">' Centre Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 78))) <span class="tut-cmnt">' Centre Bottom</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 52))) <span class="tut-cmnt">' Centre Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 104))) <span class="tut-cmnt">' Bottom Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 104))) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> 8
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 0))) <span class="tut-cmnt">' Top Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 0))) <span class="tut-cmnt">' Top Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 52))) <span class="tut-cmnt">' Centre Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 26))) <span class="tut-cmnt">' Centre Top</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 78))) <span class="tut-cmnt">' Centre Bottom</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 52))) <span class="tut-cmnt">' Centre Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 104))) <span class="tut-cmnt">' Bottom Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 104))) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> 9
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 0))) <span class="tut-cmnt">' Top Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 0))) <span class="tut-cmnt">' Top Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 34))) <span class="tut-cmnt">' Centre Left Top</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 70))) <span class="tut-cmnt">' Centre Left Bottom</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 52))) <span class="tut-cmnt">' Centre</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 34))) <span class="tut-cmnt">' Centre Right Top</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 70))) <span class="tut-cmnt">' Centre Right Bottom</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 104))) <span class="tut-cmnt">' Bottom Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 104))) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> 10
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 0))) <span class="tut-cmnt">' Top Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 0))) <span class="tut-cmnt">' Top Right</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 34))) <span class="tut-cmnt">' Centre Left Top</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 70))) <span class="tut-cmnt">' Centre Left Bottom</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 26))) <span class="tut-cmnt">' Centre Top</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(46, 78))) <span class="tut-cmnt">' Centre Bottom</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 34))) <span class="tut-cmnt">' Centre Right Top</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 70))) <span class="tut-cmnt">' Centre Right Bottom</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(18, 104))) <span class="tut-cmnt">' Bottom Left</span>
+      CardGroup.Children.Add(CardFace.BuildGeometry(<span class="tut-rsvd">New</span> Point(74, 104))) <span class="tut-cmnt">' Bottom Right</span>
+    <span class="tut-rsvd">Case</span> 11
+      Value = JACK
+      CardItem = <span class="tut-rsvd">New</span> FormattedText(Value, Culture, Flow, Serif, 72, Brushes.Black)
+      CardGroup.Children.Add(CardItem.BuildGeometry(<span class="tut-rsvd">New</span> Point(44, 34))) ' Middle
+    <span class="tut-rsvd">Case</span> 12
+      Value = QUEEN
+      CardItem = <span class="tut-rsvd">New</span> FormattedText(Value, Culture, Flow, Serif, 72, Brushes.Black)
+      CardGroup.Children.Add(CardItem.BuildGeometry(<span class="tut-rsvd">New</span> Point(36, 34))) ' Middle
+    <span class="tut-rsvd">Case</span> 13
+      Value = KING
+      CardItem = <span class="tut-rsvd">New</span> FormattedText(Value, Culture, Flow, Serif, 72, Brushes.Black)
+      CardGroup.Children.Add(CardItem.BuildGeometry(<span class="tut-rsvd">New</span> Point(36, 34))) ' Middle
+  <span class="tut-rsvd">End Select</span>
+  <span class="tut-rsvd">Dim</span> CardValue <span class="tut-rsvd">As New</span> FormattedText(Value, Culture, Flow, Serif, 16, Brushes.Black)
+  <span class="tut-rsvd">Dim</span> CardSuite <span class="tut-rsvd">As New</span> FormattedText(Suite, Culture, Flow, SanSerif, 20, Brushes.Black)
+  CardGroup.Children.Add(CardValue.BuildGeometry(<span class="tut-rsvd">New</span> Point(4, 4)))
+  CardGroup.Children.Add(CardSuite.BuildGeometry(<span class="tut-rsvd">New</span> Point(4, 16)))
+  CardGroup.Children.Add(CardSuite.BuildGeometry(<span class="tut-rsvd">New</span> Point(100, 116)))
+  <span class="tut-rsvd">If</span> Len(Value) = 1 <span class="tut-rsvd">Then</span>
+    CardGroup.Children.Add(CardValue.BuildGeometry(<span class="tut-rsvd">New</span> Point(102, 134)))
+  <span class="tut-rsvd">Else</span>
+    CardGroup.Children.Add(CardValue.BuildGeometry(<span class="tut-rsvd">New</span> Point(98, 134)))
+  <span class="tut-rsvd">End If</span>
+  CardPath.Data = CardGroup
+  <span class="tut-rsvd">Return</span> CardPath
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08carddeck.png" width="840" height="2205" alt="Window1 Deck Subroutine" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Again while still in the Code View for Window1, below the "End Sub" for "Private Sub Deck(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Card(<span class="tut-rsvd">ByRef</span> Value <span class="tut-rsvd">As Integer</span>, _
+                      <span class="tut-rsvd">ByRef</span> IsFacing <span class="tut-rsvd">As Boolean</span>, _
+                      <span class="tut-rsvd">ByRef</span> BackColor <span class="tut-rsvd">As</span> Brush) <span class="tut-rsvd">As Object</span>
+  <span class="tut-rsvd">Dim</span> Canvas <span class="tut-rsvd">As New</span> Canvas
+  <span class="tut-rsvd">Dim</span> Face <span class="tut-rsvd">As New</span> Polygon
+  Face.Points.Add(<span class="tut-rsvd">New</span> Point(0, 0))
+  Face.Points.Add(<span class="tut-rsvd">New</span> Point(0, 155))
+  Face.Points.Add(<span class="tut-rsvd">New</span> Point(117, 155))
+  Face.Points.Add(<span class="tut-rsvd">New</span> Point(117, 0))
+  Canvas.Height = 222
+  Canvas.Width = 124
+  Face.StrokeLineJoin = PenLineJoin.Round
+  Face.Width = Canvas.Width
+  Face.Height = Canvas.Height
+  Face.Stroke = Brushes.Black
+  Face.StrokeThickness = 4.0
+  <span class="tut-rsvd">If</span> IsFacing <span class="tut-rsvd">Then</span>
+    Face.Fill = BackColor
+    Canvas.Children.Add(Face)
+    Canvas.Children.Add(Deck(Value))
+  <span class="tut-rsvd">Else</span>
+    Face.Fill = BackColor
+    Canvas.Children.Add(Face)
+  <span class="tut-rsvd">End If
+  Return</span> Canvas
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08cardcard.png" width="504" height="440" alt="Window1 Card Subroutine" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for Window1, below the "End Sub" for "Private Sub Card(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Add(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> Grid, <span class="tut-rsvd">ByRef</span> Button <span class="tut-rsvd">As</span> Button, _
+        <span class="tut-rsvd">ByRef</span> Row <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByRef</span> Column <span class="tut-rsvd">As Integer</span>)
+  Button.Margin = <span class="tut-rsvd">New</span> Thickness(4)
+  Button.Height = 160
+  Button.Width = 120
+  <span class="tut-rsvd">If</span> Column = 0 <span class="tut-rsvd">Then</span>
+    Button.Content = Card(1, <span class="tut-rsvd">False</span>, Brushes.Red)
+  <span class="tut-rsvd">Else</span>
+    Button.Content = Card(2, <span class="tut-rsvd">False</span>, Brushes.Blue)
+  <span class="tut-rsvd">End If</span>
+  Grid.Children.Add(Button)
+  Grid.SetColumn(Button, Column)
+  Grid.SetRow(Button, Row)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08cardadd.png" width="535" height="236" alt="Window1 Add Subroutine" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Again while still in the Code View for Window1, below the "End Sub" for "Private Sub Add(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Layout(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> Grid)
+  Grid.ColumnDefinitions.Clear() <span class="tut-cmnt">' Clear Columns</span>
+  Grid.RowDefinitions.Clear() <span class="tut-cmnt">' Clear Rows</span>
+  Grid.Children.Clear() <span class="tut-cmnt">' Clear the Grid</span>
+  Grid.ColumnDefinitions.Add(<span class="tut-rsvd">New</span> ColumnDefinition)
+  Grid.ColumnDefinitions.Add(<span class="tut-rsvd">New</span> ColumnDefinition)
+  Grid.RowDefinitions.Add(<span class="tut-rsvd">New</span> RowDefinition)
+  Add(Grid, btn1, 0, 0)
+  Add(Grid, btn2, 0, 1)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08cardlayout.png" width="460" height="170" alt="Window1 Layout Subroutine" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Again while still in the Code View for Window1, below the "End Sub" for "Private Sub Layout(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Shuffle(<span class="tut-rsvd">ByRef</span> PlayerDeck <span class="tut-rsvd">As</span> ArrayList)
+  <span class="tut-rsvd">Dim</span> Selection <span class="tut-rsvd">As Integer</span>
+  PlayerDeck.Clear() <span class="tut-cmnt">' Reset Deck</span>
+  <span class="tut-rsvd">While</span> PlayerDeck.Count &lt; 52 <span class="tut-cmnt">' Select 52 Numbers</span>
+    Randomize()
+    Selection = Int((52 * Rnd()) + 1)
+    <span class="tut-rsvd">If Not</span> PlayerDeck.Contains(Selection) _
+    <span class="tut-rsvd">Or</span> PlayerDeck.Count &lt; 1 <span class="tut-rsvd">Then</span>
+      PlayerDeck.Add(Selection)
+    <span class="tut-rsvd">End If
+  End While
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08cardshuffle.png" width="454" height="202" alt="Window1 Shuffle Subroutine" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+While still in the Code View for Window1, below the "End Sub" for "Private Sub Shuffle(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> NewGame()
+  Score = 0
+  Layout(BoardLayout)
+  Shuffle(DeckOne)
+  Shuffle(DeckTwo)
+  <span class="tut-rsvd">Me</span>.Title = <span class="tut-valu">"Score:"</span> &amp; Score
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08cardnewgame.png" width="296" height="116" alt="Window1 NewGame Subroutine" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Finally while still in the Code View for Window1, below the "End Sub" for "Private Sub NewGame()", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> OnClick(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As</span> System.Object, _
+                    <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.Windows.RoutedEventArgs) _
+                    <span class="tut-rsvd">Handles</span> btn1.Click, btn2.Click
+  <span class="tut-rsvd">If</span> CardOne &lt; 52 <span class="tut-rsvd">And</span> CardTwo &lt; 52 <span class="tut-rsvd">Then</span>
+    FirstChoice = DeckOne(CardOne)
+    btn1.Content = Card(FirstChoice, <span class="tut-rsvd">True</span>, Brushes.White)
+    CardOne += 1
+    SecondChoice = DeckTwo(CardTwo)
+    btn2.Content = Card(SecondChoice, <span class="tut-rsvd">True</span>, Brushes.White)
+    CardTwo += 1
+    <span class="tut-rsvd">If</span> FirstChoice.Equals(SecondChoice) <span class="tut-rsvd">Then</span>
+      Score += 1
+      MsgBox(<span class="tut-valu">"Match!"</span>, MsgBoxStyle.Information, <span class="tut-valu">"Playing Cards"</span>)
+    <span class="tut-rsvd">End If</span>
+    <span class="tut-rsvd">Me</span>.Title = <span class="tut-valu">"Score:"</span> &amp; Score
+    Counter += 1
+  <span class="tut-rsvd">Else</span>
+    MsgBox(<span class="tut-valu">"Game Over! Matched "</span> &amp; Score &amp; _
+           <span class="tut-valu">" out of "</span> &amp; Counter &amp; <span class="tut-valu">" Cards!"</span>, _
+                      MsgBoxStyle.Information, <span class="tut-valu">"Playing Cards"</span>)
+    NewGame()
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08cardonclick.png" width="604" height="388" alt="Window1 OnClick Subroutine" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Return to the Design view by selecting the [Design] tab or Right Click on the "View Designer" option in Solution Explorer for Window1.
+Double Click on the "New Game" Button (btnNew) and type the following in the btnNew_Click() Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+NewGame()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08dicenew.png" width="600" height="84" alt="Window1 New Game Click Event" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+While still in Code View, if not Right Click on the Window or the entry for "Window1" in the Solution Explorer and choose "View Code".
+The top of this window will have two drop-down boxes one with "(General)" in and the other "(Declarations)", click on the first
+and select the "(Window1 Events)" Option, then from the drop-down next to this select "Loaded", type the following in the Window1_Loaded Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+NewGame()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08diceloaded.png" width="616" height="82" alt="Window1 Loaded Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08cardrun.png" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Click on either button to show two Cards, match two cards to score a point, do this until all the cards have been displayed, see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08cardplay.png" width="300" height="300" alt="Game Played" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the Close button <img src="tutorials/vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right of Window1 to end the application.
+</p>
+<p>
+This is a very simple game that uses the standard deck of 52 playing cards, try using this as a basis for your own more complex card games,
+such as 21 or Poker, plus the cards don't have to be on buttons, its up to you!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

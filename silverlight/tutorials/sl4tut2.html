@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Webcam</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+
+.tut-valu {
+							color: maroon;
+}
+
+.tut-attr {
+							color: red;
+}
+
+.tut-rsvd {
+							color: blue;
+}
+
+.tut-prop {
+					 		color: gray;
+}
+
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>Webcam</h1>
+<p>
+Silverlight 4 introduces the ability to access a Webcam and use it to capture images or video, here is a simple tutorial
+to get the feed from a Webcam to appear in a Silverlight application using Visual Basic and Visual Web Developer 2010 Express Edition.<br/>
+You will need a Webcam to be able to use this example - make sure you have your Webcam connected before running the Project, 
+the one used in this tutorial was the Xbox LIVE Vision Camera.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut2.html">www.cespage.com/silverlight/sl4tut2.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Button on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "Button1" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Capture" <span class="tut-attr">Name</span>="Capture"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4btncapture.png" width="425" height="314" alt="MainPage with Capture Button" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Still in the XAML Pane to add a Rectangle to the Page below the "&lt;Button&gt;" line, add the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;&lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Height</span>="273" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Margin</span>="0,25,0,0"&gt;
+  &lt;<span class="tut-valu">Rectangle.Fill</span>&gt;
+    &lt;<span class="tut-valu">VideoBrush</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Display" <span class="tut-attr">Stretch</span>="Uniform"/&gt;
+  &lt;/<span class="tut-valu">Rectangle.Fill</span>&gt;
+&lt;/<span class="tut-valu">Rectangle</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4reccapture.png" width="425" height="314" alt="MainPage with Rectangle" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> Source <span class="tut-rsvd">As New</span> <span class="tut-symb">CaptureSource</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4camdecs.png" width="286" height="136" alt="MainPage.xaml Declarations" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+While still in the Code View for MainPage.xaml, below "InitializeComponent()" in the "Public Sub New()" Constructor type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+Source.VideoCaptureDevice = <span class="tut-symb">CaptureDeviceConfiguration</span>.GetDefaultVideoCaptureDevice()
+Display.SetSource(Source)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4camnew.png" width="662" height="82" alt="MainPage.xaml Constructor" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Capture" Button and type in the Capture_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> <span class="tut-symb">CaptureDeviceConfiguration</span>.AllowedDeviceAccess <span class="tut-rsvd">Or</span> _
+  <span class="tut-symb">CaptureDeviceConfiguration</span>.RequestDeviceAccess() <span class="tut-rsvd">Then
+  If</span> Source.State = <span class="tut-symb">CaptureState</span>.Stopped <span class="tut-rsvd">Then</span>
+    Source.Start()
+  <span class="tut-rsvd">Else</span>
+    Source.Stop()
+  <span class="tut-rsvd">End If
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4captureclick.png" width="532" height="201" alt="Capture Button Click Event" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4webcamrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Now click where it says "Capture", a dialog will appear saying "Do you want to allow camera and microphone access?", just select "Yes" and the Display should
+show the feed from your Webcam, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4webcamcap.png" width="400" height="300" alt="Capturing" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This was a simple Webcam application, it could be expanded to do more as the CaptureSource can be used to take screenshots from the Webcam 
+using the "AsyncCaptureImage" method for example.<br/>
+If you could not get your Webcam feed to show up try Right Clicking on the Silverlight application, click the "Silverlight" option, 
+then select the Webcam / Mic Tab to choose your Webcam as the Default Video Source.
+</p>
+</body>
+</html>

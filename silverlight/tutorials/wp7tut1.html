@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Hello World</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+margin: 0px;
+padding: 0px;
+color: #000000; 
+font-size: 1.4em; 
+font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-symb { color:#2B91AF; }
+
+.tut-valu { color: maroon; }
+
+.tut-attr { color: red; }
+
+.tut-rsvd { color: blue; }
+
+.tut-prop {	color: gray; }
+
+.tut-cmnt { color: #008000; }
+</style>
+</head>
+<body class="content">
+<h1>Hello World</h1>
+<p>
+Windows Phone 7 offers the ability to write applications using the Silverlight platform, here is the
+classic Hello World example brought to Windows Phone with C# and Visual Studio 2010 Express for Windows Phone.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut1.html">www.cespage.com/silverlight/wp7tut1.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="wp7button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a Button on the Page, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7pagebtn.png" width="359" height="659" alt="MainPage with Button" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then goto the Properties box and change the Name to HelloWorld and the Content property from Button to "display" without the quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7pagebtnprop.png" width="217" height="393" alt="Button Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Double Click on the Button Control and type in the HelloWorld_Click method:
+</p>
+<blockquote>
+<pre class="tut-code">
+PageTitle.Text = <span class="tut-valu">"Hello World"</span>;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7helloworldclick.png" width="508" height="61" alt="Button Click Event" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7helloworldrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Now click where it says "display" and the page title will change to Hello World, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7helloworldapp.png" width="359" height="660" alt="Hello World" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+That was your first simple application for Windows Phone using Silverlight, you may also deploy your application to a Windows Phone 7
+device if you wish and run it there.<br/>Try changing the message shown instead of Hello World, or change the Button caption - there is a lot
+to learn from this simple example!
+</p>
+</body>
+</html>

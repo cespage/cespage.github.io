@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Control Template</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>Control Template</h1>
+<p>
+Control Templates enable the look-and-feel of Controls on Windows Phone 7 to differ allowing for a flexible
+user experience beyond the standard, such as customising a Button look and behaviour using Visual State Manager.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut19.html">www.cespage.com/silverlight/wp7tut19.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then in the XAML Pane for MainPage.xaml, below the <span class="tut-rsvd"><span class="tut-attr">x</span>:<span class="tut-attr">Class</span>="ControlTemplate.MainPage"</span> entry, type the following XAML namespace: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd"><span class="tut-attr">xmlns</span>:<span class="tut-attr">vsm</span>="clr-namespace:System.Windows;assembly=System.Windows"</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7tempresns.png" width="488" height="46" alt="MainPage Namespace" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+While still in the XAML Pane above the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="Transparent"&gt;</span> line type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.Resources</span>&gt;
+  &lt;<span class="tut-valu">Style</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="CircleButton" <span class="tut-attr">TargetType</span>="Button"&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Foreground" <span class="tut-attr">Value</span>="White"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="FontWeight" <span class="tut-attr">Value</span>="Bold"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Background"&gt;
+      &lt;<span class="tut-valu">Setter.Value</span>&gt;
+        &lt;<span class="tut-valu">LinearGradientBrush</span> <span class="tut-attr">StartPoint</span>="0.5,0" <span class="tut-attr">EndPoint</span>="0.5,1"&gt;
+          &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Offset</span>="0" <span class="tut-attr">Color</span>="#FFFF281E"/&gt;
+          &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Offset</span>="1" <span class="tut-attr">Color</span>="#FFFA9024"/&gt;
+        &lt;/<span class="tut-valu">LinearGradientBrush</span>&gt;
+      &lt;/<span class="tut-valu">Setter.Value</span>&gt;
+    &lt;/<span class="tut-valu">Setter</span>&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Template"&gt;
+      &lt;<span class="tut-valu">Setter.Value</span>&gt;
+        &lt;<span class="tut-valu">ControlTemplate</span> <span class="tut-attr">TargetType</span>="Button"&gt;
+          &lt;<span class="tut-valu">Grid</span>&gt;
+            &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+              &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="CommonStates"&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Disabled"/&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Normal"/&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="MouseOver"/&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Pressed"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="Inner"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="(ScaleTransform.ScaleY)"&gt;
+                      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0:0:0.0" <span class="tut-attr">Value</span>="1"/&gt;
+                    &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+                    &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="Outer"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="(ScaleTransform.ScaleY)"&gt;
+                      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0:0:0.0" <span class="tut-attr">Value</span>="-1"/&gt;
+                    &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span>&gt;
+              &lt;/<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateGroup</span>&gt;
+              &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FocusStates"&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Focused"/&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Unfocused"/&gt;
+              &lt;/<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateGroup</span>&gt;
+            &lt;/<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+            &lt;<span class="tut-valu">Ellipse</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Fill</span>="{<span class="tut-valu">TemplateBinding</span> Background}" 
+                <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5"&gt;
+              &lt;<span class="tut-valu">Ellipse.RenderTransform</span>&gt;
+                &lt;<span class="tut-valu">ScaleTransform</span> <span class="tut-attr">ScaleY</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Outer"/&gt;
+              &lt;/<span class="tut-valu">Ellipse.RenderTransform</span>&gt;
+            &lt;/<span class="tut-valu">Ellipse</span>&gt;
+            &lt;<span class="tut-valu">Ellipse</span> <span class="tut-attr">Margin</span>="20" <span class="tut-attr">Fill</span>="{<span class="tut-valu">TemplateBinding</span> Background}" 
+                <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5"&gt;
+              &lt;<span class="tut-valu">Ellipse.RenderTransform</span>&gt;
+                &lt;<span class="tut-valu">ScaleTransform</span> <span class="tut-attr">ScaleY</span>="-1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Inner"/&gt;
+              &lt;/<span class="tut-valu">Ellipse.RenderTransform</span>&gt;
+            &lt;/<span class="tut-valu">Ellipse</span>&gt;
+            &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="content" <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Center"/&gt;
+          &lt;/<span class="tut-valu">Grid</span>&gt;
+        &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+      &lt;/<span class="tut-valu">Setter.Value</span>&gt;
+    &lt;/<span class="tut-valu">Setter</span>&gt;
+  &lt;/<span class="tut-valu">Style</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.Resources</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7tempxaml.png" width="852" height="925" alt="ControlTemplate Style Resource XAML" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Return to the MainPage.xaml Designer View by selecting the "MainPage.xaml" Tab<br/>
+Then from the Windows Phone Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="wp7button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Draw a Button on the Page by dragging the Button from the Toolbox onto the Page, then in the XAML Pane between the 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> 
+lines, change the "Button1" line to the following:</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Height</span>="250" <span class="tut-attr">Width</span>="250" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">CircleButton</span>}" <span class="tut-attr">Content</span>="Tap Here" <span class="tut-attr">Name</span>="HelloWorld"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7tempbtn.png" width="359" height="660" alt="MainPage with Button" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+The Button should have the "CircleButton" Style applied and not appear as a standard Button on Windows Phone 7.<br/>
+Double Click on the Button Control and type in the HelloWorld_Click method:
+</p>
+<blockquote>
+<pre class="tut-code">
+PageTitle.Text = <span class="tut-valu">"Hello World"</span>;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7helloworldclick.png" width="508" height="61" alt="Button Click Event" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7temprun.png" width="359" height="650" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Now tap where it says "Tap Here" and the page title will change to Hello World, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7tempapp.png" width="359" height="650" alt="Control Template" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple example of how to Customise the Control Template of a Control such as a Button, it is possible to change
+the look-and-feel of other controls or add more behaviours - make it your own!
+</p>
+</body>
+</html>

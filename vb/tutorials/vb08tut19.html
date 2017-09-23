@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>About Console</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-prop {
+					 		color: gray;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>About Console</h1>
+<p>In this tutorial you will learn how to create a simple Console-based Application which displays information about
+your PC using the "My" Namespace and Environment Variables!</p>
+<p>
+<a href="http://www.cespage.com/vb/vb08tut19.html">www.cespage.com/vb/vb08tut19.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Console Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08newcon.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Module named Module1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08module1.png" width="128" height="118" alt="Module1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Module1 selected goto the Properties box and change the File Name from Module1 to modMain
+</p>
+<div class="tutorial-image">
+<img src="vb08module1prop.png" width="203" height="399" alt="Module1 File Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+With the modMain Module Code View displayed, enter the following code in the "Sub Main()", subroutine: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Output <span class="tut-rsvd">As String</span>
+Output = <span class="tut-valu">"Computer Information"</span> &amp; vbCrLf &amp; vbCrLf
+<span class="tut-rsvd">For Each</span> Item <span class="tut-rsvd">As</span> System.IO.DriveInfo <span class="tut-rsvd">In My</span>.Computer.FileSystem.Drives
+  <span class="tut-rsvd">If</span> Item.IsReady <span class="tut-rsvd">Then</span>
+      Output = Output &amp; <span class="tut-valu">"Drive:"</span> &amp; Item.VolumeLabel &amp; <span class="tut-valu">"("</span> &amp; Item.Name &amp; <span class="tut-valu">") Space "</span> _
+      &amp; Item.TotalFreeSpace &amp; <span class="tut-valu">") Size ("</span> &amp; Item.TotalSize &amp; <span class="tut-valu">")"</span> &amp; vbCrLf
+  <span class="tut-rsvd">End If
+Next
+For Each</span> Item <span class="tut-rsvd">As</span> Environment.SpecialFolder <span class="tut-rsvd">In</span> [Enum].GetValues(GetType(Environment.SpecialFolder))
+  Output = Output &amp; <span class="tut-valu">"Special Folder:"</span> &amp; _
+  [Enum].GetName(<span class="tut-rsvd">GetType</span>(Environment.SpecialFolder), Item) _
+  &amp; <span class="tut-valu">" ("</span> &amp; Environment.GetFolderPath(Item) &amp; <span class="tut-valu">")"</span> &amp; vbCrLf
+<span class="tut-rsvd">Next</span>
+Output = Output &amp; <span class="tut-valu">"Memory (Physical):"</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.AvailablePhysicalMemory &amp; _
+<span class="tut-valu">" of "</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.TotalPhysicalMemory &amp; vbCrLf
+Output = Output &amp; <span class="tut-valu">"Memory (Virtual):"</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.AvailableVirtualMemory &amp; _
+<span class="tut-valu">" of "</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.TotalVirtualMemory &amp; vbCrLf
+Output = Output &amp; <span class="tut-valu">"Operating System:"</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.OSFullName &amp; _
+<span class="tut-valu">" Version "</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.OSVersion &amp; vbCrLf
+Output = Output &amp; <span class="tut-valu">"Computer:"</span> &amp; <span class="tut-rsvd">My</span>.Computer.Name &amp; vbCrLf
+Output = Output &amp; vbCrLf &amp; vbCrLf &amp; <span class="tut-valu">"Environment Variables"</span> &amp; vbCrLf &amp; vbCrLf
+<span class="tut-rsvd">For Each</span> Item <span class="tut-rsvd">As</span> DictionaryEntry <span class="tut-rsvd">In</span> Environment.GetEnvironmentVariables
+  Output = Output &amp; Item.Key &amp; <span class="tut-valu">":"</span> &amp; Item.Value &amp; vbCrLf
+<span class="tut-rsvd">Next</span>
+Console.Write(Output)
+Console.Read()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08modmainsubmain.png" width="860" height="542" alt="modMain Sub Main" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vb08aboutconsolerun.png" width="300" height="300" alt="Alarm Clock Running" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Click on the Close button <img src="vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right to end the application or press any key such as the Spacebar.
+</p>
+<p>
+This is a very simple Console Application outputing information to a Console Window, the Console.Read waits for any input such as the Spacebar
+, this could be changed to show more or different data, console applications are useful for when you want to do something that does
+not require anything to been seen, it is up to you, make it your own!
+</p>
+</body>
+</html>

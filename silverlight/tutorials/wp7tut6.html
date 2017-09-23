@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Imager</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>Imager</h1>
+<p>
+Imager is a simple Image Viewing application with procedurally generated Projection animation effects using Silverlight on Windows Phone 7.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut6.html">www.cespage.com/silverlight/wp7tut6.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+In the XAML Pane for MainPage.xaml between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines, enter the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Header --&gt;</span>
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="0" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Header"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    &lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="Location"&gt;
+      &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+        &lt;<span class="tut-valu">InputScope</span>&gt;
+          &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="Url"/&gt;
+        &lt;/<span class="tut-valu">InputScope</span>&gt;
+      &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+    &lt;/<span class="tut-valu">TextBox</span>&gt;
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="go" <span class="tut-attr">Click</span>="Go_Click"/&gt;
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+  &lt;<span class="tut-valu">Image</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Margin</span>="50" <span class="tut-attr">Stretch</span>="Uniform" <span class="tut-attr">Name</span>="Display"&gt;
+    &lt;<span class="tut-valu">Image.Projection</span>&gt;
+      &lt;<span class="tut-valu">PlaneProjection</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Target"/&gt;
+    &lt;/<span class="tut-valu">Image.Projection</span>&gt;
+  &lt;/<span class="tut-valu">Image</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Footer --&gt;</span>
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="2" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Buttons" &gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="160"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Buttons --&gt;</span>
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Content</span>="pitch" <span class="tut-attr">Click</span>="Pitch_Click"/&gt;
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="roll" <span class="tut-attr">Click</span>="Roll_Click"/&gt;
+    &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="2" <span class="tut-attr">Content</span>="yaw" <span class="tut-attr">Click</span>="Yaw_Click"/&gt;
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7imgmainxaml.png" width="578" height="669" alt="MainPage XAML View" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7imgmaindesign.png" width="359" height="659" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace Imager"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Windows.Media.Imaging;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public MainPage()" type the following declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private bool</span> Rotating = <span class="tut-rsvd">false</span>;
+<span class="tut-rsvd">private</span> <span class="tut-symb">Storyboard</span> Rotation = <span class="tut-rsvd">new</span> <span class="tut-symb">Storyboard</span>();
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7imgmainref.png" width="404" height="445" alt="MainPage Includes and Declarations" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+While still in the Code View for MainPage.xaml.cs, above the "public MainPage()" method type the following Method:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Rotate(<span class="tut-rsvd">object</span> Parameter)
+{
+  <span class="tut-rsvd">if</span> (Rotating)
+  {
+    Rotation.Stop();
+    Rotating = <span class="tut-rsvd">false</span>;
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    <span class="tut-symb">DoubleAnimation</span> _animation = <span class="tut-rsvd">new</span> <span class="tut-symb">DoubleAnimation</span>();
+    _animation.From = 0.0;
+    _animation.To = 360.0;
+    _animation.Duration = <span class="tut-rsvd">new</span> <span class="tut-symb">Duration</span>(<span class="tut-symb">TimeSpan</span>.FromSeconds(10));
+    _animation.RepeatBehavior = <span class="tut-rsvd">RepeatBehavior</span>.Forever;
+    Storyboard.SetTarget(_animation, Target);
+    Storyboard.SetTargetProperty(_animation, <span class="tut-rsvd">new</span> <span class="tut-symb">PropertyPath</span>(Parameter));
+    Rotation.Children.Clear();
+    Rotation.Children.Add(_animation);
+    Rotation.Begin();
+    Rotating = <span class="tut-rsvd">true</span>;
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7imgrotate.png" width="612" height="349" alt="MainPage Rotate Method" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still the Code View for MainPage.xaml.cs, below the "}" of the "public MainPage()" method type the following Event Handlers: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Go_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  Display.Source = <span class="tut-rsvd">new</span> <span class="tut-symb">BitmapImage</span>(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(Location.Text));
+}
+
+<span class="tut-rsvd">private void</span> Pitch_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  Rotate(<span class="tut-symb">PlaneProjection</span>.RotationXProperty);
+}
+
+<span class="tut-rsvd">private void</span> Roll_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  Rotate(<span class="tut-symb">PlaneProjection</span>.RotationZProperty);
+}
+
+<span class="tut-rsvd">private void</span> Yaw_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  Rotate(<span class="tut-symb">PlaneProjection</span>.RotationYProperty);
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7imgmaincode.png" width="494" height="301" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7imgrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Select the TextBox and enter in the web address of an Image such as <a href="http://cespage.com/phone.jpg">http://cespage.com/phone.jpg</a> then
+click on the "go" button, when loaded the image will appear in the Image Control, which you can then Animate with the Pitch, Roll and Yaw Buttons, see below: 
+</p>
+<div class="tutorial-image">
+<img src="wp7imgapp.png" width="359" height="660" alt="Imager" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This was a simple example of animating an Image using Code, it is possible to have multiple animations - if you declare an Animation object
+for for each type of animation and you can combine animations together, see what you can add and make it your own!
+</p>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Hello ....</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Hello ....</h1>
+<p>Please Follow all the Steps of Hello World before starting this Tutorial or use the Source Code provided and adapt as needed.</p>
+<p>
+<a href="http://www.cespage.com/vb/vbtut2.html">www.cespage.com/vb/vbtut2.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Basic and then Click Open, Open the VB Project File for the First Tutorial and the folowing will appear:
+</p>
+<div class="tutorial-image">
+<img src="figform1but.gif" width="320" height="240" alt="Hello World Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+Then from the Visual Basic Components Menu Select the Text Box Control:
+</p>
+<div class="tutorial-image">
+<img src="figtextbox.gif" width="144" height="219" alt="Textbox Control" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Draw a Text Box on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="figformbox.gif" width="320" height="240" alt="Form1 Textbox and Button" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then go to the Properties box and change the Text property from Text1 to Hello World!, see below:
+</p>
+<div class="tutorial-image">
+<img src="figtextprop.gif" width="202" height="258" alt="Properties" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Double Click on the Command Button and type in the Command1_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+MsgBox Text1.Text,vbInformation,"Test"
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="figcclick.gif" width="404" height="126" alt="Command Button Clicked" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Save the Project (for example prjHello) into a vacant folder as you have finished the application. Click on Start / Run 
+<img src="figstart.gif" width="23" height="22" alt="Start / Run" /> or Press F5 and the below will appear:
+</p>
+<div class="tutorial-image">
+<img src="fighellorun.gif" width="320" height="240" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Now Click on where it Says Click Here and a Message Box will appear, which will look something like this:
+</p>
+<div class="tutorial-image">
+<img src="figchello.gif" width="134" height="119" alt="Hello World" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Just Click Ok and enter anything you want into the Text Box that is made up of Letters or Numbers and then 
+Click on the Command Button. The Message Box Creates the Text from the Text Box, try it for yourself! 
+Try changing some of the variables, such as seeing if you can get it to display input from two Text Boxes 
+(Clue:Use somthing like: MsgBox Text1.Text &amp; Text2.Text, vbInformation, "Two Text Boxes")
+</p>
+</body>
+</html>

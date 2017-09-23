@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Simple Drawing Package</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-item {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+							line-height: 75%;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Simple Drawing Package</h1>
+<p>Well if you did the Drawing Tutorial this is even better, which will introduce you to the ComboBox and 
+PictureBox Controls plus Structures, Drawing Methods, Loops, Collections plus image persistence!
+</p>
+<p>
+<a href="http://www.cespage.com/vb/vbextut6.html">www.cespage.com/vb/vbextut6.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2005 Express Edition, then select File then New Project... Choose Windows Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexnewproject.gif" width="681" height="417" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1.gif" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Windows Forms components tab select the PictureBox control:
+</p>
+<div class="tutorial-image">
+<img src="vbexpicturebox.gif" width="248" height="398" alt="PictureBox Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a PictureBox on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1pic1.gif" width="300" height="300" alt="PictureBox on Form" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then go to the Properties box and change the BackColor property from Control to White, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexpictureprop.gif" width="202" height="457" alt="PictureBox Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Windows Forms components tab select the ComboBox control:
+</p>
+<div class="tutorial-image">
+<img src="vbexcombobox.gif" width="248" height="398" alt="ComboBox Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw two ComboBoxes on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1cbo.gif" width="307" height="307" alt="ComboBoxes on Form" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Click on ComboBox1 and then go to the Properties box and change the DropDownStyle Property to DropDownList, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexcboprop.gif" width="202" height="457" alt="ComboBox1 Property" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Do the same with ComboBox2, then Double click on the Form and type the following Declarations just below the Public Class section at the top:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> DrawBitmap <span class="tut-rsvd">As</span> Bitmap
+<span class="tut-rsvd">Private</span> DrawGraphics <span class="tut-rsvd">As</span> Graphics
+<span class="tut-rsvd">Private</span> DrawBrush As <span class="tut-rsvd">Brush</span>
+</pre>
+</blockquote>
+<p>
+Then type in the following into the Form1_Load method:
+</p>
+<blockquote>
+<pre class="tut-code">
+DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(PictureBox1.Width, PictureBox1.Height)
+DrawGraphics = Graphics.FromImage(DrawBitmap)
+PictureBox1.Image = DrawBitmap
+<span class="tut-rsvd">With</span> ComboBox1
+  .Items.Add(2)
+  .Items.Add(4)
+  .Items.Add(8)
+  .Items.Add(16)
+  .Items.Add(32)
+  .Items.Add(64)
+<span class="tut-rsvd">End With</span>
+ComboBox1.SelectedIndex = 0
+<span class="tut-rsvd">With</span> ComboBox2
+  .Items.Add(<span class="tut-valu">"Black"</span>)
+  .Items.Add(<span class="tut-valu">"Red"</span>)
+  .Items.Add(<span class="tut-valu">"Green"</span>)
+  .Items.Add(<span class="tut-valu">"Blue"</span>)
+  .Items.Add(<span class="tut-valu">"White"</span>)
+<span class="tut-rsvd">End With</span>
+ComboBox2.SelectedIndex = 0
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1load.gif" width="580" height="510" alt="Declarations and Form1 Load" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Right click on the Form and select the view Code option then in the Top Right List select PictureBox1, 
+and then in the Top Left List select MouseMove, then type in the PictureBox1_MouseMove Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> e.Button = Windows.Forms.MouseButtons.Left <span class="tut-rsvd">Then</span>
+  <span class="tut-rsvd">Select Case</span> ComboBox2.SelectedIndex
+    <span class="tut-rsvd">Case</span> 0
+      DrawBrush = Brushes.Black
+    <span class="tut-rsvd">Case</span> 1
+      DrawBrush = Brushes.Red
+    <span class="tut-rsvd">Case</span> 2
+      DrawBrush = Brushes.Green
+    <span class="tut-rsvd">Case</span> 3
+      DrawBrush = Brushes.Blue
+    <span class="tut-rsvd">Case</span> 4
+      DrawBrush = Brushes.White
+    <span class="tut-rsvd">Case Else</span>
+      DrawBrush = Brushes.Black
+  <span class="tut-rsvd">End Select</span>
+  DrawGraphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+  DrawGraphics.FillEllipse(DrawBrush, e.X, e.Y, _
+  <span class="tut-rsvd">CInt</span>(ComboBox1.SelectedItem), <span class="tut-rsvd">CInt</span>(ComboBox1.SelectedItem))
+  PictureBox1.Image = DrawBitmap
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1picmove1.gif" width="668" height="414" alt="PictureBox1 MouseMove" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vbexstart.gif" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vbexdrawingrun.gif" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Change the Value in the Left ComboBox to 8 and the in the Right ComboBox to Blue, and draw something by holding 
+down the Left mouse button and draw on the White PictureBox, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexdraw.gif" width="300" height="300" alt="Simple Drawing Package" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Click on the Close button <img src="vbexclose.gif" width="21" height="21" alt="Close" /> on the top right of Form1 to end the application.
+</p>
+<p>
+Great you have just created an improved Drawing Package! Try changing the program so that 
+other Draw Widths are available (add more values to Combobox1) Plus add more colours by adding 
+the new names e.g. Yellow and then in the PictureBox_MouseMove add a line in the Select case e.g. 
+case 5 mycolor = Brushes.Yellow.<br/>
+Try changing other parts of the code and extending it, you can learn a lot from this simple drawing package for example try changing
+the size of the FillEllipse to get a Thicker line, or the Brush e.g. Brushes.Green or Brushes.Red!
+</p>
+</body>
+</html>

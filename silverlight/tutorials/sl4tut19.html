@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Control Template</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-xatt {
+					color:#6464B9;
+}
+.tut-link {
+					color: blue;
+					text-decoration: underline;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-prop {
+					 		color: gray;
+}
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>Control Template</h1>
+<p>
+Control Templates allow the look and feel of Controls in Silverlight allowing for a flexible user experience.<br/>
+Here is the Hello World example using a Control Template and the Visual State Manager to Customise the Button.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut19.html">www.cespage.com/silverlight/sl4tut19.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+In the XAML Pane for the MainPage.xaml, below the "x:Class="ControlTemplate.MainPage" section, type the following XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd"><span class="tut-attr">xmlns</span>:<span class="tut-attr">vsm</span>="clr-namespace:System.Windows;assembly=System.Windows"</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4tempvsm.png" width="530" height="136" alt="MainPage Namespaces" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+While still the XAML Pane for the MainPage.xaml, above the "&lt;Grid&gt;" and below the top "&lt;UserControl&gt;" tag, type the following XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">
+&lt;<span class="tut-valu">UserControl.Resources</span>&gt;
+  &lt;<span class="tut-valu">Style</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="CircleButton" <span class="tut-attr">TargetType</span>="Button"&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Foreground" <span class="tut-attr">Value</span>="White"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="FontWeight" <span class="tut-attr">Value</span>="Bold"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Background"&gt;
+      &lt;<span class="tut-valu">Setter.Value</span>&gt;
+        &lt;<span class="tut-valu">LinearGradientBrush</span> <span class="tut-attr">StartPoint</span>="0.5,0" <span class="tut-attr">EndPoint</span>="0.5,1"&gt;
+          &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Offset</span>="0" <span class="tut-attr">Color</span>="#FFFF281E"/&gt;
+          &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Offset</span>="1" <span class="tut-attr">Color</span>="#FFFA9024"/&gt;
+        &lt;/<span class="tut-valu">LinearGradientBrush</span>&gt;
+      &lt;/<span class="tut-valu">Setter.Value</span>&gt;
+    &lt;/<span class="tut-valu">Setter</span>&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Template"&gt;
+      &lt;<span class="tut-valu">Setter.Value</span>&gt;
+        &lt;<span class="tut-valu">ControlTemplate</span> <span class="tut-attr">TargetType</span>="Button"&gt;
+          &lt;<span class="tut-valu">Grid</span>&gt;
+            &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+              &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="CommonStates"&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Disabled"/&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Normal"/&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="MouseOver"/&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Pressed"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="Inner"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="(ScaleTransform.ScaleY)"&gt;
+                      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0:0:0.0" <span class="tut-attr">Value</span>="1"/&gt;
+                    &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+                    &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="Outer"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="(ScaleTransform.ScaleY)"&gt;
+                      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0:0:0.0" <span class="tut-attr">Value</span>="-1"/&gt;
+                    &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span>&gt;
+              &lt;/<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateGroup</span>&gt;
+              &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FocusStates"&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Focused"/&gt;
+                &lt;<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Unfocused"/&gt;
+              &lt;/<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateGroup</span>&gt;
+            &lt;/<span class="tut-valu">vsm</span>:<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+            &lt;<span class="tut-valu">Ellipse</span> <span class="tut-attr">Margin</span>="2" <span class="tut-attr">Fill</span>="{<span class="tut-valu">TemplateBinding</span> Background}" 
+                <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5"&gt;
+              &lt;<span class="tut-valu">Ellipse.RenderTransform</span>&gt;
+                &lt;<span class="tut-valu">ScaleTransform</span> <span class="tut-attr">ScaleY</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Outer"/&gt;
+              &lt;/<span class="tut-valu">Ellipse.RenderTransform</span>&gt;
+            &lt;/<span class="tut-valu">Ellipse</span>&gt;
+            &lt;<span class="tut-valu">Ellipse</span> <span class="tut-attr">Margin</span>="10" <span class="tut-attr">Fill</span>="{<span class="tut-valu">TemplateBinding</span> Background}" 
+                <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5"&gt;
+              &lt;<span class="tut-valu">Ellipse.RenderTransform</span>&gt;
+                &lt;<span class="tut-valu">ScaleTransform</span> <span class="tut-attr">ScaleY</span>="-1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Inner"/&gt;
+              &lt;/<span class="tut-valu">Ellipse.RenderTransform</span>&gt;
+            &lt;/<span class="tut-valu">Ellipse</span>&gt;
+            &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="content" <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Center"/&gt;
+          &lt;/<span class="tut-valu">Grid</span>&gt;
+        &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+      &lt;/<span class="tut-valu">Setter.Value</span>&gt;
+    &lt;/<span class="tut-valu">Setter</span>&gt;
+  &lt;/<span class="tut-valu">Style</span>&gt;
+&lt;/<span class="tut-valu">UserControl.Resources</span>&gt;
+</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4tempres.png" width="852" height="982" alt="MainPage Resources" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a Canvas that fill the whole Page or in the XAML Pane between the "&lt;Grid&gt;" and "&lt;/Grid&gt;" lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="300" <span class="tut-attr">Width</span>="400" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Page"&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4cvspage.png" width="423" height="322" alt="MainPage with Canvas" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw a Button on the Page by dragging a Button from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt;" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="125" <span class="tut-attr">Canvas.Top</span>="75" <span class="tut-attr">Height</span>="150" <span class="tut-attr">Width</span>="150" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">CircleButton</span>}" <span class="tut-attr">Content</span>="Click Here" <span class="tut-attr">Name</span>="HelloWorld"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4tempbtn.png" width="415" height="324" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+The Button should have the "CircleButton" Style applied to it.<br/>
+Then Double Click on the Button Control and type in the HelloWorld_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Hello World"</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4helloworldclick.png" width="552" height="84" alt="Button Click Event" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4temprun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Now click where it says "Click Here" and a Message Box will appear with the following contents:
+</p>
+<div class="tutorial-image">
+<img src="sl4helloworldmsg.png" width="138" height="116" alt="Message Box" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Close the Application and Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p>
+That was a simple example of Customising the Control Template of a Control such as a Button, it is possible to change the look-and-feel
+of other controls or add more behavours - there are other states such as MouseOver, Focused and Disabled, see what you can make your control do!
+</p>
+</body>
+</html>

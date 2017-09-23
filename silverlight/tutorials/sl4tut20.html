@@ -1,0 +1,474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Audio Recorder</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-xatt {
+					color:#6464B9;
+}
+.tut-link {
+					color: blue;
+					text-decoration: underline;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-prop {
+					 		color: gray;
+}
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>Audio Recorder</h1>
+<p>
+Audio Recorder is a simple Sound Recorder using the AudioCaptureDevice and CaptureSource support in Silverlight 4, 
+recordings can be saved as a PCM Wave File using an AudioSink object.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut20.html">www.cespage.com/silverlight/sl4tut20.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Select Project then "Add Class...", and select the "Class" Template if not already Selected, then change the "Name" to MemoryAudioSink.vb , see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4memoryaudiosink.png" width="939" height="624" alt="MemoryAudioSink Class" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the new Class to the Project by Clicking on Add, then in the Code View for the MemoryAudioSink.vb Class, above the "Public Class MemoryAudioSink" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.IO
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audclsref.png" width="208" height="66" alt="MemoryAudioSink Class References" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the Code View for the MemoryAudioSink.vb Class, below the "Public Class MemoryAudioSink" line type the following:  
+</p>
+<blockquote>
+<pre class="tut-code">
+  <span class="tut-rsvd">Inherits</span> AudioSink
+<span class="tut-rsvd">Private</span> _stream <span class="tut-rsvd">As</span> <span class="tut-symb">MemoryStream</span> <span class="tut-cmnt">' Memory Sink</span>
+<span class="tut-rsvd">Private</span> _format <span class="tut-rsvd">As</span> <span class="tut-symb">AudioFormat</span> <span class="tut-cmnt">' Recording Format</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audclsdecs.png" width="382" height="117" alt="MemoryAudioSink Class Declarations" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+While still in the Code View for the MemoryAudioSink Class, above the "End Class" for "Public Class MemoryAudioSink", type the following Subs: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Protected Overloads Overrides Sub</span> OnCaptureStarted()
+  _stream = <span class="tut-rsvd">New</span> <span class="tut-symb">MemoryStream</span>(<span class="tut-valu">1024</span>)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Protected Overloads Overrides Sub</span> OnCaptureStopped()
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Protected Overloads Overrides Sub</span> OnFormatChange(<span class="tut-rsvd">ByVal</span> Format <span class="tut-rsvd">As</span> <span class="tut-symb">AudioFormat</span>)
+  <span class="tut-rsvd">If</span> Format.WaveFormat &lt;&gt; <span class="tut-symb">WaveFormatType</span>.PCM <span class="tut-rsvd">Then
+    Throw New</span> <span class="tut-symb">InvalidOperationException</span>(<span class="tut-valu">"MemoryAudioSink only supports PCM Audio"</span>)
+  <span class="tut-rsvd">End If</span>
+  _format = Format
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Protected Overloads Overrides Sub</span> OnSamples(<span class="tut-rsvd">ByVal</span> sampleTime <span class="tut-rsvd">As Long</span>, _
+    <span class="tut-rsvd">ByVal</span> sampleDuration <span class="tut-rsvd">As Long</span>, _
+    <span class="tut-rsvd">ByVal</span> sampleData <span class="tut-rsvd">As Byte</span>())
+  _stream.Write(sampleData, <span class="tut-valu">0</span>, sampleData.Length) <span class="tut-cmnt">' Write Audio to Stream</span>
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audclssubs.png" width="640" height="320" alt="MemoryAudioSink Class Subs" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+While still in the Code View for the MemoryAudioSink Class, above the "End Class" for "Public Class MemoryAudioSink", type the following Properties: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public ReadOnly Property</span> BackingStream() <span class="tut-rsvd">As</span> <span class="tut-symb">Stream</span>
+  <span class="tut-rsvd">Get
+    Return</span> _stream
+  <span class="tut-rsvd">End Get
+End Property</span>
+
+<span class="tut-rsvd">Public ReadOnly Property</span> CurrentFormat() <span class="tut-rsvd">As</span> <span class="tut-symb">AudioFormat</span>
+  <span class="tut-rsvd">Get
+    Return</span> _format
+  <span class="tut-rsvd">End Get
+End Property</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audclsprops.png" width="424" height="184" alt="MemoryAudioSink Class Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Draw a Two Canvases on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "&lt;Canvas&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="35" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="35" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,265,0,0" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="StatusBar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4mplaycvs.png" width="420" height="319" alt="MainPage with Toolbar Canvas and Statusbar Canvas" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Draw Three Buttons on the "Toolbar" Canvas by dragging the Buttons from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Record" <span class="tut-attr">Content</span>="Record"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Stop" <span class="tut-attr">Content</span>="Stop"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Save" <span class="tut-attr">Content</span>="Save..."/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4audcvsbtns.png" width="423" height="315" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the TextBlock control:
+</p>
+<div class="tutorial-image">
+<img src="sl4textblock.png" width="180" height="428" alt="TextBlock Control" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Draw a TextBlock onto the Lower Canvas (StatusBar) and change the &lt;TextBlock&gt; line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="318" <span class="tut-attr">FontSize</span>="16" <span class="tut-attr">Name</span>="Status"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4audlbl.png" width="415" height="314" alt="MainPage with Buttons and TextBlock" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View above the "Partial Public Class MainPage" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.IO
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audref.png" width="216" height="151" alt="MainPage.xaml Imports" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "Inherits UserControl" line type the following:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> _source <span class="tut-rsvd">As New</span> <span class="tut-symb">CaptureSource</span>
+<span class="tut-rsvd">Private</span> _sink <span class="tut-rsvd">As</span> <span class="tut-symb">MemoryAudioSink</span>
+<span class="tut-rsvd">Private</span> _isRecording <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Private</span> _hasRecorded <span class="tut-rsvd">As Boolean</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4auddecs.png" width="292" height="219" alt="MainPage.xaml Declarations" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+While still in the Code View, in the "Public Sub New()" constructor below the "InitializeComponent()" line type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+_source.AudioCaptureDevice = <span class="tut-symb">CaptureDeviceConfiguration</span>.GetDefaultAudioCaptureDevice
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audinit.png" width="656" height="65" alt="MainPage.xaml Constructor" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+While still in the Code View, below the "End Sub" for "Public Sub New()" Constructor type the following Function and Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> InlineAssignHelper(<span class="tut-rsvd">Of</span> <span class="tut-symb">T</span>)(<span class="tut-rsvd">ByRef</span> target <span class="tut-rsvd">As</span> <span class="tut-symb">T</span>, <span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As</span> <span class="tut-symb">T</span>) <span class="tut-rsvd">As</span> <span class="tut-symb">T</span>
+  target = value
+  <span class="tut-rsvd">Return</span> value
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-rsvd">Public Sub</span> SavePcmToWav(<span class="tut-rsvd">ByRef</span> Data <span class="tut-rsvd">As</span> <span class="tut-symb">Stream</span>, <span class="tut-rsvd">ByRef</span> Output <span class="tut-rsvd">As</span> <span class="tut-symb">Stream</span>, _
+    <span class="tut-rsvd">ByRef</span> Format <span class="tut-rsvd">As</span> <span class="tut-symb">AudioFormat</span>)
+  <span class="tut-rsvd">If</span> Format.WaveFormat &lt;&gt; <span class="tut-symb">WaveFormatType</span>.PCM <span class="tut-rsvd">Then
+    Throw New</span> <span class="tut-symb">ArgumentException</span>(<span class="tut-valu">"Only PCM coding is supported."</span>)
+  <span class="tut-rsvd">End If
+  Dim</span> _output <span class="tut-rsvd">As New</span> <span class="tut-symb">BinaryWriter</span>(Output)
+  <span class="tut-cmnt">' WAV header</span>
+  _output.Write(<span class="tut-valu">"RIFF"</span>.ToCharArray()) <span class="tut-cmnt">' RIFF chunk</span>
+  _output.Write(<span class="tut-rsvd">CUInt</span>((Data.Length + <span class="tut-valu">36</span>))) <span class="tut-cmnt">' Total Length Of Package To Follow</span>
+  _output.Write(<span class="tut-valu">"WAVE"</span>.ToCharArray()) <span class="tut-cmnt">' WAV chunk</span>
+  _output.Write(<span class="tut-valu">"fmt "</span>.ToCharArray()) <span class="tut-cmnt">' FORMAT chunk</span>
+  _output.Write(<span class="tut-rsvd">CUInt</span>(<span class="tut-valu">&amp;H10</span>)) <span class="tut-cmnt">' Length Of FORMAT Chunk (Binary, always 0x10)</span>
+  _output.Write(<span class="tut-rsvd">CUShort</span>(<span class="tut-valu">&amp;H1</span>)) <span class="tut-cmnt">' Always 0x01</span>
+  <span class="tut-cmnt">' Channel Numbers (Always 0x01=Mono, 0x02=Stereo)</span>
+  _output.Write(<span class="tut-rsvd">CUShort</span>(Format.Channels))
+  _output.Write(<span class="tut-rsvd">CUInt</span>(Format.SamplesPerSecond)) <span class="tut-cmnt">' Sample Rate (Binary, in Hz)</span>
+  _output.Write(<span class="tut-rsvd">CUInt</span>((Format.BitsPerSample * _
+  Format.SamplesPerSecond * _
+    Format.Channels / <span class="tut-valu">8</span>))) <span class="tut-cmnt">' Bytes Per Second</span>
+  <span class="tut-cmnt">' Bytes Per Sample: 1=8 bit Mono, 2=8 bit Stereo or 16 bit Mono, 4=16 bit Stereo</span>
+  _output.Write(<span class="tut-rsvd">CUShort</span>((Format.BitsPerSample * _
+    Format.Channels / <span class="tut-valu">8</span>)))
+  _output.Write(<span class="tut-rsvd">CUShort</span>(Format.BitsPerSample)) <span class="tut-cmnt">' Bits Per Sample</span>
+  _output.Write(<span class="tut-valu">"data"</span>.ToCharArray()) <span class="tut-cmnt">' DATA chunk</span>
+  _output.Write(<span class="tut-rsvd">CUInt</span>(Data.Length)) <span class="tut-cmnt">' Length Of Data To Follow</span>
+  <span class="tut-cmnt">' Raw PCM data</span>
+  <span class="tut-rsvd">Dim</span> originalPosition <span class="tut-rsvd">As Long</span> = Data.Position <span class="tut-cmnt">' Remember Original Position</span>
+  Data.Seek(<span class="tut-valu">0</span>, <span class="tut-symb">SeekOrigin</span>.Begin) <span class="tut-cmnt">' Reset position in Data</span>
+  <span class="tut-cmnt">' Append all data from Data stream into output stream.</span>
+  <span class="tut-rsvd">Dim</span> buffer <span class="tut-rsvd">As Byte</span>() = <span class="tut-rsvd">New Byte</span>(<span class="tut-valu">4095</span>) {}
+  <span class="tut-rsvd">Dim</span> read <span class="tut-rsvd">As Integer</span> <span class="tut-cmnt">' number of bytes read in one iteration</span>
+  <span class="tut-rsvd">While</span> (InlineAssignHelper(read, Data.Read(buffer, <span class="tut-valu">0</span>, <span class="tut-valu">4096</span>))) &gt; <span class="tut-valu">0</span>
+    _output.Write(buffer, <span class="tut-valu">0</span>, read)
+  <span class="tut-rsvd">End While</span>
+  Data.Seek(originalPosition, <span class="tut-symb">SeekOrigin</span>.Begin) <span class="tut-cmnt">' Restore Original Position</span>
+End Sub
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audpcmtowav.png" width="630" height="694" alt="MainPage.xaml SavePcMtoWav Sub and Helper Function" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Record" Button and type in the Record_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If Not</span> _isRecording <span class="tut-rsvd">Then</span>
+  <span class="tut-rsvd">If</span> (<span class="tut-symb">CaptureDeviceConfiguration</span>.AllowedDeviceAccess _
+      <span class="tut-rsvd">Or</span> <span class="tut-symb">CaptureDeviceConfiguration</span>.RequestDeviceAccess) _
+      <span class="tut-rsvd">And</span> _source.State = CaptureState.Stopped <span class="tut-rsvd">Then</span>
+    _sink = <span class="tut-rsvd">New</span> <span class="tut-symb">MemoryAudioSink</span>
+    _sink.CaptureSource = _source
+    _source.Start()
+    _isRecording = <span class="tut-rsvd">True</span>
+    _hasRecorded = <span class="tut-rsvd">False</span>
+    Status.Text = <span class="tut-valu">"Recording..."</span>
+  <span class="tut-rsvd">End If
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audrecordclick.png" width="524" height="269" alt="Record Button Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Stop" Button and type in the Stop_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> _source.State = <span class="tut-symb">CaptureState</span>.Started <span class="tut-rsvd">Then</span>
+  _source.Stop()
+  _isRecording = <span class="tut-rsvd">False</span>
+  _hasRecorded = <span class="tut-rsvd">True</span>
+  Status.Text = <span class="tut-valu">"Recording Complete"</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audstopclick.png" width="510" height="167" alt="Stop Button Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Return to the Designer View by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Save..." Button Control and type in the Save_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> _hasRecorded <span class="tut-rsvd">Then
+  Dim</span> SaveDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">SaveFileDialog</span>
+  SaveDialog.Filter = <span class="tut-valu">"Audio Files (*.wav)|*.wav"</span>
+  <span class="tut-rsvd">If</span> SaveDialog.ShowDialog <span class="tut-rsvd">Then
+    Try</span>
+      Status.Text = <span class="tut-valu">"Saving..."</span>
+      <span class="tut-rsvd">Using</span> FileStream <span class="tut-rsvd">As</span> <span class="tut-symb">Stream</span> = SaveDialog.OpenFile
+        SavePcmToWav(_sink.BackingStream, FileStream, _sink.CurrentFormat)
+      <span class="tut-rsvd">End Using</span>
+      Status.Text = <span class="tut-valu">"Recording Saved"</span>
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+      <span class="tut-cmnt">' Ignore Errors</span>
+    <span class="tut-rsvd">End Try
+  End If
+Else</span>
+  <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Complete a Recording before Saving"</span>, _
+    <span class="tut-rsvd">"Audio Recorder"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4audsaveclick.png" width="640" height="371" alt="Save Button Click Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4audrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on "Record", a dialog will appear saying "Do you want to allow camera and microphone access?", select "Yes" and Recording
+should begin, when finished click Stop then Save your Recording, see below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4audapp.png" width="400" height="300" alt="Audio Recorder" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Close the Application and Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p>
+This was a simple Audio or Microphone-based application, it could also show more visual indications of a Recording in progress between the Toolbar and Statusbar, it is up to you!<br/> 
+If you could not get your Audio feed to work try Right Clicking on the Silverlight application, click the "Silverlight" option, then select the Webcam / Mic Tab to choose your Microphone as the Default Audio Source. 
+</p>
+</body>
+</html>

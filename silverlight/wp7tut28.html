@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Flip Clock</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar"><h1>Flip Clock</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Flip Clock emulates the classic "Flip Clock" style of various alarm clocks and airport signage for a clock using Silverlight on Windows Phone 7.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut28.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut28.zip">Download Tutorial</a> (636KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut28code.zip">Download Source Code</a> (18.1KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select from the Main Menu "Project" then "Add New Item...", and select the "Windows Phone User Control" Template, then change the "Name" to Flip.xaml see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7flicloaddflip.png" width="939" height="624" alt="Add Flip User Control" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the new User Control to the Project by Clicking on Add, then in the XAML Pane for the Flip.xaml User Control.<br/> 
+Remove <span class="tut-rsvd"><span class="tut-attr">d</span>:<span class="tut-attr">DesignHeight</span>="480" <span class="tut-attr">d</span>:<span class="tut-attr">DesignWidth</span>="480"</span>
+from the <span class="tut-rsvd">&lt;<span class="tut-valu">UserControl</span> ...&gt;</span> Tag.<br/>
+Also remove <span class="tut-rsvd"><span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneChromeBrush</span>}"</span> from <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" ...&gt;</span>, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7fliclouser.png" width="530" height="221" alt="Flip UserControl Attributes" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+While still in the XAML Pane for the Flip.xaml User Control, between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="#FF1F1F1F"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Height</span>="140" <span class="tut-attr">Width</span>="140"&gt;
+  &lt;<span class="tut-valu">Grid.Resources</span>&gt;
+    &lt;<span class="tut-valu">Style</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="Text" <span class="tut-attr">TargetType</span>="TextBlock"&gt;
+      &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="FontFamily" <span class="tut-attr">Value</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneFontFamilyNormal</span>}"/&gt;
+      &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="FontSize" <span class="tut-attr">Value</span>="90"/&gt;
+      &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Foreground" <span class="tut-attr">Value</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneBackgroundBrush</span>}"/&gt;
+    &lt;/<span class="tut-valu">Style</span>&gt;
+    &lt;<span class="tut-valu">Style</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="Border" <span class="tut-attr">TargetType</span>="Border"&gt;
+      &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="CornerRadius" <span class="tut-attr">Value</span>="8"/&gt;
+      &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="BorderBrush" <span class="tut-attr">Value</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneSubtleColor</span>}"/&gt;
+      &lt;Setter <span class="tut-attr">Property</span>="BorderThickness" <span class="tut-attr">Value</span>="1,1,1,1"/&gt;
+    &lt;/<span class="tut-valu">Style</span>&gt;
+    &lt;<span class="tut-valu">LinearGradientBrush</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="BackgroundBrush" <span class="tut-attr">EndPoint</span>="0.5,1" <span class="tut-attr">StartPoint</span>="0.5,0"&gt;
+      &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Color</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneForegroundColor</span>}" <span class="tut-attr">Offset</span>="1"/&gt;
+      &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Color</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentColor</span>}"/&gt;
+    &lt;/<span class="tut-valu">LinearGradientBrush</span>&gt;
+    &lt;<span class="tut-valu">Storyboard</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FlipAnimation"&gt;
+      &lt;<span class="tut-valu">DoubleAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="BlockFlip" 
+        <span class="tut-attr">Storyboard.TargetProperty</span>="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"&gt;
+        &lt;<span class="tut-valu">EasingDoubleKeyFrame</span> <span class="tut-attr">Value</span>="1" <span class="tut-attr">KeyTime</span>="0"&gt;
+          &lt;<span class="tut-valu">EasingDoubleKeyFrame.EasingFunction</span>&gt;
+            &lt;<span class="tut-valu">BounceEase</span> <span class="tut-attr">EasingMode</span>="EaseOut" <span class="tut-attr">Bounces</span>="1" <span class="tut-attr">Bounciness</span>="6"/&gt;
+          &lt;/<span class="tut-valu">EasingDoubleKeyFrame.EasingFunction</span>&gt;
+        &lt;/<span class="tut-valu">EasingDoubleKeyFrame</span>&gt;
+        &lt;<span class="tut-valu">EasingDoubleKeyFrame</span> <span class="tut-attr">Value</span>="-1" <span class="tut-attr">KeyTime</span>="00:00:00.8"&gt;
+          &lt;<span class="tut-valu">EasingDoubleKeyFrame.EasingFunction</span>&gt;
+            &lt;<span class="tut-valu">BounceEase</span> <span class="tut-attr">EasingMode</span>="EaseOut" <span class="tut-attr">Bounces</span>="1" <span class="tut-attr">Bounciness</span>="6"/&gt;
+          &lt;/<span class="tut-valu">EasingDoubleKeyFrame.EasingFunction</span>&gt;
+        &lt;/<span class="tut-valu">EasingDoubleKeyFrame</span>&gt;
+      &lt;/<span class="tut-valu">DoubleAnimationUsingKeyFrames</span>&gt;
+      &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="textBlockFlipTop" 
+        <span class="tut-attr">Storyboard.TargetProperty</span>="(UIElement.Visibility)"&gt;
+        &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0"&gt;
+          &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+            &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Visible</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+          &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+        &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="00:00:00.4"&gt;
+          &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+            &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Collapsed</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+          &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+      &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+      &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="textBlockFlipBottom" 
+        <span class="tut-attr">Storyboard.TargetProperty</span>="(UIElement.Visibility)"&gt;
+        &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0"&gt;
+          &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+            &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Collapsed</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+          &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+        &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="00:00:00.4"&gt;
+          &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+            &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Visible</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+          &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+      &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+    &lt;/<span class="tut-valu">Storyboard</span>&gt;
+  &lt;/<span class="tut-valu">Grid.Resources</span>&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> Height=<span class="tut-attr">"0.5*"</span>/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> Height=<span class="tut-attr">"0.5*"</span>/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Border</span> <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">Border</span>}" <span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">BackgroundBrush</span>}" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="BlockTop"&gt;
+    &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">Text</span>}" <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Text</span>="01" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="textBlockTop"/&gt;
+  &lt;/<span class="tut-valu">Border</span>&gt;
+  &lt;<span class="tut-valu">Border</span> <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">Border</span>}" <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="BlockBottom"&gt;
+    &lt;<span class="tut-valu">Border.Background</span>&gt;
+      &lt;<span class="tut-valu">LinearGradientBrush</span> <span class="tut-attr">EndPoint</span>="0.5,1" <span class="tut-attr">StartPoint</span>="0.5,0"&gt;
+        &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Color</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneForegroundColor</span>}" /&gt;
+        &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Color</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentColor</span>}" <span class="tut-attr">Offset</span>="1"/&gt;
+      &lt;/<span class="tut-valu">LinearGradientBrush</span>&gt;
+    &lt;/<span class="tut-valu">Border.Background</span>&gt;
+    &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Margin</span>="0,0,0,16" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">Text</span>}" <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Bottom" 
+      <span class="tut-attr">RenderTransformOrigin</span>="0.5,0" <span class="tut-attr">Text</span>="00" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="textBlockBottom"/&gt;
+  &lt;/<span class="tut-valu">Border</span>&gt;
+  &lt;<span class="tut-valu">Border</span> <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">Border</span>}" <span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">BackgroundBrush</span>}" <span class="tut-attr">RenderTransformOrigin</span>="0.5,1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="BlockFlip"&gt;
+    &lt;<span class="tut-valu">Border.RenderTransform</span>&gt;
+    &lt;<span class="tut-valu">TransformGroup</span>&gt;
+      &lt;<span class="tut-valu">ScaleTransform</span>/&gt;
+      &lt;<span class="tut-valu">SkewTransform</span>/&gt;
+      &lt;<span class="tut-valu">RotateTransform</span>/&gt;
+      &lt;<span class="tut-valu">TranslateTransform</span>/&gt;
+    &lt;/<span class="tut-valu">TransformGroup</span>&gt;
+  &lt;/<span class="tut-valu">Border.RenderTransform</span>&gt;
+  &lt;<span class="tut-valu">Grid</span>&gt;
+    &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">Text</span>}" <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Text</span>="00" 
+      <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="textBlockFlipTop"/&gt;
+    &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">Text</span>}" <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Bottom" <span class="tut-attr">Visibility</span>="Collapsed" 
+      <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="textBlockFlipBottom"&gt;
+      &lt;<span class="tut-valu">TextBlock.RenderTransform</span>&gt;
+        &lt;<span class="tut-valu">TransformGroup</span>&gt;
+          &lt;<span class="tut-valu">ScaleTransform</span> <span class="tut-attr">ScaleY</span>="-1"/&gt;
+          &lt;<span class="tut-valu">SkewTransform</span>/&gt;
+          &lt;<span class="tut-valu">RotateTransform</span>/&gt;
+          &lt;<span class="tut-valu">TranslateTransform</span> <span class="tut-attr">Y</span>="70"/&gt;
+          &lt;/<span class="tut-valu">TransformGroup</span>&gt;
+        &lt;/<span class="tut-valu">TextBlock.RenderTransform</span>&gt;
+      &lt;/<span class="tut-valu">TextBlock</span>&gt;
+    &lt;/<span class="tut-valu">Grid</span>&gt;
+  &lt;/<span class="tut-valu">Border</span>&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7fliclouserxaml.png" width="1040" height="1645" alt="Flip UserControl XAML View" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7fliclouserdesign.png" width="106" height="94" alt="Flip UserControl Design View" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Right Click on the Page or the entry for "Flip.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View above "public Flip()" type the following Dependancy Properties, Properties and Methods: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> TextPrevProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"TextPrev"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">string</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Flip</span>), <span class="tut-rsvd">null</span>);
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> TextNextProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"TextNext"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">string</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">Flip</span>), <span class="tut-rsvd">null</span>);
+
+<span class="tut-rsvd">public string</span> TextPrev
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-rsvd">string</span>)GetValue(TextPrevProperty); }
+  <span class="tut-rsvd">set</span>
+  {
+    SetValue(TextPrevProperty, <span class="tut-rsvd">value</span>);
+    textBlockBottom.Text = TextPrev;
+    textBlockFlipTop.Text = TextPrev;
+  }
+}
+
+<span class="tut-rsvd">public string</span> TextNext
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-rsvd">string</span>)GetValue(TextNextProperty); }
+  <span class="tut-rsvd">set</span>
+  {
+    SetValue(TextNextProperty, <span class="tut-rsvd">value</span>);
+    textBlockTop.Text = TextNext;
+    textBlockFlipBottom.Text = TextNext;
+  }
+}
+
+<span class="tut-rsvd">public void</span> Value(<span class="tut-rsvd">string</span> source, <span class="tut-rsvd">string</span> target)
+{
+  TextNext = target;
+  TextPrev = source;
+  FlipAnimation.Begin();
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7fliclousercode.png" width="490" height="605" alt="Flip UserControl Properties and Methods" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Select "Build Solution" from the Debug menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7build.png" width="233" height="24" alt="Build Solution" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+When the Build completes, return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+In XAML Pane for MainPage.xaml between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following StackPanel XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Height</span>="200" <span class="tut-attr">Width</span>="420" 
+  <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">Orientation</span>="Horizontal"&gt;
+
+&lt;/<span class="tut-valu">StackPanel</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7flicloxaml.png" width="502" height="93" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7fliclodesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Then from the FlipClock Controls section in the Toolbox select the Flip control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7flip.png" width="180" height="428" alt="Flip User Control" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Draw three Flip Controls onto the StackPanel by dragging the Flip Controls from the Toolbox onto the StackPanel, 
+then in the XAML Pane change the <span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Flip</span> ...&gt;</span> lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Flip</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Hours"/&gt;
+&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Flip</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Minutes"/&gt;
+&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Flip</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Seconds"/&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7flicloflipxaml.png" width="502" height="125" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7flicloflipdesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View above "namespace FlipClock" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Windows.Threading;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public MainPage()" type the following Declarations: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">DispatcherTimer</span> _timer = <span class="tut-rsvd">new</span> <span class="tut-symb">DispatcherTimer</span>();
+<span class="tut-rsvd">private int</span> _seconds = <span class="tut-symb">DateTime</span>.Now.Second;
+<span class="tut-rsvd">private int</span> _minutes = <span class="tut-symb">DateTime</span>.Now.Minute;
+<span class="tut-rsvd">private int</span> _hours = <span class="tut-symb">DateTime</span>.Now.Hour;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7flicloref.png" width="452" height="477" alt="MainPage Reference and Declarations" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Event Handler:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Timer_Tick(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (_seconds == 59)
+  {
+    Seconds.Value(_seconds.ToString(<span class="tut-valu">"00"</span>), 0.ToString(<span class="tut-valu">"00"</span>));
+    _seconds = 0;
+    <span class="tut-rsvd">if</span> (_minutes == 59)
+    {
+      Minutes.Value(_minutes.ToString(<span class="tut-valu">"00"</span>), 0.ToString(<span class="tut-valu">"00"</span>));
+      _minutes = 0;
+      <span class="tut-rsvd">if</span> (_hours == 23)
+      {
+        Hours.Value(_hours.ToString(<span class="tut-valu">"00"</span>), 0.ToString(<span class="tut-valu">"00"</span>));
+        _hours = 0;
+      }
+      <span class="tut-rsvd">else</span>
+      {
+        Hours.Value(_hours.ToString(<span class="tut-valu">"00"</span>), (_hours + 1).ToString(<span class="tut-valu">"00"</span>));
+        _hours += 1;
+      }
+    }
+    <span class="tut-rsvd">else</span>
+    {
+      Minutes.Value(_minutes.ToString(<span class="tut-valu">"00"</span>), (_minutes + 1).ToString(<span class="tut-valu">"00"</span>));
+      _minutes += 1;
+    }
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    Seconds.Value(_seconds.ToString(<span class="tut-valu">"00"</span>), (_seconds + 1).ToString(<span class="tut-valu">"00"</span>));
+    _seconds += 1;
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7fliclocode.png" width="640" height="525" alt="MainPage Event Handler" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the Code View in the "public MainPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+PageTitle.Text = <span class="tut-valu">"flip clock"</span>;
+Seconds.TextPrev = _seconds.ToString(<span class="tut-valu">"00"</span>);
+Minutes.TextPrev = _minutes.ToString(<span class="tut-valu">"00"</span>);
+Hours.TextPrev = _hours.ToString(<span class="tut-valu">"00"</span>);
+_timer.Tick += Timer_Tick;
+_timer.Interval = <span class="tut-symb">TimeSpan</span>.FromSeconds(1);
+_timer.Start();
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7flicloinit.png" width="396" height="173" alt="MainPage Constructor" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7fliclorun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple Flip Clock using a Flip UserControl, it would be possible to use the Flip user control to display text such as the previously mentioned 
+Airport displays for example - you can change the control to look even more like a classic flip clock or anything else - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

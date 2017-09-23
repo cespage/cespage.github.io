@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - mPlayer</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>mPlayer</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+mPlayer is a simple Silverlight-based Media Player with support for Video and Audio content with Playback and Audio control such as Volume and more!
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/sl4tut15.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/sl4tut15.zip">Download Tutorial</a> (316KB)</em>
+<em class="icon-dload"><a href="tutorials/sl4tut15code.zip">Download Source Code</a> (6.40KB)</em>
+<em class="icon-odemo"><a href="tutorials/sl4tut15demo.html">Online Demonstration</a></em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Two Canvases on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "&lt;Canvas&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="35" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="35" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,265,0,0" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Playback"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplaycvs.png" width="420" height="319" alt="MainPage with Toolbar Canvas and Playback Canvas" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw Three Buttons on the "Toolbar" Canvas by dragging the Buttons from the Toolbox onto the Canvas then in the XAML Pane inbetween top the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Open" <span class="tut-attr">Content</span>="Open..."/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="PlayPause" <span class="tut-attr">Content</span>="Play Pause"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Stop" <span class="tut-attr">Content</span>="Stop"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplaycvsbtns.png" width="423" height="315" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Slider control: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4slider.png" width="180" height="428" alt="Slider Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw One Slider on the Upper Canvas (Toolbar) with the Buttons, and change the &lt;Slider&gt; line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Slider</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Minimum</span>="-1" <span class="tut-attr">Maximum</span>="1" <span class="tut-attr">Value</span>="0" <span class="tut-attr">Name</span>="Balance"/&gt;</span>
+</pre>
+</blockquote>
+<p>
+Then Draw Two more Sliders onto the Bottom Canvas (Playback) and change the &lt;Slider&gt; lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Slider</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="237" <span class="tut-attr">Name</span>="Position"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Slider</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Minimum</span>="0" <span class="tut-attr">Maximum</span>="1" <span class="tut-attr">Value</span>="0.5" <span class="tut-attr">Name</span>="Volume"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplaysli.png" width="432" height="319" alt="MainPage with Buttons and Sliders" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the MediaElement control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mediaelement.png" width="180" height="428" alt="MediaElement Control" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Draw a MediaElement on the Page between the Canvases and in the XAML Pane change the "&lt;MediaElement&gt;" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">MediaElement</span> <span class="tut-attr">Height</span>="230" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,35,0,0" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Stretch</span>="Uniform" <span class="tut-attr">Name</span>="Player"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplaymedia.png" width="422" height="314" alt="MainPage with MediaElement" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option.<br/>
+In the Code View below the "End Sub" for "Public Sub New()" Constructor type the following Event Handler Subs: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Player_MediaOpened(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, _
+    <span class="tut-rsvd">ByVal</span> args <span class="tut-rsvd">As</span> <span class="tut-symb">RoutedEventArgs</span>) _
+    <span class="tut-rsvd">Handles</span> Player.MediaOpened
+  Position.Maximum = Player.NaturalDuration.TimeSpan.TotalMilliseconds
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> Player_MediaEnded(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, _
+    <span class="tut-rsvd">ByVal</span> args <span class="tut-rsvd">As</span> <span class="tut-symb">RoutedEventArgs</span>) _
+    <span class="tut-rsvd">Handles</span> Player.MediaEnded
+  Player.Stop()
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplaymediaevents.png" width="544" height="184" alt="MainPage.xaml Player Event Handlers" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Open..." Button and type in the Open_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> OpenDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">OpenFileDialog</span>
+OpenDialog.Filter = <span class="tut-valu">"Audio|*.wma;*.mp3|Video|*.wmv;*mp4"</span>
+<span class="tut-rsvd">If</span> OpenDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    If</span> OpenDialog.File.Exists <span class="tut-rsvd">Then</span>
+      Player.SetSource(OpenDialog.File.OpenRead())
+    <span class="tut-rsvd">End If
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplayopenclick.png" width="510" height="252" alt="Open Button Click Event" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Return to the Designer View again, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Play Pause" Button and type in the PlayPause_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Player.CurrentState = <span class="tut-symb">MediaElementState</span>.Playing <span class="tut-rsvd">Then</span>
+    Player.Pause()
+<span class="tut-rsvd">Else</span>
+    Player.Play()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplayplaypauseclick.png" width="546" height="150" alt="Play Pause Button Click Event" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Stop" Button Control and type in the Stop_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Player.Stop()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplaystopclick.png" width="510" height="82" alt="Stop Button Click Event" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Balance" Slider Control, at the end of the Buttons on the Toolbar Canvas, and type in the Balance_ValueChanged Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Player.Balance = Balance.Value
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplaybalanceval.png" width="812" height="82" alt="Balance Slider ValueChanged Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Position" Slider Control, which is the larger Slider on the "Playback" Canvas, and type in the Position_ValueChanged Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Player.Position = <span class="tut-symb">TimeSpan</span>.FromMilliseconds(<span class="tut-rsvd">CInt</span>(Position.Value))
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplaypositionval.png" width="818" height="82" alt="Position Slider ValueChanged Event" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Volume" Slider Control, which is next to the "Position" Slider, and type in the Volume_ValueChanged Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Player.Volume = Volume.Value
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplayvolumeval.png" width="804" height="82" alt="Volume Slider ValueChanged Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplayrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+You can Open compatible Audio and Video to Play such as Windows Media Audio/Video and MP3, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mplayapp.png" width="400" height="300" alt="mPlayer" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="tutorials/sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This is a simple Media Playing application, try adding more features such as Fast Forward or Rewind, it also possible to use this as a basis for a Hosted-Media Player
+to play content from an web address - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

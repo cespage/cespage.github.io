@@ -1,0 +1,52 @@
+div { position:relative; margin:0px; padding:0px; }
+body { margin:0px; padding:0px; border:0px; font-family: segoe ui, arial, verdana, helvetica, sans-serif;}
+img { border:0px; padding:0px; margin:0px; }
+
+.clear { clear:both; }
+
+#content { margin:0px auto; width:960px; 
+  background-repeat:no-repeat; background-position:bottom left; }
+
+#header { width:960px; height:500px; }
+
+h1 { display:inline; margin:120px 40px 0px 0px; float:right; padding:0px; height:120px; width:600px;
+  background:url('images/title.png'); background-repeat:no-repeat; }
+h1 span { position:absolute; top:-5000px; }
+
+#phone { width:250px; height:482px; display:inline; float:left; margin:10px 0px 0px 20px; 
+  background-image:url('images/phone.png'); background-repeat:no-repeat; }
+#phone span { position:absolute; top:-1500px; }
+
+#share { position:absolute; right:45px; top:90px; width:210px; }
+#share div { float:right; }
+
+#highlight { position:relative; float:right; width:650px; display:inline; }
+
+#intro { width:300px; height:140px; float:left; display:inline; margin-top:20px;
+background-image:url('images/intro.png'); background-repeat:no-repeat; }
+#intro span { position:absolute; top:-1500px; }
+
+#info { float:right; display:inline; width:308px; height:104px; 
+  margin:0px 20px 0px 0px; padding:0px; border:0px; }
+#info div { margin:8px 0px 0px 8px; border:0px; padding:0px; width:92px; height:92px; 
+  float:left; display:inline; }
+
+.panel { display:inline; float:left; width:200px; padding:0px 40px; 
+  margin:0px; font-size:14px; color:#505050; }
+.panel h2 span { position:absolute; top:-1500px; }
+.panel p {font-size:0.95em;}
+
+#panel-one h2 { height:40px; width:80px; 
+  background-image:url('images/share-title.png'); background-repeat:no-repeat;}
+	
+#panel-two h2 { height:40px; width:120px; 
+  background-image:url('images/anytime-title.png'); background-repeat:no-repeat;}
+	
+#panel-three h2 { height:40px; width:122px; 
+  background-image:url('images/network-title.png'); background-repeat:no-repeat;}
+	
+#bar { width:960px; height:15px; margin-top:20px; padding:1px; }
+	
+#footer { width:960px; margin:0px auto;  padding-top:10px; }
+#footer .logo { text-align:left; }
+#footer .credit { text-align:left; float:right; }

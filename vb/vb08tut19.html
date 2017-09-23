@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - About Console</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>About Console</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>In this tutorial you will learn how to create a simple Console-based Application which displays information about
+your PC using the "My" Namespace and Environment Variables!</p>
+<p>
+<em class="icon-print"><a href="tutorials/vb08tut19.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vb08tut19.zip">Download Tutorial</a> (87KB)</em>
+<em class="icon-dload"><a href="tutorials/vb08tut19code.zip">Download Source Code</a> (9KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Console Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08newcon.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Module named Module1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08module1.png" width="128" height="118" alt="Module1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Module1 selected goto the Properties box and change the File Name from Module1 to modMain
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08module1prop.png" width="203" height="399" alt="Module1 File Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+With the modMain Module Code View displayed, enter the following code in the "Sub Main()", subroutine: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Output <span class="tut-rsvd">As String</span>
+Output = <span class="tut-valu">"Computer Information"</span> &amp; vbCrLf &amp; vbCrLf
+<span class="tut-rsvd">For Each</span> Item <span class="tut-rsvd">As</span> System.IO.DriveInfo <span class="tut-rsvd">In My</span>.Computer.FileSystem.Drives
+  <span class="tut-rsvd">If</span> Item.IsReady <span class="tut-rsvd">Then</span>
+      Output = Output &amp; <span class="tut-valu">"Drive:"</span> &amp; Item.VolumeLabel &amp; <span class="tut-valu">"("</span> &amp; Item.Name &amp; <span class="tut-valu">") Space "</span> _
+      &amp; Item.TotalFreeSpace &amp; <span class="tut-valu">") Size ("</span> &amp; Item.TotalSize &amp; <span class="tut-valu">")"</span> &amp; vbCrLf
+  <span class="tut-rsvd">End If
+Next
+For Each</span> Item <span class="tut-rsvd">As</span> Environment.SpecialFolder <span class="tut-rsvd">In</span> [Enum].GetValues(GetType(Environment.SpecialFolder))
+  Output = Output &amp; <span class="tut-valu">"Special Folder:"</span> &amp; _
+  [Enum].GetName(<span class="tut-rsvd">GetType</span>(Environment.SpecialFolder), Item) _
+  &amp; <span class="tut-valu">" ("</span> &amp; Environment.GetFolderPath(Item) &amp; <span class="tut-valu">")"</span> &amp; vbCrLf
+<span class="tut-rsvd">Next</span>
+Output = Output &amp; <span class="tut-valu">"Memory (Physical):"</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.AvailablePhysicalMemory &amp; _
+<span class="tut-valu">" of "</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.TotalPhysicalMemory &amp; vbCrLf
+Output = Output &amp; <span class="tut-valu">"Memory (Virtual):"</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.AvailableVirtualMemory &amp; _
+<span class="tut-valu">" of "</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.TotalVirtualMemory &amp; vbCrLf
+Output = Output &amp; <span class="tut-valu">"Operating System:"</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.OSFullName &amp; _
+<span class="tut-valu">" Version "</span> &amp; <span class="tut-rsvd">My</span>.Computer.Info.OSVersion &amp; vbCrLf
+Output = Output &amp; <span class="tut-valu">"Computer:"</span> &amp; <span class="tut-rsvd">My</span>.Computer.Name &amp; vbCrLf
+Output = Output &amp; vbCrLf &amp; vbCrLf &amp; <span class="tut-valu">"Environment Variables"</span> &amp; vbCrLf &amp; vbCrLf
+<span class="tut-rsvd">For Each</span> Item <span class="tut-rsvd">As</span> DictionaryEntry <span class="tut-rsvd">In</span> Environment.GetEnvironmentVariables
+  Output = Output &amp; Item.Key &amp; <span class="tut-valu">":"</span> &amp; Item.Value &amp; vbCrLf
+<span class="tut-rsvd">Next</span>
+Console.Write(Output)
+Console.Read()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08modmainsubmain.png" width="860" height="542" alt="modMain Sub Main" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vb08aboutconsolerun.png" width="300" height="300" alt="Alarm Clock Running" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Click on the Close button <img src="tutorials/vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right to end the application or press any key such as the Spacebar.
+</p>
+<p>
+This is a very simple Console Application outputing information to a Console Window, the Console.Read waits for any input such as the Spacebar
+, this could be changed to show more or different data, console applications are useful for when you want to do something that does
+not require anything to been seen, it is up to you, make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

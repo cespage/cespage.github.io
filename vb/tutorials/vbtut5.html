@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Simple Text Editor</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Simple Text Editor</h1>
+<p>Text Editing is one of the most common tasks performed on a computer, 
+so here is a simple one which will introduce you to the Text Box Control plus a little about Input Boxes and using Files.</p>
+<p>
+<a href="http://www.cespage.com/vb/vbtut5.html">www.cespage.com/vb/vbtut5.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Basic, then select Standard EXE Project if VB5/6, click on the option then click Open, see below:
+</p>
+<div class="tutorial-image">
+<img src="fignewproject.gif" width="446" height="426" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="figform1.gif" width="320" height="240" alt="Form 1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Visual Basic Components Menu Select the Text Box Control:
+</p>
+<div class="tutorial-image">
+<img src="figtextbox.gif" width="144" height="219" alt="Text Box Control" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a Text Box on the Form as shown below:
+</p>
+<div class="tutorial-image">
+<img src="figformtxt.gif" width="320" height="240" alt="Form with Text Box" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then goto the Properties box and change MultiLine to True and ScrollBar to 2 - Vertical, see below:
+</p>
+<div class="tutorial-image">
+<img src="figtxtdocprop.gif" width="210" height="255" alt="Text Box Properties - MultiLine and ScrollBar" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Visual Basic Components Menu Select the Command Button Control:
+</p>
+<div class="tutorial-image">
+<img src="figcommand.gif" width="163" height="221" alt="Command Button Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw Three Command Buttons on the Form as shown below:
+</p>
+<div class="tutorial-image">
+<img src="figtxtcom.gif" width="320" height="240" alt="Form with Text Box and Three Command Buttons" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Change the Caption of Command3 to Quit using the Properties, see below:
+</p>
+<div class="tutorial-image">
+<img src="figcom3prop.gif" width="210" height="255" alt="Command Button 3 Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Change the Caption of Command2 to Save and the Caption of Command1 to Load, using the Properties for each Button, so as below:
+</p>
+<div class="tutorial-image">
+<img src="figtxtcomfin.gif" width="320" height="240" alt="Form with Text Box and Buttons with Captions" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Double Click on the Button Labeled Load (Command1) and type in the Command1_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> strName <span class="tut-rsvd">As String</span>, strFile <span class="tut-rsvd">As String</span>, strTemp <span class="tut-rsvd">As String</span>
+<span class="tut-rsvd">On Error GoTo</span> ErrHandler
+strName = InputBox("Filename:")
+<span class="tut-rsvd">Open</span> strName <span class="tut-rsvd">For Input As</span> #1
+  strFile = ""
+  <span class="tut-rsvd">Do Until</span> EOF(1)
+    <span class="tut-rsvd">Line Input</span> #1, strTemp
+    strFile = strFile &amp; strTemp &amp; vbCrLf
+  <span class="tut-rsvd">Loop</span>
+  Text1.Text = strFile
+<span class="tut-rsvd">Close</span> #1
+ErrHandler: 
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 11</p>
+<p>
+Double Click on the Button Labeled Save (Command2) and type in the Command2_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> strName <span class="tut-rsvd">As String</span>
+<span class="tut-rsvd">On Error GoTo</span> ErrHandler
+strName = InputBox("Filename:")
+<span class="tut-rsvd">Open</span> strName <span class="tut-rsvd">For Output As</span> #1
+  <span class="tut-rsvd">Print</span> #1, Text1.Text
+<span class="tut-rsvd">Close</span> #1
+ErrHandler: 
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 12</p>
+<p>
+Double Click on the Button Labeled Quit (Command3) and type in the Command3_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Unload Me
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 13</p>
+<p>
+Save the Project (for example prjTextEditor) into a vacant folder as you have finished the application. Click on Start / Run 
+<img src="figstart.gif" width="23" height="22" alt="Start / Run" /> or Press F5 and the below will appear:
+</p>
+<div class="tutorial-image">
+<img src="figtxtedrun.gif" width="320" height="240" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Now Click on Load and an Input Box will appear, type a location of a file (e.g. c:\windows\readme.txt), see below:
+</p>
+<div class="tutorial-image">
+<img src="figtxtedopen.gif" width="363" height="145" alt="Text Editor Open" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Click Ok and the document should be displayed in the Text Box, see below:
+</p>
+<div class="tutorial-image">
+<img src="figtxtedfo.gif" width="320" height="240" alt="Text Editor File Open" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+You can Save a txt (Text) File by clicking on Save and enter a filename, the contents of the Text Box 
+will be saved to that File so that you can Open (Load) your old File. To Quit the Application, Click on Quit.
+</p>
+<p>
+That was simple wasn't it? It can Load and Save Text Files! Try changing the program so that it checks whether 
+a file exists for Load and Save. Try changing other parts of the code and extending it, you can learn a lot 
+from this text editor, try and see if you can modify this example to use the Common Dialog box!
+</p>
+</body>
+</html>

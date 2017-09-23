@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Task Tray</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Task Tray</h1>
+<p>This will show you how to put an Icon in the Task Tray and make a Menu appear when you right click on the Icon in the Task Tray.</p>
+<p>
+<a href="http://www.cespage.com/vb/vbdntut3.html">www.cespage.com/vb/vbdntut3.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Studio.NET then select Visual Basic Projects, Windows Application, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgnewproject.gif" width="531" height="371" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgform1.gif" width="314" height="314" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Scroll down the Windows Forms Components tab and select the NotifyIcon control:
+</p>
+<div class="tutorial-image">
+<img src="imgnotifyicon.gif" width="200" height="400" alt="NotifyIcon Control"/>
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw the NotifyIcon control on Form1 and it will appear in the pane, beneath the form, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgpaneni.gif" width="200" height="84" alt="NotifyIcon Control in Pane" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Scroll down the Windows Forms Components tab and select the ContextMenu control:
+</p>
+<div class="tutorial-image">
+<img src="imgcontextmenu.gif" width="200" height="356" alt="ContextMenu Control" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Draw the ContextMenu control on the form, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgformctx.gif" width="300" height="321" alt="Form with ContextMenu" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Make sure the ContextMenu1 control is selected in the Pane beneath the form then Click on the ContextMenu at the top of Form1 
+and change Type Here to Exit by clicking on the text and typing in the new value, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgform1ctxmnu.gif" width="300" height="321" alt="Form with ContextMenu with Exit" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Double click where you entered Exit on the ContextMenu and enter in the MenuItem1_Click sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">End</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="imgctxclick.gif" width="530" height="64" alt="ContextMenu MenuItem Click Event" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on the NotifyIcon1 control in the Pane beneath Form1, then go to the Properties box and set the ContextMenu property to ContextMenu1, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgnotifyprop.gif" width="204" height="433" alt="NotifyIcon Properties" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Double Click on Form1 and type in the Form1_Load Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+NotifyIcon1.Icon = <span class="tut-rsvd">Me</span>.Icon
+NotifyIcon1.Visible = <span class="tut-rsvd">True</span>
+NotifyIcon1.Text = "Task Tray"
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="imgfrmclick.gif" width="530" height="100" alt="Form1 Load Event" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Save the Project as you have now finished the application, select Release and Click on Start:
+</p>
+<div class="tutorial-image">
+<img src="imgstart.gif" width="124" height="22" alt="Start (Release)" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="imgtasktrayrun.gif" width="90" height="34" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Now right click on the icon shown in the Task Tray and a menu should appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="imgtasktray.gif" width="120" height="36" alt="Task Tray with Menu" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Click on Exit on the menu to end the application. Try Changing the Form Icon or add other Sub Menus to the ContextMenu and see what happens!
+</p>
+</body>
+</html>

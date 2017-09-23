@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Lucky Lotto</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+
+.tut-valu {
+							color: maroon;
+}
+
+.tut-attr {
+							color: red;
+}
+
+.tut-rsvd {
+							color: blue;
+}
+
+.tut-prop {
+					 		color: gray;
+}
+
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>Lucky Lotto</h1>
+<p>
+Choose your Lotto Numbers with this simple Tutorial using Random Numbers and features correctly coloured balls for the UK Lotto.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut8.html">www.cespage.com/silverlight/sl4tut8.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Canvas that fill the whole Page or in the XAML Pane between the "&lt;Grid&gt;" and "&lt;/Grid&gt;" lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="300" <span class="tut-attr">Width</span>="400" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Page"&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4cvspage.png" width="423" height="322" alt="MainPage with Canvas" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the StackPanel control:
+</p>
+<div class="tutorial-image">
+<img src="sl4stackpanel.png" width="180" height="428" alt="StackPanel Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a StackPanel on the Canvas by dragging a StackPanel from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;StackPanel&gt; line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Canvas.Left</span>="40" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="65" <span class="tut-attr">Width</span>="320" <span class="tut-attr">Orientation</span>="Horizontal" <span class="tut-attr">Name</span>="Lottery"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4lottopnl.png" width="415" height="314" alt="MainPage with Canvas and StackPanel" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw a Button on the Canvas by dragging the Button from the Toolbox onto the Canvas, then in the XAML Pane below the "&lt;StackPanel&gt;" tag change the "&lt;Button&gt;" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="163" <span class="tut-attr">Canvas.Top</span>="263" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Choose" <span class="tut-attr">Content</span>="Choose"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4lottopnlbtn.png" width="415" height="314" alt="MainPage with Canvas, StackPanel and Button" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View below "End Sub" for "Public Sub New()" Constructor type the following Function: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Numbers() <span class="tut-rsvd">As</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>)
+  <span class="tut-rsvd">Dim</span> _number <span class="tut-rsvd">As Integer
+  Dim</span> _numbers <span class="tut-rsvd">As New</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>)
+  <span class="tut-rsvd">While</span> _Numbers.Count &lt; <span class="tut-valu">6</span> <span class="tut-cmnt">' Select 6 Numbers</span>
+    Randomize(Timer) <span class="tut-cmnt">' Random Number with Seed</span>
+    _number = Int((<span class="tut-valu">49</span> * Rnd()) + <span class="tut-valu">1</span>) <span class="tut-cmnt">' Between 1 - 49</span>
+    <span class="tut-rsvd">If Not</span> _numbers.Contains(_number) _
+      <span class="tut-rsvd">Or</span> _numbers.Count &lt; <span class="tut-valu">1</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' If Chosen or None</span>
+      _numbers.Add(_number) <span class="tut-cmnt">' Add Number</span>
+    <span class="tut-rsvd">End If
+  End While
+  Return</span> _Numbers
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4lottonumbers.png" width="446" height="218" alt="MainPage Numbers Function" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for MainPage.xaml, below "End Function" for "Private Function Numbers()" Function, type the following Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Draw(<span class="tut-rsvd">ByRef</span> Stack <span class="tut-rsvd">As</span> <span class="tut-symb">StackPanel</span>)
+  Stack.Children.Clear()
+  <span class="tut-rsvd">For Each</span> _number <span class="tut-rsvd">As Integer In</span> Numbers() <span class="tut-cmnt">' Choose Numbers</span>
+    <span class="tut-rsvd">Dim</span> _container <span class="tut-rsvd">As New</span> <span class="tut-symb">Canvas</span>
+    <span class="tut-rsvd">Dim</span> _ball <span class="tut-rsvd">As New</span> <span class="tut-symb">Ellipse</span>
+    <span class="tut-rsvd">Dim</span> _text <span class="tut-rsvd">As New</span> <span class="tut-symb">TextBlock</span>
+    _container.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">2</span>)
+    _container.Width = <span class="tut-valu">48</span>
+    _container.Height = <span class="tut-valu">48</span>
+    _ball.Width = _container.Width
+    _ball.Height = _container.Height
+    <span class="tut-rsvd">Select Case</span> _number
+      <span class="tut-rsvd">Case</span> <span class="tut-valu">1</span> <span class="tut-rsvd">To</span> <span class="tut-valu">9</span>
+        _ball.Fill = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.White)
+      <span class="tut-rsvd">Case</span> <span class="tut-valu">10</span> <span class="tut-rsvd">To</span> <span class="tut-valu">19</span> <span class="tut-cmnt">' Sky Blue</span>
+        _ball.Fill = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Color</span>.FromArgb(<span class="tut-valu">255</span>, <span class="tut-valu">112</span>, <span class="tut-valu">200</span>, <span class="tut-valu">236</span>))
+      <span class="tut-rsvd">Case</span> <span class="tut-valu">20</span> <span class="tut-rsvd">To</span> <span class="tut-valu">29</span>
+        _ball.Fill = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.Magenta)
+      <span class="tut-rsvd">Case</span> <span class="tut-valu">30</span> <span class="tut-rsvd">To</span> <span class="tut-valu">39</span> <span class="tut-cmnt">' Lawn Green</span>
+        _ball.Fill = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Color</span>.FromArgb(<span class="tut-valu">255</span>, <span class="tut-valu">112</span>, <span class="tut-valu">255</span>, <span class="tut-valu">0</span>))
+      <span class="tut-rsvd">Case</span> <span class="tut-valu">40</span> <span class="tut-rsvd">To</span> <span class="tut-valu">49</span>
+        _ball.Fill = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.Yellow)
+    <span class="tut-rsvd">End Select</span>
+    _ball.Effect = <span class="tut-rsvd">New</span> Effects.<span class="tut-symb">DropShadowEffect</span>
+    _container.Children.Add(_ball)
+    _text.FontSize = <span class="tut-valu">12</span>
+    _text.Text = _number
+    _text.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">16</span>)
+    _container.Children.Add(_text)
+    Stack.Children.Add(_container)
+  <span class="tut-rsvd">Next
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4lottodraw.png" width="628" height="541" alt="MainPage Draw Function" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Choose" Button Control and type in the Choose_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Draw(Lottery)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4lottochooseclick.png" width="524" height="82" alt="Choose Button Click Event" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4lottorun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click the Choose Button to select your Lotto Numbers, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4lottoapp.png" width="400" height="300" alt="Lucky Lotto" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This is a very simple Lotto Number Chooser using a Random Number generator and SIlverlight, you can customise the ball colours to match your Lotto, 
+instead of the UK colours used here. Try making changes to show the numbers in ascending or descending order, it is up to you!
+</p>
+</body>
+</html>

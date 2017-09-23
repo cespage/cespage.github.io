@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Flip Clock</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Flip Clock</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Flip Clock emulates the classic "Flip Clock" style of alarm clocks and airport signage as a clock for Silverlight!
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/sl4tut28.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/sl4tut28.zip">Download Tutorial</a> (336KB)</em>
+<em class="icon-dload"><a href="tutorials/sl4tut28code.zip">Download Source Code</a> (7.87KB)</em>
+<em class="icon-odemo"><a href="tutorials/sl4tut28demo.html">Online Demonstration</a></em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Select Project then "Add New Item...", and select the "Silverlight User Control" Template if not already Selected, then change the "Name" to Flipper.xaml, see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4flicloitem.png" width="939" height="624" alt="Add New Silverlight User Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the new User Control to the Project by Clicking on Add, then in the XAML Pane for the Flipper.xaml User Control,<br/>
+for the "&lt;UserControl&gt;" Tag, add the following XAML attributes after mc:Ignorable="d":
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd"><span class="tut-attr">Foreground</span>="WhiteSmoke" <span class="tut-attr">FontSize</span>="64"</span>
+</pre>
+</blockquote>
+<p>
+Then change the DesignHeight to "96" and DesignWidth Attribute to "100", see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4flicloitemuser.png" width="530" height="184" alt="CarouselItem UserControl Attributes" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still the XAML Pane for Flipper.xaml, above the "&lt;Grid&gt;" and below the top "&lt;UserControl&gt;" tag, type the following XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">
+&lt;<span class="tut-valu">UserControl.Resources</span>&gt;
+  &lt;<span class="tut-valu">Style</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="BorderStyle" <span class="tut-attr">TargetType</span>="Border"&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="CornerRadius" <span class="tut-attr">Valu</span>e="4"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Background" <span class="tut-attr">Value</span>="White"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="BorderBrush" <span class="tut-attr">Value</span>="Gray"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="BorderThickness" <span class="tut-attr">Value</span>="1,1,1,1"/&gt;
+  &lt;/<span class="tut-valu">Style</span>&gt;
+  &lt;<span class="tut-valu">LinearGradientBrush</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="BackgroundBrush" <span class="tut-attr">EndPoint</span>="0.5,1" <span class="tut-attr">StartPoint</span>="0.5,0"&gt;
+    &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Color</span>="#FF202020" <span class="tut-attr">Offset</span>="1"/&gt;
+    &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Color</span>="#FF404040"/&gt;
+  &lt;/<span class="tut-valu">LinearGradientBrush</span>&gt;
+  &lt;<span class="tut-valu">Storyboard</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FlipAnimation"&gt;
+    &lt;<span class="tut-valu">DoubleAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="BlockFlip" 
+        <span class="tut-attr">Storyboard.TargetProperty</span>="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"&gt;
+      &lt;<span class="tut-valu">EasingDoubleKeyFrame</span> <span class="tut-attr">Value</span>="1" <span class="tut-attr">KeyTime</span>="0"&gt;
+        &lt;<span class="tut-valu">EasingDoubleKeyFrame.EasingFunction</span>&gt;
+          &lt;<span class="tut-valu">BounceEase</span> <span class="tut-attr">EasingMode</span>="EaseOut" <span class="tut-attr">Bounces</span>="1" <span class="tut-attr">Bounciness</span>="6"/&gt;
+        &lt;/<span class="tut-valu">EasingDoubleKeyFrame.EasingFunction</span>&gt;
+      &lt;/<span class="tut-valu">EasingDoubleKeyFrame</span>&gt;
+      &lt;<span class="tut-valu">EasingDoubleKeyFrame</span> <span class="tut-attr">Value</span>="-1" <span class="tut-attr">KeyTime</span>="00:00:00.8"&gt;
+        &lt;<span class="tut-valu">EasingDoubleKeyFrame.EasingFunction</span>&gt;
+          &lt;<span class="tut-valu">BounceEase</span> <span class="tut-attr">EasingMode</span>="EaseOut" <span class="tut-attr">Bounces</span>="1" <span class="tut-attr">Bounciness</span>="6"/&gt;
+        &lt;/<span class="tut-valu">EasingDoubleKeyFrame.EasingFunction</span>&gt;
+      &lt;/<span class="tut-valu">EasingDoubleKeyFrame</span>&gt;
+    &lt;/<span class="tut-valu">DoubleAnimationUsingKeyFrames</span>&gt;
+    &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="textBlockFlipTop" 
+        <span class="tut-attr">Storyboard.TargetProperty</span>="(UIElement.Visibility)"&gt;
+      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0"&gt;
+        &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+          &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Visible</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+      &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="00:00:00.4"&gt;
+        &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+          &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Collapsed</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+      &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+    &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+    &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="textBlockFlipBottom" 
+        <span class="tut-attr">Storyboard.TargetProperty</span>="(UIElement.Visibility)"&gt;
+      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0"&gt;
+        &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+          &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Collapsed</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+      &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="00:00:00.4"&gt;
+        &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+          &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Visible</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+      &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+    &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+&lt;/<span class="tut-valu">UserControl.Resources</span>&gt;
+</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4flicloitemres.png" width="830" height="897" alt="Flipper Resources" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+While still in the XAML Pane for Flipper.xaml replace from the "&lt;Grid&gt;" to the "&lt;/Grid&gt;" Tag with the following Grid and Layout XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">
+&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Height</span>="96" <span class="tut-attr">Width</span>="100"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="0.5*"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="0.5*"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Border</span> <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">BorderStyle</span>}" <span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">BackgroundBrush</span>}" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="BlockTop"&gt;
+    &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Text</span>="01" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="textBlockTop"/&gt;
+  &lt;/<span class="tut-valu">Border</span>&gt;
+  &lt;<span class="tut-valu">Border</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">BorderStyle</span>}" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="BlockBottom"&gt;
+    &lt;<span class="tut-valu">Border.Background</span>&gt;
+      &lt;<span class="tut-valu">LinearGradientBrush</span> <span class="tut-attr">EndPoint</span>="0.5,1" <span class="tut-attr">StartPoint</span>="0.5,0"&gt;
+        &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Color</span>="#FF202020"/&gt;
+        &lt;<span class="tut-valu">GradientStop</span> <span class="tut-attr">Color</span>="#FF404040" <span class="tut-attr">Offset</span>="1"/&gt;
+      &lt;/<span class="tut-valu">LinearGradientBrush</span>&gt;
+    &lt;/<span class="tut-valu">Border.Background</span>&gt;
+    &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Bottom" <span class="tut-attr">RenderTransformOrigin</span>="0.5,0" <span class="tut-attr">Text</span>="00" <span class="tut-attr">x</span>:Name="textBlockBottom"/&gt;
+  &lt;/<span class="tut-valu">Border</span>&gt;
+  &lt;<span class="tut-valu">Border</span> <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">BorderStyle</span>}" Background="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">BackgroundBrush</span>}" <span class="tut-attr">RenderTransformOrigin</span>="0.5,1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="BlockFlip"&gt;
+    &lt;<span class="tut-valu">Border.RenderTransform</span>&gt;
+      &lt;<span class="tut-valu">TransformGroup</span>&gt;
+        &lt;<span class="tut-valu">ScaleTransform</span>/&gt;
+        &lt;<span class="tut-valu">SkewTransform</span>/&gt;
+        &lt;<span class="tut-valu">RotateTransform</span>/&gt;
+        &lt;<span class="tut-valu">TranslateTransform</span>/&gt;
+      &lt;/<span class="tut-valu">TransformGroup</span>&gt;
+    &lt;/<span class="tut-valu">Border.RenderTransform</span>&gt;
+    &lt;<span class="tut-valu">Grid</span>&gt;
+      &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Text</span>="00" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="textBlockFlipTop"/&gt;
+      &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Bottom" <span class="tut-attr">Visibility</span>="Collapsed" <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="textBlockFlipBottom"&gt;
+        &lt;<span class="tut-valu">TextBlock.RenderTransform</span>&gt;
+          &lt;<span class="tut-valu">TransformGroup</span>&gt;
+            &lt;<span class="tut-valu">ScaleTransform</span> <span class="tut-attr">ScaleY</span>="-1"/&gt;
+            &lt;<span class="tut-valu">SkewTransform</span>/&gt;
+            &lt;<span class="tut-valu">RotateTransform</span>/&gt;
+            &lt;<span class="tut-valu">TranslateTransform</span> <span class="tut-attr">Y</span>="48"/&gt;
+          &lt;/<span class="tut-valu">TransformGroup</span>&gt;
+        &lt;/<span class="tut-valu">TextBlock.RenderTransform</span>&gt;
+      &lt;/<span class="tut-valu">TextBlock</span>&gt;
+    &lt;/<span class="tut-valu">Grid</span>&gt;
+  &lt;/<span class="tut-valu">Border</span>&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;
+</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4flicloflipper.png" width="132" height="115" alt="Flipper UserControl" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Right Click on the Page or the entry for "Flipper.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following DependencyProperties: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public Shared ReadOnly</span> TextPrevProperty <span class="tut-rsvd">As</span> <span class="tut-symb">DependencyProperty</span> =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"TextPrev"</span>, <span class="tut-rsvd">GetType</span>(<span class="tut-rsvd">String</span>),
+<span class="tut-rsvd">GetType</span>(<span class="tut-symb">Flipper</span>), <span class="tut-rsvd">Nothing</span>)
+
+<span class="tut-rsvd">Public Shared ReadOnly</span> TextNextProperty <span class="tut-rsvd">As</span> <span class="tut-symb">DependencyProperty</span> =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"TextNext"</span>, <span class="tut-rsvd">GetType</span>(<span class="tut-rsvd">String</span>),
+<span class="tut-rsvd">GetType</span>(<span class="tut-symb">Flipper</span>), <span class="tut-rsvd">Nothing</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4flicloitemdecs.png" width="480" height="269" alt="Flipper Declarations" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the Code View for Flipper.vb, above the "End Class" for "Partial Public Class Flipper", type the following Properties: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public Property</span> TextPrev() <span class="tut-rsvd">As Object
+  Get
+    Return</span> GetValue(TextPrevProperty)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Object</span>)
+    SetValue(TextPrevProperty, value)
+    textBlockBottom.Text = TextPrev
+    textBlockFlipTop.Text = TextPrev
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-rsvd">Public Property</span> TextNext() <span class="tut-rsvd">As Object
+  Get
+    Return</span> GetValue(TextNextProperty)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Object</span>)
+    SetValue(TextNextProperty, value)
+    textBlockTop.Text = TextNext
+    textBlockFlipBottom.Text = TextNext
+  <span class="tut-rsvd">End Set
+End Property</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4flicloitemprops.png" width="340" height="354" alt="Flipper Properties" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View for Flipper.vb, below the "End Sub" of "Public Sub New()", type the following Sub:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public Sub</span> Flip(<span class="tut-rsvd">ByVal</span> FromValue <span class="tut-rsvd">As String</span>, <span class="tut-rsvd">ByVal</span> ToValue <span class="tut-rsvd">As String</span>)
+  TextNext = ToValue
+  TextPrev = FromValue
+  FlipAnimation.Begin()
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4flicloitemflip.png" width="508" height="82" alt="Flipper Flip Sub" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Select Debug then the "Build FlipClock" option from the menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4fliclobuild.png" width="233" height="24" alt="Build FlipClock" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Return to the MainPage.xaml Designer View by selecting the "MainPage.xaml" Tab, or Double Clicking on the Entry for "MainPage.xaml" 
+in Solution Explorer.<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Draw a Canvas that fill the whole Page or in the XAML Pane between the "&lt;Grid&gt;" and "&lt;/Grid&gt;" lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="300" <span class="tut-attr">Width</span>="400" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Page"&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4cvspage.png" width="423" height="322" alt="MainPage with Canvas" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Then from the FlipClock Controls section in the Toolbox select the Flipper control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4flipper.png" width="180" height="428" alt="Flipper Control" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Draw Three Flippers on the Canvas (Page) by dragging the Flipper Control from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;my:Flipper&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Flipper</span> <span class="tut-attr">Canvas.Top</span>="100" <span class="tut-attr">Canvas.Left</span>="50" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Hours"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Flipper</span> <span class="tut-attr">Canvas.Top</span>="100" <span class="tut-attr">Canvas.Left</span>="150" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Minutes"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Flipper</span> <span class="tut-attr">Canvas.Top</span>="100" <span class="tut-attr">Canvas.Left</span>="250" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Seconds"/&gt;</span>
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4fliclocvs.png" width="423" height="322" alt="MainPage with Canvas and Flipper Controls" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private WithEvents</span> _timer <span class="tut-rsvd">As New</span> Windows.Threading.<span class="tut-symb">DispatcherTimer</span>
+<span class="tut-rsvd">Private</span> _timeSeconds <span class="tut-rsvd">As Integer</span> = Now.Second
+<span class="tut-rsvd">Private</span> _timeMinutes <span class="tut-rsvd">As Integer</span> = Now.Minute
+<span class="tut-rsvd">Private</span> _timeHours <span class="tut-rsvd">As Integer</span> = Now.Hour
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4fliclodecs.png" width="502" height="201" alt="MainPage Declarations" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Public Sub New()" type the following Event Handler:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Timer_Tick(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As EventArgs</span>) <span class="tut-rsvd">Handles</span> _timer.Tick
+  <span class="tut-rsvd">If</span> _timeSeconds = <span class="tut-valu">59</span> <span class="tut-rsvd">Then</span>
+    Seconds.Flip(_timeSeconds.ToString(<span class="tut-valu">"00"</span>), <span class="tut-valu">0</span>.ToString(<span class="tut-valu">"00"</span>))
+    _timeSeconds = <span class="tut-valu">0</span>
+    <span class="tut-rsvd">If</span> _timeMinutes = <span class="tut-valu">59</span> <span class="tut-rsvd">Then</span>
+      Minutes.Flip(_timeMinutes.ToString(<span class="tut-valu">"00"</span>), <span class="tut-valu">0</span>.ToString(<span class="tut-valu">"00"</span>))
+      _timeMinutes = <span class="tut-valu">0</span>
+      <span class="tut-rsvd">If</span> _timeHours = <span class="tut-valu">23</span> <span class="tut-rsvd">Then</span>
+        Hours.Flip(_timeHours.ToString(<span class="tut-valu">"00"</span>), <span class="tut-valu">0</span>.ToString(<span class="tut-valu">"00"</span>))
+        _timeHours = <span class="tut-valu">0</span>
+      <span class="tut-rsvd">Else</span>
+        Hours.Flip(_timeHours.ToString(<span class="tut-valu">"00"</span>), (_timeHours + <span class="tut-valu">1</span>).ToString(<span class="tut-valu">"00"</span>))
+        _timeHours += <span class="tut-valu">1</span>
+      <span class="tut-rsvd">End If
+    Else</span>
+      Minutes.Flip(_timeMinutes.ToString(<span class="tut-valu">"00"</span>), (_timeMinutes + <span class="tut-valu">1</span>).ToString(<span class="tut-valu">"00"</span>))
+      _timeMinutes += <span class="tut-valu">1</span>
+    <span class="tut-rsvd">End If
+  Else</span>
+    Seconds.Flip(_timeSeconds.ToString(<span class="tut-valu">"00"</span>), (_timeSeconds + <span class="tut-valu">1</span>).ToString(<span class="tut-valu">"00"</span>))
+    _timeSeconds += <span class="tut-valu">1</span>
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4fliclosub.png" width="656" height="422" alt="Timer Tick Event Handler" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Still In the Code View for the MainPage.xaml in the "Public Sub New()" Constructor below the "InitializeComponent()" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Seconds.TextPrev = _timeSeconds.ToString(<span class="tut-valu">"00"</span>)
+Minutes.TextPrev = _timeMinutes.ToString(<span class="tut-valu">"00"</span>)
+Hours.TextPrev = _timeHours.ToString(<span class="tut-valu">"00"</span>)
+_timer.Interval = <span class="tut-symb">TimeSpan</span>.FromSeconds(<span class="tut-valu">1</span>)
+_timer.Start()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4flicloinit.png" width="390" height="133" alt="MainPage Constructor" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4fliclorun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Close the Application and Browser window by clicking on the Close Button <img src="tutorials/sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p>
+This is a simple Flip Clock using a Flipper UserControl, it would be possible to use the flipper to display text such as the previously mentioned Airport
+displays for example - you can change the control to look even more like a classic flip clock or anything else - make it your own.
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

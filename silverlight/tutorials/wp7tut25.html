@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>FlipPanel Control</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>FlipPanel Control</h1>
+<p>
+FlipPanel Control is a double-sided panel, which when flipped displays content on the "back", 
+and displays different content on the "front" when not flipped using Silverlight for Windows Phone 7. 
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut25.html">www.cespage.com/silverlight/wp7tut25.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select from the Main Menu "File" then "Add", then "New Project...", and select the "Windows Phone Class Library" Template, then change the "Name" to FlipPanel see below: 
+</p>
+<div class="tutorial-image">
+<img src="wp7flipclslib.png" width="939" height="624" alt="Add FlipPanel Class Library Project" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the New Class Library Project by Clicking on Add, then in the Solution Explorer for "FlipPanel", 
+click on the "Class1.cs" entry, then goto Properties and change the File Name property to "FlipPanel.cs" (without the quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7flipprop.png" width="217" height="393" alt="FlipPanel Class Properties" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+In the "You are renaming a file. Would you also like to perform a rename in this project of all references to the code element 'Class1'?" choose Yes.<br/>
+Right Click on the Entry for the "FlipPanel" Project (not FlipPanel.cs) in Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "Themes" (again without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7flipsolthemes.png" width="217" height="527" alt="FlipPanel Project Themes Folder" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Right Click on the Entry for the "Themes" Folder for the FlipPanel Project, and choose "Add", then "New Item...", 
+select the "Text File" Template and change the name to "Generic.xaml", (without the quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7generic.png" width="939" height="624" alt="Generic.xaml Resource Dictionary Text File" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Add the Text File for the ResourceDictionary by Clicking on Add.<br/>
+In the XAML Pane for the Generic.xaml type the following Resource Dictionary XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">
+&lt;<span class="tut-valu">ResourceDictionary</span>
+<span class="tut-attr">xmlns</span>="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<span class="tut-attr">xmlns</span>:<span class="tut-attr">x</span>="http://schemas.microsoft.com/winfx/2006/xaml"
+<span class="tut-attr">xmlns</span>:<span class="tut-attr">local</span>="clr-namespace:FlipPanel"&gt;
+  &lt;<span class="tut-valu">Style</span> <span class="tut-attr">TargetType</span>="local:FlipPanel"&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Template"&gt;
+      &lt;<span class="tut-valu">Setter.Value</span>&gt;
+        &lt;<span class="tut-valu">ControlTemplate</span> <span class="tut-attr">TargetType</span>="local:FlipPanel"&gt;
+          &lt;<span class="tut-valu">Grid</span>&gt;
+            &lt;<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+              &lt;<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ViewStates"&gt;
+                &lt;<span class="tut-valu">VisualStateGroup.Transitions</span>&gt;
+                  &lt;<span class="tut-valu">VisualTransition</span> <span class="tut-attr">To</span>="Normal" <span class="tut-attr">From</span>="Flipped" <span class="tut-attr">GeneratedDuration</span>="0:0:0.7"&gt;
+                    &lt;<span class="tut-valu">Storyboard</span>&gt;
+                      &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="BackContentProjection"
+                         <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="-90" <span class="tut-attr">Duration</span>="0:0:0.5"/&gt;
+                      &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="FrontContentProjection"
+                         <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="0" <span class="tut-attr">BeginTime</span>="0:0:0.5" <span class="tut-attr">Duration</span>="0:0:0.5"/&gt;
+                    &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                  &lt;/<span class="tut-valu">VisualTransition</span>&gt;
+                  &lt;<span class="tut-valu">VisualTransition</span> <span class="tut-attr">To</span>="Flipped" <span class="tut-attr">From</span>="Normal" <span class="tut-attr">GeneratedDuration</span>="0:0:0.7"&gt;
+                    &lt;<span class="tut-valu">Storyboard</span>&gt;
+                      &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="FrontContentProjection"
+                          <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="90" <span class="tut-attr">Duration</span>="0:0:0.5"/&gt;
+                      &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="BackContentProjection"
+                          <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="0" <span class="tut-attr">BeginTime</span>="0:0:0.5" <span class="tut-attr">Duration</span>="0:0:0.5"/&gt;
+                    &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                  &lt;/<span class="tut-valu">VisualTransition</span>&gt;
+                &lt;/<span class="tut-valu">VisualStateGroup.Transitions</span>&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Normal"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="BackContentProjection"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="-90" <span class="tut-attr">Duration</span>="0"/&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">VisualState</span>&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Flipped"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="FrontContentProjection" 
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="90" <span class="tut-attr">Duration</span>="0"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="FlipButtonTransform" 
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="Angle" <span class="tut-attr">To</span>="90" <span class="tut-attr">Duration</span>="0"/&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">VisualState</span>&gt;
+              &lt;/<span class="tut-valu">VisualStateGroup</span>&gt;
+            &lt;/<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+            &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+              &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+              &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+            &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+            &lt;<span class="tut-valu">Border</span> <span class="tut-attr">BorderBrush</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderBrush</span>}"
+                <span class="tut-attr">BorderThickness</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderThickness</span>}"
+                <span class="tut-attr">CornerRadius</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">CornerRadius</span>}"
+                <span class="tut-attr">Background</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Background</span>}"&gt;
+              &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">Content</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">FrontContent</span>}"/&gt;
+              &lt;<span class="tut-valu">Border.Projection</span>&gt;
+                &lt;<span class="tut-valu">PlaneProjection</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FrontContentProjection"/&gt;
+              &lt;/<span class="tut-valu">Border.Projection</span>&gt;
+            &lt;/<span class="tut-valu">Border</span>&gt;
+            &lt;<span class="tut-valu">Border</span> <span class="tut-attr">BorderBrush</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderBrush</span>}"
+                <span class="tut-attr">BorderThickness</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderThickness</span>}"
+                <span class="tut-attr">CornerRadius</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">CornerRadius</span>}"
+                <span class="tut-attr">Background</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Background</span>}"&gt;
+              &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">Content</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BackContent</span>}"/&gt;
+              &lt;<span class="tut-valu">Border.Projection</span>&gt;
+                &lt;<span class="tut-valu">PlaneProjection</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="BackContentProjection"/&gt;
+              &lt;/<span class="tut-valu">Border.Projection</span>&gt;
+            &lt;/<span class="tut-valu">Border</span>&gt;
+            &lt;<span class="tut-valu">ToggleButton</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5" <span class="tut-attr">Margin</span>="0,10,0,0" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FlipButton"&gt;
+              &lt;<span class="tut-valu">ToggleButton.Template</span>&gt;
+                &lt;<span class="tut-valu">ControlTemplate</span>&gt;
+                  &lt;<span class="tut-valu">Grid</span>&gt;
+                    &lt;<span class="tut-valu">Ellipse</span> <span class="tut-attr">Width</span>="50" <span class="tut-attr">Height</span>="50" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+                    &lt;<span class="tut-valu">Path</span> <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5" <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Center" 
+                      <span class="tut-attr">Data</span>="M2,3L9,10 16,3" <span class="tut-attr">Stroke</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneForegroundBrush</span>}" <span class="tut-attr">StrokeThickness</span>="4"/&gt;
+                  &lt;/<span class="tut-valu">Grid</span>&gt;
+                &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+              &lt;/<span class="tut-valu">ToggleButton.Template</span>&gt;
+              &lt;<span class="tut-valu">ToggleButton.RenderTransform</span>&gt;
+                &lt;<span class="tut-valu">RotateTransform</span> <span class="tut-attr">Angle</span>="-90" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FlipButtonTransform"/&gt;
+              &lt;/<span class="tut-valu">ToggleButton.RenderTransform</span>&gt;
+            &lt;/<span class="tut-valu">ToggleButton</span>&gt;
+          &lt;/<span class="tut-valu">Grid</span>&gt;
+        &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+      &lt;/<span class="tut-valu">Setter.Value</span>&gt;
+    &lt;/<span class="tut-valu">Setter</span>&gt;
+  &lt;/<span class="tut-valu">Style</span>&gt;
+&lt;/<span class="tut-valu">ResourceDictionary</span>&gt;
+</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7flipres.png" width="950" height="1389" alt="FlipPanel Resource Dictionary" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Right Click on the Entry for the "FlipPanel.cs" Class in Solution Explorer in the "FlipPanel Project" and choose
+"View Code" or Double click on "FlipPanel.cs".<br/>
+In the Code View for FlipPanel above "namespace FlipPanel" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Windows.Controls.Primitives;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public class FlipPanel" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+[<span class="tut-symb">TemplateVisualState</span>(Name = <span class="tut-valu">"Normal"</span>, GroupName = <span class="tut-valu">"ViewStates"</span>)]
+[<span class="tut-symb">TemplateVisualState</span>(Name = <span class="tut-valu">"Flipped"</span>, GroupName = <span class="tut-valu">"ViewStates"</span>)]
+[<span class="tut-symb">TemplatePart</span>(Name = <span class="tut-valu">"FlipButton"</span>, Type = <span class="tut-rsvd">typeof</span>(<span class="tut-symb">ToggleButton</span>))]
+[<span class="tut-symb">TemplatePart</span>(Name = <span class="tut-valu">"FlipButtonAlternative"</span>, Type = <span class="tut-rsvd">typeof</span>(<span class="tut-symb">ToggleButton</span>))]
+</pre>
+</blockquote>
+<p>
+Again in the CodeView at the end of the line "public class FlipPanel" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ : <span class="tut-symb">Control</span>
+</pre>
+</blockquote>
+<p>
+And in the CodeView below the "{" of the line "public class FlipPanel : Control" type the following Dependancy Properties:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> FrontContentProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"FrontContent"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">object</span>), 
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">FlipPanel</span>), <span class="tut-rsvd">null</span>);
+
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> BackContentProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"BackContent"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">object</span>), 
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">FlipPanel</span>), <span class="tut-rsvd">null</span>);
+ 
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> IsFlippedProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"IsFlipped"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-rsvd">bool</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">FlipPanel</span>), <span class="tut-rsvd">new</span> <span class="tut-symb">PropertyMetadata</span>(<span class="tut-rsvd">true</span>));
+ 
+<span class="tut-rsvd">public static readonly</span> <span class="tut-symb">DependencyProperty</span> CornerRadiusProperty =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"CornerRadius"</span>, <span class="tut-rsvd">typeof</span>(<span class="tut-symb">CornerRadius</span>),
+<span class="tut-rsvd">typeof</span>(<span class="tut-symb">FlipPanel</span>), <span class="tut-rsvd">null</span>);
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7flipclsref.png" width="564" height="605" alt="FlipPanel.cs Imports, Template and Dependancy Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the Code View below the "CornerRadiusProperty" declaration type the following Properties and Methods:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public object</span> FrontContent
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> GetValue(FrontContentProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(FrontContentProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public object</span> BackContent
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> GetValue(BackContentProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(BackContentProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public bool</span> IsFlipped
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-rsvd">bool</span>)GetValue(IsFlippedProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(IsFlippedProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">CornerRadius</span> CornerRadius
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-symb">CornerRadius</span>)GetValue(CornerRadiusProperty); }
+  <span class="tut-rsvd">set</span> { SetValue(CornerRadiusProperty, <span class="tut-rsvd">value</span>); }
+}
+
+<span class="tut-rsvd">public</span> FlipPanel()
+{
+  DefaultStyleKey = <span class="tut-rsvd">typeof</span>(<span class="tut-symb">FlipPanel</span>);
+}
+
+<span class="tut-rsvd">private void</span> ChangeVisualState(<span class="tut-rsvd">bool</span> useTransitions)
+{
+  <span class="tut-rsvd">if</span> (IsFlipped)
+  {
+    <span class="tut-symb">VisualStateManager</span>.GoToState(<span class="tut-rsvd">this</span>, <span class="tut-valu">"Normal"</span>, useTransitions);
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    <span class="tut-symb">VisualStateManager</span>.GoToState(<span class="tut-rsvd">this</span>, <span class="tut-valu">"Flipped"</span>, useTransitions); 
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7flipclsmets.png" width="556" height="637" alt="FlipPanel Properties and Methods" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View below the "}" of the "ChangeVisualState" Method type the following Event Handlers:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> FlipButton_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  IsFlipped = !IsFlipped;
+  ChangeVisualState(<span class="tut-rsvd">true</span>);
+}
+
+<span class="tut-rsvd">public override void</span> OnApplyTemplate()
+{
+  <span class="tut-rsvd">base</span>.OnApplyTemplate();
+  <span class="tut-symb">ToggleButton</span> _flipButton = (<span class="tut-symb">ToggleButton</span>)GetTemplateChild(<span class="tut-valu">"FlipButton"</span>);
+  <span class="tut-rsvd">if</span> (_flipButton != <span class="tut-rsvd">null</span>)
+  {
+    _flipButton.Click += FlipButton_Click;
+  }
+  <span class="tut-symb">ToggleButton</span> _flipButtonAlt = (<span class="tut-symb">ToggleButton</span>)GetTemplateChild(<span class="tut-valu">"FlipButtonAlternative"</span>);
+  <span class="tut-rsvd">if</span> (_flipButtonAlt != <span class="tut-rsvd">null</span>)
+  {
+    _flipButtonAlt.Click += FlipButton_Click;
+  }
+  ChangeVisualState(<span class="tut-rsvd">false</span>);
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7flipclscode.png" width="696" height="333" alt="FlipPanel Event Handlers" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Select "Build Solution" from the Debug menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7build.png" width="233" height="24" alt="Build Solution" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+When the Build completes, return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then from the FlipPanel Controls section in the Toolbox select the FlipPanel control:
+</p>
+<div class="tutorial-image">
+<img src="wp7flippanel.png" width="180" height="428" alt="FlipPanel User Control" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Draw a FlipPanel onto the Page by dragging a FlipPanel from the Toolbox onto the Page, then in the XAML Pane between the 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines, change "flippanel1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel</span>&gt;
+  &lt;<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel.FrontContent</span>&gt;
+    &lt;<span class="tut-valu">StackPanel</span>&gt;
+      &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">FontWeight</span>="Bold" <span class="tut-attr">Text</span>="Front Content"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button One"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button Two"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button Three"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button Four"/&gt;
+    &lt;/<span class="tut-valu">StackPanel</span>&gt;
+  &lt;/<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel.FrontContent</span>&gt;
+  &lt;<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel.BackContent</span>&gt;
+    &lt;<span class="tut-valu">StackPanel</span>&gt;
+      &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">FontWeight</span>="Bold" <span class="tut-attr">Text</span>="Back Content"/&gt;
+      &lt;<span class="tut-valu">CheckBox</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="CheckBox One"/&gt;
+      &lt;<span class="tut-valu">CheckBox</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="CheckBox Two"/&gt;
+      &lt;<span class="tut-valu">CheckBox</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="CheckBox Three"/&gt;
+      &lt;<span class="tut-valu">CheckBox</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="CheckBox Four"/&gt;
+    &lt;/<span class="tut-valu">StackPanel</span>&gt;
+  &lt;/<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel.BackContent</span>&gt;
+&lt;/<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7flipxaml.png" width="614" height="349" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7flipdesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7fliprun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Tap the Round button with the Arrow to "Flip" the FlipPanel, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7flipapp.png" width="359" height="660" alt="FlipPanel Control" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple FlipPanel Control it could be expanded to add more Properties and functionality such as being able to flip horizontally or vertically,
+or adding more features - make it your own!
+</p>
+</body>
+</html>

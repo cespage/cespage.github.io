@@ -1,0 +1,646 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Rich Text Editor</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Rich Text Editor</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Create a simple Rich Text Editor using RichTextArea with Open and Save plus Formatting such as Bold, Italics and Underline using Silverlight.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/sl4tut14.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/sl4tut14.zip">Download Tutorial</a> (508KB)</em>
+<em class="icon-dload"><a href="tutorials/sl4tut14code.zip">Download Source Code</a> (8.74KB)</em>
+<em class="icon-odemo"><a href="tutorials/sl4tut14demo.html">Online Demonstration</a></em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Select Project then Add Reference... The "Add Reference" window should appear, select "System.XML.Linq" from the ".NET" List, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4xmllinq.png" width="466" height="370" alt="Add System.XML.Linq Reference" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the Reference to "System.XML.Linq" by Clicking on OK.<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Draw a Canvas on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "Canvas1" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="95" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtecvs.png" width="423" height="315" alt="MainPage with Toolbar Canvas" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Draw Eight Buttons on the Canvas by dragging the Buttons from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Button&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="New" <span class="tut-attr">Content</span>="New"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Open" <span class="tut-attr">Content</span>="Open..."/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Save" <span class="tut-attr">Content</span>="Save..."/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Print" <span class="tut-attr">Content</span>="Print..."/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Bold" <span class="tut-attr">Content</span>="Bold"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="87" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Italic" <span class="tut-attr">Content</span>="Italic"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Underline" <span class="tut-attr">Content</span>="Underline"/&gt;</span> 
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="35" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="TimeDate" <span class="tut-attr">Content</span>="Time Date"/&gt;</span>  
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtecvsbtns.png" width="423" height="315" alt="MainPage with Canvas and Buttons" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the XAML Pane, below the last "&lt;Button&gt;" tag and above the "&lt;/Canvas&gt;" type the following ComboBox XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ComboBox</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="64" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="156" <span class="tut-attr">Name</span>="Font" 
+    <span class="tut-attr">FontFamily</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">SelectedItem</span>.FontFamily, <span class="tut-attr">RelativeSource</span>={<span class="tut-valu">RelativeSource</span> <span class="tut-attr">Self</span>}}" 
+    <span class="tut-attr">FontSize</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">SelectedItem</span>.FontSize, <span class="tut-attr">RelativeSource</span>={<span class="tut-valu">RelativeSource</span> <span class="tut-attr">Self</span>}}"&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Arial" <span class="tut-attr">Tag</span>="Arial" <span class="tut-attr">FontFamily</span>="Arial" <span class="tut-attr">FontSize</span>="12" <span class="tut-attr">IsSelected</span>="True"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Arial Black" <span class="tut-attr">Tag</span>="Arial Black" <span class="tut-attr">FontFamily</span>="Arial Black" <span class="tut-attr">FontSize</span>="12"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Comic Sans MS" <span class="tut-attr">Tag</span>="Comic Sans MS" <span class="tut-attr">FontFamily</span>="Comic Sans MS" <span class="tut-attr">FontSize</span>="12"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Courier New" <span class="tut-attr">Tag</span>="Courier New" <span class="tut-attr">FontFamily</span>="Courier New" <span class="tut-attr">FontSize</span>="12"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Georgia" <span class="tut-attr">Tag</span>="Georgia" <span class="tut-attr">FontFamily</span>="Georgia" <span class="tut-attr">FontSize</span>="12"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Lucida Sans Unicode" <span class="tut-attr">Tag</span>="Lucida Sans Unicode" <span class="tut-attr">FontFamily</span>="Lucida Sans Unicode" <span class="tut-attr">FontSize</span>="12"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Times New Roman" <span class="tut-attr">Tag</span>="Times New Roman" <span class="tut-attr">FontFamily</span>="Times New Roman" <span class="tut-attr">FontSize</span>="12"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Trebuchet MS" <span class="tut-attr">Tag</span>="Trebuchet MS" <span class="tut-attr">FontFamily</span>="Trebuchet MS" <span class="tut-attr">FontSize</span>="12"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Verdana" <span class="tut-attr">Tag</span>="Verdana" <span class="tut-attr">FontFamily</span>="Verdana" <span class="tut-attr">FontSize</span>="12"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="Webdings" <span class="tut-attr">Tag</span>="Webdings" <span class="tut-attr">FontSize</span>="12"/&gt;
+&lt;/<span class="tut-valu">ComboBox</span>&gt;</span>
+
+<span class="tut-rsvd">&lt;<span class="tut-valu">ComboBox</span> <span class="tut-attr">Canvas.Left</span>="168" <span class="tut-attr">Canvas.Top</span>="64" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Size"&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="8" <span class="tut-attr">Tag</span>="8"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="10" <span class="tut-attr">Tag</span>="10"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="12" <span class="tut-attr">Tag</span>="12"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="16" <span class="tut-attr">Tag</span>="16" <span class="tut-attr">IsSelected</span>="True"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="20" <span class="tut-attr">Tag</span>="20"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="24" <span class="tut-attr">Tag</span>="24"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="28" <span class="tut-attr">Tag</span>="28"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="36" <span class="tut-attr">Tag</span>="36"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="48" <span class="tut-attr">Tag</span>="48"/&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Content</span>="72" <span class="tut-attr">Tag</span>="72"/&gt;
+&lt;/<span class="tut-valu">ComboBox</span>&gt;</span>
+
+<span class="tut-rsvd">&lt;<span class="tut-valu">ComboBox</span> <span class="tut-attr">Canvas.Left</span>="249" <span class="tut-attr">Canvas.Top</span>="64" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="Colour"&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FF000000" <span class="tut-attr">IsSelected</span>="True"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Black"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FF808080"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Gray"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FFFF0000"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Red"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FFFFA500"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Orange"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FFFFFF00"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Yellow"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FF008000"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Green"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FF00FFFF"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Cyan"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FF0000FF"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Blue"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FFFF00FF"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Magenta"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+  &lt;<span class="tut-valu">ComboBoxItem</span> <span class="tut-attr">Tag</span>="FF800080"&gt;
+    &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="25" <span class="tut-attr">Height</span>="14" <span class="tut-attr">Fill</span>="Purple"/&gt;
+  &lt;/<span class="tut-valu">ComboBoxItem</span>&gt;
+&lt;/<span class="tut-valu">ComboBox</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtecvscbos.png" width="423" height="315" alt="MainPage with Toolbar Buttons and ComboBoxes" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Again while still in the XAML Pane below the "&lt;/Canvas&gt;" and above the "&lt;/Grid&gt;" Tag, type the following RichTextArea XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">RichTextArea</span> <span class="tut-attr">Height</span>="205" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,95,0,0" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" 
+<span class="tut-attr">TextWrapping</span>="Wrap" <span class="tut-attr">BorderThickness</span>="0" <span class="tut-attr">Name</span>="Editor"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rterta.png" width="422" height="321" alt="MainPage with Toolbar Buttons, ComboBoxes and RichTextArea" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above the "Partial Public Class MainPage" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Xml.Linq
+<span class="tut-rsvd">Imports</span> System.Windows.Printing
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rteref.png" width="230" height="168" alt="MainPage.xaml Imports" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Public Sub New()" Constructor type the following Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Read(<span class="tut-rsvd">ByRef</span> Stream <span class="tut-rsvd">As</span> IO.<span class="tut-symb">Stream</span>, <span class="tut-rsvd">ByRef</span> Blocks <span class="tut-rsvd">As</span> <span class="tut-symb">BlockCollection</span>)
+  <span class="tut-rsvd">Dim</span> _doc <span class="tut-rsvd">As</span> <span class="tut-symb">XDocument</span> = <span class="tut-symb">XDocument</span>.Load(Stream)
+  <span class="tut-rsvd">Dim</span> _colour <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">For Each</span> _element <span class="tut-rsvd">As</span> <span class="tut-symb">XElement</span> <span class="tut-rsvd">In</span> _doc.Descendants(<span class="tut-valu">"Paragraph"</span>)
+    <span class="tut-rsvd">Dim</span> _paragraph <span class="tut-rsvd">As New</span> <span class="tut-symb">Paragraph</span>
+    _paragraph.FontFamily = <span class="tut-rsvd">New</span> <span class="tut-symb">FontFamily</span>(_element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontFamily"</span>)).Value)
+    _paragraph.FontSize = <span class="tut-rsvd">Double</span>.Parse(_element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontSize"</span>)).Value)
+    _paragraph.FontStretch = <span class="tut-rsvd">DirectCast</span>(<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FontStretches</span>).GetProperty(
+    _element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontStretch"</span>)).Value).GetValue(<span class="tut-rsvd">Nothing</span>, <span class="tut-rsvd">Nothing</span>), <span class="tut-symb">FontStretch</span>)
+    _paragraph.FontStyle = <span class="tut-rsvd">DirectCast</span>(<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FontStyles</span>).GetProperty(
+    _element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontStyle"</span>)).Value).GetValue(<span class="tut-rsvd">Nothing</span>, <span class="tut-rsvd">Nothing</span>), <span class="tut-symb">FontStyle</span>)
+    _paragraph.FontWeight = <span class="tut-rsvd">DirectCast</span>(<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FontWeights</span>).GetProperty(
+    _element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontWeight"</span>)).Value).GetValue(<span class="tut-rsvd">Nothing</span>, <span class="tut-rsvd">Nothing</span>), <span class="tut-symb">FontWeight</span>)
+    _colour = _element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"Foreground"</span>)).Value
+    _colour = _colour.Remove(<span class="tut-valu">0</span>, <span class="tut-valu">1</span>)
+    _paragraph.Foreground = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Color</span>.FromArgb(
+      <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">0</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+      <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">2</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+      <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">4</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+      <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">6</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber)))
+    <span class="tut-rsvd">For Each</span> _inline <span class="tut-rsvd">As</span> <span class="tut-symb">XElement</span> <span class="tut-rsvd">In</span> _element.Descendants(<span class="tut-valu">"Inline"</span>)
+      <span class="tut-rsvd">If</span> _inline.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"Type"</span>)).Value = <span class="tut-valu">"Run"</span> <span class="tut-rsvd">Then
+        Dim</span> _run <span class="tut-rsvd">As New</span> <span class="tut-symb">Run</span>
+        _run.FontFamily = <span class="tut-rsvd">New</span> <span class="tut-symb">FontFamily</span>(_element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontFamily"</span>)).Value)
+        _run.FontSize = <span class="tut-rsvd">Double</span>.Parse(_element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontSize"</span>)).Value)
+        _run.FontStretch = <span class="tut-rsvd">DirectCast</span>(<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FontStretches</span>).GetProperty(
+        _element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontStretch"</span>)).Value).GetValue(<span class="tut-rsvd">Nothing</span>, <span class="tut-rsvd">Nothing</span>), <span class="tut-symb">FontStretch</span>)
+        _run.FontStyle = <span class="tut-rsvd">DirectCast</span>(<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FontStyles</span>).GetProperty(
+        _element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontStyle"</span>)).Value).GetValue(<span class="tut-rsvd">Nothing</span>, <span class="tut-rsvd">Nothing</span>), <span class="tut-symb">FontStyle</span>)
+        _run.FontWeight = <span class="tut-rsvd">DirectCast</span>(<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FontWeights</span>).GetProperty(
+        _element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"FontWeight"</span>)).Value).GetValue(<span class="tut-rsvd">Nothing</span>, <span class="tut-rsvd">Nothing</span>), <span class="tut-symb">FontWeight</span>)
+        _colour = _element.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"Foreground"</span>)).Value
+        _colour = _colour.Remove(<span class="tut-valu">0</span>, <span class="tut-valu">1</span>)
+        _run.Foreground = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Color</span>.FromArgb(
+          <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">0</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+          <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">2</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+          <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">4</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+          <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">6</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber)))
+        <span class="tut-rsvd">If</span> _inline.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"TextDecorations"</span>)).Value = <span class="tut-valu">"Underline"</span> <span class="tut-rsvd">Then</span>
+          _run.TextDecorations = <span class="tut-symb">TextDecorations</span>.Underline
+        <span class="tut-rsvd">End If</span>
+        _run.Text = _inline.Attribute(<span class="tut-symb">XName</span>.[Get](<span class="tut-valu">"Text"</span>)).Value
+        _paragraph.Inlines.Add(_run)
+      <span class="tut-rsvd">End If
+    Next</span>
+    Blocks.Add(_paragraph)
+  <span class="tut-rsvd">Next
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rteread.png" width="810" height="813" alt="MainPage Read Sub" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Private Sub Read(...)" type the following Function: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Write(<span class="tut-rsvd">ByRef</span> Blocks <span class="tut-rsvd">As</span> <span class="tut-symb">BlockCollection</span>) <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">Dim</span> _write <span class="tut-rsvd">As New</span> Text.<span class="tut-symb">StringBuilder</span>
+  <span class="tut-rsvd">Dim</span> _doc = <span class="tut-rsvd">From</span> block <span class="tut-rsvd">In</span> Blocks _
+  <span class="tut-rsvd">From</span> inline <span class="tut-rsvd">In</span> <span class="tut-rsvd">TryCast</span>(block, <span class="tut-symb">Paragraph</span>).Inlines
+    <span class="tut-rsvd">Where</span> inline.GetType <span class="tut-rsvd">Is GetType</span>(<span class="tut-symb">InlineUIContainer</span>) _
+    <span class="tut-rsvd">Select</span> inline
+  <span class="tut-rsvd">If</span> _doc.Count = <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span>
+    _write.Append(<span class="tut-valu">"&lt;doc&gt;"</span>)
+    <span class="tut-rsvd">For Each</span> _block <span class="tut-rsvd">As</span> <span class="tut-symb">Block</span> <span class="tut-rsvd">In</span> Blocks
+      <span class="tut-rsvd">Dim</span> _paragraph <span class="tut-rsvd">As New</span> <span class="tut-symb">Paragraph</span>
+      _write.Append(<span class="tut-valu">"&lt;Paragraph "</span>)
+      _write.Append(<span class="tut-valu">"Name='"</span> &amp; _paragraph.Name &amp;<span class="tut-valu">"' "</span>)
+      _write.Append(<span class="tut-valu">"FontFamily='"</span> &amp; _paragraph.FontFamily.ToString &amp; <span class="tut-valu">"' "</span>)
+      _write.Append(<span class="tut-valu">"FontSize='"</span> &amp; _paragraph.FontSize &amp; <span class="tut-valu">"' "</span>)
+      _write.Append(<span class="tut-valu">"FontStretch='"</span> &amp; _paragraph.FontStretch.ToString &amp; <span class="tut-valu">"' "</span>)
+      _write.Append(<span class="tut-valu">"FontStyle='"</span> &amp; _paragraph.FontStyle.ToString &amp; <span class="tut-valu">"' "</span>)
+      _write.Append(<span class="tut-valu">"FontWeight='"</span> &amp; _paragraph.FontWeight.ToString &amp; <span class="tut-valu">"' "</span>)
+      _write.Append(<span class="tut-valu">"Foreground='"</span> &amp; <span class="tut-rsvd">TryCast</span>(_paragraph.Foreground, <span class="tut-symb">SolidColorBrush</span>).Color.ToString &amp; <span class="tut-valu">"'&gt;"</span>)
+      <span class="tut-rsvd">For Each</span> _inline <span class="tut-rsvd">In TryCast</span>(_block, <span class="tut-symb">Paragraph</span>).Inlines
+        <span class="tut-rsvd">If TypeOf</span> _inline <span class="tut-rsvd">Is</span> <span class="tut-symb">Run</span> <span class="tut-rsvd">Then
+          Dim</span> _run <span class="tut-rsvd">As</span> <span class="tut-symb">Run</span> = <span class="tut-rsvd">TryCast</span>(_inline, <span class="tut-symb">Run</span>)
+          _write.Append(<span class="tut-valu">"&lt;Inline Type='Run' "</span>)
+          _write.Append(<span class="tut-valu">"Name='"</span> &amp; _run.Name &amp; <span class="tut-valu">"' "</span>)
+          _write.Append(<span class="tut-valu">"FontFamily='"</span> &amp; _run.FontFamily.ToString &amp; <span class="tut-valu">"' "</span>)
+          _write.Append(<span class="tut-valu">"FontSize='"</span> &amp; _run.FontSize &amp; <span class="tut-valu">"' "</span>)
+          _write.Append(<span class="tut-valu">"FontStretch='"</span> &amp; _run.FontStretch.ToString &amp; <span class="tut-valu">"' "</span>)
+          _write.Append(<span class="tut-valu">"FontStyle='"</span> &amp; _run.FontStyle.ToString &amp; <span class="tut-valu">"' "</span>)
+          _write.Append(<span class="tut-valu">"FontWeight='"</span> &amp; _run.FontWeight.ToString &amp; <span class="tut-valu">"' "</span>)
+          _write.Append(<span class="tut-valu">"Foreground='"</span> &amp; <span class="tut-rsvd">TryCast</span>(_run.Foreground, <span class="tut-symb">SolidColorBrush</span>).Color.ToString &amp; <span class="tut-valu">"' "</span>)
+          _write.Append(<span class="tut-valu">"Text='"</span> &amp; _run.Text &amp; <span class="tut-valu">"' "</span>)
+          _write.Append(<span class="tut-valu">"TextDecorations='"</span> &amp; <span class="tut-rsvd">If</span>(_run.TextDecorations <span class="tut-rsvd">Is Nothing</span>, <span class="tut-valu">""</span>, <span class="tut-valu">"Underline"</span>) &amp; <span class="tut-valu">"'/&gt;"</span>)
+        <span class="tut-rsvd">End If
+      Next</span>
+      _write.Append(<span class="tut-valu">"&lt;/Paragraph&gt;"</span>)
+    <span class="tut-rsvd">Next</span>
+    _write.Append(<span class="tut-valu">"&lt;/doc&gt;"</span>)
+    <span class="tut-rsvd">Return</span> _write.ToString
+  <span class="tut-rsvd">Else
+    Return Nothing
+  End If
+End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtewrite.png" width="858" height="694" alt="MainPage Write Function" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "New" Button Control and type in the New_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Start a New Document?"</span>, <span class="tut-valu">"Rich Text Editor"</span>, _
+    <span class="tut-symb">MessageBoxButton</span>.OKCancel) = <span class="tut-symb">MessageBoxResult</span>.OK <span class="tut-rsvd">Then</span>
+  Editor.Blocks.Clear()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtenewclick.png" width="524" height="133" alt="New Button Click Event" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Open..." Button and type in the Open_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> OpenDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">OpenFileDialog</span>
+OpenDialog.Filter = <span class="tut-valu">"Saved Files (*.sav)|*.sav"</span>
+<span class="tut-rsvd">If</span> OpenDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    If</span> OpenDialog.File.Exists <span class="tut-rsvd">Then</span>
+      Editor.Blocks.Clear()
+      Read(OpenDialog.File.OpenRead, Editor.Blocks)
+    <span class="tut-rsvd">End If
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rteopenclick.png" width="510" height="269" alt="Open Button Click Event" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Return to the Designer View again, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Save..." Button and type in the Save_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> SaveDialog <span class="tut-rsvd">As New</span> <span class="tut-symb">SaveFileDialog</span>
+SaveDialog.Filter = <span class="tut-valu">"Saved Files (*.sav)|*.sav"</span>
+<span class="tut-rsvd">If</span> SaveDialog.ShowDialog <span class="tut-rsvd">Then
+  Try
+    Using</span> FileStream <span class="tut-rsvd">As</span> IO.<span class="tut-symb">StreamWriter</span> = _
+        <span class="tut-rsvd">New</span> IO.<span class="tut-symb">StreamWriter</span>(SaveDialog.OpenFile)
+      FileStream.Write(Write(Editor.Blocks))
+    <span class="tut-rsvd">End Using
+  Catch</span> ex <span class="tut-rsvd">As</span> <span class="tut-symb">Exception</span>
+    <span class="tut-cmnt">' Ignore Errors</span>
+  <span class="tut-rsvd">End Try
+End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtesaveclick.png" width="510" height="269" alt="Save Button Click Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Print" Button Control and type in the Print_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> _print <span class="tut-rsvd">As New</span> <span class="tut-symb">PrintDocument</span>
+_print.DocumentName = <span class="tut-symb">"Rich Text Editor"</span>
+<span class="tut-rsvd">AddHandler</span> _print.PrintPage, <span class="tut-rsvd">Sub</span>(s <span class="tut-rsvd">As Object</span>, args <span class="tut-rsvd">As</span> <span class="tut-symb">PrintPageEventArgs</span>)
+    args.PageVisual = Editor
+    args.HasMorePages = <span class="tut-rsvd">False
+  End Sub
+AddHandler</span> _print.EndPrint, <span class="tut-rsvd">Sub</span>(s <span class="tut-rsvd">As Object</span>, args <span class="tut-rsvd">As</span> <span class="tut-symb">EndPrintEventArgs</span>)
+    <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Document Printed"</span>, _
+      <span class="tut-valu">"Rich Text Editor"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+  <span class="tut-rsvd">End Sub</span>
+_print.Print()
+Editor.Focus()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rteprintclick.png" width="584" height="269" alt="Print Button Click Event" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Bold" Button and type in the Bold_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Editor.Selection.Text.Length &gt; <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Text Selected</span>
+  <span class="tut-rsvd">If TypeOf</span> Editor.Selection.GetPropertyValue(<span class="tut-symb">Run</span>.FontWeightProperty) <span class="tut-rsvd">Is</span> <span class="tut-symb">FontWeight</span> _
+      <span class="tut-rsvd">AndAlso DirectCast</span>(Editor.Selection.GetPropertyValue( _
+        <span class="tut-symb">Run</span>.FontWeightProperty), <span class="tut-symb">FontWeight</span>) = <span class="tut-symb">FontWeights</span>.Normal <span class="tut-rsvd">Then</span>
+    Editor.Selection.SetPropertyValue(<span class="tut-symb">Run</span>.FontWeightProperty, <span class="tut-symb">FontWeights</span>.Bold)
+  <span class="tut-rsvd">Else</span>
+    Editor.Selection.SetPropertyValue(<span class="tut-symb">Run</span>.FontWeightProperty, <span class="tut-symb">FontWeights</span>.Normal)
+  <span class="tut-rsvd">End If
+End If</span>
+Editor.Focus()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rteboldclick.png" width="678" height="235" alt="Bold Button Click Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Italic" Button and type in the Italic_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Editor.Selection.Text.Length &gt; <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Text Selected</span>
+  <span class="tut-rsvd">If TypeOf</span> Editor.Selection.GetPropertyValue(<span class="tut-symb">Run</span>.FontStyleProperty) <span class="tut-rsvd">Is</span> <span class="tut-symb">FontStyle</span> _
+      <span class="tut-rsvd">AndAlso DirectCast</span>(Editor.Selection.GetPropertyValue( _
+        <span class="tut-symb">Run</span>.FontStyleProperty), <span class="tut-symb">FontStyle</span>) = <span class="tut-symb">FontStyles</span>.Normal <span class="tut-rsvd">Then</span>
+    Editor.Selection.SetPropertyValue(<span class="tut-symb">Run</span>.FontStyleProperty, <span class="tut-symb">FontStyles</span>.Italic)
+  <span class="tut-rsvd">Else</span>
+    Editor.Selection.SetPropertyValue(<span class="tut-symb">Run</span>.FontStyleProperty, <span class="tut-symb">FontStyles</span>.Normal)
+  <span class="tut-rsvd">End If
+End If</span>
+Editor.Focus()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rteitalicclick.png" width="664" height="235" alt="Italic Button Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Underline" Button and type in the Underline_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Editor.Selection.Text.Length &gt; <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Text Selected</span>
+  <span class="tut-rsvd">If</span> Editor.Selection.GetPropertyValue(<span class="tut-symb">Run</span>.TextDecorationsProperty) <span class="tut-rsvd">Is Nothing Then</span>
+    Editor.Selection.SetPropertyValue(<span class="tut-symb">Run</span>.TextDecorationsProperty, <span class="tut-symb">TextDecorations</span>.Underline)
+  <span class="tut-rsvd">Else</span>
+    Editor.Selection.SetPropertyValue(<span class="tut-symb">Run</span>.TextDecorationsProperty, <span class="tut-rsvd">Nothing</span>)
+  <span class="tut-rsvd">End If
+End If</span>
+Editor.Focus()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rteunderlineclick.png" width="746" height="201" alt="Underline Button Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "Time Date" Button and type in the TimeDate_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Editor.Selection.Text = Format(Now, <span class="tut-valu">"HH:mm dd/MM/yyyy"</span>)
+Editor.Focus()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtetimedateclick.png" width="538" height="99" alt="Time Date Button Click Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the First or Left-most ComboBox (Font) and type in the Font_SelectionChanged Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Editor <span class="tut-rsvd">IsNot Nothing AndAlso</span> Editor.Selection.Text.Length &gt; <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Text Selected</span>
+  Editor.Selection.SetPropertyValue(<span class="tut-symb">Run</span>.FontFamilyProperty, _
+    <span class="tut-rsvd">New</span> FontFamily(<span class="tut-rsvd">CType</span>(Font.SelectedItem, <span class="tut-symb">ComboBoxItem</span>).Tag))
+  Editor.Focus()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtefontselchanged.png" width="746" height="150" alt="Font ComboBox SelectionChanged Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the Second ComboBox (Size) and type in the Size_SelectionChanged Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Editor <span class="tut-rsvd">IsNot Nothing AndAlso</span> Editor.Selection.Text.Length &gt; <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Text Selected</span>
+  Editor.Selection.SetPropertyValue(<span class="tut-symb">Run</span>.FontSizeProperty, _
+    <span class="tut-rsvd">Double</span>.Parse(<span class="tut-rsvd">TryCast</span>(Size.SelectedItem, <span class="tut-symb">ComboBoxItem</span>).Tag))
+  Editor.Focus()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtesizeselchanged.png" width="746" height="150" alt="Size ComboBox SelectionChanged Event" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the Third ComboBox (Colour) and type in the Colour_SelectionChanged Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Editor <span class="tut-rsvd">IsNot Nothing AndAlso</span> Editor.Selection.Text.Length &gt; <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Text Selected</span>
+  <span class="tut-rsvd">Dim</span> _colour <span class="tut-rsvd">As String</span> = <span class="tut-rsvd">CType</span>(Colour.SelectedItem, <span class="tut-symb">ComboBoxItem</span>).Tag
+  <span class="tut-rsvd">Dim</span> _brush <span class="tut-rsvd">As New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Color</span>.FromArgb(
+    <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">0</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+    <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">2</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+    <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">4</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber),
+    <span class="tut-rsvd">Byte</span>.Parse(_colour.Substring(<span class="tut-valu">6</span>, <span class="tut-valu">2</span>), System.Globalization.<span class="tut-symb">NumberStyles</span>.HexNumber)))
+  Editor.Selection.SetPropertyValue(<span class="tut-symb">Run</span>.ForegroundProperty, _brush)
+  Editor.Focus()
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rtecolourselchanged.png" width="734" height="235" alt="Colour ComboBox SelectionChanged Event" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rterun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+You can Type into the RichTextArea, and then apply Formatting, Fonts, Sizes and Colours - then Save the Document to Open later, see below:  
+</p>
+<div class="tutorial-image">
+<img src="tutorials/sl4rteapp.png" width="400" height="300" alt="Rich Text Editor" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="tutorials/sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This is a very simple Rich Text Editor with some of the common features supported by Silverlight featured, see if you can add more features
+to this application such as Text Alignment, it is up to you!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

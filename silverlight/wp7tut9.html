@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Noughts and Crosses</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Noughts and Crosses</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>Noughts and Crosses or Tic-Tac-Toe is a very simple game to play and also to create with this Tutorial using Silverlight on Windows Phone 7.</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut9.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut9.zip">Download Tutorial</a> (548KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut9code.zip">Download Source Code</a> (17.3KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+In the XAML Pane for MainPage.xaml between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines, enter the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Width</span>="160" <span class="tut-attr">Content</span>="new" <span class="tut-attr">Click</span>="New_Click"/&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxomainxaml.png" width="586" height="141" alt="MainPage XAML View" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxomaindesign.png" width="359" height="659" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Grid control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7grid.png" width="180" height="428" alt="Grid Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Grid on the Page by dragging a Grid from the Toolbox onto the middle part of the Grid on the Page, then in the XAML Pane change the "grid1" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Height</span>="400" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Name</span>="Display"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxogrid.png" width="359" height="659" alt="MainPage with Grid" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "public MainPage()"
+type the following declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">bool</span> _hasWon = <span class="tut-rsvd">false</span>;
+<span class="tut-rsvd">string</span> _piece = <span class="tut-valu">""</span>;
+<span class="tut-rsvd">string</span> _nought = <span class="tut-valu">"O"</span>;
+<span class="tut-rsvd">string</span> _cross = <span class="tut-valu">"X"</span>;
+<span class="tut-rsvd">string</span>[,] _board = <span class="tut-rsvd">new string</span>[3,3];
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxodecs.png" width="404" height="477" alt="MainPage Declarations" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Methods:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private bool</span> Winner()
+{
+  <span class="tut-rsvd">return</span>
+  (_board[0, 0] == _piece &amp;&amp; _board[0, 1] == _piece &amp;&amp; _board[0, 2] == _piece) ||
+  (_board[1, 0] == _piece &amp;&amp; _board[1, 1] == _piece &amp;&amp; _board[1, 2] == _piece) ||
+  (_board[2, 0] == _piece &amp;&amp; _board[2, 1] == _piece &amp;&amp; _board[2, 2] == _piece) ||
+  (_board[0, 0] == _piece &amp;&amp; _board[1, 0] == _piece &amp;&amp; _board[2, 0] == _piece) ||
+  (_board[0, 1] == _piece &amp;&amp; _board[1, 1] == _piece &amp;&amp; _board[2, 1] == _piece) ||
+  (_board[0, 2] == _piece &amp;&amp; _board[1, 2] == _piece &amp;&amp; _board[2, 2] == _piece) ||
+  (_board[0, 0] == _piece &amp;&amp; _board[1, 1] == _piece &amp;&amp; _board[2, 2] == _piece) ||
+  (_board[0, 2] == _piece &amp;&amp; _board[1, 1] == _piece &amp;&amp; _board[2, 0] == _piece);
+}
+
+<span class="tut-rsvd">private bool</span> Drawn()
+{
+  <span class="tut-rsvd">return</span> 
+  _board[0, 0] != <span class="tut-valu">""</span> &amp;&amp; _board[0, 1] != <span class="tut-valu">""</span> &amp;&amp; _board[0, 2] != <span class="tut-valu">""</span> &amp;&amp;
+  _board[1, 0] != <span class="tut-valu">""</span> &amp;&amp; _board[1, 1] != <span class="tut-valu">""</span> &amp;&amp; _board[1, 2] != <span class="tut-valu">""</span> &amp;&amp;
+  _board[2, 0] != <span class="tut-valu">""</span> &amp;&amp; _board[2, 1] != <span class="tut-valu">""</span> &amp;&amp; _board[2, 2] != <span class="tut-valu">""</span>;
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxocheck.png" width="646" height="317" alt="MainPage Numbers Method" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+While still the Code View for MainPage.xaml.cs, below the "}" of the "private bool Drawn()" method type the following Method: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">Path</span> GetPiece()
+{
+  <span class="tut-rsvd">if</span> ((_piece == _cross)) <span class="tut-cmnt">// Draw X</span>
+  {
+    <span class="tut-symb">Path</span> _lines = <span class="tut-rsvd">new</span> <span class="tut-symb">Path</span>();
+    <span class="tut-symb">LineGeometry</span> _line1 = <span class="tut-rsvd">new</span> <span class="tut-symb">LineGeometry</span>();
+    <span class="tut-symb">LineGeometry</span> _line2 = <span class="tut-rsvd">new</span> <span class="tut-symb">LineGeometry</span>();
+    <span class="tut-symb">GeometryGroup</span> _linegroup = <span class="tut-rsvd">new</span> <span class="tut-symb">GeometryGroup</span>();
+    _line1.StartPoint = <span class="tut-rsvd">new</span> <span class="tut-symb">Point</span>(0, 0);
+    _line1.EndPoint = <span class="tut-rsvd">new</span> <span class="tut-symb">Point</span>(64, 64);
+    _line2.StartPoint = <span class="tut-rsvd">new</span> <span class="tut-symb">Point</span>(64, 0);
+    _line2.EndPoint = <span class="tut-rsvd">new</span> <span class="tut-symb">Point</span>(0, 64);
+    _linegroup.Children.Add(_line1);
+    _linegroup.Children.Add(_line2);
+    _lines.Data = _linegroup;
+    _lines.Stroke = <span class="tut-rsvd">new</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.Red);
+    _lines.StrokeThickness = 6;
+    _lines.Margin = <span class="tut-rsvd">new</span> <span class="tut-symb">Thickness</span>(5);
+    <span class="tut-rsvd">return</span> _lines;
+  }
+  <span class="tut-rsvd">else</span> <span class="tut-cmnt">// Draw O</span>
+  { 
+    <span class="tut-symb">EllipseGeometry</span> _ellipse = <span class="tut-rsvd">new</span> <span class="tut-symb">EllipseGeometry</span>();
+    <span class="tut-symb">Path</span> _circle = <span class="tut-rsvd">new</span> <span class="tut-symb">Path</span>();
+    _ellipse.Center = <span class="tut-rsvd">new</span> <span class="tut-symb">Point</span>(32, 32);
+    _ellipse.RadiusX = 32;
+    _ellipse.RadiusY = 32;
+    _circle.Data = _ellipse;
+    _circle.Stroke = <span class="tut-rsvd">new</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.Blue);
+    _circle.StrokeThickness = 6;
+    _circle.Margin = <span class="tut-rsvd">new</span> <span class="tut-symb">Thickness</span>(5);
+    <span class="tut-rsvd">return</span> _circle;
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxogetpiece.png" width="472" height="541" alt="MainPage GetPiece Method" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still the Code View for MainPage.xaml.cs, below the "}" of the "private Path GetPiece()" method type the following Button Event Handler: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Button_Click(<span class="tut-rsvd">object</span> sender, System.Windows.<span class="tut-symb">RoutedEventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (!_hasWon)
+  {
+    <span class="tut-symb">Button</span> _btn = <span class="tut-rsvd">new</span> <span class="tut-symb">Button</span>();
+    _btn = ((<span class="tut-symb">Button</span>)(sender));
+    <span class="tut-rsvd">if</span> ((_btn.Content == null))
+    {
+      _btn.Content = GetPiece();
+      _board[(<span class="tut-rsvd">int</span>)_btn.GetValue(<span class="tut-symb">Grid</span>.RowProperty),
+      (<span class="tut-rsvd">int</span>)_btn.GetValue(<span class="tut-symb">Grid</span>.ColumnProperty)] = _piece;
+    }
+    <span class="tut-rsvd">if</span> (Winner())
+    {
+      _hasWon = <span class="tut-rsvd">true</span>;
+      <span class="tut-symb">MessageBox</span>.Show((_piece + <span class="tut-valu">" wins!"</span>), <span class="tut-valu">"Noughts and Crosses"</span>, <span class="tut-symb">MessageBoxButton</span>.OK);
+    }
+    <span class="tut-rsvd">else if</span> (Drawn())
+    {
+      <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Draw!"</span>, <span class="tut-valu">"Noughts and Crosses"</span>, <span class="tut-symb">MessageBoxButton</span>.OK);
+    }
+    <span class="tut-rsvd">else</span>
+    {
+      _piece = ((_piece == _cross) ? _nought : _cross); <span class="tut-cmnt">// Swap Players</span>
+    }
+  }
+  else
+  {
+    <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Game Over!"</span>, <span class="tut-valu">"Noughts and Crosses"</span>, <span class="tut-symb">MessageBoxButton</span>.OK);
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxobtnclick.png" width="716" height="493" alt="MainPage Button Click Method" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still the Code View for MainPage.xaml.cs, below the "}" of the "private void Button_Click(...)" method type the following Methods: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Add(<span class="tut-rsvd">ref</span> <span class="tut-symb">Grid</span> Grid, <span class="tut-rsvd">int</span> Row, <span class="tut-rsvd">int</span> Column)
+{
+  <span class="tut-symb">Button</span> _btn = <span class="tut-rsvd">new</span> <span class="tut-symb">Button</span>();
+  _btn.Click += Button_Click;
+  _btn.Content = <span class="tut-rsvd">null</span>;
+  _btn.Margin = <span class="tut-rsvd">new</span> <span class="tut-symb">Thickness</span>(2);
+  _btn.SetValue(<span class="tut-symb">Grid</span>.ColumnProperty, Column);
+  _btn.SetValue(<span class="tut-symb">Grid</span>.RowProperty, Row);
+  Grid.Children.Add(_btn);
+}
+
+<span class="tut-rsvd">private void</span> Layout(<span class="tut-rsvd">ref</span> <span class="tut-symb">Grid</span> Grid)
+{
+  Grid.Children.Clear();
+  Grid.ColumnDefinitions.Clear();
+  Grid.RowDefinitions.Clear();
+  <span class="tut-cmnt">// Setup 3x3 Grid</span>
+  <span class="tut-rsvd">for</span> (<span class="tut-rsvd">int</span> Index = 0; (Index &lt;= 2); Index++)
+  {
+    Grid.RowDefinitions.Add(<span class="tut-rsvd">new</span> <span class="tut-symb">RowDefinition</span>());
+    Grid.ColumnDefinitions.Add(<span class="tut-rsvd">new</span> <span class="tut-symb">ColumnDefinition</span>());
+  }
+  Add(<span class="tut-rsvd">ref</span> Grid, 0, 0); <span class="tut-cmnt">// Top Left</span>
+  Add(<span class="tut-rsvd">ref</span> Grid, 0, 1); <span class="tut-cmnt">// Top Middle</span>
+  Add(<span class="tut-rsvd">ref</span> Grid, 0, 2); <span class="tut-cmnt">// Top Right</span>
+  Add(<span class="tut-rsvd">ref</span> Grid, 1, 0); <span class="tut-cmnt">// Middle Left</span>
+  Add(<span class="tut-rsvd">ref</span> Grid, 1, 1); <span class="tut-cmnt">// Centre</span>
+  Add(<span class="tut-rsvd">ref</span> Grid, 1, 2); <span class="tut-cmnt">// Middle Right</span>
+  Add(<span class="tut-rsvd">ref</span> Grid, 2, 0); <span class="tut-cmnt">// Bottom Left</span>
+  Add(<span class="tut-rsvd">ref</span> Grid, 2, 1); <span class="tut-cmnt">// Bottom Middle</span>
+  Add(<span class="tut-rsvd">ref</span> Grid, 2, 2); <span class="tut-cmnt">// Bottom Right</span>
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxoaddlayout.png" width="480" height="510" alt="MainPage Add and Layout Methods" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still the Code View for MainPage.xaml.cs, below the "}" of the "public MainPage()" method type the following Event Handler: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> New_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  Layout(<span class="tut-rsvd">ref</span> Display);
+  _board[0, 0] = <span class="tut-valu">""</span>;
+  _board[0, 1] = <span class="tut-valu">""</span>;
+  _board[0, 2] = <span class="tut-valu">""</span>;
+  _board[1, 0] = <span class="tut-valu">""</span>;
+  _board[1, 1] = <span class="tut-valu">""</span>;
+  _board[1, 2] = <span class="tut-valu">""</span>;
+  _board[2, 0] = <span class="tut-valu">""</span>;
+  _board[2, 1] = <span class="tut-valu">""</span>;
+  _board[2, 2] = <span class="tut-valu">""</span>;
+  _hasWon = <span class="tut-rsvd">false</span>;
+  <span class="tut-rsvd">if</span> ((<span class="tut-symb">MessageBox</span>.Show((_cross + <span class="tut-valu">" to go first?"</span>), <span class="tut-valu">"Noughts and Crosses"</span>, 
+  <span class="tut-symb">MessageBoxButton</span>.OKCancel) == <span class="tut-symb">MessageBoxResult</span>.OK))
+  {
+    _piece = _cross;
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    _piece = _nought;
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxocode.png" width="590" height="365" alt="MainPage Event Handler" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxorun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Tap the "new" Button, it will ask "X to go first?", choose OK for "X" or Cancel for "O", then the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7oxoapp.png" width="359" height="660" alt="Noughts and Crosses" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a very simple game, try adding more advanced features such as a Computer-based Player 2 using Random Numbers, or
+just try changing the colours used - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

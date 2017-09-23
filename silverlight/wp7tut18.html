@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Analogue Clock</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Analogue Clock</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Analogue Clock is a Simple User Control to display the current time using Silverlight on Windows Phone 7.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut18.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut18.zip">Download Tutorial</a> (526KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut18code.zip">Download Source Code</a> (18.3KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select Project then "Add New Item...", and select the "Windows Phone User Control" Template, then change the "Name" to Clock.xaml see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clock.png" width="939" height="624" alt="Clock User Control" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the new User Control to the Project by Clicking on Add, then in the XAML Pane for the User Control.<br/> 
+Remove <span class="tut-rsvd"><span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneChromeBrush</span>}"</span> from <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" ...&gt;</span>, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockuser.png" width="528" height="237" alt="Clock UserControl Attributes" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+While still in XAML Pane between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="400" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Name</span>="Display"/&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockucxaml.png" width="410" height="45" alt="User Control XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockucdesign.png" width="309" height="309" alt="User Control Design View" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Right Click on the User Control or the entry for "Clock.xaml" in Solution Explorer and choose the "View Code" option.<br/>
+In the Code View for Clock.xaml.cs, above "namespace AnalogueClock" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Windows.Threading;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView below the "{" of the line "public partial class Clock : UserControl" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">DispatcherTimer</span> _timer = <span class="tut-rsvd">new</span> <span class="tut-symb">DispatcherTimer</span>();
+<span class="tut-rsvd">private</span> <span class="tut-symb">DateTime</span> _time = <span class="tut-symb">DateTime</span>.Now;
+<span class="tut-rsvd">private</span> <span class="tut-symb">Canvas</span> _markers = <span class="tut-rsvd">new</span> <span class="tut-symb">Canvas</span>();
+<span class="tut-rsvd">private</span> <span class="tut-symb">Canvas</span> _face = <span class="tut-rsvd">new</span> <span class="tut-symb">Canvas</span>();
+<span class="tut-rsvd">private</span> <span class="tut-symb">Rectangle</span> _secondsHand;
+<span class="tut-rsvd">private</span> <span class="tut-symb">Rectangle</span> _minutesHand;
+<span class="tut-rsvd">private</span> <span class="tut-symb">Rectangle</span> _hoursHand;
+<span class="tut-rsvd">private double</span> _diameter;
+<span class="tut-rsvd">private int</span> _secondsWidth = 1;
+<span class="tut-rsvd">private int</span> _secondsHeight;
+<span class="tut-rsvd">private int</span> _minutesWidth = 5;
+<span class="tut-rsvd">private int</span> _minutesHeight;
+<span class="tut-rsvd">private int</span> _hoursWidth = 8;
+<span class="tut-rsvd">private int</span> _hoursHeight;
+<span class="tut-rsvd">private bool</span> _isRealTime = <span class="tut-rsvd">true</span>;
+<span class="tut-rsvd">private bool</span> _showSeconds = <span class="tut-rsvd">true</span>;
+<span class="tut-rsvd">private bool</span> _showMinutes = <span class="tut-rsvd">true</span>;
+<span class="tut-rsvd">private bool</span> _showHours = <span class="tut-rsvd">true</span>;
+<span class="tut-rsvd">private</span> <span class="tut-symb">Brush</span> _faceBackground = ((<span class="tut-symb">Brush</span>)<span class="tut-symb">App</span>.Current.Resources[<span class="tut-valu">"PhoneBackgroundBrush"</span>]);
+<span class="tut-rsvd">private</span> <span class="tut-symb">Brush</span> _faceForeground = ((<span class="tut-symb">Brush</span>)<span class="tut-symb">App</span>.Current.Resources[<span class="tut-valu">"PhoneForegroundBrush"</span>]);
+<span class="tut-rsvd">private</span> <span class="tut-symb">Brush</span> _rimForeground = ((<span class="tut-symb">Brush</span>)<span class="tut-symb">App</span>.Current.Resources[<span class="tut-valu">"PhoneBorderBrush"</span>]);
+<span class="tut-rsvd">private</span> <span class="tut-symb">Brush</span> _rimBackground = ((<span class="tut-symb">Brush</span>)<span class="tut-symb">App</span>.Current.Resources[<span class="tut-valu">"PhoneAccentBrush"</span>]);
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockref.png" width="676" height="733" alt="Clock.xaml Include and Declarations" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+While still in the Code View for Clock.xaml.cs, above "public Clock()" line type the following Methods:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">Rectangle</span> Hand(<span class="tut-rsvd">double</span> width, <span class="tut-rsvd">double</span> height, 
+<span class="tut-symb">Brush</span> background, <span class="tut-rsvd">double</span> radiusX, <span class="tut-rsvd">double</span> radiusY, <span class="tut-rsvd">double</span> thickness)
+{
+  <span class="tut-symb">Rectangle</span> _hand = <span class="tut-rsvd">new</span> <span class="tut-symb">Rectangle</span>();
+  _hand.Width = width;
+  _hand.Height = height;
+  _hand.Fill = background;
+  _hand.StrokeThickness = thickness;
+  _hand.RadiusX = radiusX;
+  _hand.RadiusY = radiusY;
+  <span class="tut-rsvd">return</span> _hand;
+}
+
+<span class="tut-rsvd">private void</span> RemoveHand(<span class="tut-rsvd">ref</span> <span class="tut-symb">Rectangle</span> hand)
+{
+  <span class="tut-rsvd">if</span> (hand != null &amp;&amp; _face.Children.Contains(hand))
+  {
+    _face.Children.Remove(hand);
+  }
+}
+
+<span class="tut-rsvd">private void</span> AddHand(<span class="tut-rsvd">ref</span> <span class="tut-symb">Rectangle</span> hand)
+{
+  <span class="tut-rsvd">if</span> (!_face.Children.Contains(hand))
+  {
+    _face.Children.Add(hand);
+  }
+}
+
+<span class="tut-rsvd">private</span> <span class="tut-symb">TransformGroup</span> TransformGroup(<span class="tut-rsvd">double</span> Angle, <span class="tut-rsvd">double</span> X, <span class="tut-rsvd">double</span> Y)
+{
+  <span class="tut-symb">TransformGroup</span> _transformGroup = <span class="tut-rsvd">new</span> <span class="tut-symb">TransformGroup</span>();
+  <span class="tut-symb">TranslateTransform</span> _firstTranslate = <span class="tut-rsvd">new</span> <span class="tut-symb">TranslateTransform</span>();
+  _firstTranslate.X = X;
+  _firstTranslate.Y = Y;
+  _transformGroup.Children.Add(_firstTranslate);
+  <span class="tut-symb">RotateTransform</span> _rotateTransform = <span class="tut-rsvd">new</span> <span class="tut-symb">RotateTransform</span>();
+  _rotateTransform.Angle = Angle;
+  _transformGroup.Children.Add(_rotateTransform);
+  <span class="tut-symb">TranslateTransform</span> _secondTranslate = <span class="tut-rsvd">new</span> <span class="tut-symb">TranslateTransform</span>();
+  _secondTranslate.X = _diameter / 2;
+  _secondTranslate.Y = _diameter / 2;
+  _transformGroup.Children.Add(_secondTranslate);
+  <span class="tut-rsvd">return</span> _transformGroup;
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockhand.png" width="564" height="718" alt="Clock Methods" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+While still in the Code View for Clock.xaml.cs, above "public Clock()" line type the following Methods:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> SecondHand(<span class="tut-rsvd">int</span> seconds)
+{
+  RemoveHand(<span class="tut-rsvd">ref</span> _secondsHand);
+  <span class="tut-rsvd">if</span> (_showSeconds)
+  {
+    _secondsHand = Hand(_secondsWidth,_secondsHeight,_faceForeground,0, 0, 0);
+    _secondsHand.RenderTransform = TransformGroup(seconds * 6, 
+    -_secondsWidth / 2, -_secondsHeight + 4.25);
+    AddHand(<span class="tut-rsvd">ref</span> _secondsHand);
+  }
+}
+
+<span class="tut-rsvd">private void</span> MinuteHand(<span class="tut-rsvd">int</span> minutes, <span class="tut-rsvd">int</span> seconds)
+{
+  RemoveHand(<span class="tut-rsvd">ref</span> _minutesHand);
+  <span class="tut-rsvd">if</span> (_showMinutes)
+  {
+    _minutesHand = Hand(_minutesWidth, _minutesHeight, _rimForeground, 2, 2, 0.6);
+    _minutesHand.RenderTransform = TransformGroup(6 * minutes + seconds / 10, 
+    -_minutesWidth / 2, -_minutesHeight + 4.25);
+    AddHand(<span class="tut-rsvd">ref</span> _minutesHand);
+  }
+}
+
+<span class="tut-rsvd">private void</span> HourHand(<span class="tut-rsvd">int</span> hours, <span class="tut-rsvd">int</span> minutes, <span class="tut-rsvd">int</span> seconds)
+{
+  RemoveHand(<span class="tut-rsvd">ref</span> _hoursHand);
+  <span class="tut-rsvd">if</span> (_showHours)
+  {
+    _hoursHand = Hand(_hoursWidth, _hoursHeight, _rimBackground, 3, 3, 0.6);
+    _hoursHand.RenderTransform = TransformGroup(30 * hours + minutes / 2 + seconds / 120,
+    -_hoursWidth / 2, -_hoursHeight + 4.25);
+    AddHand(<span class="tut-rsvd">ref</span> _hoursHand);
+  }
+}
+
+<span class="tut-rsvd">private void</span> Layout(<span class="tut-rsvd">ref</span> <span class="tut-symb">Canvas</span> canvas)
+{
+  <span class="tut-symb">Ellipse</span> _rim = <span class="tut-rsvd">new</span> <span class="tut-symb">Ellipse</span>();
+  <span class="tut-symb">Ellipse</span> _inner = <span class="tut-rsvd">new</span> <span class="tut-symb">Ellipse</span>();
+  canvas.Children.Clear();
+  _diameter = canvas.Width;
+  _rim.Height = _diameter;
+  _rim.Width = _diameter;
+  _rim.Fill = _rimBackground;
+  canvas.Children.Add(_rim);
+  _inner.Width = _diameter - 40;
+  _inner.Height = _diameter - 40;
+  _inner.Fill = _faceBackground;
+  <span class="tut-symb">Canvas</span>.SetTop(_inner, 20);
+  <span class="tut-symb">Canvas</span>.SetLeft(_inner, 20);
+  canvas.Children.Add(_inner);
+  _markers.Children.Clear();
+  _markers.Width = _diameter;
+  _markers.Height = _diameter;
+  <span class="tut-rsvd">for</span> (<span class="tut-rsvd">int</span> i = 0; i &lt; 60; i++)
+  {
+    <span class="tut-symb">Rectangle</span> _marker = <span class="tut-rsvd">new</span> <span class="tut-symb">Rectangle</span>();
+    _marker.Fill = _rimForeground;
+    <span class="tut-rsvd">if</span> ((i % 5) == 0)
+    {
+      _marker.Width = 3;
+      _marker.Height = 8;
+      _marker.RenderTransform = TransformGroup(i * 6, -(_marker.Width / 2),
+      -(_marker.Height * 2 + 4.5 - _rim.StrokeThickness / 2 - _diameter / 2 - 6));
+    }
+    <span class="tut-rsvd">else</span>
+    {
+      _marker.Width = 1;
+      _marker.Height = 4;
+      _marker.RenderTransform = TransformGroup(i * 6, -(_marker.Width / 2),
+      -(_marker.Height * 2 + 12.75 - _rim.StrokeThickness / 2 - _diameter / 2 - 8));
+    }
+    _markers.Children.Add(_marker);
+  }
+  canvas.Children.Add(_markers);
+  _face.Width = _diameter;
+  _face.Height = _diameter;
+  canvas.Children.Add(_face);
+  _secondsHeight = (<span class="tut-rsvd">int</span>)_diameter / 2 - 20;
+  _minutesHeight = (<span class="tut-rsvd">int</span>)_diameter / 2 - 40;
+  _hoursHeight = (<span class="tut-rsvd">int</span>)_diameter / 2 - 60;
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clocklayout.png" width="718" height="1325" alt="Clock Methods" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the Code View for Clock.xaml.cs in the "public Clock()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+Layout(<span class="tut-rsvd">ref</span> Display);
+_timer.Tick += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e) =>
+{
+  <span class="tut-rsvd">if</span> (_isRealTime) _time = <span class="tut-symb">DateTime</span>.Now;
+  SecondHand(_time.Second);
+  MinuteHand(_time.Minute, _time.Second);
+  HourHand(_time.Hour, _time.Minute, _time.Second);
+};
+_timer.Start();
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockinit.png" width="466" height="205" alt="User Control Constructor" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View for Clock.xaml.cs, above "public Clock()" line type the following Properties:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">Brush</span> FaceForeground
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _faceForeground; }
+  <span class="tut-rsvd">set</span> 
+  {
+    _faceForeground = <span class="tut-rsvd">value</span> == <span class="tut-rsvd">null</span> ? 
+    ((<span class="tut-symb">Brush</span>)<span class="tut-symb">App</span>.Current.Resources[<span class="tut-valu">"PhoneForegroundBrush"</span>]) : 
+    <span class="tut-rsvd">value</span>;
+  }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">Brush</span> FaceBackground
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _faceBackground; }
+  <span class="tut-rsvd">set</span> 
+  {
+    _faceBackground = <span class="tut-rsvd">value</span> == <span class="tut-rsvd">null</span> ? 
+    ((<span class="tut-symb">Brush</span>)<span class="tut-symb">App</span>.Current.Resources[<span class="tut-valu">"PhoneBackgroundBrush"</span>]) :
+    <span class="tut-rsvd">value</span>;
+  }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">Brush</span> RimForeground
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _rimForeground; }
+  <span class="tut-rsvd">set</span> 
+  {
+    _rimForeground = <span class="tut-rsvd">value</span> == <span class="tut-rsvd">null</span> ? 
+    ((<span class="tut-symb">Brush</span>)<span class="tut-symb">App</span>.Current.Resources[<span class="tut-valu">"PhoneAccentBrush"</span>]) :
+    <span class="tut-rsvd">value</span>;
+  }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">Brush</span> RimBackground
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _rimBackground; }
+  <span class="tut-rsvd">set</span> 
+  {
+    _rimBackground = <span class="tut-rsvd">value</span> == <span class="tut-rsvd">null</span> ?
+    ((<span class="tut-symb">Brush</span>)<span class="tut-symb">App</span>.Current.Resources[<span class="tut-valu">"PhoneSubtleBrush"</span>]) :
+    <span class="tut-rsvd">value</span>;
+  }
+}
+
+<span class="tut-rsvd">public bool</span> Enabled
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _timer.IsEnabled;}
+  <span class="tut-rsvd">set</span> 
+  {
+    <span class="tut-rsvd">if</span> (_timer.IsEnabled)
+    {
+      _timer.Stop();
+    }
+    <span class="tut-rsvd">else</span>
+    {
+      _timer.Start();
+    }
+  }
+}
+
+<span class="tut-rsvd">public bool</span> IsRealTime
+{
+  <span class="tut-rsvd">get</span> {<span class="tut-rsvd">return</span> _isRealTime; }
+  <span class="tut-rsvd">set</span> {_isRealTime = <span class="tut-rsvd">value</span>;}
+}
+
+<span class="tut-rsvd">public bool</span> ShowSeconds
+{
+  <span class="tut-rsvd">get</span> {<span class="tut-rsvd">return</span> _showSeconds; }
+  <span class="tut-rsvd">set</span> {_showSeconds = <span class="tut-rsvd">value</span>;}
+}
+
+<span class="tut-rsvd">public bool</span> ShowMinutes
+{
+  <span class="tut-rsvd">get</span> {<span class="tut-rsvd">return</span> _showMinutes; }
+  <span class="tut-rsvd">set</span> {_showMinutes = <span class="tut-rsvd">value</span>;}
+}
+
+<span class="tut-rsvd">public bool</span> ShowHours
+{
+  <span class="tut-rsvd">get</span> {<span class="tut-rsvd">return</span> _showHours; }
+  <span class="tut-rsvd">set</span> {_showHours = <span class="tut-rsvd">value</span>;}
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">DateTime</span> Time
+{
+  <span class="tut-rsvd">get</span> {<span class="tut-rsvd">return</span> _time;}
+  <span class="tut-rsvd">set</span> {_time = <span class="tut-rsvd">value</span>;}
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockprops.png" width="512" height="1421" alt="Clock Properties" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Select "Build Solution" from the Debug menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7build.png" width="233" height="24" alt="Build Solution" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+When the Build completes, return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then from the AnalogueClock Controls section in the Toolbox select the Clock control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockuc.png" width="180" height="428" alt="Clock User Control" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Draw a Clock onto the Page and in the XAML Pane for MainPage.xaml change the "Clock1" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">my</span>:<span class="tut-valu">Clock</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Clock"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockdesign.png" width="359" height="660" alt="MainPage with Clock" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7clockrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple Analogue Clock, you can change the Colours used by selecting the Clock and goto the Properties box and find the FaceForeground, RimBackground etc.
+and change them. You could also make the clock use gradients or other effects - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

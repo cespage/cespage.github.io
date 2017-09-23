@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Lucky Dice</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-item {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+							line-height: 75%;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Lucky Dice</h1>
+<p>This is a simple game, which will introduce you to Methods, Multiple Picture Boxes, Labels, Random Numbers, Drawing and more!
+</p>
+<p>
+<a href="http://www.cespage.com/vb/vbextut7.html">www.cespage.com/vb/vbextut7.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2005 Express Edition, then select File then New Project... Choose Windows Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexnewproject.gif" width="681" height="417" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1.gif" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Windows Forms components tab select the PictureBox control:
+</p>
+<div class="tutorial-image">
+<img src="vbexpicturebox.gif" width="248" height="398" alt="PictureBox Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw two PictureBoxes on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1pics.gif" width="307" height="307" alt="Form1 with two PictureBoxes" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Select PictureBox1 and then go to the Properties box and change the BackColor property from Control to White, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexpictureprop.gif" width="202" height="457" alt="PictureBox Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Select PictureBox2 and then go to the Properties box and change the BackColor property from Control to White, so the form appears as below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1pic1and2.gif" width="307" height="307" alt="Form1 with White PictureBoxes" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Then from the Windows Forms components tab select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="vbexbutton.gif" width="248" height="398" alt="Button Component" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Draw three Buttons on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1dicebtns.gif" width="307" height="307" alt="Form1 with PictureBoxes and Three Buttons" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on Button1 and then go to the Properties box and change the Text Property to Roll, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexdicebtn1prop.gif" width="202" height="457" alt="Button1 Property" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Click on Button2, change its Text Property to New Game, click on Button3 and change its Text Property to Exit until the form is as below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1diceose.gif" width="307" height="307" alt="Form1 Dice Buttons" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Then from the Windows Forms components tab select the Label control:
+</p>
+<div class="tutorial-image">
+<img src="vbexlabel.gif" width="248" height="398" alt="Label Component" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Draw a Label on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1dicelbl.gif" width="300" height="300" alt="Form1 with Label Buttons and PictureBoxes" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Right click on the Form and select the view Code option then in the code view type in below Public Class Form1 the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> DrawBitmap <span class="tut-rsvd">As</span> Bitmap
+<span class="tut-rsvd">Private</span> DrawGraphics <span class="tut-rsvd">As</span> Graphics
+<span class="tut-rsvd">Private</span> Turn <span class="tut-rsvd">As Integer</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexdicedecs.gif" width="310" height="119" alt="Dice Declarations" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Double Click on Form1 and type in the Form1_Load Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Button2.PerformClick()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexdiceload.gif" width="490" height="90" alt="Form1 Load" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Right click on the Form and select the view Code option then in the code view type in below the end of the Form1_Load sub (after end sub):
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> DiceTopLeft()
+  DrawGraphics.FillEllipse(Brushes.Black, _
+  6, 6, 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> DiceTopRight()
+  DrawGraphics.FillEllipse(Brushes.Black, _
+  DrawBitmap.Width - 18, 6, 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> DiceCentreLeft()
+  DrawGraphics.FillEllipse(Brushes.Black, _
+  6, <span class="tut-rsvd">CInt</span>(DrawBitmap.Height / 2 - 6), 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> DiceCentre()
+  DrawGraphics.FillEllipse(Brushes.Black, _
+  <span class="tut-rsvd">CInt</span>(DrawBitmap.Width / 2 - 6), _
+  <span class="tut-rsvd">CInt</span>(DrawBitmap.Height / 2 - 6), 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> DiceCentreRight()
+  DrawGraphics.FillEllipse(Brushes.Black, _
+  DrawBitmap.Width - 18, _
+  <span class="tut-rsvd">CInt</span>(DrawBitmap.Height / 2 - 6), 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> DiceBottomLeft()
+  DrawGraphics.FillEllipse(Brushes.Black, _
+  6, DrawBitmap.Height - 18, 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> DiceBottomRight()
+  DrawGraphics.FillEllipse(Brushes.Black, _
+  DrawBitmap.Width - 18, DrawBitmap.Height - 18, 12, 12)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexdicedots.gif" width="512" height="650" alt="Dice Dots Methods" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still in the code view add the following below the end of the BottomRight(...) sub ,after the "end sub":
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> DiceDraw(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Integer</span>)
+  DrawGraphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+  <span class="tut-rsvd">Select Case</span> (Value)
+    <span class="tut-rsvd">Case</span> 1
+      DiceCentre()
+    <span class="tut-rsvd">Case</span> 2
+      DiceTopLeft()
+      DiceBottomRight()
+    <span class="tut-rsvd">Case</span> 3
+      DiceTopLeft()
+      DiceCentre()
+      DiceBottomRight()
+    <span class="tut-rsvd">Case</span> 4
+      DiceTopLeft()
+      DiceBottomLeft()
+      DiceTopRight()
+      DiceBottomRight()
+    <span class="tut-lvl2"><span class="tut-rsvd">Case</span> 5
+      DiceTopLeft()
+      DiceBottomLeft()
+      DiceCentre()
+      DiceTopRight()
+      DiceBottomRight()
+    <span class="tut-rsvd">Case</span> 6
+      DiceTopLeft()
+      DiceCentreLeft()
+      DiceBottomLeft()
+      DiceTopRight()
+      DiceCentreRight()
+      DiceBottomRight()
+  <span class="tut-rsvd">End Select</span>
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexdicerender.gif" width="595" height="552" alt="Render Dice Method" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Also in the code view add these routines for the Dice, below the one just entered, after the "end sub":
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> DiceOne(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Integer</span>)
+  DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(PictureBox1.Width, PictureBox1.Height)
+  DrawGraphics = Graphics.FromImage(DrawBitmap)
+  DiceDraw(Value)
+  PictureBox1.Image = DrawBitmap
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> DiceTwo(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Integer</span>)
+  DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(PictureBox2.Width, PictureBox2.Height)
+  DrawGraphics = Graphics.FromImage(DrawBitmap)
+  DiceDraw(Value)
+  PictureBox2.Image = DrawBitmap
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Function</span> DiceValue() <span class="tut-rsvd">As Integer</span>
+  Randomize()
+  DiceValue = <span class="tut-rsvd">CInt</span>(Int((6 * Rnd()) + 1))
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexdiceroutines.gif" width="580" height="319" alt="Dice Routines" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Go to the Form [Design], Double Click on the Button Labeled Roll (Button1) and type in the Button1_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Turn = 1 <span class="tut-rsvd">Then</span>
+  DiceOne(DiceValue)
+  Label1.Text = <span class="tut-valu">"Player One"</span>
+  Turn = 2
+<span class="tut-rsvd">Else</span>
+  DiceTwo(DiceValue)
+  Label1.Text = <span class="tut-valu">"Player Two"</span>
+  Turn = 1
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexrollclick.gif" width="512" height="212" alt="Button1 Click Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Double Click on the Button Labeled New Game (Button2) and type in the Button2_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+PictureBox1.Image = <span class="tut-rsvd">Nothing</span>
+PictureBox2.Image = <span class="tut-rsvd">Nothing</span>
+Turn = 1
+Label1.Text = <span class="tut-valu">"Player One"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexnewgameclick.gif" width="512" height="128" alt="Button2 Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Double Click on the Button Labeled New Game (Button2) and type in the Button2_Click Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">End</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexbtn3click.gif" width="500" height="104" alt="Button3 Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vbexstart.gif" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vbexdicerun.gif" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on Roll to roll the dice for Player One by clicking on Roll, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexdice.gif" width="300" height="300" alt="Dice One Rolled" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the Close button <img src="vbexclose.gif" width="21" height="21" alt="Close" /> on the top right of Form1 to end the application.
+</p>
+<p>
+By clicking on the Roll button it will alternate between Player One and Player Two (Left &amp; Right). You have just created a simple Dice Game, 
+but what about scoring and proper dice rules, you'll have to wait, try and make it have a scoring system/rules yourself and see what else you 
+can achieve with this simple program.
+</p>
+</body>
+</html>

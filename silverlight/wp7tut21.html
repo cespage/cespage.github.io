@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Application Settings</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Application Settings</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Windows Phone 7 applications support the ability to save Application Settings to persist customisation options on a device.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut21.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut21.zip">Download Tutorial</a> (757KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut21code.zip">Download Source Code</a> (20.1KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select Project then "Add Class...", and select the "Class" Template is not already Selected, then change the "Name" to Settings.cs see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7settings.png" width="939" height="624" alt="Settings Class" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the new Class to the Project by Clicking on Add, then in the Code View for the new Class above "<span class="tut-rsvd">namespace</span> ApplicationSettings"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.ComponentModel;
+<span class="tut-rsvd">using</span> System.IO.IsolatedStorage;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView at the end of the line "<span class="tut-rsvd">public class</span> <span class="tut-symb">Settings</span>" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+ : <span class="tut-symb">INotifyPropertyChanged</span>
+</pre>
+</blockquote>
+<p>
+Again in the CodeView below the "{" of the line "<span class="tut-rsvd">public class</span> <span class="tut-symb">Settings</span>" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public event</span> <span class="tut-symb">PropertyChangedEventHandler</span> PropertyChanged;
+<span class="tut-rsvd">private void</span> NotifyPropertyChanged(<span class="tut-symb">String</span> info)
+{
+  <span class="tut-rsvd">if</span> (PropertyChanged != <span class="tut-rsvd">null</span>)
+  {
+    PropertyChanged(<span class="tut-rsvd">this</span>, <span class="tut-rsvd">new</span> <span class="tut-symb">PropertyChangedEventArgs</span>(info));
+  }
+}
+<span class="tut-rsvd">private</span> <span class="tut-symb">IsolatedStorageSettings</span> appSettings = <span class="tut-symb">IsolatedStorageSettings</span>.ApplicationSettings;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7settingsref.png" width="698" height="461" alt="Settings Includes and Declarations" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+While still in the Code View for Settings.cs below "<span class="tut-rsvd">private</span> <span class="tut-symb">IsolatedStorageSettings</span> appSettings = <span class="tut-symb">IsolatedStorageSettings</span>.ApplicationSettings;" type the following Methods and Properties: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public object</span> Get(<span class="tut-rsvd">string</span> key)
+{
+  <span class="tut-rsvd">return</span> appSettings.Contains(key) ? appSettings[key] : <span class="tut-rsvd">null</span>;
+}
+
+<span class="tut-rsvd">public void</span> Set(<span class="tut-rsvd">string</span> key, <span class="tut-rsvd">object</span> value)
+{
+  <span class="tut-rsvd">if</span> (appSettings.Contains(key)) { appSettings[key] = value; }
+  <span class="tut-rsvd">else</span> { appSettings.Add(key, value); }
+  appSettings.Save();
+}
+
+<span class="tut-rsvd">public object</span> Default(<span class="tut-rsvd">object</span> value, <span class="tut-rsvd">object</span> fallback)
+{
+  <span class="tut-rsvd">return</span> value == <span class="tut-rsvd">null</span> ? fallback : value;
+}
+
+<span class="tut-rsvd">public string</span> PageTitle
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-rsvd">string</span>)Default(Get(<span class="tut-valu">"pagetitle"</span>), <span class="tut-valu">"page title"</span>); }
+  <span class="tut-rsvd">set</span>
+  {
+    Set(<span class="tut-valu">"pagetitle"</span>, value);
+    NotifyPropertyChanged(<span class="tut-valu">"PageTitle"</span>);
+  }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">Visibility</span> ShowTitle
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> (<span class="tut-symb">Visibility</span>)Default(Get(<span class="tut-valu">"showtitle"</span>), <span class="tut-symb">Visibility</span>.Visible); }
+}
+
+<span class="tut-rsvd">public bool</span> ShowTitleToggle
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> ShowTitle == <span class="tut-symb">Visibility</span>.Visible; }
+  <span class="tut-rsvd">set</span>
+  {
+    Set(<span class="tut-valu">"showtitle"</span>, value ? <span class="tut-symb">Visibility</span>.Visible : <span class="tut-symb">Visibility</span>.Collapsed);
+    NotifyPropertyChanged(<span class="tut-valu">"ShowTitle"</span>);
+    NotifyPropertyChanged(<span class="tut-valu">"ShowTitleToggle"</span>);
+    NotifyPropertyChanged(<span class="tut-valu">"ShowTitleText"</span>);
+  }
+}
+
+<span class="tut-rsvd">public string</span> ShowTitleText
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> ShowTitleToggle ? <span class="tut-valu">"on"</span> : <span class="tut-valu">"off"</span>; }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7settingscode.png" width="608" height="765" alt="Settings Methods and Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Right Click on the App.xaml Entry in the Solution Explorer and choose "View Code" then in the Code View for App.xaml.css, above the "<span class="tut-rsvd">public</span> App()" line type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">Settings</span> Settings = <span class="tut-rsvd">new</span> <span class="tut-symb">Settings</span>();
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsetappcode.png" width="488" height="141" alt="App Settings" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Select Project then "Add New Item...", and select the "Windows Phone Portrait Page" Template, then change the "Name" to SettingsPage.xaml, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7addsettingspage.png" width="939" height="624" alt="SettingsPage Windows Phone Portrait Page" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Add the new Class to the Project by Clicking on Add, then in the XAML Pane for SettingsPage.xaml above the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="Transparent"&gt;</span> line type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.Resources</span>&gt;
+  &lt;<span class="tut-valu">Style</span> <span class="tut-attr">x</span>:<span class="tut-attr">Key</span>="PhoneToggleSwitch" <span class="tut-attr">TargetType</span>="ToggleButton"&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Background" Value="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneBackgroundBrush</span>}"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Foreground" Value="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneAccentBrush</span>}"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="BorderBrush" Value="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneForegroundBrush</span>}"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="BorderThickness" <span class="tut-attr">Value</span>="3"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="MinWidth" <span class="tut-attr">Value</span>="90"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="MaxWidth" <span class="tut-attr">Value</span>="90"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="MinHeight" <span class="tut-attr">Value</span>="90"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="MaxHeight" <span class="tut-attr">Value</span>="90"/&gt;
+    &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Template"&gt;
+      &lt;<span class="tut-valu">Setter.Value</span>&gt;
+        &lt;<span class="tut-valu">ControlTemplate</span> <span class="tut-attr">TargetType</span>="ToggleButton"&gt;
+          &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Background</span>="Transparent"&gt;
+            &lt;<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+              &lt;<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="CommonStates"&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Normal"/&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="MouseOver"/&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Pressed"/&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Disabled"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="border" <span class="tut-attr">Storyboard.TargetProperty</span>="Visibility"&gt;
+                      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0"&gt;
+                        &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+                          &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Collapsed</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+                        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+                      &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+                    &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+                    &lt;<span class="tut-valu">ObjectAnimationUsingKeyFrames</span> <span class="tut-attr">Storyboard.TargetName</span>="borderDisabled" <span class="tut-attr">Storyboard.TargetProperty</span>="Visibility"&gt;
+                      &lt;<span class="tut-valu">DiscreteObjectKeyFrame</span> <span class="tut-attr">KeyTime</span>="0"&gt;
+                        &lt;<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+                          &lt;<span class="tut-valu">Visibility</span>&gt;<span class="tut-valu">Visible</span>&lt;/<span class="tut-valu">Visibility</span>&gt;
+                        &lt;/<span class="tut-valu">DiscreteObjectKeyFrame.Value</span>&gt;
+                      &lt;/<span class="tut-valu">DiscreteObjectKeyFrame</span>&gt;
+                    &lt;/<span class="tut-valu">ObjectAnimationUsingKeyFrames</span>&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">VisualState</span>&gt;
+              &lt;/<span class="tut-valu">VisualStateGroup</span>&gt;
+              &lt;<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="CheckStates"&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Checked"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Duration</span>="00:00:00.3" <span class="tut-attr">Storyboard.TargetName</span>="switchButton"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="(Canvas.Left)" <span class="tut-attr">To</span>="58"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Duration</span>="00:00:00.3" <span class="tut-attr">Storyboard.TargetName</span>="rectangleSwitchOn" 
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="Width" <span class="tut-attr">To</span>="58"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Duration</span>="00:00:00.3" <span class="tut-attr">Storyboard.TargetName</span>="switchButtonDisabled" 
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="(Canvas.Left)" <span class="tut-attr">To</span>="58"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Duration</span>="00:00:00.3" <span class="tut-attr">Storyboard.TargetName</span>="rectangleSwitchOnDisabled" 
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="Width" <span class="tut-attr">To</span>="58"/&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">VisualState</span>&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Unchecked"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Duration</span>="00:00:00.3" <span class="tut-attr">Storyboard.TargetName</span>="switchButton" 
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="(Canvas.Left)" <span class="tut-attr">To</span>="-10"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Duration</span>="00:00:00.3" <span class="tut-attr">Storyboard.TargetName</span>="rectangleSwitchOn" 
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="Width" <span class="tut-attr">To</span>="0"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Duration</span>="00:00:00.3" <span class="tut-attr">Storyboard.TargetName</span>="switchButtonDisabled" 
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="(Canvas.Left)" <span class="tut-attr">To</span>="-10"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Duration</span>="00:00:00.3" <span class="tut-attr">Storyboard.TargetName</span>="rectangleSwitchOnDisabled" 
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="Width" <span class="tut-attr">To</span>="0"/&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">VisualState</span>&gt;
+              &lt;/<span class="tut-valu">VisualStateGroup</span>&gt;
+              &lt;<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FocusStates"&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Focused"/&gt;
+                &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Unfocused"/&gt;
+              &lt;/<span class="tut-valu">VisualStateGroup</span>&gt;
+            &lt;/<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+            &lt;<span class="tut-valu">Border</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="border" <span class="tut-attr">BorderThickness</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderThickness</span>}" <span class="tut-attr">Background</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Background</span>}" 
+                <span class="tut-attr">BorderBrush</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderBrush</span>}" <span class="tut-attr">Width</span>="89" <span class="tut-attr">Height</span>="34" <span class="tut-attr">HorizontalAlignment</span>="Right" <span class="tut-attr">Margin</span>="0,20,0,20"&gt;
+              &lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="switchContainer" <span class="tut-attr">Margin</span>="4"&gt;
+                &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="rectangleSwitchOn" <span class="tut-attr">Width</span>="0" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Foreground</span>}"/&gt;
+                &lt;<span class="tut-valu">Border</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="switchButton" <span class="tut-attr">Canvas.Top</span>="-12" <span class="tut-attr">BorderThickness</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderThickness</span>}" 
+                    <span class="tut-attr">BorderBrush</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Background</span>}"&gt;
+                  &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="20" <span class="tut-attr">Height</span>="38" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneForegroundBrush</span>}"/&gt;
+                &lt;/<span class="tut-valu">Border</span>&gt;
+              &lt;/<span class="tut-valu">Canvas</span>&gt;
+            &lt;/<span class="tut-valu">Border</span>&gt;
+            &lt;<span class="tut-valu">Border</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="borderDisabled" <span class="tut-attr">BorderThickness</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderThickness</span>}" <span class="tut-attr">Background</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Background</span>}" 
+                <span class="tut-attr">BorderBrush</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneInactiveBrush</span>}" <span class="tut-attr">Width</span>="89" <span class="tut-attr">Height</span>="34" <span class="tut-attr">HorizontalAlignment</span>="Right"
+                  <span class="tut-attr">Margin</span>="0,20,0,20" <span class="tut-attr">Visibility</span>="Collapsed"&gt;
+              &lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="switchContainerDisabled" <span class="tut-attr">Margin</span>="4"&gt;
+                &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="rectangleSwitchOnDisabled" <span class="tut-attr">Width</span>="0" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneInactiveBrush</span>}"/&gt;
+                  &lt;<span class="tut-valu">Border</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="switchButtonDisabled" <span class="tut-attr">Canvas.Top</span>="-12" <span class="tut-attr">BorderThickness</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderThickness</span>}" 
+                    <span class="tut-attr">BorderBrush</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Background</span>}"&gt;
+                  &lt;<span class="tut-valu">Rectangle</span> <span class="tut-attr">Width</span>="20" <span class="tut-attr">Height</span>="38" <span class="tut-attr">Fill</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneInactiveBrush</span>}"/&gt;
+                &lt;/<span class="tut-valu">Border</span>&gt;
+              &lt;/<span class="tut-valu">Canvas</span>&gt;
+            &lt;/<span class="tut-valu">Border</span>&gt;
+          &lt;/<span class="tut-valu">Grid</span>&gt;
+        &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+      &lt;/<span class="tut-valu">Setter.Value</span>&gt;
+    &lt;/<span class="tut-valu">Setter</span>&gt;
+  &lt;/<span class="tut-valu">Style</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.Resources</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7settingsxaml.png" width="1062" height="1581" alt="ToggleButton ControlTemplate Resource XAML" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the XAML Pane for SettingsPage.xaml, between between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">StackPanel</span>&gt;
+  &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="Page Title Text" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneTextTitle3Style</span>}"/>
+  &lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Mode</span>=TwoWay, <span class="tut-attr">Path</span>=PageTitle}" /&gt;
+  &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="Page Title Visibility" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneTextTitle3Style</span>}"/&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Margin</span>="10">
+    &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">VerticalAlignment</span>="Center" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneTextExtraLargeStyle</span>}"
+    <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=ShowTitleText}"/>
+    &lt;<span class="tut-valu">ToggleButton</span> <span class="tut-attr">HorizontalAlignment</span>="Right" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneToggleSwitch</span>}"
+    <span class="tut-attr">IsChecked</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Mode</span>=TwoWay,<span class="tut-attr">Path</span>=ShowTitleToggle}"/>
+  &lt;/<span class="tut-valu">Grid</span>&gt;        
+&lt;/<span class="tut-valu">StackPanel</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7settingspagexaml.png" width="760" height="205" alt="SettingsPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7settingspagedesign.png" width="359" height="660" alt="SettingsPage Design View" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Right Click on the Page or the entry for "SettingsPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "<span class="tut-rsvd">public</span> SettingsPage" 
+type the following Application declaration:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">App</span> app = (<span class="tut-symb">App</span>)<span class="tut-symb">Application</span>.Current;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView in the "<span class="tut-rsvd">public</span> SettingsPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">this</span>.DataContext = app.Settings;
+PageTitle.Text = <span class="tut-valu">"settings"</span>;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7settingspagecode.png" width="432" height="429" alt="SettingsPage Application Declaration and Constructor" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Right Click on the Entry for the Project in the Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "images" (without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsetsolexp.png" width="217" height="527" alt="Project Images Folder" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Download the following image (settings.png) by right-clicking on the image below and choose "Save Picture As..." or 
+"Save Image As..." and Save them to a Folder on your computer:
+</p>
+<blockquote>
+<div class="tut-img">
+<img src="tutorials/settings.png" width="48" height="48" alt="Settings Application Bar Icon" />
+</div>
+</blockquote>
+<p class="tutorial-step">Step 13</p>
+<p>
+Right Click on the Entry for the "images" Folder for the Project in Solution Explorer, and choose "Add", then "Existing Item...", 
+then in the "Add Existing Item" dialog select Folder you saved the image, then choose "Add"
+to add the settings.png to the images folder in the project, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsetsolexpimg.png" width="217" height="527" alt="Project Images Folder with Images" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+While still in the Solution Explorer click on the "settings.png" image then goto the Properties box and change the
+Build Action to Content, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsetimgprop.png" width="217" height="393" alt="Image Properties" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab, then in XAML Pane above the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneBackgroundBrush</span>}"&gt;</span> Tag type the following ApplicationBar XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="False"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="settings" <span class="tut-attr">IconUri</span>="/images/settings.png" <span class="tut-attr">Click</span>="Settings_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsetappbar.png" width="844" height="109" alt="ApplicationBar XAML" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still in the XAML Pane replace the Page Title <span class="tut-rsvd">&lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="PageTitle" <span class="tut-attr">Text</span>="page name" <span class="tut-attr">Margin</span>="-3,-8,0,0" <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneTextTitle1Style</span>}"/&gt;</span> XAML in the TitlePanel with the following XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="PageTitle" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=PageTitle}" <span class="tut-attr">Margin</span>="-3,-8,0,0" 
+    <span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneTextTitle1Style</span>}" <span class="tut-attr">Visibility</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=ShowTitle}"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsettitle.png" width="838" height="77" alt="TitlePaneld XAML" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "<span class="tut-rsvd">public</span> MainPage()" type the following Application declaration: 
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public</span> <span class="tut-symb">App</span> app = (<span class="tut-symb">App</span>)<span class="tut-symb">Application</span>.Current;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView in the "<span class="tut-rsvd">public</span> MainPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">this</span>.DataContext = app.Settings;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsetref.png" width="404" height="429" alt="MainPage Application Declaration and Constructor" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "<span class="tut-rsvd">public</span> MainPage()" type the following Event Handler:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Settings_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  NavigationService.Navigate(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(<span class="tut-valu">"/SettingsPage.xaml"</span>,<span class="tut-symb">UriKind</span>.Relative));
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsetcode.png" width="626" height="61" alt="MainPage Event Handler" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsetrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Tap on the "settings" button, you can "toggle" the title visiblity "on" or "off" or change the title, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7appsetapp.png" width="359" height="660" alt="Application Settings" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple example of using Application Settings, if you change the Page Title Text and then Tap "back" the Page Title text
+will change, or toggle the Page Title visibility with the Page Title Visibility. You can use this as the basis of your
+own application's settings page - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

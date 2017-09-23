@@ -1,0 +1,1090 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>FTP Client</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-prop {
+					 		color: gray;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>FTP Client</h1>
+<p>In this tutorial you will learn how to create an FTP Client, this is just a basic application to demonstrate the ability to use FTP in .NET,
+it uses the List View and Image List to display the files and their associated icons!</p>
+<p>
+<a href="http://www.cespage.com/vb/vb08tut17.html">www.cespage.com/vb/vb08tut17.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Windows Forms Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08newapp.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08form1.png" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Form1 selected goto the Properties box and change the Name from Form1 to frmMain
+</p>
+<div class="tutorial-image">
+<img src="vb08form1prop.png" width="203" height="431" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then select Project then Add Class... and choose the "Class" Template if it is not already selected and give it the Name "FTP.vb" without the quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftp.png" width="804" height="482" alt="FTP Class" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+With the empty FTP Class displayed, if not double click on the "FTP.vb" item in Solution Explorer, then enter the following above the Public Class FTP line: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Net
+<span class="tut-rsvd">Imports</span> System.IO
+</pre>
+</blockquote>
+<p>
+Then enter the following below the Public Class FTP:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Private Members</span>
+
+<span class="tut-rsvd">Private</span> fRequest <span class="tut-rsvd">As</span> FtpWebRequest
+<span class="tut-rsvd">Private</span> fHostname <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+<span class="tut-rsvd">Private</span> fUsername <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+<span class="tut-rsvd">Private</span> fPassword <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+<span class="tut-rsvd">Private</span> fLastDir <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+<span class="tut-rsvd">Private</span> fCurrentDir <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftpdecs.png" width="320" height="252" alt="FTP Class Imports and Declarations" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Again, with the FTP Class still displayed, enter the following Public Properties above "End Class" and below the "Private Members" section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Public Properties</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Hostname<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>ftp://ftp.example.com or ftp.example.com<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Hostname() <span class="tut-rsvd">As String
+  Get
+    If</span> fHostname.StartsWith(<span class="tut-valu">"ftp://"</span>) <span class="tut-rsvd">Then
+      Return</span> fHostname
+    <span class="tut-rsvd">Else
+      Return</span> <span class="tut-valu">"ftp://"</span> &amp; fHostname
+    <span class="tut-rsvd">End If
+  End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As String</span>)
+      fHostname = Value
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Username<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>If blank uses "anonymous" instead<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Username() <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">Get
+    Return</span> IIf(fUsername = <span class="tut-valu">""</span>, <span class="tut-valu">"anonymous"</span>, fUsername)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As String</span>)
+    fUsername = Value
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Password<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> Password() <span class="tut-rsvd">As String
+  Get
+    Return</span> fPassword
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As String</span>)
+    fPassword = Value
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Current Directory<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;remarks&gt;</span>Return Directory ending with /<span class="tut-prop">&lt;/remarks&gt;</span></span>
+<span class="tut-rsvd">Public Property</span> CurrentDirectory() <span class="tut-rsvd">As String
+  Get
+    Return</span> fCurrentDir &amp; <span class="tut-rsvd">CStr</span>(IIf(fCurrentDir.EndsWith(<span class="tut-valu">"/"</span>), <span class="tut-valu">""</span>, <span class="tut-valu">"/"</span>))
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As String</span>)
+    <span class="tut-rsvd">If Not</span> Value.StartsWith(<span class="tut-valu">"/"</span>) <span class="tut-rsvd">Then</span> _
+    <span class="tut-rsvd">Throw New</span> ApplicationException(<span class="tut-valu">"Directory should start with /"</span>)
+    fCurrentDir = Value
+  <span class="tut-rsvd">End Set
+End Property</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftppubpro.png" width="640" height="848" alt="FTP Public Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Again, with the FTP Class still displayed, enter the following Private Methods above the "Public Properties" and below the "Private Members" section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Private Methods</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Get FTP Login Credentials<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Network Credential for FTP<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> GetCredentials() <span class="tut-rsvd">As</span> Net.ICredentials
+  <span class="tut-rsvd">Return New</span> NetworkCredential(fUsername, fPassword)
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Get FTP Request<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="URI"&gt;</span>Host URI<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Result of FTP Request<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> GetRequest(<span class="tut-rsvd">ByVal</span> URI <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As</span> FtpWebRequest
+  <span class="tut-rsvd">Dim</span> Result <span class="tut-rsvd">As</span> FtpWebRequest = <span class="tut-rsvd">CType</span>(FtpWebRequest.Create(URI), FtpWebRequest)
+  Result.Credentials = GetCredentials()
+  Result.KeepAlive = <span class="tut-rsvd">False
+  Return</span> Result
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Get Response String<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Request"&gt;</span>Request for Response<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Get the result as string<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> GetResponseString(<span class="tut-rsvd">ByVal</span> Request <span class="tut-rsvd">As</span> FtpWebRequest) <span class="tut-rsvd">As String
+  Dim</span> Result <span class="tut-rsvd">As String
+  Using</span> Response <span class="tut-rsvd">As</span> FtpWebResponse = <span class="tut-rsvd">CType</span>(Request.GetResponse, FtpWebResponse)
+    <span class="tut-rsvd">Dim</span> Size <span class="tut-rsvd">As Long</span> = Response.ContentLength
+    <span class="tut-rsvd">Using</span> DataStream <span class="tut-rsvd">As</span> Stream = Response.GetResponseStream
+      <span class="tut-rsvd">Using</span> sReader <span class="tut-rsvd">As New</span> StreamReader(DataStream)
+        Result = sReader.ReadToEnd
+        sReader.Close()
+      <span class="tut-rsvd">End Using</span>
+      DataStream.Close()
+    <span class="tut-rsvd">End Using</span>
+    Response.Close()
+  <span class="tut-rsvd">End Using
+  Return</span> Result
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Get the Size of an FTP Request<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Request"&gt;</span>FTP Request<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Request Data Length<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> GetRequestSize(<span class="tut-rsvd">ByVal</span> Request <span class="tut-rsvd">As</span> FtpWebRequest) <span class="tut-rsvd">As Long
+  Dim</span> lSize <span class="tut-rsvd">As Long
+  Using</span> Response <span class="tut-rsvd">As</span> FtpWebResponse = <span class="tut-rsvd">CType</span>(Request.GetResponse, FtpWebResponse)
+    lSize = Response.ContentLength
+    Response.Close()
+  <span class="tut-rsvd">End Using
+  Return</span> lSize
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Amend Path so it always starts with /<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Path"&gt;</span>Path to Amend<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Amended Path or orignal if not Amended<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> AmendPath(<span class="tut-rsvd">ByVal</span> Path <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As String
+  Return CStr</span>(IIf(Path.StartsWith(<span class="tut-valu">"/"</span>), <span class="tut-valu">""</span>, <span class="tut-valu">"/"</span>)) &amp; Path
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Returns Full Path using Current Directory<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="File"&gt;</span>File to Get Path From<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Full Path of File<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> GetFullPath(<span class="tut-rsvd">ByVal</span> File <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As String
+  If</span> File.Contains(<span class="tut-valu">"/"</span>) <span class="tut-rsvd">Then
+    Return</span> AmendPath(File)
+  <span class="tut-rsvd">Else
+    Return</span> CurrentDirectory &amp; File
+  <span class="tut-rsvd">End If
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Get Directory<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Directory"&gt;</span>Directory to Get<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Directory Data<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Private Function</span> GetDirectory(<span class="tut-rsvd">ByVal</span> Directory <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As String
+  If</span> Directory = <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+    fLastDir = CurrentDirectory
+    <span class="tut-rsvd">Return</span> Hostname &amp; CurrentDirectory
+  <span class="tut-rsvd">Else
+    If Not</span> Directory.StartsWith(<span class="tut-valu">"/"</span>) <span class="tut-rsvd">Then</span> _
+    <span class="tut-rsvd">Throw New</span> ApplicationException(<span class="tut-valu">"Directory should start with /"</span>)
+    fLastDir = Directory
+    <span class="tut-rsvd">Return</span> Hostname &amp; Directory
+  <span class="tut-rsvd">End If
+End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftpprimet.png" width="694" height="1372" alt="FTP Private Methods" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Finally in the FTP Class, enter the following Public Methods above the "Public Properties" and below the "Private Methods" Section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Public Methods</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Connection<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Returns True if Connection established, False if not<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> Connection() <span class="tut-rsvd">As Boolean
+  If</span> fHostname &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> (fUsername &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Or</span> fPassword &lt;&gt; <span class="tut-valu">""</span>) <span class="tut-rsvd">Then</span>
+    fRequest = GetRequest(Hostname)
+    fRequest.Method = WebRequestMethods.Ftp.PrintWorkingDirectory
+    <span class="tut-rsvd">Try</span>
+        GetResponseString(fRequest) <span class="tut-cmnt">' Get but Ignore Response</span>
+      <span class="tut-rsvd">Return True
+    Catch</span> ex <span class="tut-rsvd">As</span> Exception
+      <span class="tut-rsvd">Return False
+    End Try
+  Else
+    Return False
+  End If
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>List Directory<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Directory"&gt;</span>Directory to List (Optional)<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>A list of Files and Foldoers as a List(of String)<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> DirectoryList(<span class="tut-rsvd">Optional ByVal</span> Directory <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>) <span class="tut-rsvd">As</span> List(<span class="tut-rsvd">Of String</span>)
+  <span class="tut-rsvd">Dim</span> Result <span class="tut-rsvd">As String
+  Dim</span> lsResult <span class="tut-rsvd">As New</span> List(<span class="tut-rsvd">Of String</span>)
+  fRequest = GetRequest(GetDirectory(Directory))
+  fRequest.Method = WebRequestMethods.Ftp.ListDirectory <span class="tut-cmnt">' Simple List</span>
+  Result = GetResponseString(fRequest) <span class="tut-cmnt">' Get Result String</span>
+  Result = Result.Replace(vbCrLf, vbCr).TrimEnd(Chr(13))
+  lsResult.AddRange(Result.Split(Chr(13))) <span class="tut-cmnt">' Split String into List</span>
+  CurrentDirectory = Directory
+  <span class="tut-rsvd">Return lsResult
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Rename Directory<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="SourcePath"&gt;</span>Directory to Rename<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="TargetDirectory"&gt;</span>New Directory Name<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if Error/Fail<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> DirectoryRename(<span class="tut-rsvd">ByVal</span> SourcePath <span class="tut-rsvd">As String</span>, _
+                              <span class="tut-rsvd">ByVal</span> TargetDirectory <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Boolean
+  Dim</span> Source <span class="tut-rsvd">As String</span> = Hostname &amp; AmendPath(SourcePath)
+  <span class="tut-rsvd">Dim</span> Target <span class="tut-rsvd">As String</span> = AmendPath(TargetDirectory)
+  fRequest = GetRequest(Source)
+  fRequest.Method = WebRequestMethods.Ftp.Rename
+  fRequest.RenameTo = TargetDirectory
+  <span class="tut-rsvd">Try</span>
+    GetResponseString(fRequest) <span class="tut-cmnt">' Get but Ignore Response</span>
+    <span class="tut-rsvd">Return True
+  Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-rsvd">Return False
+  End Try
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Create Directory<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Path"&gt;</span>Directory to Create<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if Error/Fail<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> DirectoryCreate(<span class="tut-rsvd">ByVal</span> Path <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Boolean
+  Dim</span> URI <span class="tut-rsvd">As String</span> = Hostname &amp; CurrentDirectory &amp; AmendPath(Path)
+  fRequest = GetRequest(URI)
+  fRequest.Method = WebRequestMethods.Ftp.MakeDirectory
+  <span class="tut-rsvd">Try</span>
+    GetResponseString(fRequest) <span class="tut-cmnt">' Get but Ignore Response</span>
+    <span class="tut-rsvd">Return True
+  Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-rsvd">Return False
+  End Try
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Delete Directory<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Path"&gt;</span>Directory to Delete<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if Error/Fail<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> DirectoryDelete(<span class="tut-rsvd">ByVal</span> Path <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Boolean
+  Dim</span> URI <span class="tut-rsvd">As String</span> = Hostname &amp; CurrentDirectory &amp; AmendPath(Path)
+  fRequest = GetRequest(URI)
+  fRequest.Method = WebRequestMethods.Ftp.RemoveDirectory
+  <span class="tut-rsvd">Try</span>
+    GetResponseString(fRequest) <span class="tut-cmnt">' Get but Ignore Response</span>
+    <span class="tut-rsvd">Return True
+  Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-rsvd">Return False
+  End Try
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Determine Size of Remote File<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Filename"&gt;</span>Filename of File<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>Size of File as Long<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> FileSize(<span class="tut-rsvd">ByVal</span> Filename <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Long
+  Dim</span> Path, URI <span class="tut-rsvd">As String
+  If</span> Filename.Contains(<span class="tut-valu">"/"</span>) <span class="tut-rsvd">Then</span>
+    Path = AmendPath(Filename)
+  <span class="tut-rsvd">Else</span>
+    Path = CurrentDirectory &amp; Filename
+  <span class="tut-rsvd">End If</span>
+  URI = Hostname &amp; Path
+  fRequest = GetRequest(URI)
+  fRequest.Method = WebRequestMethods.Ftp.GetFileSize
+  GetResponseString(fRequest) <span class="tut-cmnt">' Get but Ignore Response</span>
+  <span class="tut-rsvd">Return</span> GetRequestSize(fRequest)
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Determine of Remote File Exists<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Filename"&gt;</span>Filename of File<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Exists, False if Not<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> FileExists(ByVal Filename As String) <span class="tut-rsvd">As Boolean
+  Dim</span> lSize <span class="tut-rsvd">As Long
+  Try</span>
+    lSize = FileSize(Filename)
+    <span class="tut-rsvd">Return True
+  Catch</span> ex <span class="tut-rsvd">As</span> Exception <span class="tut-cmnt">' Handle Request not Found Only</span>
+    <span class="tut-rsvd">If TypeOf</span> (ex) <span class="tut-rsvd">Is</span> System.Net.WebException <span class="tut-rsvd">Then
+      If</span> ex.Message.Contains(<span class="tut-valu">"550"</span>) <span class="tut-rsvd">Then
+        Return False</span> <span class="tut-cmnt">' No File</span>
+      <span class="tut-rsvd">Else
+        Throw
+      End If
+    Else
+      Throw
+    End If
+  End Try
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Rename Remote File<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="SourceFilename"&gt;</span>File to Rename<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="TargetFilename"&gt;</span>New Name for File<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if Error/Fail<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> FileRename(<span class="tut-rsvd">ByRef</span> SourceFilename <span class="tut-rsvd">As String</span>, _
+                         <span class="tut-rsvd">ByVal</span> TargetFilename <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Boolean
+  Dim</span> Source, Target, URI <span class="tut-rsvd">As String</span>
+  Source = GetFullPath(SourceFilename)
+  <span class="tut-rsvd">If Not</span> FileExists(Source) <span class="tut-rsvd">Then
+    Throw New</span> FileNotFoundException(<span class="tut-valu">"File "</span> &amp; Source &amp; <span class="tut-valu">" not found"</span>)
+  <span class="tut-rsvd">End If</span>
+  Target = GetFullPath(TargetFilename)
+  <span class="tut-rsvd">If</span> Target = Source <span class="tut-rsvd">Then
+    Throw New</span> ApplicationException(<span class="tut-valu">"Source and Target Filenames are the Same"</span>)
+  <span class="tut-rsvd">ElseIf</span> FileExists(Target) <span class="tut-rsvd">Then
+    Throw New</span> ApplicationException(<span class="tut-valu">"Target File "</span> &amp; Target &amp; <span class="tut-valu">" already exists"</span>)
+  <span class="tut-rsvd">End If</span>
+  URI = Hostname &amp; Source
+  fRequest = GetRequest(URI)
+  fRequest.Method = WebRequestMethods.Ftp.Rename
+  fRequest.RenameTo = Target
+  <span class="tut-rsvd">Try</span>
+    GetResponseString(fRequest) <span class="tut-cmnt">' Get but Ignore Response</span>
+    <span class="tut-rsvd">Return True
+  Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-rsvd">Return False
+  End Try
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Delete Remote File<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="Filename"&gt;</span>File do Delete<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if Error/Fail<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> FileDelete(<span class="tut-rsvd">ByVal</span> Filename <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Boolean
+  Dim</span> URI <span class="tut-rsvd">As String</span>
+  URI = Hostname &amp; GetFullPath(Filename)
+  fRequest = GetRequest(URI)
+  fRequest.Method = WebRequestMethods.Ftp.DeleteFile
+  <span class="tut-rsvd">Try</span>
+    GetResponseString(fRequest) <span class="tut-cmnt">' Get but Ignore Response</span>
+    <span class="tut-rsvd">Return True
+  Catch</span> ex <span class="tut-rsvd">As</span> Exception
+    <span class="tut-rsvd">Return False
+  End Try
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Upload Local File to FTP Server<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="LocalFileInfo"&gt;</span>Local File Info<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="RemoteFilename"&gt;</span>Target Filename (Optional)<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if Error/Fail<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> Upload(<span class="tut-rsvd">ByVal</span> LocalFileInfo <span class="tut-rsvd">As</span> FileInfo, _
+                     Optional <span class="tut-rsvd">ByVal</span> RemoteFilename <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>) <span class="tut-rsvd">As Boolean
+  Dim</span> Remote, URI <span class="tut-rsvd">As String
+  Dim</span> DataRead <span class="tut-rsvd">As Integer
+  If</span> RemoteFilename.Trim = <span class="tut-valu">""</span> Then <span class="tut-cmnt">' If No RemoteFileInfo Use LocalFileInfo</span>
+    Remote = CurrentDirectory &amp; LocalFileInfo.Name
+  <span class="tut-rsvd">ElseIf</span> RemoteFilename.Contains(<span class="tut-valu">"/"</span>) <span class="tut-rsvd">Then</span>
+    Remote = AmendPath(RemoteFilename) <span class="tut-cmnt">' If has / then is Full Path</span>
+  <span class="tut-rsvd">Else</span> <span class="tut-cmnt">' Otherwise is filename only use the Current Directory for Path</span>
+    Remote = CurrentDirectory &amp; RemoteFilename
+  <span class="tut-rsvd">End If</span>
+  URI = Hostname &amp; Remote
+  fRequest = GetRequest(URI)
+  fRequest.Method = Net.WebRequestMethods.Ftp.UploadFile <span class="tut-cmnt">' File Upload</span>
+  fRequest.UseBinary = <span class="tut-rsvd">True</span> <span class="tut-cmnt">' Binary Mode</span>
+  fRequest.ContentLength = LocalFileInfo.Length <span class="tut-cmnt">' Notify FTP of Expected Size</span>
+  <span class="tut-rsvd">Dim</span> Content(2047) <span class="tut-rsvd">As Byte</span> <span class="tut-cmnt">' Byte Buffer Store, at least 1 Byte</span>
+  <span class="tut-rsvd">Using</span> LocalData <span class="tut-rsvd">As</span> FileStream = LocalFileInfo.OpenRead() <span class="tut-cmnt">' Read File</span>
+    <span class="tut-rsvd">Try</span> <span class="tut-cmnt">' Open File Stream, Upload Data</span>
+      <span class="tut-rsvd">Using</span> UploadData <span class="tut-rsvd">As Stream</span> = fRequest.GetRequestStream
+        <span class="tut-rsvd">Do</span>
+          DataRead = LocalData.Read(Content, 0, 2048)
+          UploadData.Write(Content, 0, DataRead)
+        <span class="tut-rsvd">Loop Until</span> DataRead &lt; 2048
+        UploadData.Close()
+      <span class="tut-rsvd">End Using
+    Catch</span> ex <span class="tut-rsvd">As</span> Exception
+      <span class="tut-cmnt">' Do Nothing on Exception</span>
+    <span class="tut-rsvd">Finally</span>
+      LocalData.Close() <span class="tut-cmnt">' Close File Stream</span>
+    <span class="tut-rsvd">End Try
+  End Using
+  Return True
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Upload Local File to FTP Server<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="LocalFilename"&gt;</span>Local File<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="RemoteFilename"&gt;</span>Target Filename (Optional)<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if Error/Fail<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> Upload(<span class="tut-rsvd">ByVal</span> LocalFilename <span class="tut-rsvd">As String</span>, _
+                     <span class="tut-rsvd">Optional ByVal</span> RemoteFilename <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>) <span class="tut-rsvd">As Boolean
+  If Not</span> File.Exists(LocalFilename) <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Check Local File Exists</span>
+    <span class="tut-rsvd">Throw New</span> ApplicationException(<span class="tut-valu">"File "</span> &amp; LocalFilename &amp; <span class="tut-valu">" not found"</span>)
+  <span class="tut-rsvd">End If
+  Return</span> Upload(<span class="tut-rsvd">New</span> FileInfo(LocalFilename), RemoteFilename)
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Download Remote File to Local<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="RemoteFilename"&gt;</span>Remote Filename, if Required<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="LocalFileInfo"&gt;</span>Local File Information<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="PermitOverwrite"&gt;</span>Overwrite Local File if it Exists<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if Error/Fail<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> Download(<span class="tut-rsvd">ByVal</span> RemoteFilename <span class="tut-rsvd">As String</span>, _
+                       <span class="tut-rsvd">ByVal</span> LocalFileInfo <span class="tut-rsvd">As</span> FileInfo, _
+                       <span class="tut-rsvd">Optional ByVal</span> PermitOverwrite <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">False</span>)
+  <span class="tut-rsvd">If</span> LocalFileInfo.Exists <span class="tut-rsvd">And Not</span> PermitOverwrite <span class="tut-rsvd">Then</span> _
+  <span class="tut-rsvd">Throw New</span> ApplicationException(<span class="tut-valu">"Local file already exists"</span>)
+  <span class="tut-rsvd">Dim</span> Remote, URI <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">Dim</span> DataRead <span class="tut-rsvd">As Integer
+  If</span> RemoteFilename.Trim = <span class="tut-valu">""</span> <span class="tut-rsvd">Then
+    Throw New</span> ApplicationException(<span class="tut-valu">"File not specified"</span>)
+  <span class="tut-rsvd">ElseIf</span> RemoteFilename.Contains(<span class="tut-valu">"/"</span>) Then
+    Remote = AmendPath(RemoteFilename)
+  <span class="tut-rsvd">Else</span>
+    Remote = CurrentDirectory &amp; RemoteFilename
+  <span class="tut-rsvd">End If</span>
+  URI = Hostname &amp; Remote
+  fRequest = GetRequest(URI)
+  fRequest.Method = WebRequestMethods.Ftp.DownloadFile
+  fRequest.UseBinary = <span class="tut-rsvd">True</span>
+  <span class="tut-rsvd">Using</span> Response <span class="tut-rsvd">As</span> FtpWebResponse = <span class="tut-rsvd">CType</span>(fRequest.GetResponse, FtpWebResponse)
+    <span class="tut-rsvd">Using</span> ResponseStream <span class="tut-rsvd">As</span> Stream = Response.GetResponseStream
+      <span class="tut-rsvd">Using</span> DownloadData <span class="tut-rsvd">As</span> FileStream = LocalFileInfo.OpenWrite
+        <span class="tut-rsvd">Try
+          Dim</span> Buffer(2048) <span class="tut-rsvd">As Byte
+          Do</span>
+            DataRead = ResponseStream.Read(Buffer, 0, Buffer.Length)
+            DownloadData.Write(Buffer, 0, DataRead)
+          <span class="tut-rsvd">Loop Until</span> DataRead = 0
+          ResponseStream.Close()
+          DownloadData.Flush()
+          DownloadData.Close()
+        <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+          DownloadData.Close()
+          LocalFileInfo.Delete() <span class="tut-cmnt">' Delete Partial Data Downloads</span>
+          <span class="tut-rsvd">Throw
+        End Try
+      End Using</span>
+      ResponseStream.Close()
+    <span class="tut-rsvd">End Using</span>
+    Response.Close()
+  <span class="tut-rsvd">End Using
+  Return True
+End Function</span>
+
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;summary&gt;</span>Download Remote File to Local<span class="tut-prop">&lt;/summary&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="RemoteFilename"&gt;</span>Remote Filename, if Required<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="LocalFilename"&gt;</span>Full Path of Local File<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;param name="PermitOverwrite"&gt;</span>Overwrite Local File if it Exists<span class="tut-prop">&lt;/param&gt;</span></span>
+<span class="tut-cmnt">''' <span class="tut-prop">&lt;returns&gt;</span>True if Success, False if Error/Fail<span class="tut-prop">&lt;/returns&gt;</span></span>
+<span class="tut-rsvd">Public Function</span> Download(<span class="tut-rsvd">ByVal</span> RemoteFilename <span class="tut-rsvd">As String</span>, _
+                       <span class="tut-rsvd">ByVal</span> LocalFilename <span class="tut-rsvd">As String</span>, _
+                       <span class="tut-rsvd">Optional ByVal</span> PermitOverwrite <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">False</span>) <span class="tut-rsvd">As Boolean
+  Return Me</span>.Download(RemoteFilename, <span class="tut-rsvd">New</span> FileInfo(LocalFilename), PermitOverwrite)
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftppubmet.png" width="756" height="4670" alt="FTP Public Methods" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Select frmMain, by double-clicking on the entry for "frmMain in Solution Explorer or click on the "frmMain [Design]" Tab if Present.<br/>
+Then from the Components tab on the Toolbox select the ImageList component:
+</p>
+<div class="tutorial-image">
+<img src="vb08imagelist.png" width="240" height="400" alt="ImageList Component" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Draw am ImageList on the Form, or double-click on the ImageList entry in the Toolbox, and it will appear in the pane, beneath the form, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08paneil.png" width="200" height="83" alt="ImageList in Pane below frmMain" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Then goto the Properties box and change the Name to "ExplorerIcons", ColorDepth to "Depth32Bit", and ImageSize to "32,32", all without quotes, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08explorericonsprop.png" width="203" height="399" alt="ImageList Properties" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Then from the Common Controls tab on the Toolbox select the ListView component:
+</p>
+<div class="tutorial-image">
+<img src="vb08listview.png" width="240" height="400" alt="ListView Component" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Draw a ListView on the Form, see below: 
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainlistview.png" width="300" height="300" alt="frmMain with ListView" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Then goto the Properties box and change the Name to "Explorer", Dock property to "Fill", LargeImageList to "ExplorerIcons" and View to "LargeIcon", all without quotes, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08explorerprop.png" width="203" height="399" alt="Explorer Properties" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Then from the Menus &amp; Toolbars tab on the Toolbox select the MenuStrip Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08menustrip.png" width="240" height="400" alt="MenuStrip Component" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Either double-click on the MenuStrip Control entry in the Menu &amp; Toolbars tab on the Toolbox or keep the MenuStrip
+Component Clicked and then move it over the Form then let go. Change the Name of the MenuStrip in the properties to mnuFTP. The Form will then look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainmnuftp.png" width="300" height="300" alt="frmMain with MenuStrip" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Click or select where the MenuStrip says "Type Here", an editable Textbox will appear type in "File" without the quotes in this Box, then in the Box below
+that type in "Connect...", then "-" which is minus or the hyphen key which will appear as a Seperator, then below that type "Upload...", then "Download...",
+then another "-" for a seperator, and then finally "Exit". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuftp.png" width="300" height="300" alt="mnuFTP with SubMenus" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Click or select where the MenuStrip says "Type Here" next to "File", and in this type in "Edit" without the quotes in this Box, then in the Box below
+that type "New Folder...", then type in "-" which is minus or the hyphen key for a Seperator, then below that "Rename..." and finally "Delete". 
+The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuftpedit.png" width="300" height="300" alt="mnuFTP with Edit Sub Menu Items" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Right Click on the Form or the entry of the Form in Solution Explorer and choose the "View Code" option then above the "Public Class frmMain"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Runtime.InteropServices
+</pre>
+</blockquote>
+<p>
+Then below "Public Class frmMain" enter the following Private Declarations and API Functions:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> Const PASSWORD_TITLE <span class="tut-rsvd">As String</span> = <span class="tut-valu">"Password:"</span>
+<span class="tut-rsvd">Private Const</span> ASTERISK_KEYCODE = 42
+<span class="tut-rsvd">Private Const</span> GW_CHILD = 5
+<span class="tut-rsvd">Private Const</span> WM_CREATE = &amp;H1
+<span class="tut-rsvd">Private Const</span> EM_SETPASSWORDCHAR = &amp;HCC
+<span class="tut-rsvd">Private</span> WindowHandle <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Private</span> Client <span class="tut-rsvd">As New</span> FTP
+
+&lt;DllImport(<span class="tut-valu">"shell32.dll"</span>, CallingConvention:=CallingConvention.Cdecl)&gt; _
+<span class="tut-rsvd">Private Shared Function</span> ExtractIcon(<span class="tut-rsvd">ByVal</span> hIcon <span class="tut-rsvd">As</span> IntPtr, _
+<span class="tut-rsvd">ByVal</span> lpszExeFileName <span class="tut-rsvd">As String</span>, <span class="tut-rsvd">ByVal</span> nIconIndex <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As</span> IntPtr
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-rsvd">Private Declare Function</span> FindWindow <span class="tut-rsvd">Lib</span> <span class="tut-valu">"user32"</span> <span class="tut-rsvd">Alias</span> <span class="tut-valu">"FindWindowA"</span> _
+(<span class="tut-rsvd">ByVal</span> lpClassName <span class="tut-rsvd">As String</span>, <span class="tut-rsvd">ByVal</span> lpWindowName <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Integer</span>
+
+<span class="tut-rsvd">Private Declare Function</span> GetWindow <span class="tut-rsvd">Lib</span> <span class="tut-valu">"user32"</span> _
+(<span class="tut-rsvd">ByVal</span> hwnd <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByVal</span> wCmd <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Integer</span>
+
+<span class="tut-rsvd">Public Declare Function</span> SendMessage <span class="tut-rsvd">Lib</span> <span class="tut-valu">"user32"</span> <span class="tut-rsvd">Alias</span> <span class="tut-valu">"SendMessageA"</span> _
+(<span class="tut-rsvd">ByVal</span> hwnd <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByVal</span> wMsg <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByVal</span> wParam <span class="tut-rsvd">As Integer</span>, _
+ <span class="tut-rsvd">ByVal</span> lParam <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Integer</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftpclientdecs.png" width="632" height="474" alt="FTP Client Declaration" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+While still in the Code View for frmMain, enter the following above the "End Class" of "Public Class frmMain":
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Password()
+  <span class="tut-rsvd">Dim</span> InputWindow <span class="tut-rsvd">As Integer</span>
+  InputWindow = GetWindow(WindowHandle, GW_CHILD)
+  SendMessage(InputWindow, EM_SETPASSWORDCHAR, ASTERISK_KEYCODE, 0)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Protected Overrides Sub</span> WndProc(<span class="tut-rsvd">ByRef</span> m <span class="tut-rsvd">As</span> System.Windows.Forms.Message)
+  <span class="tut-rsvd">MyBase</span>.WndProc(m)
+  <span class="tut-rsvd">If</span> m.Result.ToInt32 = WM_CREATE <span class="tut-rsvd">Then</span>
+    WindowHandle = FindWindow(vbNullString, PASSWORD_TITLE)
+  <span class="tut-rsvd">ElseIf</span> WindowHandle &gt; 0 <span class="tut-rsvd">Then</span>
+    Password()
+    WindowHandle = 0
+  <span class="tut-rsvd">End If
+End Sub</span>
+
+<span class="tut-rsvd">Private Function</span> GetIcon(<span class="tut-rsvd">ByVal</span> Filename <span class="tut-rsvd">As String</span>, <span class="tut-rsvd">ByRef</span> ImageList <span class="tut-rsvd">As</span> ImageList) <span class="tut-rsvd">As Integer
+  Dim</span> sIcon, sExt <span class="tut-rsvd">As String
+  Dim</span> iIcon <span class="tut-rsvd">As Integer
+  Dim</span> hIcon <span class="tut-rsvd">As</span> IntPtr
+  <span class="tut-rsvd">If Not</span> Filename.Contains(<span class="tut-valu">"."</span>) <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Folder, Get Folder Icon</span>
+    hIcon = ExtractIcon(IntPtr.Zero, <span class="tut-valu">"Shell32.dll"</span>, 3)
+    ImageList.Images.Add(Icon.FromHandle(hIcon))
+  <span class="tut-rsvd">Else</span> <span class="tut-cmnt">' File, Get Associated Icon</span>
+    sExt = New IO.FileInfo(Filename).Extension
+    sIcon = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(sExt).GetValue(<span class="tut-valu">""</span>)
+    sIcon = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(sIcon).OpenSubKey(<span class="tut-valu">"DefaultIcon"</span>).GetValue(<span class="tut-valu">""</span>)
+    <span class="tut-rsvd">If</span> sIcon.Contains(<span class="tut-valu">","</span>) <span class="tut-rsvd">Then</span>
+      iIcon = sIcon.Split(<span class="tut-valu">","</span>)(1)
+      sIcon = sIcon.Split(<span class="tut-valu">","</span>)(0)
+      hIcon = ExtractIcon(IntPtr.Zero, sIcon, iIcon)
+      ImageList.Images.Add(Icon.FromHandle(hIcon))
+    <span class="tut-rsvd">Else</span> <span class="tut-cmnt">' No Icon Found for File Type</span>
+      hIcon = ExtractIcon(IntPtr.Zero, <span class="tut-valu">"Shell32.dll"</span>, 1)
+      ImageList.Images.Add(Icon.FromHandle(hIcon))
+    <span class="tut-rsvd">End If
+  End If
+  Return</span> ImageList.Images.Count - 1
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-rsvd">Private Function</span> GetParent(<span class="tut-rsvd">ByVal</span> Path <span class="tut-rsvd">As String</span>)
+  <span class="tut-rsvd">Dim</span> strPath <span class="tut-rsvd">As String
+  If</span> Path.EndsWith(<span class="tut-valu">"/"</span>) <span class="tut-rsvd">Then</span>
+    strPath = Mid(Path, 1, Path.LastIndexOf(<span class="tut-valu">"/"</span>))
+  <span class="tut-rsvd">Else</span>
+    strPath = Path
+  <span class="tut-rsvd">End If</span>
+  strPath = strPath.Substring(0, strPath.LastIndexOf(<span class="tut-valu">"/"</span>))
+  <span class="tut-rsvd">If</span> strPath = <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+    strPath = <span class="tut-valu">"/"</span>
+  <span class="tut-rsvd">End If
+  Return</span> strPath
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-rsvd">Private Sub</span> Directory(<span class="tut-rsvd">Optional ByVal</span> Current <span class="tut-rsvd">As String</span> = <span class="tut-valu">"/"</span>)
+  <span class="tut-rsvd">Dim</span> Path <span class="tut-rsvd">As String
+  Dim</span> Result <span class="tut-rsvd">As</span> List(<span class="tut-rsvd">Of String</span>)
+  Result = Client.DirectoryList(Current)
+  ExplorerIcons.Images.Clear()
+  Explorer.Items.Clear()
+  <span class="tut-rsvd">If</span> Current &lt;&gt; <span class="tut-valu">"/"</span> <span class="tut-rsvd">Then
+    Dim</span> Up <span class="tut-rsvd">As New</span> ListViewItem
+    Up.Tag = GetParent(Client.CurrentDirectory)
+    Up.Text = <span class="tut-valu">"..."</span>
+    Up.ImageIndex = GetIcon(<span class="tut-valu">"parent"</span>, ExplorerIcons)
+    Explorer.Items.Add(Up)
+  <span class="tut-rsvd">End If
+  For Each</span> Line <span class="tut-rsvd">As String In</span> Result
+    <span class="tut-rsvd">If</span> Line &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then
+      Dim</span> Item <span class="tut-rsvd">As New</span> ListViewItem
+      Item.Tag = Line <span class="tut-cmnt">' Full Name</span>
+      Path = Current.Replace(<span class="tut-valu">"/"</span>, <span class="tut-valu">""</span>) &amp; <span class="tut-valu">"/"</span>
+      <span class="tut-rsvd">If</span> Line.Contains(Path) <span class="tut-rsvd">Then</span>
+          Line = Replace(Line, Path, <span class="tut-valu">""</span>)
+      <span class="tut-rsvd">End If</span>
+      Item.Text = Line <span class="tut-cmnt">' Partial Name</span>
+      Item.ImageIndex = GetIcon(Line, ExplorerIcons)
+      Explorer.Items.Add(Item)
+    <span class="tut-rsvd">End If
+  Next
+End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> Download(<span class="tut-rsvd">ByVal</span> Location <span class="tut-rsvd">As String</span>)
+  <span class="tut-rsvd">Dim</span> Download <span class="tut-rsvd">As New</span> SaveFileDialog
+  Download.AddExtension = <span class="tut-rsvd">True</span>
+  Download.DefaultExt = IO.Path.GetExtension(Location)
+  Download.CheckPathExists = <span class="tut-rsvd">True</span>
+  Download.Filter = UCase(Download.DefaultExt) &amp; _
+  <span class="tut-valu">" File (*."</span> &amp; Download.DefaultExt &amp; <span class="tut-valu">")|*."</span> &amp; Download.DefaultExt
+  Download.FileName = Location
+  <span class="tut-rsvd">If</span> Download.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then
+    Try</span>
+      Client.Download(Location, Download.FileName)
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+      <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try
+  End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftpclientfuns.png" width="916" height="1662" alt="FTP Client Functions" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Connect..." (ConnectToolStripMenuItem) and 
+type the following in the ConnectToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Client.Hostname = InputBox(<span class="tut-valu">"Hostname:"</span>, <span class="tut-valu">"Host Name"</span>)
+Client.Username = InputBox(<span class="tut-valu">"Username:"</span>, <span class="tut-valu">"User Name"</span>)
+Client.Password = InputBox(<span class="tut-valu">"Password:"</span>, PASSWORD_TITLE)
+Directory()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuftpconnect.png" width="696" height="132" alt="File Menu Connect Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Upload..." (UploadToolStripMenuItem) and 
+type the following in the UploadToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Client.Connection <span class="tut-rsvd">Then
+  Dim</span> Upload <span class="tut-rsvd">As New</span> OpenFileDialog()
+  Upload.Filter = <span class="tut-valu">"All files (*.*)|*.*"</span>
+  Upload.CheckFileExists = <span class="tut-rsvd">True
+  If</span> Upload.ShowDialog(<span class="tut-rsvd">Me</span>) = Windows.Forms.DialogResult.OK <span class="tut-rsvd">Then
+    Try</span>
+      Client.Upload(Upload.FileName)
+      Directory(Client.CurrentDirectory)
+    <span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+      <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try
+  End If
+Else</span>
+  MsgBox(<span class="tut-valu">"Please connect to FTP Server"</span>, _
+  MsgBoxStyle.Exclamation, <span class="tut-valu">"FTP Client"</span>)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuftpupload.png" width="680" height="336" alt="File Menu Upload Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Download..." (DownloadToolStripMenuItem) and 
+type the following in the DownloadToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Client.Connection <span class="tut-rsvd">Then
+  Dim</span> Selected <span class="tut-rsvd">As</span> ListViewItem
+  <span class="tut-rsvd">If</span> Explorer.SelectedItems.Count &gt; 0 <span class="tut-rsvd">Then</span>
+    Selected = Explorer.Items(Explorer.SelectedItems(0).Index)
+    <span class="tut-rsvd">If</span> Selected.Tag.Contains(<span class="tut-valu">"."</span>) <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' File</span>
+      Download(Selected.Tag)
+    <span class="tut-rsvd">End If
+  End If
+Else</span>
+  MsgBox(<span class="tut-valu">"Please connect to FTP Server"</span>, _
+  MsgBoxStyle.Exclamation, <span class="tut-valu">"FTP Client"</span>)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuftpdownload.png" width="712" height="268" alt="File Menu Download Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Exit" (ExitToolStripMenuItem) and 
+type the following in the ExitToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+Response = MsgBox(<span class="tut-valu">"Are you sure you want to Exit FTP Client?"</span>, _
+                  MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                  <span class="tut-valu">"FTP Client</span>)
+<span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+  <span class="tut-rsvd">End</span>
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuftpexit.png" width="648" height="182" alt="File Menu Exit Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip, 
+then Double Click on the Menu Item Labeled "New Folder..." (NewFolderToolStripMenuItem) and type the following in the NewFolderToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Client.Connection <span class="tut-rsvd">Then
+  Dim</span> Response <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+  Response = InputBox(<span class="tut-valu">"Folder Name:"</span>, <span class="tut-valu">"FTP Client"</span>, Response)
+  <span class="tut-rsvd">If</span> Response &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+      Client.DirectoryCreate(Response)
+      Directory(Client.CurrentDirectory)
+  <span class="tut-rsvd">End If
+Else</span>
+  MsgBox(<span class="tut-valu">"Please connect to FTP Server"</span>, _
+  MsgBoxStyle.Exclamation, <span class="tut-valu">"FTP Client"</span>)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+Click on [Design] tab or double click on the frmMain entry in Solution Explorer again, click "Edit",
+then Double Click on the Menu Item Labeled "Rename..." (RenameToolStripMenuItem) and type the following in the RenameToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Client.Connection <span class="tut-rsvd">Then
+  Dim</span> Response <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">Dim</span> Selected <span class="tut-rsvd">As</span> ListViewItem
+  <span class="tut-rsvd">If</span> Explorer.SelectedItems.Count &gt; 0 <span class="tut-rsvd">Then</span>
+    Selected = Explorer.Items(Explorer.SelectedItems(0).Index)
+    Response = InputBox(<span class="tut-valu">"Name:"</span>, <span class="tut-valu">"FTP Client"</span>, Selected.Text)
+    <span class="tut-rsvd">If</span> Response &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then
+      Try
+        If</span> Selected.Tag.Contains(<span class="tut-valu">"."</span>) <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' File</span>
+          Client.FileRename(Selected.Tag, Response)
+        <span class="tut-rsvd">Else</span> <span class="tut-cmnt">' Folder</span>
+          Client.DirectoryRename(Selected.Tag, Response)
+        <span class="tut-rsvd">End If
+      Catch</span> ex <span class="tut-rsvd">As</span> Exception
+        <span class="tut-cmnt">' Do nothing on Exception</span>
+      <span class="tut-rsvd">End Try</span>
+      Directory()
+	  <span class="tut-rsvd">End If
+  End If
+Else</span>
+  MsgBox(<span class="tut-valu">"Please connect to FTP Server"</span>, _
+  MsgBoxStyle.Exclamation, <span class="tut-valu">"FTP Client"</span>)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "Edit" on the MenuStrip, 
+then Double Click on the Menu Item Labeled "Delete" (DeleteToolStripMenuItem) and type the following in the DeleteToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Client.Connection <span class="tut-rsvd">Then
+  Dim</span> Selected <span class="tut-rsvd">As</span> ListViewItem
+  <span class="tut-rsvd">If</span> Explorer.SelectedItems.Count &gt; 0 <span class="tut-rsvd">Then</span>
+    Selected = Explorer.Items(Explorer.SelectedItems(0).Index)
+    <span class="tut-rsvd">Try
+      If</span> Selected.Tag.Contains(<span class="tut-valu">"."</span>) <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' File</span>
+        Client.FileDelete(Selected.Tag)
+      <span class="tut-rsvd">Else</span> <span class="tut-cmnt">' Folder</span>
+        Client.DirectoryDelete(Selected.Tag)
+      <span class="tut-rsvd">End If
+    Catch</span> ex <span class="tut-rsvd">As</span> Exception
+      <span class="tut-cmnt">' Do nothing on Exception</span>
+    <span class="tut-rsvd">End Try</span>
+    Directory()
+  <span class="tut-rsvd">End If
+Else</span>
+  MsgBox(<span class="tut-valu">"Please connect to FTP Server"</span>, _
+  MsgBoxStyle.Exclamation, <span class="tut-valu">"FTP Client"</span>)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuftpeditevents.png" width="726" height="1138" alt="Edit Menu Events" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Click on the [Design] Tab to view the form again, then Double Click on the Form (frmMain) and 
+type the following in the frmMain_Load() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"FTP Client"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftpclientload.png" width="504" height="80" alt="frmMain Load Event" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Return to the Code View, by double-clicking on the Form, this will show the frmMain_Load Sub from the previous step, 
+in Code view are two drop-down boxes, select "Explorer" from the first drop-down with "(frmMain Events)", 
+and then from the other "(Declarations)" select "DoubleClick" and type the following in the Explorer_DoubleClick(...) Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Client.Connection <span class="tut-rsvd">Then
+  Dim</span> Selected <span class="tut-rsvd">As</span> ListViewItem
+  <span class="tut-rsvd">If</span> Explorer.SelectedItems.Count &gt; 0 <span class="tut-rsvd">Then</span>
+    Selected = Explorer.Items(Explorer.SelectedItems(0).Index)
+    <span class="tut-rsvd">If</span> Selected.Tag.Contains(<span class="tut-valu">"."</span>) <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' File</span>
+      Download(Selected.Tag)
+    <span class="tut-rsvd">Else</span> <span class="tut-cmnt">' Folder</span>
+      <span class="tut-rsvd">If</span> Selected.Tag.StartsWith(<span class="tut-cmnt">"/"</span>) <span class="tut-rsvd">Then</span>
+        Directory(Selected.Tag) <span class="tut-cmnt">' List</span>
+      <span class="tut-rsvd">Else</span>
+        Directory(<span class="tut-valu">"/"</span> &amp; Selected.Tag) <span class="tut-cmnt">' List</span>
+      <span class="tut-rsvd">End If
+    End If
+  End If
+Else</span>
+  MsgBox(<span class="tut-valu">"Please connect to FTP Server"</span>, _
+  MsgBoxStyle.Exclamation, <span class="tut-valu">"FTP Client"</span>)
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08explorerdoubleclick.png" width="604" height="370" alt="FTP Client Explorer DoubleClick Event" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+Steps 28-30 are optional and just add Keyboard Shortcuts to the MenuItems, you don't have to do these if you don't want to!<br/>
+Click on the [Design] Tab to view the form again, click on "Connect..." on the MenuStrip then in the Properties box look for the "ShortcutKeys" option and 
+click on the Drop Down arrow where "None" appears. Check the "Ctrl" Checkbox in "Modifiers" and then in the "Key" dropdown list select "O", 
+see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuwebopenprop.png" width="240" height="399" alt="File Menu Connect Menu Item Shortcut Key" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+Set "Upload..." to "Ctrl+U" and "Download..." to "Ctrl+D", The File Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuftpfilekeys.png" width="300" height="300" alt="File Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 30</p>
+<p>
+Click on or select the "Edit" Menu and set the "ShortcutKeys" Properties for the following Menu Items, "New Folder..." should be set to "Ctrl+Ins", 
+"Rename" to "F2", finally "Delete" should be "Del". The Edit Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnuftpeditkeys.png" width="300" height="300" alt="Edit Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 31</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftpclientrun.png" width="300" height="300" alt="FTP Client Running" />
+</div>
+<p class="tutorial-step">Step 32</p>
+<p>
+Use the Connect feature to Connect to an FTP site, by entering th Hostname (FTP Address), Username and Password (shows as Asterisks), see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08ftpclientshow.png" width="300" height="300" alt="FTP Client" />
+</div>
+<p class="tutorial-step">Step 33</p>
+<p>
+Click File then Exit or click on the Close button <img src="vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right to end the application.
+</p>
+<p>
+This FTP Client is vert basic, it is recommended that it only be used for demonstration purposes and to learn from, you may wish to use
+it with an FTP Server on your own Computer search online for "free FTP server" and look for one that you can connect to. Make improvements
+to the client so it checks before Deleting, and make it your own!
+</p>
+</body>
+</html>

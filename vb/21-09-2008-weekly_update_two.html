@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Articles - CESPage.com Visual Basic Weekly Update Two</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Articles</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-selected"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-element"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p class="article-head">CESPage.com Visual Basic Weekly Update Two</p>
+<p class="article-strap">Questions to, and answers from CESPage.com Visual Basic plus Tutorials and more.</p>
+<p class="article-folio">By <a href="http://www.cespage.com/vb">CESPage.com Visual Basic</a>, Published 21st September 2008, <a href="http://www.cespage.com/blog/?p=34">Comments?</a></p>
+<p><b>Tutorials</b></p>
+<p>
+This week's tutorial will be the FTP Client, this is still in development, however this should appear before the next update, this one is taking a bit longer,
+but don't worry it will be easy to implement and follow just a few issues with navigating FTP folders. The tutorial will show the basics of an FTP client which
+can then be expanded upon, the tutorial may be amended at a later date to include any new features or changes you suggest, if possible.<br/>
+Next week will feature the Alarm Clock, this should appear on-time as it has all known features, the File Sharer after the About Console may be tricky but this
+will be prepared at the same time as the "About Console" tutorial! This File Sharer will use the Windows Vista peer-to-peer technology so, sorry if this is not
+able to be used by everyone. The Video tutorial for "Hello World" will be done sometime in October.
+</p>
+<p>
+You can find all the Tutorials for Visual Basic 2008 Express Edition and prior version of Visual Basic in the <a href="tutorials.html">Tutorials</a> Section.
+</p>
+<p><b>Q&amp;A</b></p>
+<p>
+In this new and regular section of the Weekly Update is a Questions and Answers section, this will answer those Visual Basic related questions asked via
+<a href="http://www.cespage.com/blog">CESPage.com Blog</a> that don't require a whole Article, Tutorial or Downloadable example, look out for answers to those
+questions here!
+</p>
+<p>&nbsp;<b>Could it be possible to add a statusstrip and a popup-blocker to the webbrowser?</b> asked by yannick</p>
+<p>
+A status-strip can be added to the Webbrowser by going to the Menu &amp; Toolbars option on the Toolbox and double-clicking on the Status Strip,
+the WebBrowser may need to be adjusted, this can then have labels that can display information.<br/>
+The WebBrowser component has an event under the (Declarations) list for the (General) item eg. webMain in the Code View, this event is "NewWindow"
+if selected the following code will ask before allowing this new window to be opened, it could be modifed further to behave more like a Popup Blocker,
+see example below: 
+</p>
+<blockquote>
+<pre class="tut-code">
+e.Cancel = MsgBox(<span class="tut-valu">"Allow Popup Window?"</span>, MsgBoxStyle.Question + MsgBoxStyle.YesNo, <span class="tut-valu">"Web Browser"</span>) = MsgBoxResult.No
+</pre>
+</blockquote>
+<p>
+You can post your Questions via the <a href="http://www.cespage.com/blog/?p=34">CESPage.com Visual Basic Weekly Update </a> on the Blog or via any of the "Visual Basic" related
+topics on the Blog, and they will be answered here!
+</p>
+<p><b>Information</b></p>
+<p>
+CESPage.com Visual Basic is updated now as often as possible however there is only a limited time that can be spent, just to give an idea each tutorial
+takes a long time to make, the prototype usually takes about an hour or two or more for example the Text Editor tutorial took about 6-8 hours to create
+the most recent version, this includes research time however. The tutorial itself takes about 2-3 hours to create sometimes over 4 hours, and is colourised
+and created all by hand, plus the Downloadable and Printer Friendly version is done as a copy with the relevant images for this tutorial collated for the download.<br/>
+Hopefully this information will be useful to those wondering what work goes into creating a Tutorial and appeciated the effort it takes, each one being quicker
+to follow and learn from that it was to create! Thanks for downloading them, remember if you use these tutorials let us know where and we'll feature it in a 
+future update whether it be college, work, or even what country you're in! Let us know via <a href="http://www.cespage.com/blog/?p=34">CESPage.com Blog</a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

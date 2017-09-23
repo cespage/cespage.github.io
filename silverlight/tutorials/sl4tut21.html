@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Virtual Keyboard</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-xatt {
+					color:#6464B9;
+}
+.tut-link {
+					color: blue;
+					text-decoration: underline;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-prop {
+					 		color: gray;
+}
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>Virtual Keyboard</h1>
+<p>
+Virtual Keyboard is an On-Screen Keyboard in Silverlight with support for Copying the input to the Clipboard which can then be Pasted into another application.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut21.html">www.cespage.com/silverlight/sl4tut21.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Two Canvases on the Page then in the XAML Pane above the "&lt;/Grid&gt;" then change the "&lt;Canvas&gt;" lines to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="35" <span class="tut-attr">Width</span>="400" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Toolbar"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="265" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Margin</span>="0,35,0,0" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">Name</span>="Content"&gt;&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4alarmcvs.png" width="420" height="319" alt="MainPage with Toolbar Canvas and Content Canvas" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="sl4textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a TextBox on the "Toolbar" Canvas and in the XAML Pane below the "&lt;Canvas&gt;" tag and above the "&lt;/Canvas&gt;" change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Canvas.Left</span>="6" <span class="tut-attr">Canvas.Top</span>="6" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="388" <span class="tut-attr">Name</span>="Buffer"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4keytxt.png" width="415" height="314" alt="MainPage with Buffer TextBox" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the StackPanel control:
+</p>
+<div class="tutorial-image">
+<img src="sl4stackpanel.png" width="180" height="428" alt="StackPanel Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw a StackPanel on the large "Content" Canvas by dragging the StackPanel from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;StackPanel&gt;" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Height</span>="200" <span class="tut-attr">Width</span>="400" <span class="tut-attr">Name</span>="Keyboard"/&gt;</span>
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4keypnl.png" width="421" height="314" alt="MainPage with Canvases and StackPanel" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View below the "Inherits UserControl" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> _rowOne <span class="tut-rsvd">As String</span>(,) = {{<span class="tut-valu">"`"</span>, <span class="tut-valu">"1"</span>, <span class="tut-valu">"2"</span>, <span class="tut-valu">"3"</span>, <span class="tut-valu">"4"</span>, <span class="tut-valu">"5"</span>, <span class="tut-valu">"6"</span>, <span class="tut-valu">"7"</span>, <span class="tut-valu">"8"</span>, <span class="tut-valu">"9"</span>, <span class="tut-valu">"0"</span>, <span class="tut-valu">"-"</span>, <span class="tut-valu">"="</span>},
+    {<span class="tut-valu">"¬"</span>, <span class="tut-valu">"!"</span>, <span class="tut-valu">""""</span>, <span class="tut-valu">"£"</span>, <span class="tut-valu">"$"</span>, <span class="tut-valu">"%"</span>, <span class="tut-valu">"^"</span>, <span class="tut-valu">"&amp;"</span>, <span class="tut-valu">"*"</span>, <span class="tut-valu">"("</span>, <span class="tut-valu">")"</span>, <span class="tut-valu">"_"</span>, <span class="tut-valu">"+"</span>}}
+<span class="tut-rsvd">Private</span> _rowTwo <span class="tut-rsvd">As String</span>(,) = {{<span class="tut-valu">"q"</span>, <span class="tut-valu">"w"</span>, <span class="tut-valu">"e"</span>, <span class="tut-valu">"r"</span>, <span class="tut-valu">"t"</span>, <span class="tut-valu">"y"</span>, <span class="tut-valu">"u"</span>, <span class="tut-valu">"i"</span>, <span class="tut-valu">"o"</span>, <span class="tut-valu">"p"</span>, <span class="tut-valu">"["</span>, <span class="tut-valu">"]"</span>},
+    {<span class="tut-valu">"q"</span>, <span class="tut-valu">"w"</span>, <span class="tut-valu">"e"</span>, <span class="tut-valu">"r"</span>, <span class="tut-valu">"t"</span>, <span class="tut-valu">"y"</span>, <span class="tut-valu">"u"</span>, <span class="tut-valu">"i"</span>, <span class="tut-valu">"o"</span>, <span class="tut-valu">"p"</span>, <span class="tut-valu">"{"</span>, <span class="tut-valu">"}"</span>}}
+<span class="tut-rsvd">Private</span> _rowThree <span class="tut-rsvd">As String</span>(,) = {{<span class="tut-valu">"a"</span>, <span class="tut-valu">"s"</span>, <span class="tut-valu">"d"</span>, <span class="tut-valu">"f"</span>, <span class="tut-valu">"g"</span>, <span class="tut-valu">"h"</span>, <span class="tut-valu">"j"</span>, <span class="tut-valu">"k"</span>, <span class="tut-valu">"l"</span>, <span class="tut-valu">";"</span>, <span class="tut-valu">"'"</span>, <span class="tut-valu">"#"</span>},
+    {<span class="tut-valu">"a"</span>, <span class="tut-valu">"s"</span>, <span class="tut-valu">"d"</span>, <span class="tut-valu">"f"</span>, <span class="tut-valu">"g"</span>, <span class="tut-valu">"h"</span>, <span class="tut-valu">"j"</span>, <span class="tut-valu">"k"</span>, <span class="tut-valu">"l"</span>, <span class="tut-valu">":"</span>, <span class="tut-valu">"@"</span>, <span class="tut-valu">"~"</span>}}
+<span class="tut-rsvd">Private</span> _rowFour <span class="tut-rsvd">As String</span>(,) = {{<span class="tut-valu">"\"</span>, <span class="tut-valu">"z"</span>, <span class="tut-valu">"x"</span>, <span class="tut-valu">"c"</span>, <span class="tut-valu">"v"</span>, <span class="tut-valu">"b"</span>, <span class="tut-valu">"n"</span>, <span class="tut-valu">"m"</span>, <span class="tut-valu">","</span>, <span class="tut-valu">"."</span>, <span class="tut-valu">"/"</span>},
+    {<span class="tut-valu">"|"</span>, <span class="tut-valu">"z"</span>, <span class="tut-valu">"x"</span>, <span class="tut-valu">"c"</span>, <span class="tut-valu">"v"</span>, <span class="tut-valu">"b"</span>, <span class="tut-valu">"n"</span>, <span class="tut-valu">"m"</span>, <span class="tut-valu">"&lt;"</span>, <span class="tut-valu">"&gt;"</span>, <span class="tut-valu">"?"</span>}}
+<span class="tut-rsvd">Private</span> _panel <span class="tut-rsvd">As New</span> <span class="tut-symb">StackPanel</span>
+<span class="tut-rsvd">Private</span> _panelOne <span class="tut-rsvd">As New</span> <span class="tut-symb">StackPanel</span>
+<span class="tut-rsvd">Private</span> _panelTwo <span class="tut-rsvd">As New</span> <span class="tut-symb">StackPanel</span>
+<span class="tut-rsvd">Private</span> _panelThree <span class="tut-rsvd">As New</span> <span class="tut-symb">StackPanel</span>
+<span class="tut-rsvd">Private</span> _panelFour <span class="tut-rsvd">As New</span> <span class="tut-symb">StackPanel</span>
+<span class="tut-rsvd">Private</span> _panelFive <span class="tut-rsvd">As New</span> <span class="tut-symb">StackPanel</span>
+<span class="tut-rsvd">Private</span> _isShift <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">False</span>
+<span class="tut-rsvd">Private</span> _isCaps <span class="tut-rsvd">As Boolean</span> = <span class="tut-rsvd">False</span>
+
+<span class="tut-rsvd">Public Enum</span> <span class="tut-symb">Special</span>
+  None = <span class="tut-valu">0</span>
+  BackSpace = <span class="tut-valu">1</span>
+  Tab = <span class="tut-valu">2</span>
+  Enter = <span class="tut-valu">3</span>
+  CapsLock = <span class="tut-valu">4</span>
+  Shift = <span class="tut-valu">5</span>
+  Space = <span class="tut-valu">6</span>
+  Home = <span class="tut-valu">7</span>
+  [End] = <span class="tut-valu">8</span>
+  Insert = <span class="tut-valu">9</span>
+  Delete = <span class="tut-valu">10</span>
+  Copy = <span class="tut-valu">11</span>
+  Paste = <span class="tut-valu">12</span>
+<span class="tut-rsvd">End Enum</span>
+
+<span class="tut-rsvd">Public Event</span> SpecialPressed(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> <span class="tut-symb">Special</span>)
+<span class="tut-rsvd">Public Event</span> KeyPressed(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Object</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4keydecs.png" width="732" height="745" alt="MainPage.xaml Declarations" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Public Sub New()" type the following Subs: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> UpdateRow(<span class="tut-rsvd">ByRef</span> Row <span class="tut-rsvd">As</span> <span class="tut-symb">StackPanel</span>, <span class="tut-rsvd">ByRef</span> Source <span class="tut-rsvd">As String</span>(,), _
+    <span class="tut-rsvd">ByRef</span> Shift <span class="tut-rsvd">As Boolean</span>, <span class="tut-rsvd">ByRef</span> Count <span class="tut-rsvd">As Integer</span>)
+  <span class="tut-rsvd">For Each</span> Item <span class="tut-rsvd">As</span> <span class="tut-symb">Button</span> <span class="tut-rsvd">In</span> Row.Children
+    <span class="tut-rsvd">For</span> Index <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span> <span class="tut-rsvd">To</span> Count
+      <span class="tut-rsvd">If</span> Shift <span class="tut-rsvd">Then
+        If CStr</span>(Item.Content) = <span class="tut-rsvd">CStr</span>(Source(<span class="tut-valu">0</span>, Index)) <span class="tut-rsvd">Then</span>
+          Item.Content = Source(<span class="tut-valu">1</span>, Index)
+        <span class="tut-rsvd">End If
+      Else
+        If CStr</span>(Item.Content) = <span class="tut-rsvd">CStr</span>(Source(<span class="tut-valu">1</span>, Index)) <span class="tut-rsvd">Then</span>
+          Item.Content = Source(<span class="tut-valu">0</span>, Index)
+        <span class="tut-rsvd">End If
+      End If
+    Next
+  Next
+End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> Button_Click(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As</span> System.<span class="tut-symb">Object</span>, _
+    <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.Windows.<span class="tut-symb">RoutedEventArgs</span>)
+  <span class="tut-rsvd">Dim</span> _value <span class="tut-rsvd">As New Object
+  Dim</span> _command <span class="tut-rsvd">As New Object</span>
+  _value = <span class="tut-rsvd">CType</span>(sender, <span class="tut-symb">Button</span>).Content
+  _command = <span class="tut-rsvd">CType</span>(sender, <span class="tut-symb">Button</span>).Tag
+  <span class="tut-rsvd">If Not</span> _command <span class="tut-rsvd">Is Nothing Then</span>
+    _value = <span class="tut-rsvd">Nothing
+    Select Case</span> _command
+      <span class="tut-rsvd">Case</span> <span class="tut-symb">Special</span>.BackSpace, <span class="tut-symb">Special</span>.Copy, <span class="tut-symb">Special</span>.Paste, _
+          <span class="tut-symb">Special</span>.Home, <span class="tut-symb">Special</span>.End, <span class="tut-symb">Special</span>.Insert, <span class="tut-symb">Special</span>.Delete
+        <span class="tut-rsvd">RaiseEvent</span> SpecialPressed(_command)
+      <span class="tut-rsvd">Case</span> <span class="tut-symb">Special</span>.Shift
+        _isShift = <span class="tut-rsvd">Not</span> _isShift
+        UpdateRow(_panelOne, _rowOne, _isShift, <span class="tut-valu">12</span>)
+        UpdateRow(_panelTwo, _rowTwo, _isShift, <span class="tut-valu">11</span>)
+        UpdateRow(_panelThree, _rowThree, _isShift, <span class="tut-valu">11</span>)
+        UpdateRow(_panelFour, _rowFour, _isShift, <span class="tut-valu">10</span>)
+      <span class="tut-rsvd">Case</span> <span class="tut-symb">Special</span>.CapsLock
+        _isCaps = <span class="tut-rsvd">Not</span> _isCaps
+      <span class="tut-rsvd">Case</span> <span class="tut-symb">Special</span>.Tab
+        _value = vbTab
+      <span class="tut-rsvd">Case</span> <span class="tut-symb">Special</span>.Enter
+        _value = vbCrLf
+      <span class="tut-rsvd">Case</span> <span class="tut-symb">Special</span>.Space
+        _value = <span class="tut-valu">" "</span>
+    <span class="tut-rsvd">End Select
+  End If
+  If Not</span> _value <span class="tut-rsvd">Is Nothing Then
+    If</span> _isCaps <span class="tut-rsvd">Xor</span> _isShift <span class="tut-rsvd">Then</span>
+      _value = <span class="tut-rsvd">CStr</span>(_value).ToUpper
+    <span class="tut-rsvd">Else</span>
+      _value = <span class="tut-rsvd">CStr</span>(_value).ToLower
+    <span class="tut-rsvd">End If
+    RaiseEvent</span> KeyPressed(_value)
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4keyupdbtn.png" width="566" height="915" alt="MainPage UpdateRow and Button Click Subs" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Private Sub Button_Click(...)" type the following Subs: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Add(<span class="tut-rsvd">ByRef</span> Panel <span class="tut-rsvd">As</span> <span class="tut-symb">StackPanel</span>, <span class="tut-rsvd">ByRef</span> Content <span class="tut-rsvd">As Object</span>, _
+    <span class="tut-rsvd">ByRef</span> Tag <span class="tut-rsvd">As Object</span>, <span class="tut-rsvd">ByRef</span> Width <span class="tut-rsvd">As Double</span>, <span class="tut-rsvd">ByRef</span> Height <span class="tut-rsvd">As Double</span>)
+  <span class="tut-rsvd">Dim</span> _btn <span class="tut-rsvd">As New</span> <span class="tut-symb">Button</span>
+  <span class="tut-rsvd">AddHandler</span> _btn.Click, <span class="tut-rsvd">AddressOf</span> Button_Click
+  _btn.Content = Content
+  _btn.Tag = Tag
+  _btn.Margin = <span class="tut-rsvd">New</span> Thickness(<span class="tut-valu">0.5</span>)
+  _btn.Width = Width
+  _btn.Height = Height
+  Panel.Children.Add(_btn)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Public Sub</span> AddRow(<span class="tut-rsvd">ByRef</span> Row <span class="tut-rsvd">As</span> <span class="tut-symb">StackPanel</span>, <span class="tut-rsvd">ByRef</span> Source <span class="tut-rsvd">As String</span>(,), _
+    <span class="tut-rsvd">ByRef</span> Count <span class="tut-rsvd">As Integer</span>)
+  <span class="tut-rsvd">For</span> Index <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span> <span class="tut-rsvd">To</span> Count
+    Add(Row, Source(<span class="tut-valu">0</span>, Index).ToUpper, <span class="tut-rsvd">Nothing</span>, 25, 25)
+  <span class="tut-rsvd">Next
+End Sub</span>
+
+<span class="tut-rsvd">Public Sub</span> Layout(<span class="tut-rsvd">ByVal</span> Panel <span class="tut-rsvd">As</span> <span class="tut-symb">StackPanel</span>)
+  _panelOne.Orientation = <span class="tut-symb">Orientation</span>.Horizontal
+  _panelTwo.Orientation = <span class="tut-symb">Orientation</span>.Horizontal
+  _panelThree.Orientation = <span class="tut-symb">Orientation</span>.Horizontal
+  _panelFour.Orientation = <span class="tut-symb">Orientation</span>.Horizontal
+  _panelFive.Orientation = <span class="tut-symb">Orientation</span>.Horizontal
+  _panelOne.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>, <span class="tut-valu">0</span>, <span class="tut-valu">5</span>, <span class="tut-valu">0</span>)
+  _panelTwo.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>, <span class="tut-valu">0</span>, <span class="tut-valu">5</span>, <span class="tut-valu">0</span>)
+  _panelThree.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>, <span class="tut-valu">0</span>, <span class="tut-valu">5</span>, <span class="tut-valu">0</span>)
+  _panelFour.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>, <span class="tut-valu">0</span>, <span class="tut-valu">5</span>, <span class="tut-valu">0</span>)
+  _panelFive.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>, <span class="tut-valu">0</span>, <span class="tut-valu">5</span>, <span class="tut-valu">0</span>)
+  AddRow(_panelOne, _rowOne, <span class="tut-valu">12</span>)
+  Add(_panelOne, <span class="tut-valu">"BkSp"</span>, <span class="tut-symb">Special</span>.BackSpace, <span class="tut-valu">50</span>, <span class="tut-valu">25</span>)
+  _panel.Children.Add(_panelOne)
+  Add(_panelTwo, <span class="tut-valu">"Tab"</span>, <span class="tut-symb">Special</span>.Tab, <span class="tut-valu">37</span>, <span class="tut-valu">25</span>)
+  AddRow(_panelTwo, _rowTwo, <span class="tut-valu">11</span>)
+  Add(_panelTwo, <span class="tut-valu">"&#8629;"</span>, <span class="tut-symb">Special</span>.Enter, <span class="tut-valu">37</span>, <span class="tut-valu">25</span>)
+  _panel.Children.Add(_panelTwo)
+  Add(_panelThree, <span class="tut-valu">"Caps"</span>, <span class="tut-symb">Special</span>.CapsLock, <span class="tut-valu">48</span>, <span class="tut-valu">25</span>)
+  AddRow(_panelThree, _rowThree, <span class="tut-valu">11</span>)
+  Add(_panelThree, <span class="tut-rsvd">Nothing</span>, <span class="tut-symb">Special</span>.Enter, <span class="tut-valu">25</span>, <span class="tut-valu">25</span>)
+  _panel.Children.Add(_panelThree)
+  Add(_panelFour, <span class="tut-valu">"Shift"</span>, <span class="tut-symb">Special</span>.Shift, <span class="tut-valu">37</span>, <span class="tut-valu">25</span>)
+  AddRow(_panelFour, _rowFour, <span class="tut-valu">10</span>)
+  Add(_panelFour, <span class="tut-valu">"Shift"</span>, <span class="tut-symb">Special</span>.Shift, <span class="tut-valu">62</span>, <span class="tut-valu">25</span>)
+  _panel.Children.Add(_panelFour)
+  Add(_panelFive, <span class="tut-valu">"Copy"</span>, <span class="tut-symb">Special</span>.Copy, <span class="tut-valu">50</span>, <span class="tut-valu">25</span>)
+  Add(_panelFive, <span class="tut-valu">"Paste"</span>, <span class="tut-symb">Special</span>.Paste, <span class="tut-valu">50</span>, <span class="tut-valu">25</span>)
+  Add(_panelFive, <span class="tut-valu">"Space"</span>, <span class="tut-symb">Special</span>.Space, <span class="tut-valu">150</span>, <span class="tut-valu">25</span>)
+  Add(_panelFive, <span class="tut-valu">"Home"</span>, <span class="tut-symb">Special</span>.Home, <span class="tut-valu">40</span>, <span class="tut-valu">25</span>)
+  Add(_panelFive, <span class="tut-valu">"End"</span>, <span class="tut-symb">Special</span>.End, <span class="tut-valu">40</span>, <span class="tut-valu">25</span>)
+  Add(_panelFive, <span class="tut-valu">"Ins"</span>, <span class="tut-symb">Special</span>.Insert, <span class="tut-valu">25</span>, <span class="tut-valu">25</span>)
+  Add(_panelFive, <span class="tut-valu">"Del"</span>, <span class="tut-symb">Special</span>.Delete, <span class="tut-valu">25</span>, <span class="tut-valu">25</span>)
+  _panel.Children.Add(_panelFive)
+  Panel.Children.Add(_panel)
+End Sub
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4keyaddlayout.png" width="620" height="932" alt="MainPage Add, AddRow and Layout Subs" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the Code View, in the "Public Sub New()" constructor below the "InitializeComponent()" line type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+Layout(Keyboard)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4keyinit.png" width="214" height="65" alt="MainPage.xaml Constructor" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+While still in the Code View, below the "End Sub" for "Public Sub New()" Constructor type the following Event Handler Subs: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Button_SpecialPressed(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As</span> <span class="tut-symb">Special</span>) _
+    <span class="tut-rsvd">Handles Me</span>.SpecialPressed
+  Buffer.Focus()
+  <span class="tut-rsvd">Select Case</span> Value
+    <span class="tut-rsvd">Case</span> <span class="tut-symb">Special</span>.BackSpace
+      <span class="tut-rsvd">If Not</span> Buffer.SelectionStart = <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span>
+        Buffer.Select(Buffer.SelectionStart - <span class="tut-valu">1</span>, <span class="tut-valu">1</span>)
+        Buffer.SelectedText = <span class="tut-valu">""</span>
+      <span class="tut-rsvd">End If
+    Case</span> <span class="tut-symb">Special</span>.Home
+      Buffer.SelectionStart = <span class="tut-valu">0</span>
+    <span class="tut-rsvd">Case</span> <span class="tut-symb">Special</span>.End
+      Buffer.SelectionStart = Buffer.Text.Length
+    <span class="tut-rsvd">Case</span> <span class="tut-symb">Special</span>.Delete
+      <span class="tut-rsvd">If Not</span> Buffer.SelectionStart = Buffer.Text.Length <span class="tut-rsvd">Then</span>
+        Buffer.Select(Buffer.SelectionStart, <span class="tut-valu">1</span>)
+        Buffer.SelectedText = <span class="tut-valu">""</span>
+      <span class="tut-rsvd">End If
+    Case</span> <span class="tut-symb">Special</span>.Copy
+      <span class="tut-rsvd">If</span> Buffer.Text.Length &gt; <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span>
+        <span class="tut-symb">Clipboard</span>.SetText(Buffer.Text)
+      <span class="tut-rsvd">End If
+    Case</span> <span class="tut-symb">Special</span>.Paste
+      <span class="tut-rsvd">If Not</span> Buffer.SelectionStart = <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span>
+        Buffer.SelectedText = <span class="tut-symb">Clipboard</span>.GetText
+      <span class="tut-rsvd">End If
+  End Select
+End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> Button_KeyPressed(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Object</span>) _
+    <span class="tut-rsvd">Handles Me</span>.KeyPressed
+  Buffer.Focus()
+  Buffer.SelectedText = Value
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4keyhandlers.png" width="502" height="575" alt="MainPage.xaml Event Handlers" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4keyrun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+You can Click on any of the Buttons to add that Character to the Buffer TextBox, plus you can use Shift and Caps Lock, just like a real Keyboard, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4keyapp.png" width="400" height="300" alt="Virtual Keyboard" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Close the Application and Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p>
+This was a simple Virtual Keyboard showing how an On-screen Keyboard can be created in Silverlight, the layout used is the United Kingdom or "EN-GB"
+Layout, you can chanfe the _rowOne, _rowTwo, _rowThree and _rowFour String arrays to match your layout, such as swapping Y and Z for German layout etc,
+make it your own!
+</p>
+</body>
+</html>

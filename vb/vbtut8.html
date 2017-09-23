@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Lucky Lotto</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Lucky Lotto</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>This is a simple program, which will introduce you to Control Arrays, Standard Arrays, Label Control and Random Number Generation!</p>
+<p>
+<em class="icon-print"><a href="tutorials/vbtut8.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vbtut8.zip">Download Tutorial</a> (48KB)</em>
+<em class="icon-dload"><a href="tutorials/vbtut8code.zip">Download Source Code</a> (7KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Basic, then select Standard EXE Project if VB5/6, click on the option then click Open, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/fignewproject.gif" width="446" height="426" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figform1.gif" width="320" height="240" alt="Form 1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Visual Basic Components Menu Select the Label Control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figlbl.gif" width="136" height="250" alt="Label Control" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a Label on the Form as shown below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figfrmlbl.gif" width="320" height="240" alt="Form with Label" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Change the name of Label1 to lblNumber see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figlblprop.gif" width="213" height="255" alt="Label Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Click on the Label (lblNumber) and Copy <img src="tutorials/figcopy.gif" width="23" height="22" alt="Copy" /> 
+it, then click on the Form, then click Paste <img src="tutorials/figpaste.gif" width="23" height="22" alt="Paste" /> 
+with the dialog "You already have a Conrol named lblNumber. Do you want to create a control array?" click Yes 
+and continue to Paste, but click on the Form between each Paste and reposition them, so that there are five 
+copies (Six "lblNumber"s) as shown below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figfrmlabels.gif" width="320" height="240" alt="Six lblNumbers" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Then from the Visual Basic Components Menu Select the Command Button Control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figcommand.gif" width="163" height="221" alt="Command Button Control" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Draw Two Command Buttons on the Form, change the Name Property of Command1 to cmdChoose, the Caption 
+Property to Choose and the Name of Command2 to cmdQuit and the Caption to Quit,  as shown below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figfrmlblcmd.gif" width="320" height="240" alt="Form with Labels and Command Buttons" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on the Form and change it's Name Property to frmMain then Double Click on the Form (frmMain) and type in the Form_Load Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> i <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">For</span> i = 0 <span class="tut-rsvd">To</span> 5
+lblNumber(i).Caption = ""
+<span class="tut-rsvd">Next</span> i
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 10</p>
+<p>
+Double Click on the Command Button "Choose" (cmdChoose) and type in the cmdChoose_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> arrNumber(1 To 6) <span class="tut-rsvd">As Integer</span> <span class="tut-cmnt">' Array</span>
+<span class="tut-rsvd">Dim</span> intLucky <span class="tut-rsvd">As Integer</span> <span class="tut-cmnt">' Random Number</span>
+<span class="tut-rsvd">Dim</span> intCount <span class="tut-rsvd">As Integer</span> <span class="tut-cmnt">' Selection Counter</span>
+<span class="tut-rsvd">Dim</span> intCheck <span class="tut-rsvd">As Integer</span> <span class="tut-cmnt">' Previous Selection Counter</span>
+
+<span class="tut-rsvd">For</span> intCount = 1 <span class="tut-rsvd">To</span> 6 <span class="tut-cmnt">' Select Six Numbers</span>
+Start: <span class="tut-cmnt">' Start Point</span>
+  Randomize (Timer) <span class="tut-cmnt">' Seed Randomiser</span>
+  intLucky = Int((49 * Rnd) + 1) <span class="tut-cmnt">' Random number 1 to 49</span>
+  <span class="tut-rsvd">For</span> intCheck = 1 <span class="tut-rsvd">To</span> 6
+    <span class="tut-rsvd">If</span> intLucky = arrNumber(intCheck) <span class="tut-rsvd">Then</span>
+      GoTo Start <span class="tut-cmnt">'If selected number already present, select again</span>
+    <span class="tut-rsvd">End If</span>
+  <span class="tut-rsvd">Next</span> intCheck
+  arrNumber(intCount) = intLucky <span class="tut-cmnt">' Store selected number in array</span>
+  lblNumber(intCount - 1) = arrNumber(intCount) <span class="tut-cmnt">' apply selection to labels</span>
+<span class="tut-rsvd">Next</span> intCount
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 11</p>
+<p>
+Double Click on the Command Button "Quit" (cmdQuit) and type in the cmdQuit_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Unload Me
+</pre>
+</blockquote>
+<p class="tutorial-step">Step 12</p>
+<p>
+Save the Project (for example prjLuckyLotto) into a vacant folder as you have finished the application. Click on Start / Run 
+<img src="tutorials/figstart.gif" width="23" height="22" alt="Start / Run" /> or Press F5 and the below will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figlottorun.gif" width="320" height="240" alt="Lucky Lotto Running" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Click on Choose to select a set six of numbers, displayed in the labels, see example below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/figlottosel.gif" width="320" height="240" alt="Lucky Lotto Selected Numbers" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+To Quit click on the Button Labeled Quit.
+</p>
+<p>
+You have just created a simple Random Number generator! Try adding extras such as colours and 
+other effects and see what else you can achieve with this program.
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

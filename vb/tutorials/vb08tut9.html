@@ -1,0 +1,462 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Noughts and Crosses</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Noughts and Crosses</h1>
+<p>Noughts and Crosses or Tic-Tac-Toe is a very simple game to play and to create. This tutorial features message boxes, arrays
+and Drawing using Windows Presentation Foundation (WPF).</p>
+<p>
+<a href="http://www.cespage.com/vb/vb08tut9.html">www.cespage.com/vb/vb08tut9.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose WPF Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08newwpf.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Window named Window1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08window1.png" width="310" height="310" alt="Window1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Controls tab on the Toolbox select the Grid component:
+</p>
+<div class="tutorial-image">
+<img src="vb08wpfgrid.png" width="240" height="400" alt="Grid Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a Grid on the Window or in the XAML Pane below the "&lt;Grid&gt;" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Margin</span>="29,0,29,42" <span class="tut-attr">Name</span>="Grid1" /&gt;</span>
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="vb08window1grid.png" width="311" height="310" alt="Window1 with Grid" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Select or click on the Grid then goto the Properties box, change the Name to "BoardLayout" without the quotes, see below: 
+</p>
+<div class="tutorial-image">
+<img src="vb08boardprop.png" width="203" height="461" alt="Grid Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Controls tab on the Toolbox select the Button component:
+</p>
+<div class="tutorial-image">
+<img src="vb08wpfbtn.png" width="240" height="400" alt="Button Component" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a Button on the Window, by dragging the Button from the Toolbox onto the Window, or in the XAML Pane above the bottom "&lt;/Grid&gt;" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="102,0,100,12" <span class="tut-attr">Name</span>="Button1" <span class="tut-attr">Height</span>="23" <span class="tut-attr">VerticalAlignment</span>="Bottom"&gt;<span class="tut-valu">Button</span>&lt;/<span class="tut-valu">Button</span>&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="vb08window1gridbtn.png" width="311" height="310" alt="Window1 with Grid and Button" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Select or click on the Button (Button1), then goto the Properties box and change the Name to btnNew and the Content property from Button to New Game, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08btnnewprop.png" width="203" height="461" alt="btnNew Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Right Click on the Window or the entry for "Window1" in the Solution Explorer and choose the "View Code" option then below "Class Window1" 
+type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private WithEvents</span> btn1, btn2, btn3, btn4, _
+btn5, btn6, btn7, btn8, btn9 <span class="tut-rsvd">As New</span> Button
+<span class="tut-rsvd">Dim</span> IsCross <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Dim</span> Nought <span class="tut-rsvd">As String</span> = <span class="tut-valu">"O"</span>
+<span class="tut-rsvd">Dim</span> Cross <span class="tut-rsvd">As String</span> = <span class="tut-valu">"X"</span>
+<span class="tut-rsvd">Dim</span> Won <span class="tut-rsvd">As Boolean</span>
+<span class="tut-rsvd">Dim</span> Board(3, 3) <span class="tut-rsvd">As String</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08oxodecs.png" width="400" height="153" alt="Window1 Declarations" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+While still in the Code View for Window1, above "End Class" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Add(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> Grid, <span class="tut-rsvd">ByRef</span> Button <span class="tut-rsvd">As</span> Button, _
+                <span class="tut-rsvd">ByRef</span> Row <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByRef</span> Column <span class="tut-rsvd">As Integer</span>)
+  Button.Margin = <span class="tut-rsvd">New</span> Thickness(5)
+  Grid.Children.Add(Button)
+  Grid.SetColumn(Button, Column)
+  Grid.SetRow(Button, Row)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08oxoadd.png" width="540" height="118" alt="Window1 Add Subroutine" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Again while still in the Code View for Window1, below the "End Sub" for "Private Sub Add(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Layout(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> Grid)
+  Grid.ColumnDefinitions.Clear() <span class="tut-cmnt">' Clear Columns</span>
+  Grid.RowDefinitions.Clear() <span class="tut-cmnt">' Clear Rows</span>
+  Grid.Children.Clear() <span class="tut-cmnt">' Clear the Grid</span>
+  Grid.ColumnDefinitions.Add(<span class="tut-rsvd">New</span> ColumnDefinition)
+  Grid.ColumnDefinitions.Add(<span class="tut-rsvd">New</span> ColumnDefinition)
+  Grid.ColumnDefinitions.Add(<span class="tut-rsvd">New</span> ColumnDefinition)
+  Grid.RowDefinitions.Add(<span class="tut-rsvd">New</span> RowDefinition)
+  Grid.RowDefinitions.Add(<span class="tut-rsvd">New</span> RowDefinition)
+  Grid.RowDefinitions.Add(<span class="tut-rsvd">New</span> RowDefinition)
+  Add(Grid, btn1, 0, 0)
+  Add(Grid, btn2, 0, 1)
+  Add(Grid, btn3, 0, 2)
+  Add(Grid, btn4, 1, 0)
+  Add(Grid, btn5, 1, 1)
+  Add(Grid, btn6, 1, 2)
+  Add(Grid, btn7, 2, 0)
+  Add(Grid, btn8, 2, 1)
+  Add(Grid, btn9, 2, 2)
+  <span class="tut-rsvd">For Each</span> Button <span class="tut-rsvd">As</span> Button <span class="tut-rsvd">In</span> Grid.Children
+    Button.Content = <span class="tut-rsvd">Nothing</span> <span class="tut-cmnt">' Clear Buttons</span>
+  <span class="tut-rsvd">Next
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08oxolayout.png" width="460" height="390" alt="Window1 Layout Subroutine" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for Window1, below the "End Sub" for "Private Sub Layout(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> GetPiece(<span class="tut-rsvd">ByRef</span> Button <span class="tut-rsvd">As</span> Button) <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">If</span> IsCross <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Draw X</span>
+    <span class="tut-rsvd">Dim</span> Line1, Line2 <span class="tut-rsvd">As New</span> LineGeometry
+    <span class="tut-rsvd">Dim</span> Lines <span class="tut-rsvd">As New</span> Path
+    <span class="tut-rsvd">Dim</span> LineGroup <span class="tut-rsvd">As New</span> GeometryGroup
+    Line1.StartPoint = <span class="tut-rsvd">New</span> Point(0, 0)
+    Line1.EndPoint = <span class="tut-rsvd">New</span> Point(50, 50)
+    Line2.StartPoint = <span class="tut-rsvd">New</span> Point(50, 0)
+    Line2.EndPoint = <span class="tut-rsvd">New</span> Point(0, 50)
+    LineGroup.Children.Add(Line1)
+    LineGroup.Children.Add(Line2)
+    Lines.Stretch = Stretch.Uniform
+    Lines.Data = LineGroup
+    Lines.Stroke = Brushes.Red
+    Lines.StrokeThickness = 4.0
+    Lines.Margin = <span class="tut-rsvd">New</span> Thickness(5)
+    Button.Content = Lines
+    <span class="tut-rsvd">Return</span> Cross
+  <span class="tut-rsvd">Else</span> <span class="tut-cmnt">' Draw O</span>
+    <span class="tut-rsvd">Dim</span> CircleGeo <span class="tut-rsvd">As New</span>  _
+    EllipseGeometry(<span class="tut-rsvd">New</span> Rect(0, 0, 50, 50))
+    <span class="tut-rsvd">Dim</span> Circle <span class="tut-rsvd">As New</span> Path
+    Circle.Stretch = Stretch.Uniform
+    Circle.Data = CircleGeo
+    Circle.Stroke = Brushes.Blue
+    Circle.StrokeThickness = 4.0
+    Circle.Margin = <span class="tut-rsvd">New</span> Thickness(5)
+    Button.Content = Circle
+    <span class="tut-rsvd">Return</span> Nought
+  <span class="tut-rsvd">End If
+End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08oxogetpiece.png" width="520" height="526" alt="Window1 GetPiece Function" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Again while still in the Code View for Window1, below the "End Function" for "Private Function GetPiece(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> SetPiece(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> Grid, <span class="tut-rsvd">ByRef</span> Button <span class="tut-rsvd">As</span> Button)
+  <span class="tut-rsvd">Dim</span> Piece <span class="tut-rsvd">As String</span>
+  <span class="tut-rsvd">If</span> Button.Content <span class="tut-rsvd">Is Nothing Then</span>
+    Piece = GetPiece(Button)
+    Board(Grid.GetRow(Button), Grid.GetColumn(Button)) = Piece
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08oxosetpiece.png" width="576" height="118" alt="Window1 SetPiece Subroutine" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+While still in the Code View for Window1, below the "End Sub" for "Private Sub SetPiece(...)", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> NewGame()
+  <span class="tut-rsvd">Dim</span> Result <span class="tut-rsvd">As</span> MsgBoxResult
+  <span class="tut-rsvd">Dim</span> Piece <span class="tut-rsvd">As String</span>
+  Layout(BoardLayout) <span class="tut-cmnt">' Reset Grid</span>
+  Board(0, 0) = <span class="tut-valu">""</span>
+  Board(0, 1) = <span class="tut-valu">""</span>
+  Board(0, 2) = <span class="tut-valu">""</span>
+  Board(1, 0) = <span class="tut-valu">""</span>
+  Board(1, 1) = <span class="tut-valu">""</span>
+  Board(1, 2) = <span class="tut-valu">""</span>
+  Board(2, 0) = <span class="tut-valu">""</span>
+  Board(2, 1) = <span class="tut-valu">""</span>
+  Board(2, 2) = <span class="tut-valu">""</span>
+  Won = <span class="tut-rsvd">False</span>
+  Result = MsgBox(Cross &amp; <span class="tut-valu">" goes first?"</span>, _
+                  MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                  <span class="tut-valu">"Noughts and Crosses"</span>)
+  <span class="tut-rsvd">If</span> Result = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+    IsCross = <span class="tut-rsvd">True</span>
+    Piece = Cross
+  <span class="tut-rsvd">Else</span>
+    IsCross = <span class="tut-rsvd">False</span>
+    Piece = Nought
+  <span class="tut-rsvd">End If
+  Me</span>.Title = <span class="tut-valu">"Player:"</span> &amp; Piece
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08oxonewgame.png" width="552" height="440" alt="Window1 NewGame Subroutine" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Again while still in the Code View for Window1, below the "End Sub" for "Private Sub NewGame()", type the following Function and Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> CheckWinner(<span class="tut-rsvd">ByRef</span> Player <span class="tut-rsvd">As String</span>) <span class="tut-rsvd">As Boolean</span>
+  <span class="tut-rsvd">If</span> (Board(0, 0) = Player <span class="tut-rsvd">And</span> Board(0, 1) = Player And Board(0, 2) = Player) <span class="tut-rsvd">Or</span> _
+  (Board(1, 0) = Player <span class="tut-rsvd">And</span> Board(1, 1) = Player <span class="tut-rsvd">And</span> Board(1, 2) = Player) <span class="tut-rsvd">Or</span> _
+  (Board(2, 0) = Player <span class="tut-rsvd">And</span> Board(2, 1) = Player <span class="tut-rsvd">And</span> Board(2, 2) = Player) <span class="tut-rsvd">Or</span> _
+  (Board(0, 0) = Player <span class="tut-rsvd">And</span> Board(1, 0) = Player <span class="tut-rsvd">And</span> Board(2, 0) = Player) <span class="tut-rsvd">Or</span> _
+  (Board(0, 1) = Player <span class="tut-rsvd">And</span> Board(1, 1) = Player <span class="tut-rsvd">And</span> Board(2, 1) = Player) <span class="tut-rsvd">Or</span> _
+  (Board(0, 2) = Player <span class="tut-rsvd">And</span> Board(1, 2) = Player <span class="tut-rsvd">And</span> Board(2, 2) = Player) <span class="tut-rsvd">Or</span> _
+  (Board(0, 0) = Player <span class="tut-rsvd">And</span> Board(1, 1) = Player <span class="tut-rsvd">And</span> Board(2, 2) = Player) <span class="tut-rsvd">Or</span> _
+  (Board(0, 2) = Player <span class="tut-rsvd">And</span> Board(1, 1) = Player <span class="tut-rsvd">And</span> Board(2, 0) = Player) <span class="tut-rsvd">Then</span>
+    <span class="tut-rsvd">Return True
+  End If
+End Function</span>
+
+<span class="tut-rsvd">Private Sub</span> CheckDraw()
+  <span class="tut-rsvd">If</span> Board(0, 0) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> Board(0, 1) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> Board(0, 2) &lt;&gt; <span class="tut-valu">""</span> _
+  <span class="tut-rsvd">And</span> Board(1, 0) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> Board(1, 1) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> Board(1, 2) &lt;&gt; <span class="tut-valu">""</span> _
+  <span class="tut-rsvd">And</span> Board(2, 0) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> Board(2, 1) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">And</span> Board(2, 2) &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+    <span class="tut-rsvd">If Not</span> Won <span class="tut-rsvd">Then</span>
+      MsgBox(<span class="tut-valu">"Draw!"</span>, MsgBoxStyle.Information, <span class="tut-valu">"Noughts and Crosses"</span>)
+      <span class="tut-rsvd">Me</span>.Title = <span class="tut-valu">"Draw!"</span>
+      NewGame()
+    <span class="tut-rsvd">End If
+  End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08oxocheck.png" width="720" height="404" alt="Window1 CheckWinner Function and CheckDraw Subroutine" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Finally while still in the Code View for Window1, below the "End Sub" for "Private Sub CheckDraw()", type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> OnClick(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As</span> System.Object, _
+                     <span class="tut-rsvd">ByVal</span> e As System.Windows.RoutedEventArgs) _
+                     <span class="tut-rsvd">Handles</span> btn1.Click, btn2.Click, btn3.Click, _
+                     btn4.Click, btn5.Click, btn6.Click, btn7.Click, _
+                     btn8.Click, btn9.Click
+  <span class="tut-rsvd">Dim</span> Piece <span class="tut-rsvd">As String</span> = <span class="tut-valu">""</span>
+  <span class="tut-rsvd">If Not</span> Won <span class="tut-rsvd">Then</span>
+    SetPiece(BoardLayout, sender)
+    <span class="tut-rsvd">If</span> CheckWinner(Cross) <span class="tut-rsvd">Then</span>
+        Piece = Cross
+    <span class="tut-rsvd">ElseIf</span> CheckWinner(Nought) <span class="tut-rsvd">Then</span>
+        Piece = Nought
+    <span class="tut-rsvd">End If</span>
+    <span class="tut-rsvd">If</span> Piece &lt;&gt; <span class="tut-valu">""</span> <span class="tut-rsvd">Then</span>
+        Won = <span class="tut-rsvd">True</span>
+        MsgBox(<span class="tut-valu">"Player "</span> &amp; Piece &amp; <span class="tut-valu">" Won!"</span>, _
+               MsgBoxStyle.Information, <span class="tut-valu">"Noughts and Crosses"</span>)
+    <span class="tut-rsvd">End If</span>
+    CheckDraw()
+    IsCross = <span class="tut-rsvd">Not</span> IsCross
+    <span class="tut-rsvd">If</span> IsCross <span class="tut-rsvd">Then
+      Me</span>.Title = <span class="tut-valu">"Player:"</span> &amp; Cross
+    <span class="tut-rsvd">Else
+      Me</span>.Title = <span class="tut-valu">"Player:"</span> &amp; Nought
+    <span class="tut-rsvd">End If
+  Else</span>
+    MsgBox(<span class="tut-valu">"Game Over!"</span>, _
+           MsgBoxStyle.Exclamation, <span class="tut-valu">"Noughts and Crosses"</span>)
+    NewGame()
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08oxoonclick.png" width="608" height="524" alt="Window1 OnClick Subroutine" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Return to the Design view by selecting the [Design] tab or Right Click on the "View Designer" option in Solution Explorer for Window1.
+Double Click on the "New Game" Button (btnNew) and type the following in the btnNew_Click() Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+NewGame()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08dicenew.png" width="600" height="84" alt="Window1 New Game Click Event" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+While still in Code View, if not Right Click on the Window or the entry for "Window1" in the Solution Explorer and choose "View Code".
+The top of this window will have two drop-down boxes one with "(General)" in and the other "(Declarations)", click on the first
+and select the "(Window1 Events)" Option, then from the drop-down next to this select "Loaded", type the following in the Window1_Loaded Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+NewGame()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08diceloaded.png" width="616" height="82" alt="Window1 Loaded Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do it will ask "X goes first?", choose either Yes or No, and the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vb08oxorun.png" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Click on the Buttons to place a O or an X continue until you Win, Lose or Draw, see below: 
+</p>
+<div class="tutorial-image">
+<img src="vb08oxoplay.png" width="300" height="300" alt="Game Played" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the Close button <img src="vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right of Window1 to end the application.
+</p>
+<p>
+This is a very simple game written using Visual Basic 2008 Express Edition, feel free to amend the game as you with, including writing a Computer-based
+Player 2, try to beat the computer using random numbers, or change the colours of the Noughts and Crosses, plus try resizing the window and see what happens!
+</p>
+</body>
+</html>

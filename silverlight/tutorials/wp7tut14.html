@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Tweet View</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>Tweet View</h1>
+<p>
+Tweet View is a Simple application to allow you to view Tweets from a particular person with LINQ and the Twitter&reg; User RSS Feed using
+Silverlight on Windows Phone 7.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut14.html">www.cespage.com/silverlight/wp7tut14.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select Project then Add Reference... The "Add Reference" window should appear, select "System.XML.Linq" from the ".NET" List, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7linq.png" width="466" height="370" alt="Add System.XML.Linq Reference" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the Reference to "System.XML.Linq" by Clicking on OK.<br/>
+Select Project then "Add Class...", and select the "Class" Template is not already Selected, then change the "Name" to Tweet.cs see below: 
+</p>
+<div class="tutorial-image">
+<img src="wp7tweet.png" width="939" height="624" alt="Tweet Class" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the new Class to the Project by Clicking on Add, then in the Code View for the new Class, below the "{" of the line "public class Tweet" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private string</span> _avatar;
+<span class="tut-rsvd">private string</span> _title;
+<span class="tut-rsvd">private string</span> _author;
+<span class="tut-rsvd">private</span> <span class="tut-symb">DateTime</span> _published;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7tweetviewclsdecs.png" width="268" height="333" alt="Tweet Class Declarations" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the Code View for Tweet.cs, below the "<span class="tut-rsvd">private</span> <span class="tut-symb">DateTime</span> _published;" line type the following Properties:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public string</span> Avatar
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _avatar; }
+  <span class="tut-rsvd">set</span> { _avatar = <span class="tut-rsvd">value</span>; }
+}
+
+<span class="tut-rsvd">public string</span> Title
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _title; }
+  <span class="tut-rsvd">set</span> { _title = <span class="tut-rsvd">value</span>; }
+}
+
+<span class="tut-rsvd">public string</span> Author
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _author; }
+  <span class="tut-rsvd">set</span> { _author = <span class="tut-rsvd">value</span>; }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">DateTime</span> Published
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _published; }
+  <span class="tut-rsvd">set</span> { _published = <span class="tut-rsvd">value</span>; }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7tweetclsprops.png" width="284" height="365" alt="Tweet Class Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then in XAML Pane between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="80"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Toolbar" <span class="tut-attr">Grid.Row</span>="0"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7webpagexaml.png" width="412" height="235" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7webpagedesign.png" width="359" height="659" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="wp7textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw a TextBox onto the Toolbar Section (upper smaller section) of the Grid on the Page, below the Page Title, and in the XAML Pane below the <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span> line, change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="Subject"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7webtxt.png" width="359" height="659" alt="MainPage with Subject TextBox" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="wp7button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Draw a Button onto the Toolbar Section by dragging the Button from the Toolbox onto the Toolbar section of the Grid on the Page, 
+then in the XAML Pane change the "Button1" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="lookup" <span class="tut-attr">Click</span>="Lookup_Click"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7tweetviewbtn.png" width="359" height="659" alt="MainPage with Button" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the XAML Pane for MainPage, below the <span class="tut-cmnt">&lt;!-- Content--&gt;</span> line, type the following ListBox XAML:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ListBox</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Name</span>="Results"&gt;
+  &lt;<span class="tut-valu">ListBox.ItemTemplate</span>&gt;
+    &lt;<span class="tut-valu">DataTemplate</span>&gt;
+      &lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Orientation</span>="Horizontal"&gt;
+        &lt;<span class="tut-valu">Image</span> <span class="tut-attr">Height</span>="90" <span class="tut-attr">Width</span>="90" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Margin</span>="5,5,5,5" <span class="tut-attr">Source</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Avatar}"/>
+        &lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Width</span>="340"&gt;
+          &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">TextWrapping</span>="Wrap" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Title}"/&gt;
+          &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Published}"/&gt;
+          &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">FontWeight</span>="Bold" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Author}"/&gt;   
+        &lt;/<span class="tut-valu">StackPanel</span>&gt;
+      &lt;/<span class="tut-valu">StackPanel</span>&gt;
+    &lt;/<span class="tut-valu">DataTemplate</span>&gt;
+  &lt;/<span class="tut-valu">ListBox.ItemTemplate</span>&gt;
+&lt;/<span class="tut-valu">ListBox</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7tweetviewlst.png" width="359" height="659" alt="MainPage with ListBox" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the Designer View for MainPage.xaml, Select the "page name" TextBlock (PageTitle) then goto the Properties Box and change the Text property to "tweet view" without the quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7tweetviewprop.png" width="217" height="393" alt="MainPage PageTitle Properties" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace TweetView"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Xml.Linq;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7tweetviewref.png" width="404" height="397" alt="MainPage Includes" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Methods:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Tweets(<span class="tut-rsvd">object</span> Sender, <span class="tut-symb">DownloadStringCompletedEventArgs</span> e)
+{
+  <span class="tut-symb">XElement</span> _xml;
+  System.Globalization.<span class="tut-symb">CultureInfo</span> provider = 
+  System.Globalization.<span class="tut-symb">CultureInfo</span>.InvariantCulture;
+  <span class="tut-rsvd">try</span>
+  {
+    <span class="tut-rsvd">if</span> (!e.Cancelled)
+    {
+       _xml = <span class="tut-symb">XElement</span>.Parse(e.Result);
+      <span class="tut-rsvd">foreach</span> (<span class="tut-symb">XElement</span> value <span class="tut-rsvd">in</span> _xml.Elements(<span class="tut-valu">"status"</span>))
+      {
+        <span class="tut-symb">Tweet</span> _tweet = <span class="tut-rsvd">new</span> <span class="tut-symb">Tweet</span>();
+        _tweet.Avatar = value.Element(<span class="tut-valu">"user"</span>).Element(<span class="tut-valu">"profile_image_url"</span>).Value;
+        _tweet.Title = value.Element(<span class="tut-valu">"text"</span>).Value;
+        _tweet.Published = <span class="tut-symb">DateTime</span>.ParseExact(value.Element(<span class="tut-valu">"created_at"</span>).Value, 
+        <span class="tut-valu">"ddd MMM dd HH:mm:ss zzzzz yyyy"</span>, provider);
+        _tweet.Author = value.Element(<span class="tut-valu">"user"</span>).Element(<span class="tut-valu">"screen_name"</span>).Value;
+        Results.Items.Add(_tweet);
+      }
+    }
+  }
+  <span class="tut-rsvd">catch</span>
+  {
+    <span class="tut-cmnt">// Ignore Errors</span>
+  }
+}
+
+<span class="tut-rsvd">private void</span> Query(<span class="tut-rsvd">string</span> Value)
+{
+  <span class="tut-symb">WebClient</span> _client = <span class="tut-rsvd">new</span> <span class="tut-symb">WebClient</span>();
+  _client.DownloadStringCompleted += Tweets;
+  _client.DownloadStringAsync(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>((<span class="tut-valu">"<span class="tut-link">http://api.twitter.com/1/statuses/user_timeline.xml?screen_name=</span>"</span> 
+  + <span class="tut-symb">HttpUtility</span>.UrlEncode(Value))));
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7tweetview.png" width="816" height="557" alt="MainPage Tweets and Query Methods" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Event Handler:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Lookup_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  Query(Subject.Text);
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7tweetviewcode.png" width="480" height="61" alt="MainPage Event Handler" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7tweetviewrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Tap the TextBox and then using the SIP or Keyboard enter a Username to lookup, then Tap on "lookup" to display their tweets, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7tweetviewapp.png" width="359" height="660" alt="Tweet View" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a very simple example of displaying Tweets from a Twitter&reg; user, there is additional information from a user you can display
+such as the number of tweets, followers etc you can use. You can add these or further customise the interface - make it your own!
+</p>
+</body>
+</html>

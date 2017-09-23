@@ -1,0 +1,357 @@
+img {
+		 		 border: none;
+}
+
+body {
+     		 color: #000000;
+		 		 background-color: #ffffff;	
+}
+
+#main {
+			   position: absolute;
+				 top: 0px;
+				 left: 0px;
+				 margin: 0px;
+				 padding: 0px;
+				 width:100%;			 
+}
+
+#header {
+				 color: #000000;
+				 top: 0px;
+				 left: 0px;
+				 width: 100%;
+				 height: 50px;
+				 background:  #849CE7 url(images/glassitem.jpg) right top;
+				 clear:both;
+}
+
+#titlebar {
+  			 height:22px;
+				 width: 100%;
+				 background-color: #5A7EDC;
+				 color: #ffffff; 
+				 font-size: 11pt; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 padding: 4px 0px 0px 0px;
+}
+
+#container {
+				  margin: 0px;
+				  padding: 0px;
+				  background-color: #D2E4F2;
+					/* float: left; */
+					width:100%;
+}
+
+.navbar {
+				  margin: 0px;
+				  padding: 0px;
+				 	background-color:#D2E4F2;
+					width: 180px;
+					float:left;
+}
+
+.navbar-element {
+					color: #000000; 
+					font-size: 10pt; 
+					font-family: Arial, Verdana, Helvetica, Sans-Serif;
+					background-color:#D2E4F2;
+					width:162px;
+					padding: 5px 5px 5px 5px;
+ 					margin: 3px 3px 3px 3px;
+}
+
+.navbar-graphic {
+					text-align: center;
+					background-color:#D2E4F2;
+					width:162px;
+					padding: 5px 5px 5px 5px;
+ 					margin: 3px 3px 3px 3px;
+}
+
+.navbar-selected {
+					color: #000000; 
+					font-size: 10pt; 
+					font-family: Arial, Verdana, Helvetica, Sans-Serif;
+					background-color:#ffffff;
+					width:162px;
+ 					border-bottom:1px solid #000000;
+  				border-top:1px solid #000000;
+  				border-left:1px solid #000000;
+  				border-right:1px solid #000000;
+					padding: 5px 5px 5px 5px;
+  				margin: 3px 3px 3px 3px;
+}
+
+.navbar-section {
+					color: #ffffff; 
+					font-size: 10pt; 
+					font-family: Arial, Verdana, Helvetica, Sans-Serif;
+					background-color:#c0c0c0;
+					width:162px;
+  				border-bottom:1px solid #000000;
+  				border-top:1px solid #000000;
+  				border-left:1px solid #000000;
+ 					border-right:1px solid #000000;
+					padding: 5px 5px 5px 5px;
+  				margin: 3px 3px 3px 3px;
+}
+
+.navbar-seperator {
+					color: #000000; 
+					font-size: 10pt; 
+					font-family: Arial, Verdana, Helvetica, Sans-Serif;
+					color: #ffffff; 
+					background-color:#5A7EDC;
+					width:174px;
+					padding: 5px 5px 5px 5px;
+  				margin: 3px 3px 3px 3px;
+}
+
+A.navbar-link:link {
+					color: #000000; 
+					text-decoration: none;
+}
+A.navbar-link:visited {
+					color: #000000; 
+					text-decoration: none;
+}
+A.navbar-link:active {
+					color: #000000; 
+					text-decoration: none; 
+					cursor: pointer;
+}
+A.navbar-link:hover {
+					color: #000000; 
+					text-decoration: underline; 
+					cursor: pointer; 
+}
+
+#content {
+				 padding: 0px;
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 12px; 
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+				 margin-left: 180px;
+				 padding-top: 2px;
+				 padding-bottom: 2px;
+}
+
+dl.genitem { 
+				 margin : .5em;
+				 padding : 1em;
+				 border : 1px solid #5A7EDC;
+}
+
+dl.newsitem { 
+				 margin : .5em;
+				 padding : 1em;
+				 border : 1px solid #5A7EDC;
+}
+
+dd {
+	 			 margin : 0px;
+	 			 padding : 0px;
+}
+
+dt {
+	 			 color: #5A7EDC;
+	 			 margin : 0px;
+	 			 padding : 0px;
+}
+
+dd p  {
+	 		 	 padding : 0px;
+}
+
+dd p.date  {
+	 			 margin : 0px;
+	 		   padding-top : .25em;
+			   font-size : 92%;
+}
+
+
+.CreativeList
+{
+				 position: relative;
+				 width: 605px;
+				 height: 120px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.CreativeListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 120px;
+				 height: 120px;
+}	
+
+.CreativeListText
+{
+				 position: relative;
+				 float: left;
+				 width: 320px;
+				 height:120px;
+				 padding: 0 0 0 8px;
+}
+
+.ExampleList
+{
+				 position: relative;
+				 width: 640px;
+				 height: 200px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.ExampleListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 300px;
+				 height: 200px;
+				 text-align: center;
+}	
+
+.ExampleListText
+{
+				 position: relative;
+				 float: left;
+				 width: 330px;
+				 height:200px;
+				 padding: 0 0 0 8px;
+}
+
+.LargeImageList
+{
+				 position: relative;
+				 width: 640px;
+				 height: 180px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.LargeImageListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 120px;
+				 height: 180px;
+				 text-align: center;
+}	
+
+.LargeImageListText
+{
+				 position: relative;
+				 float: left;
+				 width: 330px;
+				 height:200px;
+				 padding: 0 0 0 8px;
+}
+
+.ImageList
+{
+				 position: relative;
+				 width: 515px;
+				 height: 70px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.ImageListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 70px;
+				 height: 70px;
+}	
+
+.ImageListText
+{
+				 position: relative;
+				 float: left;
+				 width: 394px;
+				 height:70px;
+				 padding: 0 0 0 8px;
+}
+
+
+.ImageListTitle
+{
+				 position: relative;
+				 padding: 0 0 11px 0;
+}
+
+.ImageListBlurb
+{
+				 position: relative;
+				 font-size: 11px;
+				 line-height: 15px;
+}
+
+.WallpaperList
+{
+				 position: relative;
+				 width: 615px;
+				 height: 155px;
+				 padding: 0 0 0 0px;	
+				 margin: 0 0 20px 0;
+}
+
+.WallpaperListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 205px;
+				 height: 155px;
+}	
+
+.EssentialsListImage
+{
+				 position: relative;
+				 float: left;
+				 width: 95px;
+				 height: 70px;
+}	
+
+
+.image {
+				 float: right;
+				  /*
+				 vertical-align: middle;
+				 display: inline;
+				 text-align: right;
+				 */				 
+}
+
+#bottombar {
+				 color: #000000;
+				 font-size: 11px; 
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+				 background-color: #ffffff;
+				 vertical-align: middle;
+				 text-align: center;
+				 width: 100%;
+				 height: 25px;
+				 line-height: 25px;
+				 clear:both;
+}
+
+#widgetbar {
+  			 height:18px;
+				 background-color: #5A7EDC;
+				 padding: 4px 4px 1px 4px;
+				 clear:both;	
+}
+
+#footer {
+				 color: #ffffff;
+				 width: 100%;
+				 height: 50px;
+				 background: #5A7EDC url(images/glassitemi.jpg) right bottom;
+				 clear:both;		
+}

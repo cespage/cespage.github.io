@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Lucky Dice</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Lucky Dice</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>This is a simple game, which will introduce you to Methods, Multiple Picture Boxes, Labels, Random Numbers, Drawing and more! 
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/vbdntut7.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vbdntut7.zip">Download Tutorial</a> (183KB)</em>
+<em class="icon-dload"><a href="tutorials/vbdntut7code.zip">Download Source Code</a> (7KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Studio.NET then select Visual Basic Projects, 
+Windows Application, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgnewproject.gif" width="531" height="371" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1.gif" width="314" height="314" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Windows Forms components tab select the PictureBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgpicturebox.gif" width="200" height="400" alt="PictureBox Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw two PictureBoxes on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1pics.gif" width="313" height="314" alt="Form1 with two PictureBoxes" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Select PictureBox1 and then go to the Properties box and change the BackColor property from Control to White, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgpictureprop.gif" width="204" height="433" alt="PictureBox Property" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Select PictureBox2 and then go to the Properties box and change the BackColor property from Control to White, so the form appears as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1pic1and2.gif" width="313" height="314" alt="Form1 with White PictureBoxes" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Then from the Windows Forms components tab select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgbutton.gif" width="200" height="300" alt="Button Component" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Draw three Buttons on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1dicebtns.gif" width="314" height="314" alt="Form1 with PictureBoxes and Three Buttons" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on Button1 and then go to the Properties box and change the Text Property to Roll, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgdicebtn1prop.gif" width="204" height="434" alt="Button1 Property" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Click on Button2, change its Text Property to New Game, click on Button3 and change its Text Property to Exit until the form is as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1diceose.gif" width="314" height="314" alt="Form1 Dice Buttons" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Then from the Windows Forms components tab select the Label control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imglabel.gif" width="200" height="300" alt="Label Component" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Draw a Label on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1dicelbl.gif" width="300" height="300" alt="Form1 with Label Buttons and PictureBoxes" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Right click on the Form and select the view Code option then in the code view type in below the Windows Form Designer generated code section:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> MyBrush <span class="tut-rsvd">As</span> SolidBrush
+<span class="tut-rsvd">Dim</span> DrawBitmap <span class="tut-rsvd">As</span> Bitmap
+<span class="tut-rsvd">Dim</span> DrawGraphics <span class="tut-rsvd">As</span> Graphics
+<span class="tut-rsvd">Dim</span> Turn <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Dim</span> DiceColor <span class="tut-rsvd">As</span> Color
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgdicedecs.gif" width="240" height="90" alt="Dice Declarations" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Double Click on Form1 and type in the Form1_Load Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+Label1.TextAlign = ContentAlignment.MiddleCenter
+Label1.Text = "Player 1"
+Turn = 1
+DiceColor = Color.Black
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgdiceload.gif" width="450" height="130" alt="Form1 Load" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Right click on the Form and select the view Code option then in the code view type in below the end of the Form1_Load sub (after end sub):
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Center(<span class="tut-rsvd">ByVal</span> b <span class="tut-rsvd">As</span> SolidBrush, _ 
+<span class="tut-rsvd">ByVal</span> pic <span class="tut-rsvd">As</span> PictureBox, <span class="tut-rsvd">ByVal</span> g <span class="tut-rsvd">As</span> Graphics)
+  g.FillEllipse(b, <span class="tut-rsvd">CInt</span>(pic.Width / 2 - 6), _
+  <span class="tut-rsvd">CInt</span>(pic.Height / 2 - 6), 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span>TopLeft(<span class="tut-rsvd">ByVal</span> b <span class="tut-rsvd">As</span> SolidBrush, _ 
+<span class="tut-rsvd">ByVal</span> pic <span class="tut-rsvd">As</span> PictureBox, <span class="tut-rsvd">ByVal</span> g <span class="tut-rsvd">As</span> Graphics)
+  g.FillEllipse(b, 6, 6, 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> CenterLeft(<span class="tut-rsvd">ByVal</span> b <span class="tut-rsvd">As</span> SolidBrush, _ 
+<span class="tut-rsvd">ByVal</span> pic <span class="tut-rsvd">As</span> PictureBox, <span class="tut-rsvd">ByVal</span> g <span class="tut-rsvd">As</span> Graphics)
+  g.FillEllipse(b, 6, _
+  <span class="tut-rsvd">CInt</span>(pic.Height / 2 - 6), 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> BottomLeft(<span class="tut-rsvd">ByVal</span> b <span class="tut-rsvd">As</span> SolidBrush, _ 
+<span class="tut-rsvd">ByVal</span> pic <span class="tut-rsvd">As</span> PictureBox, <span class="tut-rsvd">ByVal</span> g <span class="tut-rsvd">As</span> Graphics)
+  g.FillEllipse(b, 6, pic.Height - 18, 12, 12)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> TopRight(<span class="tut-rsvd">ByVal</span> b <span class="tut-rsvd">As</span> SolidBrush, _ 
+<span class="tut-rsvd">ByVal</span> pic <span class="tut-rsvd">As</span> PictureBox, <span class="tut-rsvd">ByVal</span> g <span class="tut-rsvd">As</span> Graphics)
+  g.FillEllipse(b, pic.Width - 18, 6, 12, 12)
+<span class="tut-rsvd">End Sub</span> 
+
+<span class="tut-rsvd">Private Sub</span> CenterRight(<span class="tut-rsvd">ByVal</span> b <span class="tut-rsvd">As</span> SolidBrush, _ 
+<span class="tut-rsvd">ByVal</span> pic <span class="tut-rsvd">As</span> PictureBox, <span class="tut-rsvd">ByVal</span> g <span class="tut-rsvd">As</span> Graphics)
+  g.FillEllipse(b, pic.Width - 18, _
+  <span class="tut-rsvd">CInt</span>(pic.Height / 2 - 6), 12, 12)
+<span class="tut-rsvd">End Sub</span> 
+
+<span class="tut-rsvd">Private Sub</span> BottomRight(<span class="tut-rsvd">ByVal</span> b <span class="tut-rsvd">As</span> SolidBrush, _ 
+<span class="tut-rsvd">ByVal</span> pic <span class="tut-rsvd">As</span> PictureBox, <span class="tut-rsvd">ByVal</span> g <span class="tut-rsvd">As</span> Graphics)
+  g.FillEllipse(b, pic.Width - 18, _
+  pic.Height - 18, 12, 12)
+<span class="tut-rsvd">End Sub</span> 
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgdicedots.gif" width="400" height="660" alt="Dice Dots Methods" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still in the code view add the following below the end of the BottomRight(...) sub (after end sub):
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> RenderDice(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Integer</span>, _
+<span class="tut-rsvd">ByVal</span> pic <span class="tut-rsvd">As</span> PictureBox, <span class="tut-rsvd">ByVal</span> g <span class="tut-rsvd">As</span> Graphics, _
+<span class="tut-rsvd">ByVal</span> ForeColor <span class="tut-rsvd">As</span> Color)
+  myBrush = <span class="tut-rsvd">New</span> SolidBrush(ForeColor)
+  <span class="tut-rsvd">Select Case</span> Value
+    <span class="tut-rsvd">Case</span> 0
+      <span class="tut-cmnt">' Draw Nothing</span>
+    <span class="tut-rsvd">Case</span> 1
+      Center(myBrush, pic, g)
+    <span class="tut-rsvd">Case</span> 2
+      TopLeft(myBrush, pic, g)
+      BottomRight(myBrush, pic, g)
+    <span class="tut-rsvd">Case</span> 3
+      TopLeft(myBrush, pic, g)
+      Center(myBrush, pic, g)
+      BottomRight(myBrush, pic, g)
+    <span class="tut-rsvd">Case</span> 4
+      TopLeft(myBrush, pic, g)
+      BottomLeft(myBrush, pic, g)
+      TopRight(myBrush, pic, g)
+      BottomRight(myBrush, pic, g)
+    <span class="tut-rsvd">Case</span> 5
+      TopLeft(myBrush, pic, g)
+      BottomLeft(myBrush, pic, g)
+      Center(myBrush, pic, g)
+      TopRight(myBrush, pic, g)
+      BottomRight(myBrush, pic, g)
+    <span class="tut-rsvd">Case</span> 6  
+      TopLeft(myBrush, pic, g)
+      CenterLeft(myBrush, pic, g)
+      BottomLeft(myBrush, pic, g)
+      TopRight(myBrush, pic, g)
+      CenterRight(myBrush, pic, g)
+      BottomRight(myBrush, pic, g)
+  <span class="tut-rsvd">End Select</span>
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgdicerender.gif" width="400" height="620" alt="Render Dice Method" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Also in the code view add these paint routines for the PictureBoxes:
+</p>
+<blockquote>
+<pre class="tut-code">
+
+<span class="tut-rsvd">Private Sub</span> PictureBox1_Paint(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, _
+<span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.Windows.Forms.PaintEventArgs) _
+<span class="tut-rsvd">Handles</span> PictureBox1.Paint
+  RenderDice(DiceOne, PictureBox1, e.Graphics, DiceColor)
+<span class="tut-rsvd">End Sub</span> 
+
+<span class="tut-rsvd">Private Sub</span> PictureBox2_Paint(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, _
+<span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.Windows.Forms.PaintEventArgs) _
+<span class="tut-rsvd">Handles</span> PictureBox2.Paint
+  RenderDice(DiceTwo, PictureBox1, e.Graphics, DiceColor)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgdicepaint.gif" width="490" height="200" alt="PictureBox 1 and 2 Paint Methods" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Double Click on the Button Labeled Roll (Button1) and type in the Button1_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> Turn = 1 <span class="tut-rsvd">Then</span>
+  Randomize()
+  DiceOne = <span class="tut-rsvd">CInt</span>(Int((6 * Rnd()) + 1))
+  PictureBox1.Refresh()
+  Label1.Text = "Player 2"
+  Turn = 2
+<span class="tut-rsvd">Else</span>
+  Randomize()
+  DiceTwo = <span class="tut-rsvd">CInt</span>(Int((6 * Rnd()) + 1))
+  PictureBox2.Refresh()
+  Label1.Text = "Player 1"
+  Turn = 1
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgrollclick.gif" width="490" height="280" alt="Button1 Click Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Double Click on the Button Labeled New Game (Button2) and type in the Button2_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+DiceOne = 0
+DiceTwo = 0
+PictureBox1.Refresh()
+PictureBox2.Refresh()
+Label1.Text = "Player 1"
+Turn = 1
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgnewgameclick.gif" width="490" height="160" alt="Button2 Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Double Click on the Button Labeled Exit (Button3) and type in the Button3_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">End</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgbtn3click.gif" width="580" height="70" alt="Button3 Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Save the Project as you have now finished the application, select Release and Click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgstart.gif" width="124" height="22" alt="Start (Release)" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgdicerun.gif" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on Roll to roll the dice for Player One by clicking on Roll, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgdice.gif" width="300" height="300" alt="Dice One Rolled" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Just Click on Ok and then click on the Close button <img src="tutorials/imgclose.gif" width="21" height="21" alt="Close" /> 
+on the top right of Form1 to end the application.
+</p>
+<p>
+By clicking on the Roll button it will alternate between Player 1 and Player 2 (Left & Right).
+You have just created a simple Dice Game, but what about scoring and proper dice rules, you'll have to wait, 
+try and make it have a scoring system/rules yourself and see what else you can achieve with this simple program.
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

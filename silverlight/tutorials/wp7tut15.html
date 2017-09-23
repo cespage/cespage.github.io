@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>mPlayer</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>mPlayer</h1>
+<p>
+mPlayer is a simple Windows Phone 7 Media Player with support for Video and Audio content with Playback indicator and Volume control.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut15.html">www.cespage.com/silverlight/wp7tut15.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Right Click on the Entry for the Project in the Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "images" (without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mplaysolexp.png" width="217" height="527" alt="Project Images Folder" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Download the following images (play.png &amp; stop.png) by right-clicking on the images below and choose "Save Picture As..." or 
+"Save Image As..." and Save them to a Folder on your computer:
+</p>
+<blockquote>
+<div class="tut-img">
+<img src="play.png" width="48" height="48" alt="Play Application Bar Icon" />
+<img src="stop.png" width="48" height="48" alt="Stop Application Bar Icon" />
+</div>
+</blockquote>
+<p class="tutorial-step">Step 5</p>
+<p>
+Right Click on the Entry for the "image" Folder for the Project in Solution Explorer, and choose "Add", then "Existing Item...", 
+then in the "Add Existing Item" dialog select Folder you saved the images, then choose "Add"
+to add play.png and stop.png to the images folder in the project, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mplaysolexpimg.png" width="217" height="527" alt="Project Images Folder with Images" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the Solution Explorer click on the "play.png" image then goto the Properties box and change the
+Build Action to Content, do the same for the "stop.png" image, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mplayimgprop.png" width="217" height="393" alt="Image Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Select the "MainPage.xaml" Tab if not already selected then in the XAML Pane for MainPage.xaml, <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="LayoutRoot" <span class="tut-attr">Background</span>="Transparent"&gt;</span> line type the following ApplicationBar XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="False"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="play" <span class="tut-attr">IconUri</span>="/images/play.png" <span class="tut-attr">Click</span>="Play_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="stop" <span class="tut-attr">IconUri</span>="/images/stop.png" <span class="tut-attr">Click</span>="Stop_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7mplayxaml.png" width="760" height="125" alt="ApplicationBar XAML" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+While still in the in XAML Pane between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="80"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="80"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Toolbar" <span class="tut-attr">Grid.Row</span>="0"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Playback" <span class="tut-attr">Grid.Row</span>="2"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="120"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Playback --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7mplaypagexaml.png" width="404" height="349" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7mplaypagedesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="wp7textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Draw a TextBox onto the Toolbar Section (upper smaller section) of the Grid on the Page, below the Page Title, and in the XAML Pane below the <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span> line, change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="Location"&gt;
+  &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+    &lt;<span class="tut-valu">InputScope</span>&gt;
+      &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="Url"/&gt;
+    &lt;/<span class="tut-valu">InputScope</span>&gt;
+  &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+&lt;/<span class="tut-valu">TextBox</span>&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7mplaytxt.png" width="359" height="660" alt="MainPage with Location TextBox" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="wp7button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Draw a Button onto the Toolbar Section by dragging the Button from the Toolbox onto the Toolbar section of the Grid on the Page, 
+then in the XAML Pane change the "Button1" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="go" <span class="tut-attr">Click</span>="Go_Click"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7mplaybtn.png" width="359" height="660" alt="MainPage with Button" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Slider control:
+</p>
+<div class="tutorial-image">
+<img src="wp7slider.png" width="180" height="428" alt="Slider Control" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Draw two Sliders on the Playback Section (the lower smaller section) of the Grid on the Page by dragging the Sliders from the Toolbox
+onto the Playback section of the Page, then in the XAML pane change the "&lt;Slider&gt;" lines to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Slider</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Minimum</span>="0" <span class="tut-attr">Name</span>="Position"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">Slider</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Minimum</span>="0" <span class="tut-attr">Maximum</span>="1" <span class="tut-attr">Value</span>="0.5"
+<span class="tut-attr">Name</span>="Volume" <span class="tut-attr">ValueChanged</span>="Volume_ValueChanged"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7mplaysli.png" width="359" height="660" alt="MainPage with Sliders" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the MediaElement control:
+</p>
+<div class="tutorial-image">
+<img src="wp7mediaelement.png" width="180" height="428" alt="MediaElement Control" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Draw a MediaElement on the largest section of the Grid on the Page (Content) by dragging a MediaElement onto the Content section of the Page then
+in the XAML Pane change the "&lt;MediaElement&gt;" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">MediaElement</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Stretch</span>="Uniform" <span class="tut-attr">Name</span>="Player"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7mplaymedia.png" width="359" height="660" alt="MainPage with MediaElement" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+While still in the Designer View for MainPage.xaml, Select the "Page Name" TextBlock (PageTitle) and then Delete or Right-Click and Choose the Delete option so the MainPage.xaml appears as below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mplaymain.png" width="359" height="660" alt="MainPage with textBlockListTitle Removed" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace mPlayer"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Windows.Threading;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public MainPage()" type the following declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-symb">DispatcherTimer</span> _position = <span class="tut-rsvd">new</span> <span class="tut-symb">DispatcherTimer</span>();
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mplayref.png" width="416" height="429" alt="MainPage Include and Declarations" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+While still in the Code View for MainPage.xaml.cs in the "public MainPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"mPLAYER"</span>;
+Player.MediaOpened += (<span class="tut-rsvd">object</span> s, <span class="tut-symb">RoutedEventArgs</span> args) =&gt;
+{
+  <span class="tut-cmnt">// Media Opened Event</span>
+  Position.Maximum = (<span class="tut-rsvd">int</span>)Player.NaturalDuration.TimeSpan.TotalMilliseconds;
+  Player.Play();
+};
+Player.MediaEnded += (<span class="tut-rsvd">object</span> s, <span class="tut-symb">RoutedEventArgs</span> args) =&gt;
+{
+  <span class="tut-cmnt">// Media Ended Event</span>
+  Player.Stop();
+};
+Player.CurrentStateChanged += (<span class="tut-rsvd">object</span> s, <span class="tut-symb">RoutedEventArgs</span> args) =&gt;
+{
+  <span class="tut-cmnt">// Media State Changed Event</span>
+  <span class="tut-rsvd">if</span> (Player.CurrentState == <span class="tut-symb">MediaElementState</span>.Playing)
+  {
+    _position.Start();
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    _position.Stop();
+  }
+};
+_position.Tick += (<span class="tut-rsvd">object</span> s, <span class="tut-symb">EventArgs</span> args) =&gt;
+{
+  <span class="tut-cmnt">// Position Tick Event</span>
+  Position.Value = (<span class="tut-rsvd">int</span>)Player.Position.TotalMilliseconds;
+};
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mplayinit.png" width="642" height="525" alt="MainPage Constructor" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Go_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  Player.Source = <span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(Location.Text, <span class="tut-symb">UriKind</span>.Absolute);
+}
+
+<span class="tut-rsvd">private void</span> Volume_ValueChanged(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedPropertyChangedEventArgs</span>&lt;<span class="tut-rsvd">double</span>&gt; e)
+{
+  <span class="tut-rsvd">if</span> (Volume != <span class="tut-rsvd">null</span>)
+  {
+    Player.Volume = (<span class="tut-rsvd">double</span>)Volume.Value;
+  }
+}
+
+<span class="tut-rsvd">private void</span> Play_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (Player.CurrentState == <span class="tut-symb">MediaElementState</span>.Playing)
+  {
+    Player.Pause();
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    Player.Play();
+  }
+}
+
+<span class="tut-rsvd">private void</span> Stop_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  Player.Stop();
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mplaycode.png" width="690" height="461" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7mplayrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Tap the TextBox and enter in the web address of a Video such as <a href="http://cespage.com/bear.wmv">http://cespage.com/bear.wmv</a> then
+click on the "go" button, when loaded the Video will start playing, see below: 
+</p>
+<div class="tutorial-image">
+<img src="wp7mplayapp.png" width="359" height="660" alt="mPlayer" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple Media Player, try adding more features such as Fast Forward or Rewind or the ablity to change the Playback
+Position using the Position Slider - make it your own! 
+</p>
+</body>
+</html>

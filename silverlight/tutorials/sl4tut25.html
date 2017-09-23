@@ -1,0 +1,517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>FlipPanel Control</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-text {
+							color: #000000;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-xatr {
+					color:#555555;
+}
+.tut-xexp {
+					color:#555555;
+					background-color:#FFFEBF;
+}
+.tut-xatn {
+					color:#B96464;
+}
+
+.tut-xnam {
+					color:#844646;
+}
+.tut-xatt {
+					color:#6464B9;
+}
+.tut-link {
+					color: blue;
+					text-decoration: underline;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-attr {
+							color: red;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-prop {
+					 		color: gray;
+}
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>FlipPanel Control</h1>
+<p>
+FlipPanel Control is a double-sided panel, which when flipped displays content on the "back", and also displays content on the "front" when not flipped.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut25.html">www.cespage.com/silverlight/sl4tut25.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Select from the Main Menu: "File" then "Add", then "New Project..." The "New Project" window should appear, 
+select "Silverlight Class Library" with the Name "FlipPanel" without the quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flipclslib.png" width="939" height="624" alt="Add Silverlight Class Library Project" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+In the "Choose the version of Silverlight you want to target from the list of installed Silverlight SDK's" 
+choose the same version of Silverlight for example Silverlight 4 and click OK.
+<br/>
+Then in the Solution Explorer for "FlipPanel", click on the "Class1.vb" entry, then goto Properties and change the File Name to "FlipPanel.vb" (without the quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flipprop.png" width="217" height="383" alt="FlipPanel Class Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+In the "You are renaming a file. Would you also like to perform a rename in this project of all references to the code element 'Class1'?" choose Yes.<br/>
+Right Click on the Entry for the "FlipPanel" Project (not the FlipPanel.vb) in Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "Themes" (again without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flipsolthemes.png" width="217" height="527" alt="FlipPanel Project Themes Folder" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Right Click on the Entry for the "Themes" Folder for the FlipPanel Project, and choose "Add", then "New Item...", 
+select "Silverlight Resource Dictionary" with the Name "Generic.xaml", without quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4generic.png" width="939" height="624" alt="Generic.xaml Resource Dictionary" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+In the XAML Pane for the Generic.xaml, in the "ResourceDictionary" tag type the following XAML namespace: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd"><span class="tut-attr">xmlns</span>:<span class="tut-attr">local</span>="clr-namespace:FlipPanel"</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4flipresns.png" width="494" height="99" alt="Resource Dictionary Namespaces" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still the XAML Pane for the Generic.xaml, above the "&lt;/ResourceDictionary&gt;" tag and below the top "&lt;ResourceDictionary&gt;" tag, type the following XAML: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">
+&lt;<span class="tut-valu">Style</span> <span class="tut-attr">TargetType</span>="local:FlipPanel"&gt;
+  &lt;<span class="tut-valu">Setter</span> <span class="tut-attr">Property</span>="Template"&gt;
+    &lt;<span class="tut-valu">Setter.Value</span>&gt;
+      &lt;<span class="tut-valu">ControlTemplate</span> <span class="tut-attr">TargetType</span>="local:FlipPanel"&gt;
+        &lt;<span class="tut-valu">Grid</span>&gt;
+          &lt;<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+            &lt;<span class="tut-valu">VisualStateGroup</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ViewStates"&gt;
+              &lt;<span class="tut-valu">VisualStateGroup.Transitions</span>&gt;
+                &lt;<span class="tut-valu">VisualTransition</span> <span class="tut-attr">To</span>="Normal" <span class="tut-attr">From</span>="Flipped" <span class="tut-attr">GeneratedDuration</span>="0:0:0.7"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="BackContentProjection"
+                       <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="-90" <span class="tut-attr">Duration</span>="0:0:0.5"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="FrontContentProjection"
+                       <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="0" <span class="tut-attr">BeginTime</span>="0:0:0.5" <span class="tut-attr">Duration</span>="0:0:0.5"/&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">VisualTransition</span>&gt;
+                &lt;<span class="tut-valu">VisualTransition</span> <span class="tut-attr">To</span>="Flipped" <span class="tut-attr">From</span>="Normal" <span class="tut-attr">GeneratedDuration</span>="0:0:0.7"&gt;
+                  &lt;<span class="tut-valu">Storyboard</span>&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="FrontContentProjection"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="90" <span class="tut-attr">Duration</span>="0:0:0.5"/&gt;
+                    &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="BackContentProjection"
+                        <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="0" <span class="tut-attr">BeginTime</span>="0:0:0.5" <span class="tut-attr">Duration</span>="0:0:0.5"/&gt;
+                  &lt;/<span class="tut-valu">Storyboard</span>&gt;
+                &lt;/<span class="tut-valu">VisualTransition</span>&gt;
+              &lt;/<span class="tut-valu">VisualStateGroup.Transitions</span>&gt;
+              &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Normal"&gt;
+                &lt;<span class="tut-valu">Storyboard</span>&gt;
+                  &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="BackContentProjection"
+                      <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="-90" <span class="tut-attr">Duration</span>="0"/&gt;
+                &lt;/<span class="tut-valu">Storyboard</span>&gt;
+              &lt;/<span class="tut-valu">VisualState</span>&gt;
+              &lt;<span class="tut-valu">VisualState</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Flipped"&gt;
+                &lt;<span class="tut-valu">Storyboard</span>&gt;
+                  &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="FrontContentProjection" 
+                      <span class="tut-attr">Storyboard.TargetProperty</span>="RotationY" <span class="tut-attr">To</span>="90" <span class="tut-attr">Duration</span>="0"/&gt;
+                  &lt;<span class="tut-valu">DoubleAnimation</span> <span class="tut-attr">Storyboard.TargetName</span>="FlipButtonTransform" 
+                      <span class="tut-attr">Storyboard.TargetProperty</span>="Angle" <span class="tut-attr">To</span>="90" <span class="tut-attr">Duration</span>="0"/&gt;
+                &lt;/<span class="tut-valu">Storyboard</span>&gt;
+              &lt;/<span class="tut-valu">VisualState</span>&gt;
+            &lt;/<span class="tut-valu">VisualStateGroup</span>&gt;
+          &lt;/<span class="tut-valu">VisualStateManager.VisualStateGroups</span>&gt;
+          &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+            &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+            &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="Auto"/&gt;
+          &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+          &lt;<span class="tut-valu">Border</span> <span class="tut-attr">BorderBrush</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderBrush</span>}"
+              <span class="tut-attr">BorderThickness</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderThickness</span>}"
+              <span class="tut-attr">CornerRadius</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">CornerRadius</span>}"
+              <span class="tut-attr">Background</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Background</span>}"&gt;
+            &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">Content</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">FrontContent</span>}"/&gt;
+            &lt;<span class="tut-valu">Border.Projection</span>&gt;
+              &lt;<span class="tut-valu">PlaneProjection</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FrontContentProjection"/&gt;
+            &lt;/<span class="tut-valu">Border.Projection</span>&gt;
+          &lt;/<span class="tut-valu">Border</span>&gt;
+          &lt;<span class="tut-valu">Border</span> <span class="tut-attr">BorderBrush</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderBrush</span>}"
+              <span class="tut-attr">BorderThickness</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BorderThickness</span>}"
+              <span class="tut-attr">CornerRadius</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">CornerRadius</span>}"
+              <span class="tut-attr">Background</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">Background</span>}"&gt;
+            &lt;<span class="tut-valu">ContentPresenter</span> <span class="tut-attr">Content</span>="{<span class="tut-valu">TemplateBinding</span> <span class="tut-attr">BackContent</span>}"/&gt;
+            &lt;<span class="tut-valu">Border.Projection</span>&gt;
+              &lt;<span class="tut-valu">PlaneProjection</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="BackContentProjection"/&gt;
+            &lt;/<span class="tut-valu">Border.Projection</span>&gt;
+          &lt;/<span class="tut-valu">Border</span>&gt;
+          &lt;<span class="tut-valu">ToggleButton</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5" <span class="tut-attr">Margin</span>="0,10,0,0" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FlipButton"&gt;
+            &lt;<span class="tut-valu">ToggleButton.Template</span>&gt;
+              &lt;<span class="tut-valu">ControlTemplate</span>&gt;
+                &lt;<span class="tut-valu">Grid</span>&gt;
+                  &lt;<span class="tut-valu">Ellipse</span> <span class="tut-attr">Width</span>="20" <span class="tut-attr">Height</span>="20" <span class="tut-attr">Stroke</span>="#FFA9A9A9" <span class="tut-attr">Fill</span>="AliceBlue"/&gt;
+                  &lt;<span class="tut-valu">Path</span> <span class="tut-attr">RenderTransformOrigin</span>="0.5,0.5" <span class="tut-attr">HorizontalAlignment</span>="Center" <span class="tut-attr">VerticalAlignment</span>="Center" 
+                      <span class="tut-attr">Data</span>="M1,1.5L4.5,5 8,1.5" <span class="tut-attr">Stroke</span>="#FF666666" <span class="tut-attr">StrokeThickness</span>="2" /&gt;
+                &lt;/<span class="tut-valu">Grid</span>&gt;
+              &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+            &lt;/<span class="tut-valu">ToggleButton.Template</span>&gt;
+            &lt;<span class="tut-valu">ToggleButton.RenderTransform</span>&gt;
+              &lt;<span class="tut-valu">RotateTransform</span> <span class="tut-attr">Angle</span>="-90" <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="FlipButtonTransform"/&gt;
+            &lt;/<span class="tut-valu">ToggleButton.RenderTransform</span>&gt;
+          &lt;/<span class="tut-valu">ToggleButton</span>&gt;
+        &lt;/<span class="tut-valu">Grid</span>&gt;
+      &lt;/<span class="tut-valu">ControlTemplate</span>&gt;
+    &lt;/<span class="tut-valu">Setter.Value</span>&gt;
+  &lt;/<span class="tut-valu">Setter</span>&gt;
+&lt;/<span class="tut-valu">Style</span>&gt;
+</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4flipres.png" width="944" height="1476" alt="FlipPanel Resource Dictionary" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Double Click on the Entry for the "FlipPanel.vb" Class in Solution Explorer in the "FlipPanel" project.<br/>  
+In the Code View for FlipPanel above the "Public Class FlipPanel" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Imports</span> System.Windows.Controls.Primitives
+&lt;<span class="tut-symb">TemplateVisualState</span>(Name:=<span class="tut-valu">"Normal"</span>, GroupName:=<span class="tut-valu">"ViewStates"</span>),
+<span class="tut-symb">TemplateVisualState</span>(Name:=<span class="tut-valu">"Flipped"</span>, GroupName:=<span class="tut-valu">"ViewStates"</span>),
+<span class="tut-symb">TemplatePart</span>(Name:=<span class="tut-valu">"FlipButton"</span>, Type:=<span class="tut-rsvd">GetType</span>(<span class="tut-symb">ToggleButton</span>)),
+<span class="tut-symb">TemplatePart</span>(Name:=<span class="tut-valu">"FlipButtonAlternative"</span>, Type:=<span class="tut-rsvd">GetType</span>(<span class="tut-symb">ToggleButton</span>))&gt;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flipref.png" width="522" height="134" alt="FlipPanel.vb Imports and Template" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for FlipPanel.vb, below the "Public Class FlipPanel" line type the following:  
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Inherits</span> <span class="tut-symb">Control</span>
+
+<span class="tut-rsvd">Public Shared ReadOnly</span> FrontContentProperty <span class="tut-rsvd">As</span> <span class="tut-symb">DependencyProperty</span> =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"FrontContent"</span>, <span class="tut-rsvd">GetType</span>(<span class="tut-rsvd">Object</span>),
+<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FlipPanel</span>), <span class="tut-rsvd">Nothing</span>)
+
+<span class="tut-rsvd">Public Shared ReadOnly</span> BackContentProperty <span class="tut-rsvd">As</span> <span class="tut-symb">DependencyProperty</span> =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"BackContent"</span>, <span class="tut-rsvd">GetType</span>(<span class="tut-rsvd">Object</span>),
+<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FlipPanel</span>), <span class="tut-rsvd">Nothing</span>)
+
+<span class="tut-rsvd">Public Shared ReadOnly</span> IsFlippedProperty <span class="tut-rsvd">As</span> <span class="tut-symb">DependencyProperty</span> =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"IsFlipped"</span>, <span class="tut-rsvd">GetType</span>(<span class="tut-rsvd">Boolean</span>),
+<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FlipPanel</span>), <span class="tut-rsvd">Nothing</span>)
+
+<span class="tut-rsvd">Public Shared ReadOnly</span> CornerRadiusProperty <span class="tut-rsvd">As</span> <span class="tut-symb">DependencyProperty</span> =
+<span class="tut-symb">DependencyProperty</span>.Register(<span class="tut-valu">"CornerRadius"</span>, <span class="tut-rsvd">GetType</span>(<span class="tut-symb">CornerRadius</span>),
+<span class="tut-rsvd">GetType</span>(<span class="tut-symb">FlipPanel</span>), <span class="tut-rsvd">Nothing</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flippdecs.png" width="524" height="423" alt="FlipPanel.vb Declarations" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for FlipPanel.vb, above the "End Class" for "Public Class FlipPanel", type the following Properties:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public Property</span> FrontContent() <span class="tut-rsvd">As Object
+  Get
+    Return</span> GetValue(FrontContentProperty)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Object</span>)
+    SetValue(FrontContentProperty, value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-rsvd">Public Property</span> BackContent() <span class="tut-rsvd">As Object
+  Get
+    Return</span> GetValue(BackContentProperty)
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Object</span>)
+    SetValue(BackContentProperty, value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-rsvd">Public Property</span> IsFlipped() <span class="tut-rsvd">As Boolean
+  Get
+    Return CBool</span>(GetValue(IsFlippedProperty))
+  <span class="tut-rsvd">End Get
+  Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As Boolean</span>)
+    SetValue(IsFlippedProperty, value)
+    ChangeVisualState(<span class="tut-rsvd">True</span>)
+  <span class="tut-rsvd">End Set
+End Property</span>
+
+<span class="tut-rsvd">Public Property</span> CornerRadius() <span class="tut-rsvd">As</span> <span class="tut-symb">CornerRadius</span>
+  <span class="tut-rsvd">Get
+    Return CType</span>(GetValue(CornerRadiusProperty), <span class="tut-symb">CornerRadius</span>)
+  <span class="tut-rsvd">End Get</span>
+  <span class="tut-rsvd">Set</span>(<span class="tut-rsvd">ByVal</span> value <span class="tut-rsvd">As</span> <span class="tut-symb">CornerRadius</span>)
+    SetValue(CornerRadiusProperty, value)
+  <span class="tut-rsvd">End Set
+End Property</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flipprops.png" width="502" height="609" alt="FlipPanel.vb Properties" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the Code View for FlipPanel.vb, above the "End Class" for "Public Class FlipPanel", type the following Constructor and Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Public Sub New</span>()
+  DefaultStyleKey = <span class="tut-rsvd">GetType</span>(<span class="tut-symb">FlipPanel</span>)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> ChangeVisualState(<span class="tut-rsvd">ByVal</span> useTransitions <span class="tut-rsvd">As Boolean</span>)
+  <span class="tut-rsvd">If Not</span> IsFlipped <span class="tut-rsvd">Then</span>
+    <span class="tut-symb">VisualStateManager</span>.GoToState(<span class="tut-rsvd">Me</span>, <span class="tut-valu">"Normal"</span>, useTransitions)
+  <span class="tut-rsvd">Else</span>
+    <span class="tut-symb">VisualStateManager</span>.GoToState(<span class="tut-rsvd">Me</span>, <span class="tut-valu">"Flipped"</span>, useTransitions)
+  <span class="tut-rsvd">End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flipsubs.png" width="508" height="184" alt="FlipPanel.vb Constructor and Sub" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+While still in the Code View for FlipPanel.vb, above the "End Class" for "Public Class FlipPanel", type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> FlipButton_Click(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As Object</span>, <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> <span class="tut-symb">RoutedEventArgs</span>)
+  <span class="tut-rsvd">Me</span>.IsFlipped = <span class="tut-rsvd">Not Me</span>.IsFlipped
+  ChangeVisualState(<span class="tut-rsvd">True</span>)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Public Overrides Sub</span> OnApplyTemplate()
+  <span class="tut-rsvd">MyBase</span>.OnApplyTemplate()
+  <span class="tut-rsvd">Dim</span> _flipButton <span class="tut-rsvd">As</span> <span class="tut-symb">ToggleButton</span> =
+    <span class="tut-rsvd">TryCast</span>(<span class="tut-rsvd">MyBase</span>.GetTemplateChild(<span class="tut-valu">"FlipButton"</span>), <span class="tut-symb">ToggleButton</span>)
+  <span class="tut-rsvd">If</span> _flipButton <span class="tut-rsvd">IsNot Nothing Then
+    AddHandler</span> _flipButton.Click, <span class="tut-rsvd">AddressOf</span> FlipButton_Click
+  <span class="tut-rsvd">End If
+  Dim</span> _flipButtonAlternate <span class="tut-rsvd">As</span> <span class="tut-symb">ToggleButton</span> =
+    <span class="tut-rsvd">TryCast</span>(<span class="tut-rsvd">MyBase</span>.GetTemplateChild(<span class="tut-valu">"FlipButtonAlternate"</span>), <span class="tut-symb">ToggleButton</span>)
+  <span class="tut-rsvd">If</span> _flipButtonAlternate <span class="tut-rsvd">IsNot Nothing Then
+    AddHandler</span> _flipButtonAlternate.Click, <span class="tut-rsvd">AddressOf</span> FlipButton_Click
+  <span class="tut-rsvd">End If
+  Me</span>.ChangeVisualState(<span class="tut-rsvd">False</span>)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flipevent.png" width="600" height="320" alt="FlipPanel.vb Event Handlers" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Select Debug then the "Build FlipPanel" option from the menu, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flipbuild.png" width="233" height="24" alt="Build FlipPanel" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Return to the MainPage.xaml Designer View by selecting the "MainPage.xaml" Tab, or Double Clicking on the Entry for "MainPage.xaml" 
+in Solution Explorer for the Main Project.<br/>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Draw a Canvas that fill the whole Page or in the XAML Pane between the "&lt;Grid&gt;" and "&lt;/Grid&gt;" lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="300" <span class="tut-attr">Width</span>="400" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Page"&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4cvspage.png" width="423" height="322" alt="MainPage with Canvas" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Then from the FlipPanel Controls section in the Toolbox select the FlipPanel control:
+</p>
+<div class="tutorial-image">
+<img src="sl4flippanel.png" width="180" height="428" alt="FlipPanel Control" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Draw an FlipPanel on the Page (Canvas) by dragging the Button from the Toolbox onto the Canvas, then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "my:FlipPanel" XAML to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">
+&lt;<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel</span> <span class="tut-attr">Canvas.Left</span>="75" <span class="tut-attr">Canvas.Top</span>="25" <span class="tut-attr">Height</span>="250" <span class="tut-attr">Width</span>="250"&gt;
+  &lt;<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel.FrontContent</span>&gt;
+    &lt;<span class="tut-valu">StackPanel</span>&gt;
+      &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">FontWeight</span>="Bold" <span class="tut-attr">Text</span>="Front Content"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button One"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button Two"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button Three"/&gt;
+      &lt;<span class="tut-valu">Button</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="Button Four"/&gt;
+    &lt;/<span class="tut-valu">StackPanel</span>&gt;
+  &lt;/<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel.FrontContent</span>&gt;
+  &lt;<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel.BackContent</span>&gt;
+    &lt;<span class="tut-valu">StackPanel</span>&gt;
+      &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">FontWeight</span>="Bold" <span class="tut-attr">Text</span>="Back Content"/&gt;
+      &lt;<span class="tut-valu">CheckBox</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="CheckBox One"/&gt;
+      &lt;<span class="tut-valu">CheckBox</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="CheckBox Two"/&gt;
+      &lt;<span class="tut-valu">CheckBox</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="CheckBox Three"/&gt;
+      &lt;<span class="tut-valu">CheckBox</span> <span class="tut-attr">Margin</span>="4" <span class="tut-attr">Padding</span>="4" <span class="tut-attr">Content</span>="CheckBoxn Four"/&gt;
+    &lt;/<span class="tut-valu">StackPanel</span>&gt;
+  &lt;/<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel.BackContent</span>&gt;
+&lt;/<span class="tut-valu">my</span>:<span class="tut-valu">FlipPanel</span>&gt;
+</span>
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4flipflip.png" width="415" height="314" alt="MainPage with Canvas and FlipPanel" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4fliprun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the Round button with the Arrow to Flip the FlipPanel, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4flipapp.png" width="400" height="300" alt="FlipPanel Control" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Close the Application and Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Application Window and Web Browser to Stop the application.
+</p>
+<p>
+This is a simple example of how to create an FlipPanel control! It could be expanded to add more Properties and functionality such as flipping horizontally
+and vertically for example - make it your own! 
+</p>
+</body>
+</html>

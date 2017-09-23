@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Lucky Lotto</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Lucky Lotto</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>This is another simple game allowing you to choose your Lotto Numbers, features Drawing, Coloured Balls, Random Number generation and more!</p>
+<p>
+<em class="icon-print"><a href="tutorials/vbextut8.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vbextut8.zip">Download Tutorial</a> (149KB)</em>
+<em class="icon-dload"><a href="tutorials/vbextut8code.zip">Download Source Code</a> (15KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2005 Express Edition, then select File then New Project... Choose Windows Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexnewproject.gif" width="681" height="417" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexform1.gif" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Windows Forms components tab select the PictureBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexpicturebox.gif" width="248" height="398" alt="PictureBox Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a PictureBox on the Form as indicated below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlottopic.gif" width="300" height="300" alt="PictureBox on Form1" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then from the Windows Forms components tab select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexbutton.gif" width="248" height="398" alt="Button Component" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Draw a Button on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlottobtn.gif" width="300" height="300" alt="Form1 with PictureBox and Button" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Then goto the Properties box and change the Text property to Choose, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlottobtnprop.gif" width="202" height="457" alt="Button Properties" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Right click on the Form and select the View Code option then in the code view type in below Public Class Form1 the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> DrawBrush <span class="tut-rsvd">As</span> Brush
+<span class="tut-rsvd">Dim</span> DrawBitmap <span class="tut-rsvd">As</span> Bitmap
+<span class="tut-rsvd">Dim</span> DrawGraphics <span class="tut-rsvd">As</span> Graphics
+<span class="tut-rsvd">Dim</span> MyFont <span class="tut-rsvd">As New</span> System.Drawing.Font(<span class="tut-valu">"Arial"</span>, 12, _
+FontStyle.Regular, GraphicsUnit.Point)
+
+<span class="tut-rsvd">Dim</span> arrNumber(0 <span class="tut-rsvd">To</span> 5) <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Dim</span> intNumber <span class="tut-rsvd">As Integer</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlottodecs.gif" width="466" height="204" alt="Lotto Declarations" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+While still in the Code view type below the Declarations entered in the previous step (anything starting with Dim) the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Selects Numbers</span>
+<span class="tut-rsvd">Private Sub</span> ChooseNumbers()
+  <span class="tut-rsvd">Dim</span> x, y <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">For</span> x = 0 <span class="tut-rsvd">To</span> 5</span>
+Start:
+    Randomize()</span>
+    intNumber = Int((49 * Rnd()) + 1) <span class="tut-cmnt">' Random number 1 to 49</span>
+    <span class="tut-rsvd">For</span> y = 0 <span class="tut-rsvd">To</span> 5
+      <span class="tut-cmnt">' If number already been selected select another one</span>
+      <span class="tut-rsvd">If</span> intNumber = arrNumber(y) <span class="tut-rsvd">Then</span>
+        <span class="tut-rsvd">GoTo</span> Start</span>
+      <span class="tut-rsvd">End If</span>
+    <span class="tut-rsvd">Next</span> y
+    arrNumber(x) = intNumber
+  <span class="tut-rsvd">Next</span> x
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlottochoose.gif" width="570" height="274" alt="Lotto Choose Method" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+After the ChooseNumbers() Sub has been typed in, type below it the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Determines what colour the ball should be based on the Value</span>
+<span class="tut-rsvd">Private Function</span> BallColour(<span class="tut-rsvd">ByVal</span> Value <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As</span> Brush
+  <span class="tut-rsvd">If</span> Value &gt; 0 <span class="tut-rsvd">And</span> Value &lt; 10 <span class="tut-rsvd">Then</span>
+    DrawBrush = Brushes.White
+  <span class="tut-rsvd">ElseIf</span> Value &gt; 10 <span class="tut-rsvd">And</span> Value &lt; 20 <span class="tut-rsvd">Then</span>
+    DrawBrush = Brushes.SkyBlue
+  <span class="tut-rsvd">ElseIf</span> Value &gt; 20 <span class="tut-rsvd">And</span> Value &lt; 30 <span class="tut-rsvd">Then</span>
+    DrawBrush = Brushes.Magenta
+  <span class="tut-rsvd">ElseIf</span> Value &gt; 30 <span class="tut-rsvd">And</span> Value &lt; 40 <span class="tut-rsvd">Then</span>
+    DrawBrush = Brushes.LawnGreen
+  <span class="tut-rsvd">ElseIf</span> Value &gt; 40 <span class="tut-rsvd">And</span> Value &lt; 50 <span class="tut-rsvd">Then</span>
+    DrawBrush = Brushes.Yellow
+  <span class="tut-rsvd">End If</span>
+  <span class="tut-rsvd">Return</span> DrawBrush
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlottocolour.gif" width="544" height="260" alt="Lotto Colour Method" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+After the BallColour() Function type in the following ball rendering routines:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-cmnt">' Draws a Ball with a colour and value</span>
+<span class="tut-rsvd">Private Sub</span> DrawBall(<span class="tut-rsvd">ByVal</span> Number <span class="tut-rsvd">As String</span>, <span class="tut-rsvd">ByVal</span> Left <span class="tut-rsvd">As Integer</span>)
+  <span class="tut-rsvd">Dim</span> pos <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">If</span> Number.Length = 2 <span class="tut-rsvd">Then</span> pos = 9 <span class="tut-rsvd">Else</span> pos = 13 <span class="tut-cmnt">' Postion for Single or Double Digit</span>
+  DrawGraphics.SmoothingMode = Drawing2D.SmoothingMode.HighQuality <span class="tut-cmnt">' Smooth Drawing</span>
+  DrawGraphics.FillEllipse(BallColour(<span class="tut-rsvd">CInt</span>(Number)), Left, 1, 40, 40) <span class="tut-cmnt">' Draw Ball</span>
+  DrawGraphics.DrawString(Number, MyFont, Brushes.Black, Left + pos, 13)  <span class="tut-cmnt">' Draw Number</span>
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-cmnt">' Outputs all Balls to the PictureBox</span>
+<span class="tut-rsvd">Private Sub</span> RenderBalls()
+  <span class="tut-rsvd">Dim</span> i <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">Dim</span> intLeft <span class="tut-rsvd">As Integer</span>
+  intLeft = 1
+  DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(PictureBox1.Width, PictureBox1.Height)
+  DrawGraphics = Graphics.FromImage(DrawBitmap)
+  <span class="tut-rsvd">For</span> i = 0 <span class="tut-rsvd">To</span> 5
+    DrawBall(arrNumber(i), intLeft)
+    intLeft = intLeft + 45
+  <span class="tut-rsvd">Next</span>
+  PictureBox1.Image = DrawBitmap
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlottoballsubs.gif" width="752" height="378" alt="Lotto Ball Routines" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Right click on the Code View and select the View Designer option then Double Click on the Button and type the following in Button1_Click method:
+</p>
+<blockquote>
+<pre class="tut-code">
+ChooseNumbers()
+RenderBalls()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlottobtnclick.gif" width="514" height="108" alt="Button1 Click Routine" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexstart.gif" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlottorun.gif" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click the Choose button to select your Lotto Numbers, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexlotto.gif" width="300" height="300" alt="Choose Lotto Numbers" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Click on the Close button <img src="tutorials/vbexclose.gif" width="21" height="21" alt="Close" /> on the top right of Form1 to end the application.
+</p>
+<p>
+You have just created a simple Lotto Number selector featuring a random number generator and graphics! You could customise the ball colours the ones 
+selected are for the UK Lottery if your local Lottery has different ball colours, try customising this program to match those. You can make many changes 
+such as showing the balls in ascending order and more! 
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

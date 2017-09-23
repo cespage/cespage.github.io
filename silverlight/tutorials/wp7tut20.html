@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Audio Recorder</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>Audio Recorder</h1>
+<p>
+Audio Recorder is a simple sound recording example using the XNA Framework to Capture and Playback audio using Silverlight on Windows Phone 7.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut20.html">www.cespage.com/silverlight/wp7tut20.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select Project then Add Reference... The "Add Reference" window should appear, select "Microsoft.XNA.Framework" from the ".NET" List, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7xna.png" width="466" height="370" alt="Add Microsoft.XNA.Framework Reference" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the Reference to "Microsoft.XNA.Framework" by Clicking on OK.<br/>
+Right Click on the App.xaml Entry in the Solution Explorer and choose "View Code", then in the Code View for App.xaml.cs above "namespace AudioRecorder"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Windows.Threading;
+<span class="tut-rsvd">using</span> Microsoft.Xna.Framework;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public partial class App : Application" type the following Class declaration:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public class</span> <span class="tut-symb">XNAAsyncDispatcher</span> : <span class="tut-symb">IApplicationService</span>
+{
+  <span class="tut-rsvd">private</span> <span class="tut-symb">DispatcherTimer</span> frameworkDispatcherTimer;
+  <span class="tut-rsvd">public</span> XNAAsyncDispatcher(<span class="tut-symb">TimeSpan</span> dispatchInterval)
+  {
+    <span class="tut-rsvd">this</span>.frameworkDispatcherTimer = <span class="tut-rsvd">new</span> <span class="tut-symb">DispatcherTimer</span>();
+    <span class="tut-rsvd">this</span>.frameworkDispatcherTimer.Tick += <span class="tut-rsvd">new</span> <span class="tut-symb">EventHandler</span>(frameworkDispatcherTimer_Tick);
+    <span class="tut-rsvd">this</span>.frameworkDispatcherTimer.Interval = dispatchInterval;
+  }
+  <span class="tut-rsvd">void</span> IApplicationService.StartService(<span class="tut-symb">ApplicationServiceContext</span> context) { <span class="tut-rsvd">this</span>.frameworkDispatcherTimer.Start(); }
+  <span class="tut-rsvd">void</span> IApplicationService.StopService() { <span class="tut-rsvd">this</span>.frameworkDispatcherTimer.Stop(); }
+  <span class="tut-rsvd">void</span> frameworkDispatcherTimer_Tick(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e) { <span class="tut-symb">FrameworkDispatcher</span>.Update(); }
+}
+</pre>
+</blockquote>
+<p>
+Again while still in the CodeView above the "}" for the Constructor "public App()" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">this</span>.ApplicationLifetimeObjects.Add(<span class="tut-rsvd">new</span> <span class="tut-symb">XNAAsyncDispatcher</span>(<span class="tut-symb">TimeSpan</span>.FromMilliseconds(50)));
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7audioappcode.png" width="872" height="638" alt="AudioRecorder Application Prequisites" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Right Click on the Entry for the Project in the Solution Explorer and choose "Add" then "New Folder", 
+and give it the Name "images" (without quotes), see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7audiosolexp.png" width="217" height="527" alt="Project Images Folder" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Download the following images (record.png, play.png &amp; stop.png) by right-clicking on the images below and choose "Save Picture As..." or 
+"Save Image As..." and Save them to a Folder on your computer:
+</p>
+<blockquote>
+<div class="tut-img">
+<img src="record.png" width="48" height="48" alt="Record Application Bar Icon" />
+<img src="play.png" width="48" height="48" alt="Play Application Bar Icon" />
+<img src="stop.png" width="48" height="48" alt="Stop Application Bar Icon" />
+</div>
+</blockquote>
+<p class="tutorial-step">Step 7</p>
+<p>
+Right Click on the Entry for the "images" Folder for the Project in Solution Explorer, and choose "Add", then "Existing Item...", 
+then in the "Add Existing Item" dialog select Folder you saved the images, then choose "Add"
+to add the record.png, play.png and stop.png to the images folder in the project, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7audiosolexpimg.png" width="217" height="527" alt="Project Images Folder with Images" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+While still in the Solution Explorer click on the "play.png" image then goto the Properties box and change the
+Build Action to Content, do the same for the "record.png" and "stop.png" images, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mplayimgprop.png" width="217" height="393" alt="Image Properties" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Select the "MainPage.xaml" Tab if not already selected then in the XAML Pane above the "&lt;Grid&gt;" Tag type the following ApplicationBar XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;
+  &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span> <span class="tut-attr">IsVisible</span>="True" <span class="tut-attr">IsMenuEnabled</span>="False"&gt;
+    &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="record" <span class="tut-attr">IconUri</span>="/images/record.png" <span class="tut-attr">Click</span>="Record_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="play" <span class="tut-attr">IconUri</span>="/images/play.png" <span class="tut-attr">Click</span>="Play_Click"/&gt;
+      &lt;<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBarIconButton</span> <span class="tut-attr">Text</span>="stop" <span class="tut-attr">IconUri</span>="/images/stop.png" <span class="tut-attr">Click</span>="Stop_Click"/&gt;
+    &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar.Buttons</span>&gt;
+  &lt;/<span class="tut-valu">shell</span>:<span class="tut-valu">ApplicationBar</span>&gt;
+&lt;/<span class="tut-valu">phone</span>:<span class="tut-valu">PhoneApplicationPage.ApplicationBar</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7audioxaml.png" width="804" height="141" alt="ApplicationBar XAML" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace AudioRecorder"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> Microsoft.Xna.Framework.Audio;
+<span class="tut-rsvd">using</span> System.IO;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public MainPage()" type the following declarations:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">Microphone</span> microphone = <span class="tut-symb">Microphone</span>.Default;
+<span class="tut-rsvd">private byte</span>[] buffer;
+<span class="tut-rsvd">private</span> <span class="tut-symb">MemoryStream</span> stream = <span class="tut-rsvd">new</span> <span class="tut-symb">MemoryStream</span>();
+<span class="tut-rsvd">private</span> <span class="tut-symb">SoundEffect</span> sound;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7audioref.png" width="424" height="493" alt="MainPage Include and Declarations" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for MainPage.xaml.cs in the "public MainPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"AUDIO RECORDER"</span>;
+PageTitle.Text = <span class="tut-valu">"ready"</span>;
+microphone.BufferReady += (<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e) =>
+{
+  microphone.GetData(buffer);
+  stream.Write(buffer, 0, buffer.Length);
+};
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7audioinit.png" width="494" height="173" alt="MainPage Constructor" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Record_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  microphone.BufferDuration = <span class="tut-symb">TimeSpan</span>.FromMilliseconds(1000);
+  buffer = <span class="tut-rsvd">new byte</span>[microphone.GetSampleSizeInBytes(microphone.BufferDuration)];
+  microphone.Start();
+  PageTitle.Text = <span class="tut-valu">"record"</span>;
+}
+
+<span class="tut-rsvd">private void</span> Play_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  sound = <span class="tut-rsvd">new</span> <span class="tut-symb">SoundEffect</span>(stream.ToArray(), microphone.SampleRate, <span class="tut-symb">AudioChannels</span>.Mono);
+  sound.Play();
+  PageTitle.Text = <span class="tut-valu">"play"</span>;
+}
+
+<span class="tut-rsvd">private void</span> Stop_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">EventArgs</span> e)
+{
+  <span class="tut-rsvd">if</span> (microphone.State == <span class="tut-symb">MicrophoneState</span>.Started)
+  {
+    microphone.Stop();
+    PageTitle.Text = <span class="tut-valu">"stop"</span>;
+  }
+  <span class="tut-rsvd">else</span>
+  {
+    PageTitle.Text = <span class="tut-valu">"ready"</span>;
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7audiocode.png" width="690" height="429" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7audiorun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Tap on the "record" button to being recording, then tap "stop" to end recording - which you can then playback with "play", see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7audioapp.png" width="359" height="660" alt="Audio Recorder" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a simple Audio Recorder, the stream the audio is stored in could be used to save the recorded audio in IsolatedStorage, it could
+also be modified to show more visual indications of Recording or Playback in progress - make it your own!
+</p>
+</body>
+</html>

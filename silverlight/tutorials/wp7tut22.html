@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Gamer Card</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>Gamer Card</h1>
+<p>
+Gamer Card is an application allowing you to view Gamer Tag information from Xbox LIVE&reg; such as Gamerscore, 
+Recently Played Games and their Avatar using Silverlight on Windows Phone 7. 
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut22.html">www.cespage.com/silverlight/wp7tut22.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select Project then Add Reference... The "Add Reference" window should appear, select "System.XML.Linq" from the ".NET" List, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7linq.png" width="466" height="370" alt="Add System.XML.Linq Reference" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the Reference to "System.XML.Linq" by Clicking on OK.<br/>
+Select Project then "Add Class...", and select the "Class" Template is not already Selected, then change the "Name" to Gamer.cs see below: 
+</p>
+<div class="tutorial-image">
+<img src="wp7gamer.png" width="939" height="624" alt="Gamer Class" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the new Class to the Project by Clicking on Add, then in the Code View for the new Class above "namespace GamerCard"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.ComponentModel;
+<span class="tut-rsvd">using</span> System.Collections.Generic;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public class Gamer" type the following SubClass:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public class</span> <span class="tut-symb">Game</span>
+{
+  <span class="tut-rsvd">public string</span> Title { <span class="tut-rsvd">get</span>; <span class="tut-rsvd">set</span>; }
+  <span class="tut-rsvd">public</span> <span class="tut-symb">Uri</span> Image { <span class="tut-rsvd">get</span>; <span class="tut-rsvd">set</span>; }
+}
+</pre>
+</blockquote>
+<p>
+Again in the CodeView at the end of the line "public class Gamer" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+ : <span class="tut-symb">INotifyPropertyChanged</span>
+</pre>
+</blockquote>
+<p>
+And in the CodeView below the "{" of the line "public class Gamer" type the following Declarations and Event:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private string</span> _tag;
+<span class="tut-rsvd">private string</span> _zone;
+<span class="tut-rsvd">private string</span> _reputation;
+<span class="tut-rsvd">private</span> <span class="tut-symb">Uri</span> _avatar;
+<span class="tut-rsvd">private</span> <span class="tut-symb">Uri</span> _picture;
+<span class="tut-rsvd">private int</span> _score;
+<span class="tut-rsvd">private</span> <span class="tut-symb">SolidColorBrush</span> _account;
+<span class="tut-rsvd">private</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">Game</span>&gt; _played = <span class="tut-rsvd">new</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">Game</span>&gt;();
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">SolidColorBrush</span> Gold = <span class="tut-rsvd">new</span>
+<span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Color</span>.FromArgb(255, 225, 215, 0));
+<span class="tut-rsvd">public</span> <span class="tut-symb">SolidColorBrush</span> Silver = <span class="tut-rsvd">new</span>
+<span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Color</span>.FromArgb(255, 194, 194, 194));
+
+<span class="tut-rsvd">public event</span> <span class="tut-symb">PropertyChangedEventHandler</span> PropertyChanged;
+<span class="tut-rsvd">private void</span> NotifyPropertyChanged(<span class="tut-symb">String</span> info)
+{
+  <span class="tut-rsvd">if</span> (PropertyChanged != <span class="tut-rsvd">null</span>)
+  {
+    PropertyChanged(<span class="tut-rsvd">this</span>, <span class="tut-rsvd">new</span> <span class="tut-symb">PropertyChangedEventArgs</span>(info));
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7gamerref.png" width="528" height="781" alt="Gamer Includes, Event and Declarations" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the Code View for Gamer.cs below the "}" of "private void NotifyPropertyChanged(String info)" type the following Properties: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public string</span> Tag
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _tag; }
+  <span class="tut-rsvd">set</span> 
+  { 
+    _tag = <span class="tut-rsvd">value</span>;
+    NotifyPropertyChanged(<span class="tut-valu">"Tag"</span>);
+  }
+}
+
+<span class="tut-rsvd">public string</span> Zone
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> <span class="tut-valu">"Zone:"</span> + _zone; }
+  <span class="tut-rsvd">set</span>
+  {
+    _zone = <span class="tut-rsvd">value</span>;
+    NotifyPropertyChanged(<span class="tut-valu">"Zone"</span>);
+  }
+}
+
+<span class="tut-rsvd">public string</span> Reputation
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> <span class="tut-valu">"Rep:"</span> + _reputation; }
+  <span class="tut-rsvd">set</span>
+  {
+    _reputation = <span class="tut-rsvd">value</span>;
+    NotifyPropertyChanged(<span class="tut-valu">"Reputation"</span>);
+  }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">Uri</span> Avatar
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _avatar; }
+  <span class="tut-rsvd">set</span>
+  {
+    _avatar = <span class="tut-rsvd">value</span>;
+    NotifyPropertyChanged(<span class="tut-valu">"Avatar"</span>);
+  }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">Uri</span> Picture
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _picture; }
+  <span class="tut-rsvd">set</span>
+  {
+    _picture = <span class="tut-rsvd">value</span>;
+    NotifyPropertyChanged(<span class="tut-valu">"Picture"</span>);
+  }
+}
+
+<span class="tut-rsvd">public int</span> Score
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _score; }
+  <span class="tut-rsvd">set</span> 
+  {
+    _score = <span class="tut-rsvd">value</span>;
+    NotifyPropertyChanged(<span class="tut-valu">"Score"</span>);
+  }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">SolidColorBrush</span> Account
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _account; }
+  <span class="tut-rsvd">set</span>
+  {
+    _account = <span class="tut-rsvd">value</span>;
+    NotifyPropertyChanged(<span class="tut-valu">"Account"</span>);
+  }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">Game</span>&gt; Played
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _played; }
+  <span class="tut-rsvd">set</span>
+  {
+    _played = <span class="tut-rsvd">value</span>;
+    NotifyPropertyChanged(<span class="tut-valu">"Played"</span>);
+  }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7gamercode.png" width="376" height="1261" alt="Gamer Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then in XAML Pane between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="80"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="120"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="40"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Toolbar" <span class="tut-attr">Grid.Row</span>="0"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Score" <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Grid.Row</span>="1"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Score --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Display" <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Grid.Row</span>="2"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Display --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Info" <span class="tut-attr">Margin</span>="5" <span class="tut-attr">Grid.Row</span>="3"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="100"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Info --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7gcardxaml.png" width="454" height="573" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7gcarddesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="wp7textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw a TextBox onto the Toolbar Section (upper smaller section) of the Grid on the Page, below the Page Title, and in the XAML Pane below the <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span> line, change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="Subject"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7gcardtxt.png" width="359" height="660" alt="MainPage with TextBox" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="wp7button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Draw a Button onto the Toolbar Section by dragging the Button from the Toolbox onto the Toolbar section of the Grid on the Page, 
+then in the XAML Pane change the "Button1" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="lookup" <span class="tut-attr">Click</span>="Lookup_Click"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="wp7gcardbtn.png" width="359" height="660" alt="MainPage with Button" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+In the XAML Pane for MainPage.xaml below the <span class="tut-cmnt">&lt;!-- Score --&gt;</span> line, type the following Image and TextBlock XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Image</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Width</span>="100" <span class="tut-attr">Height</span>="100" 
+<span class="tut-attr">Source</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Picture}"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Margin</span>="10" <span class="tut-attr">VerticalAlignment</span>="Center" 
+<span class="tut-attr">Style</span>="{<span class="tut-valu">StaticResource</span> <span class="tut-attr">PhoneTextExtraLargeStyle</span>}" 
+<span class="tut-attr">Foreground</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Account</span>}" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Score}"/&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7gcardscorexaml.png" width="606" height="97" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7gcardscoredesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the XAML Pane for MainPage.xaml below the <span class="tut-cmnt">&lt;!-- Display --&gt;</span> line, type the following ItemsControl and Image XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ItemsControl</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">ItemsSource</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Played}"&gt;
+  &lt;<span class="tut-valu">ItemsControl.ItemTemplate</span>&gt;
+    &lt;<span class="tut-valu">DataTemplate</span>&gt;
+      &lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Orientation</span>="Horizontal"&gt;
+        &lt;<span class="tut-valu">Image</span> <span class="tut-attr">Height</span>="60" <span class="tut-attr">Width</span>="60" <span class="tut-attr">Margin</span>="0,5,5,0" 
+        <span class="tut-attr">Source</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Image}"/&gt;
+        &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">TextWrapping</span>="Wrap" 
+        <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Title}"/&gt;
+      &lt;/<span class="tut-valu">StackPanel</span>&gt;
+    &lt;/<span class="tut-valu">DataTemplate</span>&gt;
+  &lt;/<span class="tut-valu">ItemsControl.ItemTemplate</span>&gt;
+&lt;/<span class="tut-valu">ItemsControl</span>&gt;
+&lt;<span class="tut-valu">Image</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Width</span>="200" <span class="tut-attr">Source</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Avatar}"/&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7gcarddisplayxaml.png" width="620" height="225" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7gcarddisplaydesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the XAML Pane for MainPage.xaml below the <span class="tut-cmnt">&lt;!-- Info --&gt;</span> line, type the following TextBlock XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">FontWeight</span>="Bold" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Zone}"/&gt;</span>
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">FontWeight</span>="Bold" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Reputation}"/&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7gcardinfoxaml.png" width="708" height="49" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7gcardinfodesign.png" width="359" height="660" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. 
+In the Code View above "namespace GamerCard()" type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Xml.Linq;
+<span class="tut-rsvd">using</span> System.Text.RegularExpressions;
+</pre>
+</blockquote>
+<p>
+Also in the CodeView above "public MainPage()" type the following Declarations: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private</span> <span class="tut-symb">XElement</span> xml;
+<span class="tut-rsvd">private</span> <span class="tut-symb">Gamer</span> gamer = <span class="tut-rsvd">new</span> <span class="tut-symb">Gamer</span>();
+</pre>
+</blockquote>
+<p>
+Again in the CodeView in the "public MainPage()" Constructor below "InitializeComponent();" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+ApplicationTitle.Text = <span class="tut-valu">"GAMER CARD"</span>;
+PageTitle.Text = <span class="tut-valu">"gamer card"</span>;
+Subject.Text = <span class="tut-valu">"RoguePlanetoid"</span>;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7gcardref.png" width="404" height="509" alt="MainPage Application Declaration and Constructor" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Event Handlers:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Download(<span class="tut-rsvd">object</span> Sender, <span class="tut-symb">DownloadStringCompletedEventArgs</span> e)
+{
+  <span class="tut-rsvd">try</span>
+  {
+    <span class="tut-rsvd">if</span> (!e.Cancelled)
+    {
+      xml = <span class="tut-symb">XElement</span>.Parse(<span class="tut-symb">Regex</span>.Match(e.Result, <span class="tut-valu">@"\&lt;body\&gt;(.*?)\&lt;/body\&gt;"</span>,
+      <span class="tut-symb">RegexOptions</span>.IgnoreCase).Value);
+      <span class="tut-cmnt">// Tag</span>
+      gamer.Tag = Subject.Text;
+      PageTitle.Text = gamer.Tag;
+      <span class="tut-cmnt">// Avatar</span>
+      gamer.Avatar = <span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(<span class="tut-symb">String</span>.Format(<span class="tut-valu">"<span class="tut-link">http://avatar.xboxlive.com/avatar/{0}/avatar-body.png</span>"</span>,
+      gamer.Tag));
+      <span class="tut-cmnt">// Account</span>
+      <span class="tut-rsvd">string</span> gamerAccount = (<span class="tut-rsvd">from</span> account <span class="tut-rsvd">in</span> xml.Descendants(<span class="tut-valu">"h3"</span>)
+      <span class="tut-rsvd">where</span> account.Attribute(<span class="tut-valu">"class"</span>).Value.StartsWith(<span class="tut-valu">"XbcGamertag"</span>)
+      <span class="tut-rsvd">select</span> account.Attribute(<span class="tut-valu">"class"</span>).Value).Single();
+      gamer.Account = gamerAccount.EndsWith(<span class="tut-valu">"Gold"</span>) ? gamer.Gold : gamer.Silver;
+      <span class="tut-cmnt">// Gamer Picture</span>
+      gamer.Picture = <span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>((<span class="tut-rsvd">from</span> picture <span class="tut-rsvd">in</span> xml.Descendants()
+        <span class="tut-rsvd">where</span> (<span class="tut-rsvd">string</span>)picture.Attribute(<span class="tut-valu">"class"</span>) == <span class="tut-valu">"XbcgcGamertile"</span>
+        <span class="tut-rsvd">select</span> picture.Attribute(<span class="tut-valu">"src"</span>).Value).Single());
+      <span class="tut-cmnt">// Gamer Score</span>
+      gamer.Score = <span class="tut-rsvd">int</span>.Parse((<span class="tut-rsvd">from</span> score <span class="tut-rsvd">in</span> xml.Descendants()
+        <span class="tut-rsvd">where</span> (<span class="tut-rsvd">string</span>)score.Attribute(<span class="tut-valu">"alt"</span>) == <span class="tut-valu">"Gamerscore"</span>
+        <span class="tut-rsvd">select</span> score.Parent.ElementsAfterSelf(<span class="tut-valu">"span"</span>).First()
+      .Value).Single());
+      <span class="tut-cmnt">// Reputation</span>
+      gamer.Reputation = (<span class="tut-rsvd">double</span>.Parse(<span class="tut-symb">String</span>.Join(<span class="tut-symb">String</span>.Empty,
+        <span class="tut-symb">Regex</span>.Split((<span class="tut-rsvd">from</span> rep <span class="tut-rsvd">in</span> xml.Descendants(<span class="tut-valu">"span"</span>)
+        <span class="tut-rsvd">where</span> rep.Value == <span class="tut-symb">"Rep"</span>
+        <span class="tut-rsvd">select</span> rep.ElementsAfterSelf(<span class="tut-valu">"span"</span>).First()
+        .Element(<span class="tut-valu">"img"</span>).Attribute(<span class="tut-valu">"src"</span>).Value).Single(),
+        <span class="tut-valu">"[^\\d,]"</span>))) / 4).ToString();
+      <span class="tut-cmnt">// Zone</span>
+      gamer.Zone = (<span class="tut-rsvd">from</span> zone <span class="tut-rsvd">in</span> xml.Descendants(<span class="tut-valu">"span"</span>)
+        <span class="tut-rsvd">where</span> zone.Value == <span class="tut-valu">"Zone"</span>
+        <span class="tut-rsvd">select</span> zone.ElementsAfterSelf(<span class="tut-valu">"span"</span>).First().Value).Single();
+      <span class="tut-cmnt">// Played</span>
+      <span class="tut-rsvd">var</span> gamerPlayed = (<span class="tut-rsvd">from</span> play <span class="tut-rsvd">in</span> xml.Descendants(<span class="tut-valu">"div"</span>).Elements(<span class="tut-valu">"a"</span>)
+        <span class="tut-rsvd">where</span> (<span class="tut-rsvd">string</span>)play.Parent.Attribute(<span class="tut-valu">"class"</span>) == <span class="tut-valu">"XbcgcGames"</span>
+        <span class="tut-rsvd">select new</span>
+        {
+          gamerTitle = play.Element(<span class="tut-valu">"img"</span>).Attribute(<span class="tut-valu">"title"</span>).Value,
+          gamerImage = play.Element(<span class="tut-valu">"img"</span>).Attribute(<span class="tut-valu">"src"</span>).Value
+        });
+      <span class="tut-symb">List</span>&lt;<span class="tut-symb">Game</span>&gt; played = <span class="tut-rsvd">new</span> <span class="tut-symb">List</span>&lt;<span class="tut-symb">Game</span>&gt;();
+      <span class="tut-rsvd">foreach</span> (<span class="tut-rsvd">var</span> item <span class="tut-rsvd">in</span> gamerPlayed)
+      {
+        <span class="tut-symb">Game</span> game = <span class="tut-rsvd">new</span> <span class="tut-symb">Game</span>();
+        game.Title = item.gamerTitle;
+        game.Image = <span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(item.gamerImage);
+        played.Add(game);
+      }
+      gamer.Played = played;
+      <span class="tut-cmnt">// Data Context</span>
+      <span class="tut-rsvd">this</span>.DataContext = gamer;
+    }
+  }
+  <span class="tut-rsvd">catch</span>
+  {
+    <span class="tut-cmnt">// Ignore Errors</span>
+  }
+}
+
+<span class="tut-rsvd">private void</span> Lookup_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  <span class="tut-symb">WebClient</span> _client = <span class="tut-rsvd">new</span> <span class="tut-symb">WebClient</span>();
+  _client.DownloadStringCompleted += Download;
+  _client.DownloadStringAsync(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>(<span class="tut-symb">String</span>.Format(<span class="tut-valu">"<span class="tut-link">http://gamercard.xbox.com/{0}.card</span>"</span>,
+  <span class="tut-symb">HttpUtility</span>.UrlEncode(Subject.Text))));
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="wp7gcardcode.png" width="800" height="1165" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7gcardrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Tap the TextBox and then using the SIP or Keyboard enter a GamerTag to lookup, then Tap on "lookup" to display their Gamer Card information, see below: 
+</p>
+<div class="tutorial-image">
+<img src="wp7gcardapp.png" width="359" height="660" alt="Gamer Card" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is an example of displaying Gamer Card information from Xbox LIVE&reg;, you could display the Reputation as Stars like on the 
+actual GamerCard, or instead of changing the foregound colour for Silver or Gold add a gradient, or use this as the basis of your
+own Gamer Card application - make it your own!
+</p>
+</body>
+</html>

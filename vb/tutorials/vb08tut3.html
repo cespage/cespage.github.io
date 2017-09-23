@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Text Editor (Part One)</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Text Editor (Part One)</h1>
+<p>
+Text Editing is one of the most common tasks performed, this tutorial will show you who to create your own Text Editor, using the TextBox, Open/Save &amp; Font/Colour Dialogs and more!<br/>
+This part will show you how to create the Text Editor, Part Two will add Find &amp; Replace to the Text Editor.
+</p>
+<p>
+<a href="http://www.cespage.com/vb/vb08tut3.html">www.cespage.com/vb/vb08tut3.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2008 Express Edition, then select File then New Project... Choose Windows Forms Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08newapp.png" width="804" height="480" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08form1.png" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+With Form1 selected goto the Properties box and change the Name from Form1 to frmMain
+</p>
+<div class="tutorial-image">
+<img src="vb08form1prop.png" width="203" height="431" alt="Form1 Properties" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the Common Controls tab on the Toolbox select the Textbox component:
+</p>
+<div class="tutorial-image">
+<img src="vb08textbox.png" width="240" height="400" alt="Textbox Component" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Textbox on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmaintxt.png" width="300" height="300" alt="frmMain with Textbox" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then goto the Properties box and change the Name to txtEditor, Dock to Fill, Multiline to True and Scrollbars to Vertical, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08txteditorprop.png" width="203" height="431" alt="TextBox Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Then from the Menus &amp; Toolbars tab on the Toolbox select the MenuStrip Control, see Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08menustrip.png" width="240" height="400" alt="MenuStrip Component" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Either double-click on the MenuStrip Control entry in the Menu &amp; Toolbars tab on the Toolbox or keep the MenuStrip
+Component Clicked and then move it over the Form then let go. Change the Name of the MenuStrip in the properties to mnuText The Form will then look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainmnu.png" width="300" height="300" alt="frmMain with MenuStrip" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click or select where the MenuStrip says "Type Here", an editable Textbox will appear type in "File" without the quotes in this Box, then in the Box below
+that type in "New", below that "Open...", then "Save...", then "-" which is minus or the hyphen key which will appear as a Seperator and then finally "Exit". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutext.png" width="300" height="300" alt="mnuText with SubMenus" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Click or select where the MenuStrip says "Type Here" next to "File", and in this type in "Edit" without the quotes in this Box, then in the Box below
+that type "Cut", then below that "Copy", then "Paste" and "Delete", type in "-" which is minus or the hyphen key for a Seperator, then below that "Select All" 
+and finally "Time/Date". The MenuStrip should look as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextedit.png" width="300" height="300" alt="mnuText with Edit Sub Menu Items" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Click on or select the MenuStrip again, on this next to the Edit menu will be another "Type Here" option this this box type "Format" without the quotes, 
+then in the "Type Here" box under that type "Font...", then below that "Colour..." and finally "Background...", see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextformat.png" width="300" height="300" alt="mnuText with Format Sub Menu Items" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "New" (NewToolStripMenuItem) and 
+type the following in the NewToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+        <span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+        Response = MsgBox(<span class="tut-valu">"Are you sure you want to start a New Document?"</span>, _
+                          MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                          <span class="tut-valu">"Text Editor"</span>)
+        <span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+            txtEditor.Text = <span class="tut-valu">""</span>
+            <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Text Editor - Untitled"</span>
+        <span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextnew.png" width="632" height="255" alt="File Menu New Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Open..." (OpenToolStripMenuItem) and 
+type the following in the OpenToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Open <span class="tut-rsvd">As New</span> OpenFileDialog()
+<span class="tut-rsvd">Dim</span> myStreamReader <span class="tut-rsvd">As</span> System.IO.StreamReader
+Open.Filter = <span class="tut-valu">"Plain Text Files (*.txt)|*.txt|All files (*.*)|*.*"</span>
+Open.CheckFileExists = <span class="tut-rsvd">True</span>
+Open.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  Open.OpenFile()
+  myStreamReader = System.IO.File.OpenText(Open.FileName)
+  txtEditor.Text = myStreamReader.ReadToEnd()
+  <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Text Editor - "</span> &amp; Open.FileName
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextopen.png" width="648" height="322" alt="File Menu Open Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Save..." (SaveToolStripMenuItem) and 
+type the following in the SaveToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Save <span class="tut-rsvd">As New</span> SaveFileDialog()
+<span class="tut-rsvd">Dim</span> myStreamWriter <span class="tut-rsvd">As</span> System.IO.StreamWriter
+Save.Filter = <span class="tut-valu">"Plain Text Files (*.txt)|*.txt|All files (*.*)|*.*"</span>
+Save.CheckPathExists = <span class="tut-rsvd">True</span>
+Save.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  myStreamWriter = System.IO.File.CreateText(Save.FileName)
+  myStreamWriter.Write(txtEditor.Text)
+  myStreamWriter.Flush()
+  <span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Text Editor - "</span> &amp; Save.FileName
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextsave.png" width="647" height="294" alt="File Menu Save Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+Click on the [Design] Tab to view the form again, then Click on "File" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Exit" (ExitToolStripMenuItem) and 
+type the following in the ExitToolStripMenuItem_Click() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+        <span class="tut-rsvd">Dim</span> Response <span class="tut-rsvd">As</span> MsgBoxResult
+        Response = MsgBox(<span class="tut-valu">"Are you sure you want to Exit Text Editor?"</span>, _
+                          MsgBoxStyle.Question + MsgBoxStyle.YesNo, _
+                          <span class="tut-valu">"Text Editor"</span>)
+        <span class="tut-rsvd">If</span> Response = MsgBoxResult.Yes <span class="tut-rsvd">Then</span>
+            <span class="tut-rsvd">End</span>
+        <span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextexit.png" width="648" height="190" alt="File Menu Exit Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Click on "Edit" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Cut" (CutToolStripMenuItem) and 
+type the following in the CutToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+txtEditor.Cut()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextcut.png" width="632" height="88" alt="Edit Menu Cut Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the Form's name in the Solution Explorer, then Click on "Edit" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Copy" (CopyToolStripMenuItem) and 
+type the following in the CopyToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+txtEditor.Copy()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextcopy.png" width="648" height="88" alt="Edit Menu Copy Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the Form's name in the Solution Explorer, then Click on "Edit" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Paste" (PasteToolStripMenuItem) and 
+type the following in the PasteToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+txtEditor.Paste()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextpaste.png" width="664" height="88" alt="Edit Menu Paste Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the Form's name in the Solution Explorer, then Click on "Edit" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Delete" (DeleteToolStripMenuItem) and 
+type the following in the DeleteToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+txtEditor.SelectedText = <span class="tut-valu">""</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextdelete.png" width="680" height="88" alt="Edit Menu Delete Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the Form's name in the Solution Explorer, then Click on "Edit" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Select All" (SelectAllToolStripMenuItem) and 
+type the following in the SelectAllToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+txtEditor.SelectAll()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextselectall.png" width="728" height="88" alt="Edit Menu Select All Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 21</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the Form's name in the Solution Explorer, then Click on "Edit" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Time/Date" (TimeDateToolStripMenuItem) and 
+type the following in the TimeDateToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+txtEditor.SelectedText = Format(Now, <span class="tut-valu">"HH:mm dd/MM/yyyy"</span>)
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutimedate.png" width="712" height="80" alt="Edit Menu Time/Date Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 22</p>
+<p>
+Click on [Design] tab or double click on the Form's name in Solution Explorer then click on "Format" on the MenuStrip to show the MenuStrip 
+then Double Click on the Menu Item Labeled "Font..." (FontToolStripMenuItem) and type the following in the FontToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Font <span class="tut-rsvd">As New</span> FontDialog()
+Font.Font = txtEditor.Font
+Font.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  txtEditor.Font = Font.Font
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextfont.png" width="648" height="200" alt="Format Menu Font Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 23</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the Form's name in the Solution Explorer, 
+then Click on "Format" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Colour..." (ColourToolStripMenuItem) and 
+type the following in the ColourToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Colour <span class="tut-rsvd">As New</span> ColorDialog()
+Colour.Color = txtEditor.ForeColor
+Colour.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  txtEditor.ForeColor = Colour.Color
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextcolour.png" width="680" height="200" alt="Format Menu Colour Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 24</p>
+<p>
+Click on the [Design] Tab to view the form again or double click on the Form's name in the Solution Explorer, 
+then Click on "Format" on the MenuStrip to show the MenuStrip then Double Click on the Menu Item Labeled "Background..." (BackgroundToolStripMenuItem) and 
+type the following in the BackgroundToolStripMenuItem_Click() Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Dim</span> Colour <span class="tut-rsvd">As New</span> ColorDialog()
+Colour.Color = txtEditor.BackColor
+Colour.ShowDialog(<span class="tut-rsvd">Me</span>)
+<span class="tut-rsvd">Try</span>
+  txtEditor.BackColor = Colour.Color
+<span class="tut-rsvd">Catch</span> ex <span class="tut-rsvd">As</span> Exception
+  <span class="tut-cmnt">' Do nothing on Exception</span>
+<span class="tut-rsvd">End Try</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextbackground.png" width="744" height="200" alt="Format Menu Background Menu Item Click Event" />
+</div>
+<p class="tutorial-step">Step 25</p>
+<p>
+Click on the [Design] Tab to view the form again, then Double Click on the Form (frmMain) and 
+type the following in the frmMain_Load() Sub
+</p>
+<blockquote>
+<pre class="tut-code">
+txtEditor.Text = <span class="tut-valu">""</span>
+<span class="tut-rsvd">Me</span>.Text = <span class="tut-valu">"Text Editor - Untitled"</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vb08frmmainload.png" width="504" height="102" alt="frmMain Load Event" />
+</div>
+<p class="tutorial-step">Step 26</p>
+<p>
+Steps 26-28 are optional and just add Keyboard Shortcuts to the MenuItems, you don't have to do these if you don't want to!<br/>
+Click on the [Design] Tab to view the form again, click on "New" on the MenuStrip then in the Properties box look for the "ShortcutKeys" option and 
+click on the Drop Down arrow where "None" appears. Check the "Ctrl" Checkbox in "Modifiers" and then in the "Key" dropdown list select "N", 
+see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextnewprop.png" width="240" height="399" alt="File Menu New Menu Item Shortcut Key" />
+</div>
+<p class="tutorial-step">Step 27</p>
+<p>
+Set the rest of the "File" MenuItem "ShortcutKeys" Properties except the "Exit" Menu Item, "Open" should be set to "Ctrl+O" and "Save" to "Ctrl+S", the
+File Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutextfilekeys.png" width="300" height="300" alt="File Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 28</p>
+<p>
+Click on or select the "Edit" Menu and set the "ShortcutKeys" Properties, "Cut" should be set to "Ctrl+X", "Copy" to "Ctrl+C", 
+"Paste" to "Ctrl+V", "Delete" should be just "Del" in the Keys drop-down list, "Select All" should be "Ctrl+A", "Time/Date" should be just
+"F5" from the Keys drop-down list. The Edit Menu should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="vb08mnutexteditkeys.png" width="300" height="300" alt="Edit Menu with Shortcut Keys" />
+</div>
+<p class="tutorial-step">Step 29</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vb08start.png" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vb08txttworun.png" width="300" height="300" alt="Text Editor Running" />
+</div>
+<p class="tutorial-step">Step 30</p>
+<p>
+Click on the File Menu and select Open...,this will show the Open File Dialog, 
+then select a Text File on your Computer this should appear in the Textbox, see below:
+</p>
+<div class="tutorial-image">
+<img src="vb08txttworunopen.png" width="300" height="300" alt="Text Editor with Opened Document" />
+</div>
+<p class="tutorial-step">Step 31</p>
+<p>
+Click File then Exit or click on the Close button <img src="vb08close.png" width="43" height="18" alt="Close" /> 
+on the top right of the Text Editor to end the application.
+</p>
+<p>
+This Text Editor has all the main Editing and Format features you would expect from a Plain Text Editor, plus has added some extra enhancements
+such as Shortcut Keys and Foreground / Background Colours.
+</p>
+</body>
+</html>

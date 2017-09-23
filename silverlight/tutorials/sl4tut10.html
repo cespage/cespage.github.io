@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Memory Game</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-symb {
+					color:#2B91AF; 
+}
+
+.tut-valu {
+							color: maroon;
+}
+
+.tut-attr {
+							color: red;
+}
+
+.tut-rsvd {
+							color: blue;
+}
+
+.tut-prop {
+					 		color: gray;
+}
+
+.tut-cmnt {
+							color: #008000;
+}
+</style>
+</head>
+<body class="content">
+<h1>Memory Game</h1>
+<p>
+Memory Game is a simple random shape matching game that can be created with this Tutorial in Silverlight.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/sl4tut10.html">www.cespage.com/silverlight/sl4tut10.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Web Developer 2010 Express, then Select File then New Project... Select "Visual Basic" then "Silverlight Application"
+from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+New Silverlight Application window should appear, uncheck the box "Host the Silverlight Application in a new Web site" and then
+select the required Silverlight Version, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4host.png" width="504" height="378" alt="New Silverlight Application" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+A Blank Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4mainpage.png" width="432" height="319" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Then from the All Silverlight Controls section in the Toolbox select the Canvas control:
+</p>
+<div class="tutorial-image">
+<img src="sl4canvas.png" width="180" height="428" alt="Canvas Control" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Draw a Canvas that fill the whole Page or in the XAML Pane between the "&lt;Grid&gt;" and "&lt;/Grid&gt;" lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Canvas</span> <span class="tut-attr">Height</span>="300" <span class="tut-attr">Width</span>="400" <span class="tut-attr">HorizontalAlignment</span>="Left" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Name</span>="Page"&gt;
+&lt;/<span class="tut-valu">Canvas</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4cvspage.png" width="423" height="322" alt="MainPage with Canvas" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Grid control:
+</p>
+<div class="tutorial-image">
+<img src="sl4grid.png" width="180" height="428" alt="Grid Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw a Grid on the Canvas by dragging a Grid from the Toolbox onto the Canvas then in the XAML Pane inbetween the "&lt;Canvas&gt;" and "&lt;/Canvas&gt;" tags change the "&lt;Grid&gt; line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">Canvas.Left</span>="75" <span class="tut-attr">Canvas.Top</span>="0" <span class="tut-attr">Height</span>="250" <span class="tut-attr">Width</span>="250" <span class="tut-attr">Name</span>="Display"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="sl4oxogrid.png" width="415" height="315" alt="MainPage with Canvas and Grid" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the Common Silverlight Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="sl4button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw a Button on the Canvas by dragging the Button from the Toolbox onto the Canvas, then in the XAML Pane below the "&lt;StackPanel&gt;" tag change the "&lt;Button&gt;" line to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Canvas.Left</span>="163" <span class="tut-attr">Canvas.Top</span>="263" <span class="tut-attr">Height</span>="23" <span class="tut-attr">Width</span>="75" <span class="tut-attr">Name</span>="New" <span class="tut-attr">Content</span>="New"/&gt;</span> 
+</pre>
+</blockquote>
+<p>
+See below: 
+</p>
+<div class="tutorial-image">
+<img src="sl4oxogridbtn.png" width="415" height="314" alt="MainPage with Canvas, Grid and Button" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View below the "Inherits UserControl" line type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> _moves <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span>
+<span class="tut-rsvd">Private</span> _first <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span>
+<span class="tut-rsvd">Private</span> _second <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span>
+<span class="tut-rsvd">Private</span> _firstButton <span class="tut-rsvd">As</span> <span class="tut-symb">Button</span>
+<span class="tut-rsvd">Private</span> _secondButton <span class="tut-rsvd">As</span> <span class="tut-symb">Button</span>
+<span class="tut-rsvd">Private</span> _board(<span class="tut-valu">4</span>, <span class="tut-valu">4</span>) <span class="tut-rsvd">As Integer</span>
+<span class="tut-rsvd">Private</span> _matches <span class="tut-rsvd">As New</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>)
+<span class="tut-rsvd">Private</span> _timer <span class="tut-rsvd">As New</span> Windows.Threading.<span class="tut-symb">DispatcherTimer</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4memdecs.png" width="426" height="252" alt="MainPage.xaml Declarations" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Public Sub New()" Constructor type the following Function: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Shape(<span class="tut-rsvd">ByRef</span> Points <span class="tut-rsvd">As</span> _
+    System.Windows.Media.<span class="tut-symb">PointCollection</span>) <span class="tut-rsvd">As Object
+  Dim</span> _shape <span class="tut-rsvd">As New</span> <span class="tut-symb">Polygon</span>
+  _shape.Stretch = <span class="tut-symb">Stretch</span>.Uniform
+  _shape.StrokeLineJoin = <span class="tut-rsvd">PenLineJoin</span>.Round
+  _shape.Points = Points
+  _shape.Height = <span class="tut-valu">30</span>
+  _shape.Width = _shape.Height
+  _shape.Stroke = <span class="tut-rsvd">New</span> <span class="tut-rsvd">SolidColorBrush</span>(<span class="tut-rsvd">Colors</span>.Black)
+  _shape.StrokeThickness = <span class="tut-valu">4.0</span>
+  _shape.Margin = <span class="tut-rsvd">New</span> <span class="tut-rsvd">Thickness</span>(<span class="tut-valu">5</span>)
+  <span class="tut-rsvd">Return</span> _shape
+<span class="tut-rsvd">End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4memshape.png" width="446" height="218" alt="MainPage Shape Function" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the Code View for MainPage.xaml, below "End Function" for "Private Function Shape(...)" Function, type the following Function:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Card(<span class="tut-rsvd">ByRef</span> Type <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As Object
+  Dim</span> _points <span class="tut-rsvd">As New</span> System.Windows.Media.<span class="tut-symb">PointCollection</span>
+  <span class="tut-rsvd">Select Case</span> Type
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">1</span> <span class="tut-cmnt">' Circle</span>
+      <span class="tut-rsvd">Dim</span> _ellipse <span class="tut-rsvd">As New</span> <span class="tut-symb">EllipseGeometry</span>
+      <span class="tut-rsvd">Dim</span> _circle <span class="tut-rsvd">As New</span> <span class="tut-symb">Path</span>
+      _ellipse.Center = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">15</span>, <span class="tut-valu">15</span>)
+      _ellipse.RadiusX = <span class="tut-valu">15</span>
+      _ellipse.RadiusY = <span class="tut-valu">15</span>
+      _circle.Data = _ellipse
+      _circle.Stroke = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.Black)
+      _circle.StrokeThickness = <span class="tut-valu">4.0</span>
+      _circle.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>)
+      <span class="tut-rsvd">Return</span> _circle
+    <span class="tut-rsvd">Case</span> 2 <span class="tut-cmnt">' Cross</span>
+      <span class="tut-rsvd">Dim</span> _lines <span class="tut-rsvd">As New</span> <span class="tut-symb">Path</span>
+      <span class="tut-rsvd">Dim</span> _line1, _line2 <span class="tut-rsvd">As New</span> <span class="tut-symb">LineGeometry</span>
+      <span class="tut-rsvd">Dim</span> _linegroup <span class="tut-rsvd">As New</span> <span class="tut-symb">GeometryGroup</span>
+      _line1.StartPoint = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">0</span>, <span class="tut-valu">0</span>)
+      _line1.EndPoint = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">30</span>, <span class="tut-valu">30</span>)
+      _line2.StartPoint = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">30</span>, <span class="tut-valu">0</span>)
+      _line2.EndPoint = <span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">0</span>, <span class="tut-valu">30</span>)
+      _linegroup.Children.Add(_line1)
+      _linegroup.Children.Add(_line2)
+      _lines.Data = _linegroup
+      _lines.Stroke = <span class="tut-rsvd">New</span> <span class="tut-symb">SolidColorBrush</span>(<span class="tut-symb">Colors</span>.Black)
+      _lines.StrokeThickness = <span class="tut-valu">4.0</span>
+      _lines.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>)
+      <span class="tut-rsvd">Return</span> _lines
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">3</span> <span class="tut-cmnt">' Triangle</span>
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">150</span>, <span class="tut-valu">0</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">0</span>, <span class="tut-valu">250</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">300</span>, <span class="tut-valu">250</span>))
+      <span class="tut-rsvd">Return</span> Shape(_points)
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">4</span> <span class="tut-cmnt">' Square</span>
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">0</span>, <span class="tut-valu">0</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">0</span>, <span class="tut-valu">100</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">100</span>, <span class="tut-valu">100</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">100</span>, <span class="tut-valu">0</span>))
+      <span class="tut-rsvd">Return</span> Shape(_points)
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">5</span> <span class="tut-cmnt">' Pentagon</span>
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">0</span>, <span class="tut-valu">125</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">150</span>, <span class="tut-valu">0</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">300</span>, <span class="tut-valu">125</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">250</span>, <span class="tut-valu">300</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">50</span>, <span class="tut-valu">300</span>))
+      <span class="tut-rsvd">Return</span> Shape(_points)
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">6</span> <span class="tut-cmnt">' Hexagon</span>
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">75</span>, <span class="tut-valu">0</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">225</span>, <span class="tut-valu">0</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">300</span>, <span class="tut-valu">150</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">225</span>, <span class="tut-valu">300</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">75</span>, <span class="tut-valu">300</span>))
+      _points.Add(New <span class="tut-symb">Point</span>(0, 150))
+      <span class="tut-rsvd">Return</span> Shape(_points)
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">7</span> <span class="tut-cmnt">' Star</span>
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">9</span>, <span class="tut-valu">2</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">11</span>, <span class="tut-valu">7</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">17</span>, <span class="tut-valu">7</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">12</span>, <span class="tut-valu">10</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">14</span>, <span class="tut-valu">15</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">9</span>, <span class="tut-valu">12</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">4</span>, <span class="tut-valu">15</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">6</span>, <span class="tut-valu">10</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">1</span>, <span class="tut-valu">7</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">7</span>, <span class="tut-valu">7</span>))
+      <span class="tut-rsvd">Return</span> Shape(_points)
+    <span class="tut-rsvd">Case</span> <span class="tut-valu">8</span> <span class="tut-cmnt">' Rhombus</span>
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">50</span>, <span class="tut-valu">0</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">100</span>, <span class="tut-valu">50</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">50</span>, <span class="tut-valu">100</span>))
+      _points.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">Point</span>(<span class="tut-valu">0</span>, <span class="tut-valu">50</span>))
+      <span class="tut-rsvd">Return</span> Shape(_points)
+    <span class="tut-rsvd">Case Else
+      Return</span> Type
+  <span class="tut-rsvd">End Select
+End Function</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4memcard.png" width="474" height="1306" alt="MainPage Card Function" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Function" for "Private Function Card(...)" type the following Subs: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Clear()
+  <span class="tut-rsvd">If Not</span> _firstButton <span class="tut-rsvd">Is Nothing Then</span>
+    _firstButton.Content = <span class="tut-rsvd">Nothing</span>
+    _firstButton = <span class="tut-rsvd">Nothing
+  End If
+  If Not</span> _secondButton <span class="tut-rsvd">Is Nothing Then</span>
+    _secondButton.Content = <span class="tut-rsvd">Nothing</span>
+    _secondButton = <span class="tut-rsvd">Nothing
+  End If</span>
+  _timer.Stop()
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> Button_Click(<span class="tut-rsvd">ByVal</span> sender <span class="tut-rsvd">As</span> System.<span class="tut-symb">Object</span>, _
+    <span class="tut-rsvd">ByVal</span> e <span class="tut-rsvd">As</span> System.Windows.<span class="tut-symb">RoutedEventArgs</span>)
+  <span class="tut-rsvd">Dim</span> _btn <span class="tut-rsvd">As New</span> <span class="tut-symb">Button</span>
+  <span class="tut-rsvd">Dim</span> _row, _col, _selected <span class="tut-rsvd">As Integer</span>
+  <span class="tut-rsvd">If Not</span> _timer.IsEnabled <span class="tut-rsvd">Then</span>
+    _btn = <span class="tut-rsvd">CType</span>(sender, <span class="tut-symb">Button</span>)
+    _row = _btn.GetValue(<span class="tut-symb">Grid</span>.RowProperty)
+    _col = _btn.GetValue(<span class="tut-symb">Grid</span>.ColumnProperty)
+    _selected = _board(_row, _col)
+    <span class="tut-rsvd">If</span> _matches.IndexOf(_selected) &lt; <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' No Match</span>
+      <span class="tut-rsvd">If</span> _first = <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span>
+        _firstButton = _btn
+        _first = _selected
+        _firstButton.Content = Card(_selected)
+      <span class="tut-rsvd">ElseIf</span> _second = <span class="tut-valu">0</span> <span class="tut-rsvd">Then</span>
+        _secondButton = _btn
+        <span class="tut-rsvd">If Not</span> _firstButton.Equals(_secondButton) <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Different</span>
+          _second = _selected
+          _secondButton.Content = Card(_selected)
+          <span class="tut-rsvd">If</span> _first = _second <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' Is Match</span>
+            _matches.Add(_first)
+            _matches.Add(_second)
+            <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Match!"</span>, <span class="tut-valu">"Memory Game"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+            <span class="tut-rsvd">If</span> _matches.Count = <span class="tut-valu">16</span> <span class="tut-rsvd">Then</span>
+              <span class="tut-symb">MessageBox</span>.Show(<span class="tut-valu">"Well Done! You matched them all in "</span> &amp; _moves &amp; <span class="tut-valu">" moves!"</span>, _
+                <span class="tut-valu">"Memory Game"</span>, <span class="tut-symb">MessageBoxButton</span>.OK)
+            <span class="tut-rsvd">End If
+          Else</span> <span class="tut-cmnt">' No Match</span>
+            _timer.Interval = <span class="tut-symb">TimeSpan</span>.FromSeconds(<span class="tut-valu">1.5</span>)
+            <span class="tut-rsvd">AddHandler</span> _timer.Tick, <span class="tut-rsvd">AddressOf</span> Clear <span class="tut-cmnt">' Clear Buttons after 1.5 Seconds</span>
+            _timer.Start()
+          <span class="tut-rsvd">End If</span>
+          _moves += <span class="tut-valu">1</span>
+          _first = <span class="tut-valu">0</span>
+          _second = <span class="tut-valu">0</span>
+        <span class="tut-rsvd">End If
+      End If
+    End If
+  End If
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4memclearbutton.png" width="776" height="880" alt="MainPage Clear and Button Click Subs" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Private Sub Button_Click(...)" type the following Subs: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Sub</span> Add(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> <span class="tut-symb">Grid</span>, <span class="tut-rsvd">ByRef</span> Row <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByRef</span> Column <span class="tut-rsvd">As Integer</span>)
+  <span class="tut-rsvd">Dim</span> _btn <span class="tut-rsvd">As New</span> <span class="tut-symb">Button</span>
+  <span class="tut-rsvd">AddHandler</span> _btn.Click, <span class="tut-rsvd">AddressOf</span> Button_Click
+  _btn.Content = <span class="tut-rsvd">Nothing</span>
+  _btn.Margin = <span class="tut-rsvd">New</span> <span class="tut-symb">Thickness</span>(<span class="tut-valu">5</span>)
+  _btn.SetValue(Grid.ColumnProperty, Column)
+  _btn.SetValue(Grid.RowProperty, Row)
+  Grid.Children.Add(_btn)
+<span class="tut-rsvd">End Sub</span>
+
+<span class="tut-rsvd">Private Sub</span> Layout(<span class="tut-rsvd">ByRef</span> Grid <span class="tut-rsvd">As</span> <span class="tut-symb">Grid</span>)
+  Grid.Children.Clear()
+  Grid.ColumnDefinitions.Clear()
+  Grid.RowDefinitions.Clear()
+  <span class="tut-rsvd">For</span> Index <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span> <span class="tut-rsvd">To</span> <span class="tut-valu">3</span> <span class="tut-cmnt">' Setup 4x4 Grid</span>
+    Grid.RowDefinitions.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">RowDefinition</span>)
+    Grid.ColumnDefinitions.Add(<span class="tut-rsvd">New</span> <span class="tut-symb">ColumnDefinition</span>)
+  <span class="tut-rsvd">Next</span>
+  Add(Grid, <span class="tut-valu">0</span>, <span class="tut-valu">0</span>)
+  Add(Grid, <span class="tut-valu">0</span>, <span class="tut-valu">1</span>)
+  Add(Grid, <span class="tut-valu">0</span>, <span class="tut-valu">2</span>)
+  Add(Grid, <span class="tut-valu">0</span>, <span class="tut-valu">3</span>)
+  Add(Grid, <span class="tut-valu">1</span>, <span class="tut-valu">0</span>)
+  Add(Grid, <span class="tut-valu">1</span>, <span class="tut-valu">1</span>)
+  Add(Grid, <span class="tut-valu">1</span>, <span class="tut-valu">2</span>)
+  Add(Grid, <span class="tut-valu">1</span>, <span class="tut-valu">3</span>)
+  Add(Grid, <span class="tut-valu">2</span>, <span class="tut-valu">0</span>)
+  Add(Grid, <span class="tut-valu">2</span>, <span class="tut-valu">1</span>)
+  Add(Grid, <span class="tut-valu">2</span>, <span class="tut-valu">2</span>)
+  Add(Grid, <span class="tut-valu">2</span>, <span class="tut-valu">3</span>)
+  Add(Grid, <span class="tut-valu">3</span>, <span class="tut-valu">0</span>)
+  Add(Grid, <span class="tut-valu">3</span>, <span class="tut-valu">1</span>)
+  Add(Grid, <span class="tut-valu">3</span>, <span class="tut-valu">2</span>)
+  Add(Grid, <span class="tut-valu">3</span>, <span class="tut-valu">3</span>)
+<span class="tut-rsvd">End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4memaddlayout.png" width="612" height="593" alt="MainPage Add and Layout Subs" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+While still in the Code View for MainPage.xaml, below the "End Sub" for "Private Sub Layout(...)" type the following Function and Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private Function</span> Random(<span class="tut-rsvd">ByRef</span> Start <span class="tut-rsvd">As Integer</span>, <span class="tut-rsvd">ByRef</span> Finish <span class="tut-rsvd">As Integer</span>, _
+    <span class="tut-rsvd">ByRef</span> Total <span class="tut-rsvd">As Integer</span>) <span class="tut-rsvd">As</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>)
+  <span class="tut-rsvd">Dim</span> _number <span class="tut-rsvd">As Integer
+  Dim</span> _numbers <span class="tut-rsvd">As New</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>)
+  <span class="tut-rsvd">While</span> _numbers.Count &lt; Total <span class="tut-cmnt">' Total Numbers</span>
+    Randomize(Timer) <span class="tut-cmnt">' Random Number with Seed</span>
+    _number = Int((Finish * Rnd()) + Start) <span class="tut-cmnt">' Between Start - Finish</span>
+    <span class="tut-rsvd">If Not</span> _numbers.Contains(_number) _
+      <span class="tut-rsvd">Or</span> _numbers.Count &lt; <span class="tut-valu">1</span> <span class="tut-rsvd">Then</span> <span class="tut-cmnt">' If Chosen or None</span>
+      _numbers.Add(_number) <span class="tut-cmnt">' Add Number</span>
+    <span class="tut-rsvd">End If
+  End While
+  Return</span> _numbers
+<span class="tut-rsvd">End Function</span>
+
+<span class="tut-rsvd">Private Sub</span> Choose()
+  <span class="tut-rsvd">Dim</span> _values, _indices <span class="tut-rsvd">As New</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>)
+  <span class="tut-rsvd">Dim</span> _counter <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span>
+  <span class="tut-rsvd">While</span> _values.Count &lt; 17 <span class="tut-cmnt">' Get 16 Numbers (2x8)</span>
+    <span class="tut-rsvd">Dim</span> _numbers <span class="tut-rsvd">As</span> <span class="tut-symb">List</span>(<span class="tut-rsvd">Of Integer</span>) = Random(<span class="tut-valu">1</span>, <span class="tut-valu">8</span>, <span class="tut-valu">8</span>) <span class="tut-cmnt">' Random 1 - 8</span>
+    <span class="tut-rsvd">For</span> _number <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span> <span class="tut-rsvd">To</span> <span class="tut-valu">7</span>
+      _values.Add(_numbers.Item(_number)) <span class="tut-cmnt">' Add to Cards</span>
+    <span class="tut-rsvd">Next
+  End While</span>
+  _indices = Random(<span class="tut-valu">1</span>, <span class="tut-valu">16</span>, <span class="tut-valu">16</span>) <span class="tut-cmnt">' Random 1 - 16</span>
+  <span class="tut-rsvd">For</span> Column <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span> <span class="tut-rsvd">To</span> <span class="tut-valu">3</span> <span class="tut-cmnt">' Board Columns</span>
+    <span class="tut-rsvd">For</span> Row <span class="tut-rsvd">As Integer</span> = <span class="tut-valu">0</span> <span class="tut-rsvd">To</span> <span class="tut-valu">3</span> <span class="tut-cmnt">' Board Rows</span>
+      _board(Column, Row) = _values.Item(_indices(_counter) - <span class="tut-valu">1</span>)
+      _counter += <span class="tut-valu">1</span>
+    <span class="tut-rsvd">Next
+  Next
+End Sub</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4memrandomchoose.png" width="558" height="541" alt="MainPage Random Function and Choose Sub" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+Return to the Designer View, by selecting the "MainPage.xaml" Tab, or Right Click on the Page or the Entry for "MainPage.xaml" in Solution Explorer and choose the "View Designer" option.<br/>
+Double Click on the "New" Button Control and type in the New_Click Sub: 
+</p>
+<blockquote>
+<pre class="tut-code">
+_moves = <span class="tut-valu">0</span>
+_matches.Clear()
+Layout(Display)
+Choose()
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="sl4memnewclick.png" width="504" height="133" alt="New Button Click Event" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Save the Project as you have now finished the Silverlight application. Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="sl4start.png" width="22" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in a new Web Browser window:
+</p>
+<div class="tutorial-image">
+<img src="sl4oxorun.png" width="400" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Click on the New Button and the following will appear: 
+</p>
+<div class="tutorial-image">
+<img src="sl4memnew.png" width="400" height="300" alt="New Game" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+Click on any two Buttons to show a Shape, match the shapes to make a pair, do this until all are matched to win, see below:
+</p>
+<div class="tutorial-image">
+<img src="sl4memapp.png" width="400" height="300" alt="Memory Game" />
+</div>
+<p class="tutorial-step">Step 20</p>
+<p>
+Close the Browser window by clicking on the Close Button <img src="sl4close.png" width="43" height="16" alt="Close" /> on
+the top right of the Web Browser to Stop the application.
+</p>
+<p>
+This is a simple game using Shapes for each of the Cards displayed - try changing it to use different shapes, colours or even patterns,
+you could even make them look more like cards, anything you like!
+</p>
+</body>
+</html>

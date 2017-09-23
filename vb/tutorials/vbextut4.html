@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Drawing</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+				 color: #000000; 
+				 font-size: 2.0em; 
+				 font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+				 font-weight: normal; 
+}
+.content {
+				 color: #000000;
+				 background-color: #ffffff; 
+				 font-size: 0.72em;
+				 font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+							margin: 0px;
+							padding: 0px;
+							color: #000000; 
+							font-size: 1.4em; 
+							font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+							text-align: left;
+}
+.tutorial-image {
+					margin-bottom: 20px;
+					display: block;
+}
+.tut-code {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+}
+.tut-item {
+							font-size: 1.0em;
+							font-family: Courier New, Serif, Times New Roman;
+							color: #000000;
+							line-height: 75%;
+}
+.tut-valu {
+							color: maroon;
+}
+.tut-rsvd {
+							color: blue;
+}
+.tut-cmnt {
+							color: green;
+}
+</style>
+</head>
+<body class="content">
+<h1>Drawing</h1>
+<p>This Tutorial will show you how to make a simple Drawing Package using a PictureBox on a Form</p>
+<p>
+<a href="http://www.cespage.com/vb/vbextut4.html">www.cespage.com/vb/vbextut4.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Basic 2005 Express Edition, then select File then New Project... Choose Windows Application from the 
+New Project Window, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexnewproject.gif" width="681" height="417" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1.gif" width="307" height="307" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Windows Forms components tab select the PictureBox control:
+</p>
+<div class="tutorial-image">
+<img src="vbexpicturebox.gif" width="248" height="398" alt="PictureBox Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a PictureBox on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1pic.gif" width="300" height="300" alt="Form with PictureBox" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then go to the Properties box and change the BackColor property from Control to White, see below:
+</p>
+<div class="tutorial-image">
+<img src="vbexpictureprop.gif" width="202" height="457" alt="PictureBox Properties" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Double click on the Form and type the following Declarations just below the Public Class section at the top:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> DrawBitmap <span class="tut-rsvd">As</span> Bitmap
+<span class="tut-rsvd">Private</span> DrawGraphics <span class="tut-rsvd">As</span> Graphics
+</pre>
+</blockquote>
+<p>
+Then type in the following into the Form1_Load method:
+</p>
+<blockquote>
+<pre class="tut-code">
+DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(PictureBox1.Width, PictureBox1.Height)
+DrawGraphics = Graphics.FromImage(DrawBitmap)
+PictureBox1.Image = DrawBitmap
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexdrawfrmload.gif" width="572" height="238" alt="Declarations and Form Load" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+While still in the Code View select from the Listbox on the top left PictureBox and from the list on the top right MouseMove,
+then type the following into the PictureBox1_MouseMove method that appears in the Code View:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">If</span> e.Button = Windows.Forms.MouseButtons.Left <span class="tut-rsvd">Then</span>
+  DrawGraphics.FillEllipse(Brushes.Blue, e.X, e.Y, 8, 8)
+  PictureBox1.Image = DrawBitmap
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="vbexform1picmove.gif" width="712" height="169" alt="Form PictureBox Move Event" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Save the Project as you have now finished the application, then click on Start:
+</p>
+<div class="tutorial-image">
+<img src="vbexstart.gif" width="23" height="22" alt="Start" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="vbexdrawrun.gif" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Now hold down the Left mouse button and draw on the White PictureBox, it will appear as a Blue trail!
+</p>
+<div class="tutorial-image">
+<img src="vbexdrawdraw.gif" width="300" height="300" alt="Drawing Application" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Click on the Close button <img src="vbexclose.gif" width="21" height="21" alt="Close" /> on the top right of Form1 to end the application.
+</p>
+<p>
+This is a very simple Drawing Package, Try changing the size of the FillEllipse to get a Thicker line, or the Brush e.g. Brushes.Green or Brushes.Red!
+</p>
+</body>
+</html>

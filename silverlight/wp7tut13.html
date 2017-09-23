@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Silverlight - Tutorials - Tweet Search</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Silverlight - Silverlight Articles, Tutorials, Showcase and Resources" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, silverlight, Silverlight, XAML, Peter Bull, peter bull" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="390" alt="CESPage.com Silverlight" /></a>
+</div>
+<div id="titlebar">
+<h1>Tweet Search</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="showcase.html" class="navbar-link">Showcase</a></div>
+<div class="navbar-element"><a href="resources.html" class="navbar-link">Resources</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>
+Tweet Search is a Simple application to allow you to search for Tweets containing a particular query with LINQ and the Twitter&reg; Search RSS
+Feed using Silverlight on Windows Phone 7.
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/wp7tut13.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/wp7tut13.zip">Download Tutorial</a> (833KB)</em>
+<em class="icon-dload"><a href="tutorials/wp7tut13code.zip">Download Source Code</a> (17.1KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Select Project then Add Reference... The "Add Reference" window should appear, select "System.XML.Linq" from the ".NET" List, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7linq.png" width="466" height="370" alt="Add System.XML.Linq Reference" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Add the Reference to "System.XML.Linq" by Clicking on OK.<br/>
+Select Project then "Add Class...", and select the "Class" Template is not already Selected, then change the "Name" to Tweet.cs see below: 
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweet.png" width="939" height="624" alt="Tweet Class" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Add the new Class to the Project by Clicking on Add, then in the Code View for the new Class, below the "{" of the line "public class Tweet" type the following: 
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private string</span> _avatar;
+<span class="tut-rsvd">private string</span> _title;
+<span class="tut-rsvd">private string</span> _author;
+<span class="tut-rsvd">private</span> <span class="tut-symb">DateTime</span> _published;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetclsdecs.png" width="268" height="333" alt="Tweet Class Declarations" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+While still in the Code View for Tweet.cs, below the "<span class="tut-rsvd">private</span> <span class="tut-symb">DateTime</span> _published;" line type the following Properties:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">public string</span> Avatar
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _avatar; }
+  <span class="tut-rsvd">set</span> { _avatar = <span class="tut-rsvd">value</span>; }
+}
+
+<span class="tut-rsvd">public string</span> Title
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _title; }
+  <span class="tut-rsvd">set</span> { _title = <span class="tut-rsvd">value</span>; }
+}
+
+<span class="tut-rsvd">public string</span> Author
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _author; }
+  <span class="tut-rsvd">set</span> { _author = <span class="tut-rsvd">value</span>; }
+}
+
+<span class="tut-rsvd">public</span> <span class="tut-symb">DateTime</span> Published
+{
+  <span class="tut-rsvd">get</span> { <span class="tut-rsvd">return</span> _published; }
+  <span class="tut-rsvd">set</span> { _published = <span class="tut-rsvd">value</span>; }
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetclsprops.png" width="284" height="365" alt="Tweet Class Properties" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Return to the MainPage Designer View by selecting the "MainPage.xaml" Tab.<br/>
+Then in XAML Pane between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> lines type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentMain"&gt;
+  &lt;<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="80"/&gt;
+    &lt;<span class="tut-valu">RowDefinition</span> <span class="tut-attr">Height</span>="*"/&gt;
+  &lt;/<span class="tut-valu">Grid.RowDefinitions</span>&gt;
+  &lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="Toolbar" <span class="tut-attr">Grid.Row</span>="0"&gt;
+    &lt;<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="*"/&gt;
+      &lt;<span class="tut-valu">ColumnDefinition</span> <span class="tut-attr">Width</span>="Auto"/&gt;
+    &lt;/<span class="tut-valu">Grid.ColumnDefinitions</span>&gt;
+    <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span>
+  &lt;/<span class="tut-valu">Grid</span>&gt;
+  <span class="tut-cmnt">&lt;!-- Content --&gt;</span>
+&lt;/<span class="tut-valu">Grid</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7webpagexaml.png" width="412" height="235" alt="MainPage XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7webpagedesign.png" width="359" height="659" alt="MainPage Design View" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the TextBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7textbox.png" width="180" height="428" alt="TextBox Control" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Draw a TextBox onto the Toolbar Section (upper smaller section) of the Grid on the Page, below the Page Title, and in the XAML Pane below the <span class="tut-cmnt">&lt;!-- Toolbar --&gt;</span> line, change "TextBox1" to the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">TextBox</span> <span class="tut-attr">Grid.Column</span>="0" <span class="tut-attr">Name</span>="Subject"/&gt;</span> 
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7webtxt.png" width="359" height="659" alt="MainPage with Subject TextBox" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Then from the Windows Phone Controls section in the Toolbox select the Button control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7button.png" width="180" height="428" alt="Button Control" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Draw a Button onto the Toolbar Section by dragging the Button from the Toolbox onto the Toolbar section of the Grid on the Page, 
+then in the XAML Pane change the "Button1" line to the following:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">Button</span> <span class="tut-attr">Grid.Column</span>="1" <span class="tut-attr">Content</span>="search" <span class="tut-attr">Click</span>="Search_Click"/&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetbtn.png" width="359" height="659" alt="MainPage with Button" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+While still in the XAML Pane for MainPage, below the <span class="tut-cmnt">&lt;!-- Content--&gt;</span> line, type the following ListBox XAML:
+</p>				 
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">ListBox</span> <span class="tut-attr">Grid.Row</span>="1" <span class="tut-attr">Name</span>="Results"&gt;
+  &lt;<span class="tut-valu">ListBox.ItemTemplate</span>&gt;
+    &lt;<span class="tut-valu">DataTemplate</span>&gt;
+      &lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Orientation</span>="Horizontal"&gt;
+        &lt;<span class="tut-valu">Image</span> <span class="tut-attr">Height</span>="90" <span class="tut-attr">Width</span>="90" <span class="tut-attr">VerticalAlignment</span>="Top" <span class="tut-attr">Margin</span>="5,5,5,5" <span class="tut-attr">Source</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Avatar}"/>
+        &lt;<span class="tut-valu">StackPanel</span> <span class="tut-attr">Width</span>="340"&gt;
+          &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">TextWrapping</span>="Wrap" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Title}"/&gt;
+          &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Published}"/&gt;
+          &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">FontWeight</span>="Bold" <span class="tut-attr">Text</span>="{<span class="tut-valu">Binding</span> <span class="tut-attr">Path</span>=Author}"/&gt;   
+        &lt;/<span class="tut-valu">StackPanel</span>&gt;
+      &lt;/<span class="tut-valu">StackPanel</span>&gt;
+    &lt;/<span class="tut-valu">DataTemplate</span>&gt;
+  &lt;/<span class="tut-valu">ListBox.ItemTemplate</span>&gt;
+&lt;/<span class="tut-valu">ListBox</span>&gt;</span>
+</pre>
+</blockquote>
+<p>See below:</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetlst.png" width="359" height="659" alt="MainPage with ListBox" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+While still in the Designer View for MainPage.xaml, Select the "page name" TextBlock (PageTitle) then goto the Properties Box and change the Text property to "tweet search" without the quotes, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetsearchprop.png" width="217" height="393" alt="MainPage PageTitle Properties" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Right Click on the Page or the entry for "MainPage.xaml" in Solution Explorer and choose the "View Code" option. In the Code View above "namespace TweetSearch"
+type the following:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">using</span> System.Xml.Linq;
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetsearchref.png" width="404" height="397" alt="MainPage Includes" />
+</div>
+<p class="tutorial-step">Step 15</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Methods:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Tweets(<span class="tut-rsvd">object</span> Sender, <span class="tut-symb">DownloadStringCompletedEventArgs</span> e)
+{
+  <span class="tut-symb">XElement</span> _xml;
+  <span class="tut-rsvd">try</span>
+  {
+    <span class="tut-rsvd">if</span> (!e.Cancelled)
+    {
+      _xml = <span class="tut-symb">XElement</span>.Parse(e.Result);
+      <span class="tut-rsvd">foreach</span> (<span class="tut-symb">XElement</span> value <span class="tut-rsvd">in</span> _xml.Elements(<span class="tut-valu">"channel"</span>).Elements(<span class="tut-valu">"item"</span>))
+      {
+        <span class="tut-symb">Tweet</span> _tweet = <span class="tut-rsvd">new</span> <span class="tut-symb">Tweet</span>();
+        <span class="tut-symb">XNamespace</span> _google = <span class="tut-valu">"<span class="tut-link">http://base.google.com/ns/1.0</span>"</span>;
+        _tweet.Avatar = value.Element(_google + <span class="tut-valu">"image_link"</span>).Value;
+        _tweet.Title = value.Element(<span class="tut-valu">"title"</span>).Value;
+        _tweet.Published = <span class="tut-symb">DateTime</span>.Parse(value.Element(<span class="tut-valu">"pubDate"</span>).Value);
+        _tweet.Author = value.Element(<span class="tut-valu">"author"</span>).Value.Replace(<span class="tut-valu">"@twitter.com"</span>, <span class="tut-valu">""</span>);
+        Results.Items.Add(_tweet);
+      }
+    }
+  }
+  <span class="tut-rsvd">catch</span>
+  {
+    <span class="tut-cmnt">// Ignore Errors</span>
+  }
+}
+
+<span class="tut-rsvd">private void</span> Query(<span class="tut-rsvd">string</span> Value)
+{
+  <span class="tut-symb">WebClient</span> _client = <span class="tut-rsvd">new</span> <span class="tut-symb">WebClient</span>();
+  _client.DownloadStringCompleted += Tweets;
+  _client.DownloadStringAsync(<span class="tut-rsvd">new</span> <span class="tut-symb">Uri</span>((<span class="tut-valu">"<span class="tut-link">http://search.twitter.com/search.rss?rpp=50&amp;q=</span>"</span> 
+  + <span class="tut-symb">HttpUtility</span>.UrlEncode(Value))));
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetsearch.png" width="698" height="525" alt="MainPage Tweets and Query Methods" />
+</div>
+<p class="tutorial-step">Step 16</p>
+<p>
+While still the Code View for MainPage.xaml.cs above "public MainPage()" type the following Event Handler:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">private void</span> Search_Click(<span class="tut-rsvd">object</span> sender, <span class="tut-symb">RoutedEventArgs</span> e)
+{
+  Query(Subject.Text);
+}
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetsearchcode.png" width="480" height="61" alt="MainPage Event Handlers" />
+</div>
+<p class="tutorial-step">Step 17</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetsearchrun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 18</p>
+<p>
+Tap the TextBox and then using the SIP or Keyboard enter something to Search for, then Tap on "search" to display the first fifty results, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7tweetsearchapp.png" width="359" height="660" alt="Tweet Search" />
+</div>
+<p class="tutorial-step">Step 19</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This is a very simple example of getting search results from Twitter&reg;, you can use this to search for hashtags or other text, you may
+also change it to show more than 50 results (change the rpp=50 value) or customise the interface - make it your own!
+</p>
+<p>
+<script type="text/javascript">addthis_pub  = 'RoguePlanetoid';</script>
+<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s9.addthis.com/button0-share.gif" width="83" height="16" alt="Share" /></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</p>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 2009 - 2010, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/silverlight/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+<a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>

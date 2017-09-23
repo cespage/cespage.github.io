@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Input Scope</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+h1 {
+  color: #000000; 
+  font-size: 2.0em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif;  
+  font-weight: normal; 
+}
+.content {
+  color: #000000;
+  background-color: #ffffff; 
+  font-size: 0.72em;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+}
+.tutorial-step {
+  margin: 0px;
+  padding: 0px;
+  color: #000000; 
+  font-size: 1.4em; 
+  font-family: Arial, Verdana, Helvetica, Sans-Serif; 
+  text-align: left;
+}
+.tutorial-image {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.tut-code {
+  font-size: 1.0em;
+  font-family: Courier New, Serif, Times New Roman;
+  color: #000000;
+}
+.tut-text {color: #000000;}
+.tut-xatr {color:#555555;}
+.tut-xexp {
+  color:#555555;
+	background-color:#FFFEBF;
+}
+.tut-xatn {color:#B96464;}
+.tut-xnam {color:#844646;}
+.tut-xatt {color:#6464B9;}
+.tut-link {
+  color: blue;
+  text-decoration: underline;
+}
+.tut-symb {color:#2B91AF;}
+.tut-valu {color: maroon;}
+.tut-attr {color: red;}
+.tut-rsvd {color: blue;}
+.tut-prop {color: gray;}
+.tut-cmnt {color: #008000;}
+.tut-img {background:#000000;}
+</style>
+</head>
+<body class="content">
+<h1>Input Scope</h1>
+<p>
+Windows Phone 7 supports Input Scopes on controls such as the TextBox so that the type of entry required
+is suited to the control, for example entering a website address or a telephone number displays a different kind
+of on-screen keyboard.
+</p>
+<p>
+<a href="http://www.cespage.com/silverlight/wp7tut3.html">www.cespage.com/silverlight/wp7tut3.html</a>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Start Microsoft Visual Studio 2010 Express for Windows Phone, then Select File then New Project... Select "Visual C#" then "Silverlight for Windows Phone" 
+and then "Windows Phone Application" from Templates, select a Location if you wish, then enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7newapp.png" width="939" height="624" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Windows Phone application Page named MainPage.xaml should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7mainpage.png" width="359" height="659" alt="MainPage.xaml" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+In the XAML Pane for the MainPage.xaml, between the <span class="tut-rsvd">&lt;<span class="tut-valu">Grid</span> <span class="tut-attr">x</span>:<span class="tut-attr">Name</span>="ContentGrid" <span class="tut-attr">Grid.Row</span>="1"&gt;</span> and <span class="tut-rsvd">&lt;/<span class="tut-valu">Grid</span>&gt;</span> tags, type the following XAML:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">&lt;<span class="tut-valu">StackPanel</span>&gt;
+  &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="Email Address"/&gt;
+  &lt;<span class="tut-valu">TextBox</span>&gt;
+    &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+      &lt;<span class="tut-valu">InputScope</span>&gt;
+        &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="EmailSmtpAddress"/&gt;
+      &lt;/<span class="tut-valu">InputScope</span>&gt;
+    &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+  &lt;/<span class="tut-valu">TextBox</span>&gt;
+  &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="Website"/&gt;
+  &lt;<span class="tut-valu">TextBox</span>&gt;
+    &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+      &lt;<span class="tut-valu">InputScope</span>&gt;
+        &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="Url"/&gt;
+      &lt;/<span class="tut-valu">InputScope</span>&gt;
+    &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+  &lt;/<span class="tut-valu">TextBox</span>&gt;
+  &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="Telephone"/&gt;
+  &lt;<span class="tut-valu">TextBox</span>&gt;
+    &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+      &lt;<span class="tut-valu">InputScope</span>&gt;
+        &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="TelephoneNumber"/&gt;
+      &lt;/<span class="tut-valu">InputScope</span>&gt;
+    &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+  &lt;/<span class="tut-valu">TextBox</span>&gt;
+  &lt;<span class="tut-valu">TextBlock</span> <span class="tut-attr">Text</span>="Chat"/&gt;
+  &lt;<span class="tut-valu">TextBox</span>&gt;
+    &lt;<span class="tut-valu">TextBox.InputScope</span>&gt;
+      &lt;<span class="tut-valu">InputScope</span>&gt;
+        &lt;<span class="tut-valu">InputScopeName</span> <span class="tut-attr">NameValue</span>="Chat"/&gt;
+      &lt;/<span class="tut-valu">InputScope</span>&gt;
+    &lt;/<span class="tut-valu">TextBox.InputScope</span>&gt;
+  &lt;/<span class="tut-valu">TextBox</span>&gt;
+&lt;/<span class="tut-valu">StackPanel</span>&gt;</span>
+</pre>
+</blockquote>
+<p>XAML:</p>
+<div class="tutorial-image">
+<img src="wp7scopexaml.png" width="542" height="609" alt="Input Scope XAML Pane" />
+</div>
+<p>Design:</p>
+<div class="tutorial-image">
+<img src="wp7scopedesign.png" width="359" height="659" alt="Input Scope Design View" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Save the Project as you have now finished the Windows Phone Silverlight application. Select the Windows Phone Emulator option then Select Debug then Start Debugging or click on Start Debugging:
+</p>
+<div class="tutorial-image">
+<img src="wp7start.png" width="205" height="22" alt="Start Debugging" />
+</div>
+<p>
+After you do, the following will appear in the Windows Phone Emulator after it has been loaded:
+</p>
+<div class="tutorial-image">
+<img src="wp7scoperun.png" width="359" height="660" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Select any of the TextBoxes and a Keyboard will appear, determined by the InputScope for that TextBox, see below:
+</p>
+<div class="tutorial-image">
+<img src="wp7scopeapp.png" width="359" height="660" alt="Input Scope" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+You can then Stop the application by selecting the Visual Studio 2010 application window and clicking on the Stop Debugging button:
+</p>
+<div class="tutorial-image">
+<img src="wp7stop.png" width="22" height="22" alt="Stop Debugging" />
+</div>
+<p>
+This was a very simple Input Scope example for Windows Phone - there are many input scopes available including ones for Dates, Currencies, Numbers and more, 
+so you can choose the right keyboard for your needs and use this example as a basis of your own contextual keyboard-based applications, make it your own! 
+</p>
+</body>
+</html>

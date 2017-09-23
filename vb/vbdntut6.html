@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>CESPage.com Visual Basic - Tutorials - Simple Drawing Package</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1" />
+<meta name="description" content="CESPage.com Visual Basic - Visual Basic Resources, Tutorials, Downloads and more" />
+<meta name="keywords" content="CES, ces, cespage, CESPage, CESPage.com, cespage.com, visual basic ,Visual Basic, VB, vb, Peter Bull, peter bull, downloads, download, tutorials, tutorial, text, lottery, drawing, task tray, .net, .NET, examples, news, books, articles, source code, projects, components, forums, tips, 2005" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="meta" href="http://www.cespage.com/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+</head>
+<body>
+<div id="main">
+<div id="header">
+<a href="index.html"><img src="images/header.jpg" height="50" width="412" alt="CESPage.com Visual Basic" /></a>
+</div>
+<div id="titlebar">
+<h1>Simple Drawing Package</h1>
+</div>
+<div id="container">
+<div class="navbar">
+<div class="navbar-element"><a href="index.html" class="navbar-link">Home</a></div>
+<div class="navbar-element"><a href="articles.html" class="navbar-link">Articles</a></div>
+<div class="navbar-selected"><a href="tutorials.html" class="navbar-link">Tutorials</a></div>
+<div class="navbar-element"><a href="downloads.html" class="navbar-link">Downloads</a></div>
+<div class="navbar-element"><a href="books.html" class="navbar-link">Books</a></div>
+<div class="navbar-element"><a href="weblinks.html" class="navbar-link">Weblinks</a></div>
+<div class="navbar-element"><img src="images/div160x1.gif" width="160" height="1" alt="-" /></div>
+<div class="navbar-element"><a href="http://www.cespage.com" class="navbar-link">CESPage.com</a></div>
+</div>
+<div id="content">
+<p>Well if you did the Drawing Tutorial this is even better, which will introduce you to the ComboBox and PictureBox 
+Controls plus Structures, Drawing Methods, Loops, Collections and supports image persistence!
+</p>
+<p>
+<em class="icon-print"><a href="tutorials/vbdntut6.html">Printer Friendly</a></em>
+<em class="icon-dload"><a href="tutorials/vbdntut6.zip">Download Tutorial</a> (128KB)</em>
+<em class="icon-dload"><a href="tutorials/vbdntut6code.zip">Download Source Code</a> (7KB)</em>
+</p>
+<p class="tutorial-step">Step 1</p>
+<p>
+Load Microsoft Visual Studio.NET then select Visual Basic Projects, 
+Windows Application, enter a name for the Project and then click OK, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgnewproject.gif" width="531" height="371" alt="New Project" />
+</div>
+<p class="tutorial-step">Step 2</p>
+<p>
+A Blank Form named Form1 should then appear, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1.gif" width="314" height="314" alt="Form1" />
+</div>
+<p class="tutorial-step">Step 3</p>
+<p>
+Then from the Windows Forms components tab select the PictureBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgpicturebox.gif" width="200" height="400" alt="PictureBox Component" />
+</div>
+<p class="tutorial-step">Step 4</p>
+<p>
+Draw a PictureBox on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1pic1.gif" width="300" height="300" alt="PictureBox on Form" />
+</div>
+<p class="tutorial-step">Step 5</p>
+<p>
+Then go to the Properties box and change the BackColor property from Control to White, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgpictureprop.gif" width="204" height="433" alt="PictureBox Property" />
+</div>
+<p class="tutorial-step">Step 6</p>
+<p>
+Then from the Windows Forms components tab select the ComboBox control:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgcombobox.gif" width="200" height="400" alt="ComboBox Control" />
+</div>
+<p class="tutorial-step">Step 7</p>
+<p>
+Draw two ComboBoxes on the Form, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1cbo.gif" width="314" height="314" alt="ComboBoxes on Form" />
+</div>
+<p class="tutorial-step">Step 8</p>
+<p>
+Click on ComboBox1 and then go to the Properties box and change the DropDownStyle Property to DropDownList, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgcboprop.gif" width="204" height="434" alt="ComboBox1 Property" />
+</div>
+<p class="tutorial-step">Step 9</p>
+<p>
+Click on ComboBox2 and then go to the Properties box and change the DropDownStyle Property to DropDownList, the form should appear as below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1cbos.gif" width="314" height="314" alt="Form1 with DropDownList ComboBoxes" />
+</div>
+<p class="tutorial-step">Step 10</p>
+<p>
+Double click on the Form and type the following Declarations just below the Public Class section at the top:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Private</span> DrawBitmap <span class="tut-rsvd">As</span> Bitmap
+<span class="tut-rsvd">Private</span> DrawGraphics <span class="tut-rsvd">As</span> Graphics
+<span class="tut-rsvd">Private</span> DrawBrush As <span class="tut-rsvd">Brush</span>
+<span class="tut-rsvd">Private</span> DrawSize <span class="tut-rsvd">As Integer</span>
+</pre>
+</blockquote>
+<p>
+Then type in the following into the Form1_Load method:
+</p>
+<blockquote>
+<pre class="tut-code">
+DrawBitmap = <span class="tut-rsvd">New</span> Bitmap(PictureBox1.Width, PictureBox1.Height)
+DrawGraphics = Graphics.FromImage(DrawBitmap)
+PictureBox1.Image = DrawBitmap
+
+<span class="tut-rsvd">With</span> ComboBox1
+  .Items.Add(2)
+  .Items.Add(4)
+  .Items.Add(8)
+  .Items.Add(16)
+  .Items.Add(32)
+  .Items.Add(64)
+<span class="tut-rsvd">End With</span>
+ComboBox1.SelectedIndex = 0
+
+<span class="tut-rsvd">With</span> ComboBox2
+  .Items.Add("Black")
+  .Items.Add("Red")
+  .Items.Add("Green")
+  .Items.Add("Blue")
+  .Items.Add("White")
+<span class="tut-rsvd">End With</span>
+ComboBox2.SelectedIndex = 0
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1load.gif" width="580" height="646" alt="Form1 Load" />
+</div>
+<p class="tutorial-step">Step 11</p>
+<p>
+Right click on the Form and select the view Code option then in the Top Right List select PictureBox1, and then in the
+Top Left List select MouseMove, then type in the PictureBox1_MouseMove Sub:
+</p>
+<blockquote>
+<pre class="tut-code">
+<span class="tut-rsvd">Select Case</span> ComboBox2.SelectedIndex
+  <span class="tut-rsvd">Case</span> 0
+    DrawBrush = Brushes.Black
+  <span class="tut-rsvd">Case</span> 1
+    DrawBrush = Brushes.Red
+  <span class="tut-rsvd">Case</span> 2
+    DrawBrush = Brushes.Green
+  <span class="tut-rsvd">Case</span> 3
+    DrawBrush = Brushes.Blue
+  <span class="tut-rsvd">Case</span> 4
+    DrawBrush = Brushes.White
+  <span class="tut-rsvd">Case Else</span>
+    DrawBrush = Brushes.Black
+<span class="tut-rsvd">End Select</span>
+
+<span class="tut-rsvd">If</span> e.Button = Windows.Forms.MouseButtons.Left <span class="tut-rsvd">Then</span>
+  DrawSize = <span class="tut-rsvd">CType</span>(ComboBox1.SelectedItem, <span class="tut-rsvd">Integer</span>)
+  DrawGraphics.FillEllipse(DrawBrush, e.X, e.Y, DrawSize, DrawSize)
+  PictureBox1.Image = DrawBitmap
+<span class="tut-rsvd">End If</span>
+</pre>
+</blockquote>
+<p>
+See Below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgform1picmove1.gif" width="670" height="392" alt="PictureBox1 MouseMove" />
+</div>
+<p class="tutorial-step">Step 12</p>
+<p>
+Save the Project as you have now finished the application, select Release and Click on Start:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgstart.gif" width="124" height="22" alt="Start (Release)" />
+</div>
+<p>
+When you do the following will appear:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/imgdrawrun.gif" width="300" height="300" alt="Application Running" />
+</div>
+<p class="tutorial-step">Step 13</p>
+<p>
+Change the Value in the Left ComboBox to 8 and the in the Right ComboBox to Blue, 
+and draw something by holding down the Left mouse button and draw on the White PictureBox, see below:
+</p>
+<div class="tutorial-image">
+<img src="tutorials/vbexdraw.gif" width="300" height="300" alt="Simple Drawing Package" />
+</div>
+<p class="tutorial-step">Step 14</p>
+<p>
+Click on the Close button <img src="tutorials/imgclose.gif" width="21" height="21" alt="Close" /> on the top right of Form1 to end the application.
+</p>
+<p>
+Great you have just created an improved Drawing Package! Try changing the program so that 
+other Draw Widths are available (add more values to Combobox1) Plus add more colours by adding 
+the new names e.g. Yellow and then in the PictureBox_MouseMove add a line in the Select case e.g. 
+case 5 mycolor = Brushes.Yellow.<br/>
+Try changing other parts of the code and extending it, you can learn a lot from this simple drawing package.
+</p>
+</div>
+</div>
+<div id="bottombar">
+Copyright Comentsys &copy; 1997 - 2009, All rights reserved.&nbsp;<a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="linktopage.html">Link to Page</a>
+</div>
+<div id="widgetbar">
+<a href="http://validator.w3.org/check?uri=referer"><img src="images/xhtml.gif" height="15" width="90" alt="Valid XHTML 1.1!" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.cespage.com/vb/default.css"><img src="images/css.gif" height="15" width="90" alt="Valid CSS" /></a>
+<a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img src="images/waiaa.gif" height="15" width="110" alt="Level Double-A conformance icon, W3C-WAI Web Content Accessibility Guidelines 1.0" /></a>
+<a href="http://www.icra.org"><img src="images/icra.gif" height="15" width="90" alt="This website is ICRA rated" /></a>
+</div>
+<div id="footer"><a href="http://www.comentsys.com"><img src="images/ceslogo.jpg" height="50" width="210" alt="Comentsys" /></a></div>
+</div>
+</body>
+</html>
